@@ -1,3 +1,4 @@
+// Modified by the ScreenRecorder fork, 2026-10-10. See FORK_CHANGES.md; AGPL-3.0.
 import path from "node:path";
 import { dialog, ipcMain } from "electron";
 import { generateAutoCaptionsFromVideo } from "../captions/generate";
@@ -8,12 +9,17 @@ import {
 	sendWhisperModelDownloadProgress,
 } from "../captions/whisper";
 import { LEGACY_PROJECT_FILE_EXTENSIONS, PROJECT_FILE_EXTENSION } from "../constants";
-import { hasProjectFileExtension, loadProjectFromPath } from "../project/manager";
+import { getProjectsDir, hasProjectFileExtension, loadProjectFromPath } from "../project/manager";
+import { importPortableProject, PORTABLE_EXTENSION } from "../project/portable";
 import { setCurrentProjectPath } from "../state";
 import { approveUserPath, getRecordingsDir } from "../utils";
 
 const VIDEO_FILE_EXTENSIONS = ["webm", "mp4", "mov", "avi", "mkv"];
-const PROJECT_FILE_EXTENSIONS = [PROJECT_FILE_EXTENSION, ...LEGACY_PROJECT_FILE_EXTENSIONS];
+const PROJECT_FILE_EXTENSIONS = [
+	PROJECT_FILE_EXTENSION,
+	...LEGACY_PROJECT_FILE_EXTENSIONS,
+	PORTABLE_EXTENSION,
+];
 
 type OpenVideoFilePickerOptions = {
 	includeProjects?: boolean;
@@ -52,7 +58,18 @@ export function registerCaptionHandlers() {
 				return { success: false, canceled: true };
 			}
 
-			const selectedPath = result.filePaths[0];
+			let selectedPath = result.filePaths[0];
+			if (
+				includeProjects &&
+				path.extname(selectedPath).toLowerCase() === `.${PORTABLE_EXTENSION}`
+			) {
+				const imported = await importPortableProject(
+					selectedPath,
+					await getRecordingsDir(),
+					await getProjectsDir(),
+				);
+				selectedPath = imported.path;
+			}
 
 			if (includeProjects && hasProjectFileExtension(selectedPath)) {
 				const projectResult = await loadProjectFromPath(selectedPath);

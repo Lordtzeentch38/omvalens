@@ -1,13 +1,14 @@
-import { FeedbackDialog } from "@/components/feedback/FeedbackDialog";
+// Modified by the ScreenRecorder fork, 2026-10-10. See FORK_CHANGES.md; AGPL-3.0.
 import { Separator } from "@heroui/react";
+import type { CSSProperties, FormEvent, RefObject } from "react";
+import { FeedbackDialog } from "@/components/feedback/FeedbackDialog";
+import { Button } from "@/components/ui/button";
 import {
-	House,
 	FilmStrip,
+	House,
 	ArrowClockwise as Redo2,
 	ArrowCounterClockwise as Undo2,
 } from "@/components/ui/icons";
-import type { CSSProperties, FormEvent, RefObject } from "react";
-import { Button } from "@/components/ui/button";
 import type { useI18n } from "@/contexts/I18nContext";
 import type { useExportDimensions } from "../export/useExportDimensions";
 import type { useExportSession } from "../export/useExportSession";
@@ -34,6 +35,8 @@ type Props = {
 	canUndo: boolean;
 	canRedo: boolean;
 	handleOpenProjectBrowser: () => void;
+	handleExportPortableProject: () => void;
+	isPackagingProject: boolean;
 	handleUndo: () => void;
 	handleRedo: () => void;
 	handleProjectNameSubmit: (event?: FormEvent<HTMLFormElement>) => void;
@@ -223,6 +226,27 @@ export function EditorHeader(props: Props) {
 				</div>
 				{SHOW_PRESETS_BUTTON && <EditorPresetMenu t={t} presets={presets} />}
 				<FeedbackDialog />
+				<Button
+					variant="secondary"
+					size="sm"
+					onClick={props.handleExportPortableProject}
+					aria-label={
+						props.isPackagingProject
+							? t("editor.project.packaging", "Packaging…")
+							: t("editor.project.portableExport", "Portable project")
+					}
+					disabled={
+						props.isPackagingProject || project.loading || exportSession.isExporting
+					}
+					title={t(
+						"editor.project.portableDescription",
+						"Save a portable project with all its media. Import it from Home on another computer.",
+					)}
+				>
+					{props.isPackagingProject
+						? t("editor.project.packaging", "Packaging…")
+						: t("editor.project.portableExport", "Portable project")}
+				</Button>
 				<EditorExportMenu
 					t={t}
 					exportSettings={exportSettings}

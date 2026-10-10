@@ -1,7 +1,8 @@
-import { moveProjectFolderReferences } from "../dashboard/useProjectFolders";
-import { moveProjectShareLink } from "../cloud/projectShareLinks";
-import { type RefObject, useCallback, useEffect, useLayoutEffect, useRef } from "react";
+// Modified by the ScreenRecorder fork, 2026-10-10. See FORK_CHANGES.md; AGPL-3.0.
+import { type RefObject, useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { toast } from "@/components/ui/toast";
+import { moveProjectShareLink } from "../cloud/projectShareLinks";
+import { moveProjectFolderReferences } from "../dashboard/useProjectFolders";
 import { createProjectData, type EditorProjectData } from "../projectPersistence";
 import type { useProjectState } from "../state/useProjectState";
 import { cloneStructured, getErrorMessage } from "../videoEditorUtils";
@@ -361,12 +362,60 @@ export function useProjectSaveActions({
 			saveProjectWithName,
 		],
 	);
+	const [isPackagingProject, setIsPackagingProject] = useState(false);
+	const packagingRef = useRef(false);
+	const handleExportPortableProject = useCallback(async () => {
+		if (packagingRef.current) return;
+		if (!currentSourcePath) return toast.error("No video loaded");
+		packagingRef.current = true;
+		setIsPackagingProject(true);
+		try {
+			const snapshot =
+				currentProjectSnapshot ??
+				createProjectData(currentSourcePath, currentPersistedEditorState);
+			const result = await window.electronAPI.exportPortableProject(
+				snapshot,
+				projectDisplayName,
+			);
+			if (result.canceled) return;
+			if (!result.success)
+				return toast.error(result.error || "Could not export portable project");
+			toast.success("Portable project exported", {
+				description: "Includes project media, audio and cursor data.",
+				action: result.path
+					? {
+							label: "Show in Folder",
+							onClick: () => void window.electronAPI.revealInFolder(result.path!),
+						}
+					: undefined,
+			});
+		} catch (error) {
+			toast.error(getErrorMessage(error));
+		} finally {
+			packagingRef.current = false;
+			setIsPackagingProject(false);
+		}
+	}, [
+		currentSourcePath,
+		currentProjectSnapshot,
+		currentPersistedEditorState,
+		projectDisplayName,
+	]);
+	useEffect(
+		() =>
+			window.electronAPI.onMenuExportPortableProject?.(
+				() => void handleExportPortableProject(),
+			),
+		[handleExportPortableProject],
+	);
 	const handleSaveProject = useCallback(() => saveProject(false), [saveProject]);
 	const handleSaveProjectAs = useCallback(async () => {
 		if (await saveProject(true)) setProjectBrowserOpen(false);
 	}, [saveProject, setProjectBrowserOpen]);
 
 	return {
+		isPackagingProject,
+		handleExportPortableProject,
 		saveProject,
 		handleSaveProject,
 		handleSaveProjectAs,

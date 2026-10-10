@@ -1,7 +1,9 @@
+// Modified by the ScreenRecorder fork, 2026-10-10. See FORK_CHANGES.md; AGPL-3.0.
 import { Card } from "@heroui/react";
 import { lazy, Suspense, useEffect, useState } from "react";
-import { useI18n } from "./contexts/I18nContext";
 import { EditorLoadingSkeleton } from "./components/video-editor/layout/EditorLoadingSkeleton";
+import { useI18n } from "./contexts/I18nContext";
+import { APP_NAME } from "./lib/forkIdentity";
 
 const HudWindow = lazy(() => import("./components/launch/HudWindow"));
 const SourceSelector = lazy(() =>
@@ -26,7 +28,7 @@ export default function App() {
 		() => new URLSearchParams(window.location.search).get("windowType") || "",
 	);
 	const { t } = useI18n();
-	const appIconSrc = "/app-icons/recordly-128.png";
+	const appIconSrc = `${import.meta.env.BASE_URL}app-icons/screenrecorder-128.png`;
 
 	useEffect(() => {
 		document.documentElement.dataset.windowType = windowType;
@@ -55,11 +57,8 @@ export default function App() {
 	}, [windowType]);
 
 	useEffect(() => {
-		document.title =
-			windowType === "editor"
-				? t("app.editorTitle", "Recordly Editor")
-				: t("app.name", "Recordly");
-	}, [windowType, t]);
+		document.title = windowType === "editor" ? `${APP_NAME} Editor` : APP_NAME;
+	}, [windowType]);
 
 	let content;
 	switch (windowType) {
@@ -82,15 +81,9 @@ export default function App() {
 			content = (
 				<div className="flex h-full w-full items-center justify-center bg-editor-bg text-foreground">
 					<Card className="flex-row items-center gap-4 px-6 py-5">
-						<img
-							src={appIconSrc}
-							alt={t("app.name", "Recordly")}
-							className="h-12 w-12 rounded-xl"
-						/>
+						<img src={appIconSrc} alt={APP_NAME} className="h-12 w-12 rounded-xl" />
 						<div>
-							<h1 className="text-xl font-semibold tracking-tight">
-								{t("app.name", "Recordly")}
-							</h1>
+							<h1 className="text-xl font-semibold tracking-tight">{APP_NAME}</h1>
 							<p className="text-sm text-foreground/65">
 								{t("app.subtitle", "Screen recording and editing")}
 							</p>

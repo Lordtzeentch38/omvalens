@@ -1,7 +1,8 @@
+// Modified by the ScreenRecorder fork, 2026-10-10. See FORK_CHANGES.md; AGPL-3.0.
 import fs from "node:fs/promises";
 import path from "node:path";
-import { hasFreshProjectThumbnail } from "../../electron/ipc/project/thumbnailFreshness";
 import { expect, test } from "@playwright/test";
+import { hasFreshProjectThumbnail } from "../../electron/ipc/project/thumbnailFreshness";
 import { installDesktopBridge, installDesktopBridgeOverrides } from "./bridge";
 
 test("Home opens with a wireframe while saving and returns to the main library", async ({
@@ -208,6 +209,10 @@ test("autosave creates one untitled project, stays idle without edits, and refre
 			if (args[3]) document.documentElement.dataset.savedThumbnail = args[3];
 			return result;
 		};
+		window.electronAPI.setHasUnsavedChanges = async (unsaved) => {
+			document.documentElement.dataset.projectUnsaved = String(unsaved);
+			return { success: true };
+		};
 		window.electronAPI.listProjectFiles = async () => ({
 			success: true,
 			projects: [],
@@ -228,6 +233,18 @@ test("autosave creates one untitled project, stays idle without edits, and refre
 	await expect(page.getByRole("button", { name: "Rename project" })).toContainText(
 		"Untitled Project",
 	);
+	// Metadata can update clip duration after the first project is created.
+	// Start the idle observation after that initial state has been persisted.
+	await expect
+		.poll(() =>
+			page
+				.locator("video")
+				.evaluateAll((videos) =>
+					videos.some((video) => video.readyState >= 2 && video.duration > 0),
+				),
+		)
+		.toBe(true);
+	await expect(page.locator("html")).toHaveAttribute("data-project-unsaved", "false");
 	// Observe more than two debounce periods: idle must not perform periodic saves.
 	const before = await page.locator("html").getAttribute("data-project-saves");
 	await page.waitForTimeout(1800);

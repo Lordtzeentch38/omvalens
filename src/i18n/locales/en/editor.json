@@ -158,6 +158,9 @@
 		"showInFolder": "Show In Folder"
 	},
 	"project": {
+		"portableExport": "Portable project",
+		"packaging": "Packaging…",
+		"portableDescription": "Save a portable project with all its media. Import it from Home on another computer.",
 		"untitled": "Untitled",
 		"unsavedChangesTitle": "Unsaved changes",
 		"unsavedChangesDescription": "Save your current project before you {{action}}?",

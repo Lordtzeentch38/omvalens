@@ -1,5 +1,4 @@
-import { createSaveBeforeCloseController } from "./saveBeforeClose";
-import { clearRecordingTrashUndo } from "./ipc/recording/library";
+// Modified by the ScreenRecorder fork, 2026-10-10. See FORK_CHANGES.md; AGPL-3.0.
 import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
@@ -28,10 +27,12 @@ import {
 	killWindowsCaptureProcess,
 	registerIpcHandlers,
 } from "./ipc/handlers";
+import { clearRecordingTrashUndo } from "./ipc/recording/library";
 import { ensureMediaServer } from "./mediaServer";
 import { hardenWebContentsNavigation, shouldHardenWebContentsType } from "./navigationPolicy";
 import { shouldGrantDisplayCapture, shouldGrantMediaPermission } from "./permissionPolicy";
 import { ensurePackagedRendererServer, getPackagedRendererBaseUrl } from "./rendererServer";
+import { createSaveBeforeCloseController } from "./saveBeforeClose";
 import {
 	checkForAppUpdates,
 	deferUpdateReminder,
@@ -49,6 +50,7 @@ import {
 	skipAvailableUpdateVersion,
 } from "./updater";
 import {
+	beginHudCaptureProtection,
 	createEditorWindow,
 	createHudOverlayWindow,
 	createSourceSelectorWindow,
@@ -56,7 +58,6 @@ import {
 	getUpdateToastWindow,
 	hideUpdateToastWindow,
 	isHudOverlayMousePassthroughSupported,
-	beginHudCaptureProtection,
 	reassertHudOverlayMousePassthrough as reassertHudOverlayMouseState,
 	setHudOverlayRecordingActive,
 	showUpdateToastWindow,
@@ -260,7 +261,7 @@ let defaultTrayIcon: ReturnType<typeof getTrayIcon> | null = null;
 let recordingTrayIcon: ReturnType<typeof getTrayIcon> | null = null;
 
 function getPlatformAppIconFilename(size: 32 | 128 | 512) {
-	const baseName = process.platform === "darwin" ? "recordlymac" : "recordly";
+	const baseName = "screenrecorder";
 	return `app-icons/${baseName}-${size}.png`;
 }
 
@@ -420,7 +421,11 @@ function isEditorWindow(window: BrowserWindow) {
 }
 
 function sendEditorMenuAction(
-	channel: "menu-load-project" | "menu-save-project" | "menu-save-project-as",
+	channel:
+		| "menu-load-project"
+		| "menu-save-project"
+		| "menu-save-project-as"
+		| "menu-export-portable-project",
 ) {
 	let targetWindow = BrowserWindow.getFocusedWindow() ?? mainWindow;
 
@@ -481,6 +486,10 @@ function setupApplicationMenu() {
 					accelerator: "CmdOrCtrl+Shift+S",
 					click: () => sendEditorMenuAction("menu-save-project-as"),
 				},
+				{
+					label: "Export Portable Project…",
+					click: () => sendEditorMenuAction("menu-export-portable-project"),
+				},
 				...(isMac
 					? []
 					: [
@@ -524,6 +533,15 @@ function setupApplicationMenu() {
 		{
 			label: "Help",
 			submenu: [
+				{
+					label: "About ScreenRecorder",
+					click: () =>
+						void dialog.showMessageBox({
+							title: "ScreenRecorder",
+							message: "ScreenRecorder — independent open-source fork",
+							detail: "Based on Recordly by webadderallorg and contributors. Licensed under GNU AGPLv3. Original copyright notices are retained.\n\nFork additions: portable projects, export file checks and guided backup recovery (10 October 2026). This software is provided without warranty. See LICENSE.md and FORK_CHANGES.md in the source distribution.",
+						}),
+				},
 				{
 					label: "Check for Updates…",
 					click: () => {
@@ -716,7 +734,7 @@ ipcMain.handle("check-for-app-updates", async () => {
 function updateTrayMenu(recording: boolean = false) {
 	if (!tray) return;
 	const trayIcon = recording ? getRecordingTrayIcon() : getDefaultTrayIcon();
-	const trayToolTip = recording ? `Recording: ${selectedSourceName}` : "Recordly";
+	const trayToolTip = recording ? `Recording: ${selectedSourceName}` : "ScreenRecorder";
 	const menuTemplate = recording
 		? [
 				{
@@ -907,18 +925,22 @@ app.on("second-instance", (_event, commandLine) => {
 // Register all IPC handlers when app is ready
 app.whenReady().then(async () => {
 	authCallbacks.startDevServer();
-	if (process.defaultApp && process.argv[1]) {
+	if (
+		process.env.SCREENRECORDER_ENABLE_AUTH_PROTOCOL === "1" &&
+		process.defaultApp &&
+		process.argv[1]
+	) {
 		app.setAsDefaultProtocolClient(authCallbacks.protocol, process.execPath, [
 			path.resolve(process.argv[1]),
 		]);
-	} else {
+	} else if (process.env.SCREENRECORDER_ENABLE_AUTH_PROTOCOL === "1") {
 		app.setAsDefaultProtocolClient(authCallbacks.protocol);
 	}
 	const startupAuthCallback = authCallbacks.find(process.argv);
 	if (startupAuthCallback) authCallbacks.dispatch(startupAuthCallback);
 
 	if (process.platform === "win32") {
-		app.setAppUserModelId("dev.recordly.app");
+		app.setAppUserModelId("org.screenrecorder.community");
 	}
 
 	session.defaultSession.setPermissionCheckHandler(

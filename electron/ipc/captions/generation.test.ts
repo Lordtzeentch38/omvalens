@@ -1,3 +1,5 @@
+// Modified by the ScreenRecorder fork, 2026-10-10. See FORK_CHANGES.md; AGPL-3.0.
+import path from "node:path";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 const mocks = vi.hoisted(() => ({
@@ -66,7 +68,8 @@ beforeEach(() => {
 	mocks.rm.mockResolvedValue(undefined);
 });
 
-const whisperCalls = () => mocks.exec.mock.calls.filter(([file]) => file === "/whisper");
+const whisperCalls = () =>
+	mocks.exec.mock.calls.filter(([file]) => path.resolve(file) === path.resolve("/whisper"));
 
 describe("caption generation pipeline", () => {
 	it("transcribes both sidecars independently, preserving the microphone delay", async () => {
@@ -120,7 +123,7 @@ describe("caption generation pipeline", () => {
 
 	it("retries SRT only for a runtime that rejects full JSON", async () => {
 		mocks.exec.mockImplementation(async (file: string, args: string[]) => {
-			if (file === "/whisper" && args.includes("-ojf"))
+			if (path.resolve(file) === path.resolve("/whisper") && args.includes("-ojf"))
 				throw new Error("unknown argument: -ojf");
 			return { stderr: "" };
 		});

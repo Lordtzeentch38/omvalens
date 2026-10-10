@@ -1,3 +1,4 @@
+// Modified by the ScreenRecorder fork, 2026-10-10. See FORK_CHANGES.md; AGPL-3.0.
 /// <reference types="vite-plugin-electron/electron-env" />
 
 declare namespace NodeJS {
@@ -794,6 +795,19 @@ interface Window {
 		getLocalMediaUrl: (
 			filePath: string,
 		) => Promise<{ success: true; url: string } | { success: false }>;
+		exportPortableProject: (
+			project: unknown,
+			name?: string,
+		) => Promise<{
+			success: boolean;
+			path?: string;
+			canceled?: boolean;
+			error?: string;
+			files?: number;
+		}>;
+		preflightProjectMedia: (
+			project: unknown,
+		) => Promise<{ success: boolean; error?: string; files?: number }>;
 		saveProjectFile: (
 			projectData: unknown,
 			suggestedName?: string,
@@ -921,6 +935,7 @@ interface Window {
 				isPreview?: boolean;
 			}) => void,
 		) => () => void;
+		onMenuExportPortableProject: (callback: () => void) => () => void;
 		onMenuLoadProject: (callback: () => void) => () => void;
 		onMenuSaveProject: (callback: () => void) => () => void;
 		onMenuSaveProjectAs: (callback: () => void) => () => void;

@@ -1,3 +1,4 @@
+// Modified by the ScreenRecorder fork, 2026-10-10. See FORK_CHANGES.md; AGPL-3.0.
 import type { Page } from "@playwright/test";
 export async function installDesktopBridge(page: Page, videoFixture = "preview.mp4") {
 	await page.addInitScript((videoFixture) => {
@@ -11,7 +12,8 @@ export async function installDesktopBridge(page: Page, videoFixture = "preview.m
 		};
 		Object.assign(window, {
 			electronAPI: {
-				getAppSetting: (key: string) => key === "recordly.onboarding.v1.seen" ? true : null,
+				getAppSetting: (key: string) =>
+					key === "recordly.onboarding.v1.seen" ? true : null,
 				finishRecordingStartup: async () => undefined,
 				showProjectDashboard: async () => {
 					document.documentElement.dataset.dashboardOpened = "true";
@@ -89,6 +91,7 @@ export async function installDesktopBridge(page: Page, videoFixture = "preview.m
 				getWhisperSmallModelStatus: async () => ({ success: true, exists: false }),
 				listProjectFiles: async () => ({ success: true, projects: [], entries: [] }),
 				setCurrentVideoPath: success,
+				preflightProjectMedia: success,
 				finishRecordingImport: success,
 				setCurrentRecordingSession: success,
 				setHasUnsavedChanges: success,

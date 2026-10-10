@@ -1,3 +1,4 @@
+// Modified by the ScreenRecorder fork, 2026-10-10. See FORK_CHANGES.md; AGPL-3.0.
 import { useCallback, useRef } from "react";
 import { toast } from "@/components/ui/toast";
 import { getMp4ExportBitrate } from "@/lib/exporter/exportBitrate";
@@ -6,6 +7,7 @@ import type { ExportSettings } from "@/lib/exporter/types";
 import { calculateMp4ExportDimensions, capMp4ShareDimensions } from "../exportDimensions";
 import { resolveMp4ExportRouting } from "../mp4ExportRouting";
 import { resolveMp4ExportSettings } from "../mp4ExportSettings";
+import { fromFileUrl } from "../projectPersistence";
 import { createSmokeExportProgressSampler } from "../smokeExportProgress";
 import { buildExportRenderOptions } from "./buildExportRenderOptions";
 import {
@@ -108,6 +110,33 @@ export function useExportRunner(input: ExportRunnerInput) {
 			const restoreTime = video.currentTime;
 
 			try {
+				if (
+					Number.isNaN(video.duration) ||
+					video.duration <= 0 ||
+					video.videoWidth <= 0 ||
+					video.videoHeight <= 0
+				)
+					throw new Error(
+						"The video is not ready to export. Wait for the preview to load and try again.",
+					);
+				const checked = await window.electronAPI.preflightProjectMedia({
+					version: 2,
+					videoPath: fromFileUrl(videoPath),
+					editor: {
+						webcam: appearance.webcam.enabled ? appearance.webcam : undefined,
+						audioRegions,
+						audioTracks: audio.sourceAudioFallbackPaths.map((sourcePath) => ({
+							sourcePath,
+						})),
+						wallpaper: appearance.wallpaper,
+					},
+				});
+				if (exportWasCancelled()) return;
+				if (!checked.success)
+					throw new Error(
+						checked.error ||
+							"A project file is unavailable. Reopen the project and try again.",
+					);
 				if (wasPlaying) {
 					videoPlaybackRef.current?.pause();
 				}

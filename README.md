@@ -1,3 +1,23 @@
+# ScreenRecorder
+
+An independent, open-source screen recorder and editor based on Recordly.
+ScreenRecorder is a provisional name and may change before release.
+
+- **Our additions:** portable projects, media checks before video export, and backup recovery.
+- **Project status:** development version; native Windows recording and installer verification remain outstanding.
+- **Italian guide:** [LEGGIMI_IT.md](LEGGIMI_IT.md).
+- **Changes and validation:** [FORK_CHANGES.md](FORK_CHANGES.md).
+- **Hosting and contribution destinations:** [HOSTING.md](HOSTING.md).
+- **License:** [AGPLv3](LICENSE.md), with original credits and third-party notices retained.
+
+The original Recordly documentation is reproduced below for the inherited features.
+
+> **Independent ScreenRecorder development fork.** Based on Recordly by
+> webadderallorg and its contributors. Our additions and limitations are described
+> in [FORK_CHANGES.md](FORK_CHANGES.md). Licensed under AGPLv3; original notices are
+> retained. The documentation below describes the upstream base.
+> Modified 10 October 2026. Guida al fork in italiano: [LEGGIMI_IT.md](LEGGIMI_IT.md).
+
 Language: EN | [简中](README.zh-CN.md)
 
 <p align="center">

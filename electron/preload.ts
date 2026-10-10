@@ -1,3 +1,4 @@
+// Modified by the ScreenRecorder fork, 2026-10-10. See FORK_CHANGES.md; AGPL-3.0.
 import { contextBridge, ipcRenderer } from "electron";
 import type { RecordingSessionData } from "./ipc/types";
 
@@ -825,6 +826,10 @@ contextBridge.exposeInMainWorld("electronAPI", {
 			{ success: true; url: string } | { success: false }
 		>;
 	},
+	exportPortableProject: (project: unknown, name?: string) =>
+		ipcRenderer.invoke("export-portable-project", project, name),
+	preflightProjectMedia: (project: unknown) =>
+		ipcRenderer.invoke("preflight-project-media", project),
 	saveProjectFile: (
 		projectData: unknown,
 		suggestedName?: string,
@@ -964,6 +969,11 @@ contextBridge.exposeInMainWorld("electronAPI", {
 		) => callback(payload);
 		ipcRenderer.on("update-ready-toast", listener);
 		return () => ipcRenderer.removeListener("update-ready-toast", listener);
+	},
+	onMenuExportPortableProject: (callback: () => void) => {
+		const listener = () => callback();
+		ipcRenderer.on("menu-export-portable-project", listener);
+		return () => ipcRenderer.removeListener("menu-export-portable-project", listener);
 	},
 	onMenuLoadProject: (callback: () => void) => {
 		const listener = () => callback();

@@ -1,3 +1,4 @@
+// Modified by the ScreenRecorder fork, 2026-10-10. See FORK_CHANGES.md; AGPL-3.0.
 import fs from "node:fs";
 import path from "node:path";
 import type { MessageBoxOptions, MessageBoxReturnValue } from "electron";
@@ -11,8 +12,10 @@ const UPDATE_CHECK_INTERVAL_MS = 6 * 60 * 60 * 1000;
 const INITIAL_UPDATE_CHECK_DELAY_MS = 15 * 1000;
 export const UPDATE_REMINDER_DELAY_MS = 3 * 60 * 60 * 1000;
 const DISMISSED_READY_REMINDER_DELAY_MS = 5 * 60 * 1000;
-const AUTO_UPDATES_DISABLED = process.env.RECORDLY_DISABLE_AUTO_UPDATES === "1";
 const UPDATE_FEED_URL_OVERRIDE = process.env.RECORDLY_UPDATE_FEED_URL?.trim() ?? "";
+// An independent fork must never replace itself with an upstream Recordly release.
+const AUTO_UPDATES_DISABLED =
+	!UPDATE_FEED_URL_OVERRIDE || process.env.RECORDLY_DISABLE_AUTO_UPDATES === "1";
 const UPDATER_LOG_PATH =
 	process.env.RECORDLY_UPDATER_LOG_PATH?.trim() || path.join(USER_DATA_PATH, "updater.log");
 const DEV_UPDATE_PREVIEW_VERSION = "9.9.9";

@@ -158,6 +158,9 @@
 		"showInFolder": "Mostra nella cartella"
 	},
 	"project": {
+		"portableExport": "Progetto portabile",
+		"packaging": "Preparazione…",
+		"portableDescription": "Salva il progetto con tutti i file necessari. Importalo da Home su un altro computer.",
 		"untitled": "Senza titolo",
 		"unsavedChangesTitle": "Modifiche non salvate",
 		"unsavedChangesDescription": "Salvare il progetto corrente prima di {{action}}?",

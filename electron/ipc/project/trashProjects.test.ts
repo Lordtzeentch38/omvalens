@@ -1,5 +1,8 @@
+// Modified by the ScreenRecorder fork, 2026-10-10. See FORK_CHANGES.md; AGPL-3.0.
+import path from "node:path";
 import { expect, it, vi } from "vitest";
 import { trashLibraryProjects } from "./trashProjects";
+
 it("rejects paths outside the project library before touching files", async () => {
 	const trash = vi.fn();
 	await expect(
@@ -25,10 +28,10 @@ it("trashes only selected project files, deduplicates paths, and reports partial
 			thumbnailPath: (p) => p + ".missing.png",
 		},
 	);
-	expect(result.deleted).toEqual(["/private/tmp/a.recordly"]);
+	expect(result.deleted).toEqual([path.resolve("/private/tmp/a.recordly")]);
 	expect(result.errors).toEqual(["Could not trash b.recordly"]);
 	expect(trash.mock.calls.map(([p]) => p)).toEqual([
-		"/private/tmp/a.recordly",
-		"/private/tmp/b.recordly",
+		path.resolve("/private/tmp/a.recordly"),
+		path.resolve("/private/tmp/b.recordly"),
 	]);
 });

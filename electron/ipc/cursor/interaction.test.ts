@@ -1,3 +1,4 @@
+// Modified by the ScreenRecorder fork, 2026-10-10. See FORK_CHANGES.md; AGPL-3.0.
 import fs from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
@@ -6,7 +7,6 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 vi.mock("electron", () => ({
 	app: {
 		getPath: vi.fn(() => "/tmp"),
-		setPath: vi.fn(),
 		isReady: vi.fn(() => true),
 	},
 }));

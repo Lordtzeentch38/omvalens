@@ -1,10 +1,4 @@
-import { persistRecentMetadata } from "../project/recentMetadata";
-import { renameLibraryProject } from "../project/renameLibraryProject";
-import { createUntitledProject } from "../project/createUntitledProject";
-import { trashLibraryProjects } from "../project/trashProjects";
-import { getRecordingThumbnail } from "../recording/thumbnail";
-import { listRecordings, setRecordingsRemoved } from "../recording/library";
-import { importRecording, discardRecordingImport } from "../recording/importRecording";
+// Modified by the ScreenRecorder fork, 2026-10-10. See FORK_CHANGES.md; AGPL-3.0.
 import { randomUUID } from "node:crypto";
 import { constants as fsConstants } from "node:fs";
 import fs from "node:fs/promises";
@@ -14,16 +8,18 @@ import { RECORDINGS_DIR } from "../../appPaths";
 import { buildMediaUrl, getMediaServerBaseUrl } from "../../mediaServer";
 import { LEGACY_PROJECT_FILE_EXTENSIONS, PROJECT_FILE_EXTENSION } from "../constants";
 import { getProjectBackupPath, writeProjectFileAtomically } from "../project/atomicSave";
+import { createUntitledProject } from "../project/createUntitledProject";
 import {
 	getProjectsDir,
 	getProjectThumbnailPath,
+	isAllowedLocalReadPath,
 	isPathInsideDirectory,
 	isTrustedProjectPath,
 	listProjectLibraryEntries,
 	loadProjectFromPath,
-	readProjectPreview,
 	loadRecentProjectPaths,
 	persistRecordingsDirectorySetting,
+	readProjectPreview,
 	rememberApprovedLocalReadPath,
 	rememberRecentProject,
 	replaceApprovedSessionLocalReadPaths,
@@ -31,7 +27,19 @@ import {
 	saveProjectThumbnail,
 	saveRecentProjectPaths,
 } from "../project/manager";
+import {
+	exportPortableProject,
+	importPortableProject,
+	PORTABLE_EXTENSION,
+} from "../project/portable";
+import { preflightProjectMedia } from "../project/preflight";
+import { persistRecentMetadata } from "../project/recentMetadata";
+import { renameLibraryProject } from "../project/renameLibraryProject";
 import { persistRecordingSessionManifest, resolveRecordingSession } from "../project/session";
+import { trashLibraryProjects } from "../project/trashProjects";
+import { discardRecordingImport, importRecording } from "../recording/importRecording";
+import { listRecordings, setRecordingsRemoved } from "../recording/library";
+import { getRecordingThumbnail } from "../recording/thumbnail";
 import {
 	currentProjectPath,
 	currentRecordingSession,
@@ -45,8 +53,8 @@ import {
 	getRecordingsDir,
 	getTelemetryPathForVideo,
 	isAutoRecordingPath,
-	normalizeVideoSourcePath,
 	normalizePath,
+	normalizeVideoSourcePath,
 	parseJsonWithByteOrderMark,
 } from "../utils";
 
@@ -220,6 +228,42 @@ async function ensureNamedProjectSaveDoesNotOverwriteDifferentProject(
 }
 
 export function registerProjectHandlers() {
+	const authorizeMedia = async (file: string) => {
+		const normalized = normalizeVideoSourcePath(file);
+		if (!normalized || !isAllowedLocalReadPath(normalized))
+			throw new Error(
+				"Project media is not approved. Open the project or select its files again.",
+			);
+		return normalized;
+	};
+	ipcMain.handle("preflight-project-media", async (_, project: unknown) => {
+		try {
+			return { success: true, ...(await preflightProjectMedia(project, authorizeMedia)) };
+		} catch (error) {
+			return { success: false, error: String(error) };
+		}
+	});
+	let packaging = false;
+	ipcMain.handle("export-portable-project", async (_, project: unknown, name?: string) => {
+		if (packaging) return { success: false, error: "A portable export is already running" };
+		packaging = true;
+		try {
+			await preflightProjectMedia(project, authorizeMedia);
+			const result = await dialog.showSaveDialog({
+				title: "Export portable project",
+				defaultPath: `${normalizeProjectSaveName(name) || "Project"}.${PORTABLE_EXTENSION}`,
+				filters: [{ name: "Portable project", extensions: [PORTABLE_EXTENSION] }],
+				properties: ["createDirectory", "showOverwriteConfirmation"],
+			});
+			if (result.canceled || !result.filePath) return { success: false, canceled: true };
+			const value = await exportPortableProject(project, result.filePath, authorizeMedia);
+			return { success: true, path: result.filePath, ...value };
+		} catch (error) {
+			return { success: false, error: String(error) };
+		} finally {
+			packaging = false;
+		}
+	});
 	ipcMain.handle("rename-library-project", async (_, source: string, name: string) => {
 		try {
 			const entries = await listProjectLibraryEntries();
@@ -650,7 +694,11 @@ export function registerProjectHandlers() {
 				filters: [
 					{
 						name: "Recordly Project",
-						extensions: [PROJECT_FILE_EXTENSION, ...LEGACY_PROJECT_FILE_EXTENSIONS],
+						extensions: [
+							PROJECT_FILE_EXTENSION,
+							...LEGACY_PROJECT_FILE_EXTENSIONS,
+							PORTABLE_EXTENSION,
+						],
 					},
 					{ name: "JSON", extensions: ["json"] },
 					{ name: "All Files", extensions: ["*"] },
@@ -662,7 +710,16 @@ export function registerProjectHandlers() {
 				return { success: false, canceled: true, message: "Open project canceled" };
 			}
 
-			return await loadProjectFromPath(result.filePaths[0]);
+			let selected = result.filePaths[0];
+			if (path.extname(selected).toLowerCase() === `.${PORTABLE_EXTENSION}`) {
+				const imported = await importPortableProject(
+					selected,
+					await getRecordingsDir(),
+					await getProjectsDir(),
+				);
+				selected = imported.path;
+			}
+			return await loadProjectFromPath(selected);
 		} catch (error) {
 			console.error("Failed to load project file:", error);
 			return {

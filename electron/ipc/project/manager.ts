@@ -1,13 +1,12 @@
+// Modified by the ScreenRecorder fork, 2026-10-10. See FORK_CHANGES.md; AGPL-3.0.
 import { randomUUID } from "node:crypto";
-import { createProjectFirstFrameThumbnail } from "./firstFrameThumbnail";
-import { buildMediaUrl, getMediaServerBaseUrl } from "../../mediaServer";
-import type { ProjectPreviewData } from "../../../src/types/projectPreview";
-import { hasFreshProjectThumbnail } from "./thumbnailFreshness";
-import { type Stats, existsSync, constants as fsConstants, realpathSync } from "node:fs";
+import { existsSync, constants as fsConstants, realpathSync, type Stats } from "node:fs";
 import fs from "node:fs/promises";
 import path from "node:path";
-import { app } from "electron";
+import { app, dialog } from "electron";
+import type { ProjectPreviewData } from "../../../src/types/projectPreview";
 import { RECORDINGS_DIR, USER_DATA_PATH } from "../../appPaths";
+import { buildMediaUrl, getMediaServerBaseUrl } from "../../mediaServer";
 import { isSupportedLocalMediaPath } from "../../mediaTypes";
 import {
 	LEGACY_PROJECT_FILE_EXTENSIONS,
@@ -34,6 +33,9 @@ import {
 	normalizeVideoSourcePath,
 	parseJsonWithByteOrderMark,
 } from "../utils";
+import { createProjectFirstFrameThumbnail } from "./firstFrameThumbnail";
+import { readRecoverableProject } from "./recovery";
+import { hasFreshProjectThumbnail } from "./thumbnailFreshness";
 
 export { normalizePath, normalizeVideoSourcePath };
 
@@ -510,16 +512,36 @@ export async function readProjectPreview(projectPath: string): Promise<ProjectPr
 }
 
 export async function loadProjectFromPath(projectPath: string) {
-	const normalizedPath = normalizePath(projectPath);
+	let normalizedPath = normalizePath(projectPath);
 	let project: unknown;
 	try {
-		const content = await fs.readFile(normalizedPath, "utf-8");
-		project = parseJsonWithByteOrderMark(content);
+		const loaded = await readRecoverableProject(
+			normalizedPath,
+			isLoadableProjectData,
+			async () => {
+				const answer = await dialog.showMessageBox({
+					type: "warning",
+					title: "Recover project",
+					message: "This project could not be opened. A saved backup is available.",
+					detail: "Open the backup as a new project? The original file will be preserved. Recent edits may be missing.",
+					buttons: ["Open backup", "Cancel"],
+					defaultId: 0,
+					cancelId: 1,
+				});
+				return answer.response === 0;
+			},
+		);
+		if (!loaded) return { success: false, canceled: true };
+		normalizedPath = loaded.path;
+		project = loaded.project;
 	} catch (error) {
 		return {
 			success: false,
 			canceled: false,
-			message: `Failed to read project file: ${error instanceof Error ? error.message : String(error)}`,
+			message:
+				error instanceof Error && error.message === "Invalid project file format"
+					? error.message
+					: `Failed to read project file: ${error instanceof Error ? error.message : String(error)}`,
 		};
 	}
 	if (!isLoadableProjectData(project)) {
