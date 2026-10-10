@@ -1,3 +1,4 @@
+// Modified by the OmvaLens fork, 2026-10-10. See FORK_CHANGES.md; AGPL-3.0.
 import type { ChildProcessWithoutNullStreams } from "node:child_process";
 import { execFile, spawn } from "node:child_process";
 import fs from "node:fs/promises";
@@ -713,7 +714,7 @@ export function registerRecordingHandlers(
 					return {
 						success: false,
 						message:
-							"Cannot record Recordly windows. Please select another app window.",
+							"Cannot record OmvaLens windows. Please select another app window.",
 					};
 				}
 
@@ -840,8 +841,8 @@ export function registerRecordingHandlers(
 						type: "warning",
 						title: "Screen Recording Permission Required",
 						message:
-							"Recordly needs screen recording permission to capture your screen.",
-						detail: "Please open System Settings > Privacy & Security > Screen Recording, make sure Recordly is toggled ON, then try recording again.",
+							"OmvaLens needs screen recording permission to capture your screen.",
+						detail: "Please open System Settings > Privacy & Security > Screen Recording, make sure OmvaLens is toggled ON, then try recording again.",
 						buttons: ["Open System Settings", "Cancel"],
 						defaultId: 0,
 						cancelId: 1,
@@ -873,8 +874,8 @@ export function registerRecordingHandlers(
 					const { response } = await dialog.showMessageBox({
 						type: "warning",
 						title: "Microphone Permission Required",
-						message: "Recordly needs microphone permission to record audio.",
-						detail: "Please open System Settings > Privacy & Security > Microphone, make sure Recordly is toggled ON, then try recording again.",
+						message: "OmvaLens needs microphone permission to record audio.",
+						detail: "Please open System Settings > Privacy & Security > Microphone, make sure OmvaLens is toggled ON, then try recording again.",
 						buttons: ["Open System Settings", "Cancel"],
 						defaultId: 0,
 						cancelId: 1,

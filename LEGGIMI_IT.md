@@ -1,6 +1,10 @@
-# ScreenRecorder — prima versione del nostro fork
+> **Nuova identità: OmvaLens** (10 ottobre 2026). Nome e logo originali;
+> attribuzione a Recordly conservata nei crediti. Vedi [BRANDING_IT.md](BRANDING_IT.md).
+> Gli indirizzi dei repository e i formati dei progetti restano compatibili.
 
-**ScreenRecorder è un nome provvisorio.** Questo progetto deriva da
+# OmvaLens — prima versione del nostro fork
+
+**OmvaLens è il nuovo nome dell’applicazione**, prima chiamata ScreenRecorder. Questo progetto deriva da
 [Recordly](https://github.com/webadderallorg/Recordly), commit `535d1cf`.
 Rimane open source con licenza [AGPLv3](LICENSE.md). I crediti originali sono
 conservati; [FORK_CHANGES.md](FORK_CHANGES.md) distingue la base dalle nostre aggiunte.
@@ -55,11 +59,11 @@ L’installazione normale prepara anche i componenti nativi. Per creare il pacch
 ```sh
 npm run build:win
 npm run smoke:packaged-binaries -- release/win-unpacked
-npm run smoke:packaged-app -- release/win-unpacked/ScreenRecorder.exe
+npm run smoke:packaged-app -- release/win-unpacked/OmvaLens.exe
 npm run smoke:windows-recording
 ```
 
-L’installer viene scritto in `release/ScreenRecorder-windows-x64.exe`.
+L’installer viene scritto in `release/OmvaLens-windows-x64.exe`.
 La prova nativa apre e registra esclusivamente una finestra di test.
 La prova dell’app usa una cartella dati separata in `.tmp/packaged-app-smoke`.
 È possibile specificare un’altra cartella dati con `SCREENRECORDER_USER_DATA_DIR`.

@@ -1,3 +1,4 @@
+// Modified by the OmvaLens fork, 2026-10-10. AGPL-3.0; see FORK_CHANGES.md.
 import ThemeToggle from "./ThemeToggle";
 import {
 	Button,
@@ -202,7 +203,7 @@ export default function LibraryPage() {
 				>
 					<div className="mb-4 flex h-10 items-center gap-2.5 px-3">
 						<img src="/icon-64.png" alt="" className="size-7 rounded-lg" />
-						<span className="text-[15px] font-semibold tracking-tight">Recordly</span>
+						<span className="text-[15px] font-semibold tracking-tight">OmvaLens</span>
 					</div>
 
 					<nav className="space-y-1">
@@ -543,7 +544,7 @@ export default function LibraryPage() {
 							</Modal.Header>
 							<Modal.Body>
 								<p>
-									Open a project in Recordly, choose Export, then Create share
+									Open a project in OmvaLens, choose Export, then Create share
 									link. Your shared recording will appear here.
 								</p>
 							</Modal.Body>

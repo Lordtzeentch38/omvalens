@@ -11,7 +11,7 @@
     "node_modules/uiohook-napi/**",
     "electron/native/bin/**"
   ],
-  "productName": "ScreenRecorder",
+  "productName": "OmvaLens",
   "protocols": [],
   "npmRebuild": true,
   "buildDependenciesFromSource": false,
@@ -43,6 +43,7 @@
   "extraResources": [
     { "from": "LICENSE.md", "to": "LICENSE.md" },
     { "from": "FORK_CHANGES.md", "to": "FORK_CHANGES.md" },
+    { "from": "BRANDING_IT.md", "to": "BRANDING_IT.md" },
     { "from": "THIRD_PARTY_NOTICES.md", "to": "THIRD_PARTY_NOTICES.md" },
     {
       "from": "public/wallpapers",
@@ -65,17 +66,17 @@
         "arch": ["x64", "arm64"]
       }
     ],
-    "icon": "build/screenrecorder/icon.icns",
+    "icon": "build/omvalens/icon.icns",
     "artifactName": "${productName}-${arch}.${ext}",
     "extendInfo": {
-      "NSAudioCaptureUsageDescription": "ScreenRecorder needs audio capture permission to record system audio.",
-      "NSCameraUsageDescription": "ScreenRecorder needs camera access to record webcam video.",
-      "NSMicrophoneUsageDescription": "ScreenRecorder needs microphone access to record voice audio.",
+      "NSAudioCaptureUsageDescription": "OmvaLens needs audio capture permission to record system audio.",
+      "NSCameraUsageDescription": "OmvaLens needs camera access to record webcam video.",
+      "NSMicrophoneUsageDescription": "OmvaLens needs microphone access to record voice audio.",
       "NSCameraUseContinuityCameraDeviceType": true,
       "com.apple.security.device.audio-input": true,
       "CFBundleDocumentTypes": [
         {
-          "CFBundleTypeName": "Recordly Project",
+          "CFBundleTypeName": "OmvaLens Project",
           "CFBundleTypeRole": "Editor",
           "CFBundleTypeExtensions": ["recordly"],
           "CFBundleTypeIconFile": "icon.icns",
@@ -86,7 +87,7 @@
       "UTImportedTypeDeclarations": [
         {
           "UTTypeIdentifier": "dev.recordly.app.project",
-          "UTTypeDescription": "Recordly Project",
+          "UTTypeDescription": "OmvaLens Project",
           "UTTypeConformsTo": ["public.json"],
           "UTTypeTagSpecification": {
             "public.filename-extension": ["recordly"],
@@ -100,7 +101,7 @@
     "target": [
       "AppImage"
     ],
-    "icon": "public/app-icons/screenrecorder-512.png",
+    "icon": "public/app-icons/omvalens-512.png",
     "artifactName": "${productName}-linux-x64.${ext}",
     "category": "AudioVideo"
   },
@@ -108,8 +109,8 @@
     "target": [
       "nsis"
     ],
-    "icon": "build/screenrecorder/icon.ico",
-    "executableName": "ScreenRecorder",
+    "icon": "build/omvalens/icon.ico",
+    "executableName": "OmvaLens",
     "artifactName": "${productName}-windows-${arch}.${ext}"
   },
   "nsis": {
@@ -117,6 +118,6 @@
     "allowToChangeInstallationDirectory": true,
     "createDesktopShortcut": true,
     "createStartMenuShortcut": true,
-    "shortcutName": "ScreenRecorder"
+    "shortcutName": "OmvaLens"
   }
 }

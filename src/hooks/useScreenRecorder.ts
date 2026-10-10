@@ -1,3 +1,4 @@
+// Modified by the OmvaLens fork, 2026-10-10. See FORK_CHANGES.md; AGPL-3.0.
 import { fixWebmDuration } from "@fix-webm-duration/fix";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { toast } from "@/components/ui/toast";
@@ -557,8 +558,8 @@ export function useScreenRecorder(): UseScreenRecorderReturn {
 			await window.electronAPI.openScreenRecordingPreferences();
 			alert(
 				options.startup
-					? "Recordly needs Screen Recording permission before you start. System Settings has been opened. After enabling it, quit and reopen Recordly."
-					: "Screen Recording permission is still missing. System Settings has been opened again. Enable it, then quit and reopen Recordly before recording.",
+					? "OmvaLens needs Screen Recording permission before you start. System Settings has been opened. After enabling it, quit and reopen OmvaLens."
+					: "Screen Recording permission is still missing. System Settings has been opened again. Enable it, then quit and reopen OmvaLens before recording.",
 			);
 			return false;
 		}
@@ -580,8 +581,8 @@ export function useScreenRecorder(): UseScreenRecorderReturn {
 		await window.electronAPI.openAccessibilityPreferences();
 		alert(
 			options.startup
-				? "Recordly also needs Accessibility permission for cursor tracking. System Settings has been opened. After enabling it, quit and reopen Recordly."
-				: "Accessibility permission is still missing. System Settings has been opened again. Enable it, then quit and reopen Recordly before recording.",
+				? "OmvaLens also needs Accessibility permission for cursor tracking. System Settings has been opened. After enabling it, quit and reopen OmvaLens."
+				: "Accessibility permission is still missing. System Settings has been opened again. Enable it, then quit and reopen OmvaLens before recording.",
 		);
 
 		return false;

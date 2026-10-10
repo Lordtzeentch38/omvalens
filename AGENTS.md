@@ -1,8 +1,15 @@
 # ScreenRecorder project context
 
+- User instruction, 10 October 2026: proceed without additional conversational
+  confirmation for routine reading, verification, project work and authorized
+  repository uploads. Ask only for genuinely dangerous system actions or deletion.
+  Respect environment-enforced permissions; never bypass or claim to auto-approve
+  them. GitHub still requires an explicit request for that particular operation.
+
 - This is an independent AGPLv3 derivative of Recordly. Preserve upstream credits,
   the license, third-party notices and dated notices for modified source files.
-- The provisional software and repository name is ScreenRecorder / screenrecorder.
+- The software name is OmvaLens. Repository URLs still use `screenrecorder`.
+- Read `BRANDING_IT.md` for original logo assets and compatibility identifiers.
 - The owner's Forgejo server is **https://git.omvas.mooo.com/**, account **LordT78**.
   Use that destination for this project's primary repository.
 - The owner's GitHub account is **Lordtzeentch38**. GitHub is an optional secondary

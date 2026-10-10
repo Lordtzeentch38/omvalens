@@ -1,3 +1,4 @@
+// Modified by the OmvaLens fork, 2026-10-10. See FORK_CHANGES.md; AGPL-3.0.
 export type CloudShareTicket = {
 	uploadUrl: string;
 	shareUrl: string;
@@ -26,7 +27,7 @@ export function normalizeCloudEndpoint(value: unknown): string {
 	}
 	const url = parseUrl(value.trim(), "Cloud share endpoint");
 	if (!TRUSTED_SHARE_ORIGINS.has(url.origin)) {
-		throw new Error("Cloud sharing is only allowed through the Recordly service.");
+		throw new Error("Cloud sharing is only allowed through the configured sharing service.");
 	}
 	if (url.pathname !== "/api/upload" || url.search) {
 		throw new Error("The cloud share endpoint is invalid.");

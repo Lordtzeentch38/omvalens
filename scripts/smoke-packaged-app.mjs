@@ -6,7 +6,7 @@ import { _electron } from "playwright";
 
 const executablePath = process.argv[2];
 assert.ok(executablePath, "Supply the path to the packaged ScreenRecorder executable");
-const artifacts = path.resolve(".tmp", "packaged-app-smoke");
+const artifacts = path.resolve(".tmp", "packaged-brand-smoke");
 await mkdir(artifacts, { recursive: true });
 const app = await _electron.launch({
 	executablePath: path.resolve(executablePath),
@@ -23,7 +23,8 @@ try {
 		title: document.title,
 		projects: await window.electronAPI.listProjectFiles(),
 	}));
-	assert.ok(result.title.includes("ScreenRecorder"));
+	assert.ok(result.title.includes("OmvaLens"));
+	assert.equal(await app.evaluate(({ app }) => app.getName()), "OmvaLens");
 	assert.equal(result.projects.success, true, JSON.stringify(result.projects));
 	assert.deepEqual(errors, [], "The packaged renderer must start without uncaught errors");
 	const dataPath = await app.evaluate(({ app }) => app.getPath("userData"));
@@ -50,8 +51,10 @@ try {
 			undefined,
 			{ timeout: 30000 },
 		);
-		const welcome = editor.getByRole("dialog", { name: "Welcome to Recordly" });
+		const welcome = editor.getByRole("dialog", { name: "Welcome to OmvaLens" });
 		if (await welcome.isVisible()) {
+			await welcome.screenshot({ path: path.join(artifacts, "welcome.png") });
+			assert.equal(await welcome.locator('img[src*="omvalens-128.png"]').count(), 1);
 			await welcome.getByRole("button", { name: /^(Close|Chiudi)$/ }).click();
 			await welcome.waitFor({ state: "hidden" });
 		}

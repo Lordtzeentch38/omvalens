@@ -1,6 +1,6 @@
 {
 	"cloud": {
-		"signInRequired": "Melde dich bei Recordly an, bevor du einen Freigabelink erstellst.",
+		"signInRequired": "Melde dich bei OmvaLens an, bevor du einen Freigabelink erstellst.",
 		"prepareFailed": "Der aktuelle Schnitt konnte nicht zum Teilen vorbereitet werden.",
 		"uploadFailed": "Cloud-Upload fehlgeschlagen.",
 		"linkCreated": "Freigabelink erstellt",
@@ -17,15 +17,15 @@
 		"publish": "Veröffentlichen und Link erstellen",
 		"createLinkTitle": "Einen Freigabelink erstellen",
 		"notesPlaceholder": "Füge Kontext, Anweisungen oder eine kurze Zusammenfassung für Zuschauer hinzu…",
-		"description": "Veröffentliche den aktuellen Schnitt auf einer Recordly-Seite zum Ansehen und Kommentieren. Ein Download ist nicht nötig. Videos werden mit bis zu 1080p vorbereitet.",
+		"description": "Veröffentliche den aktuellen Schnitt auf einer OmvaLens-Seite zum Ansehen und Kommentieren. Ein Download ist nicht nötig. Videos werden mit bis zu 1080p vorbereitet.",
 		"uploading": "Wird hochgeladen… {progress}%",
-		"googleUnavailable": "Die Google-Anmeldung ist noch nicht aktiviert. Nutze E-Mail oder bitte deinen Recordly-Administrator, Google zu verbinden.",
-		"xUnavailable": "Die X-Anmeldung ist noch nicht aktiviert. Nutze E-Mail oder bitte deinen Recordly-Administrator, X zu verbinden.",
+		"googleUnavailable": "Die Google-Anmeldung ist noch nicht aktiviert. Nutze E-Mail oder bitte deinen OmvaLens-Administrator, Google zu verbinden.",
+		"xUnavailable": "Die X-Anmeldung ist noch nicht aktiviert. Nutze E-Mail oder bitte deinen OmvaLens-Administrator, X zu verbinden.",
 		"providerUnavailable": "Diese Anmeldemethode ist noch nicht aktiviert. Nutze vorerst E-Mail.",
 		"enterEmail": "Gib zuerst deine E-Mail-Adresse ein.",
 		"resetSent": "E-Mail zum Zurücksetzen des Passworts gesendet.",
-		"accountHeading": "Dein Recordly-Konto",
-		"signInHeading": "Bei Recordly anmelden",
+		"accountHeading": "Dein OmvaLens-Konto",
+		"signInHeading": "Bei OmvaLens anmelden",
 		"signInShareDescription": "Melde dich an, um dieses Video zu veröffentlichen und seinen Freigabelink zu verwalten.",
 		"signInDescription": "Greife auf deine Aufnahmen und Freigabelinks zu.",
 		"signingOut": "Abmeldung läuft…",
@@ -161,17 +161,23 @@
 		"unsavedChangesTitle": "Ungespeicherte Änderungen",
 		"unsavedChangesDescription": "Möchtest du dein aktuelles Projekt speichern, bevor du {{action}}?",
 		"discardChanges": "Änderungen verwerfen",
-		"saveProject": "Projekt speichern"
+		"saveProject": "Projekt speichern",
+		"portableExport": "Portables Projekt",
+		"packaging": "Projekt wird gepackt…",
+		"portableDescription": "Projekt und lokale Medien als portables Archiv exportieren."
 	},
 	"exportTips": {
 		"autoZooms": "Tipp: Automatisch angewendete Zooms können in den Einstellungen deaktiviert werden",
 		"experimentalBuilds": "Tipp: Aktiviere den Zugriff auf experimentelle Builds in den Einstellungen",
 		"cursorAppearance": "Tipp: Du kannst das Aussehen deines Cursors anpassen"
 	},
-	"account": { "title": "Konto", "comingSoon": "Konto demnächst verfügbar" },
+	"account": {
+		"title": "Konto",
+		"comingSoon": "Konto demnächst verfügbar"
+	},
 	"nativeCaptureUnavailable": {
 		"title": "Es ist nichts kaputt, aber wir können kein animiertes Cursor-Overlay rendern.",
-		"description": "Ihr Gerät unterstützt keine native Erfassung. Dies kann verschiedene Gründe haben, die wir noch nicht ermittelt haben. Recordly funktioniert weiterhin, aber eine Cursor-Glättung ist nicht möglich.",
+		"description": "Ihr Gerät unterstützt keine native Erfassung. Dies kann verschiedene Gründe haben, die wir noch nicht ermittelt haben. OmvaLens funktioniert weiterhin, aber eine Cursor-Glättung ist nicht möglich.",
 		"confirm": "Okay"
 	},
 	"exportStatus": {

@@ -1,3 +1,4 @@
+// Modified by the OmvaLens fork, 2026-10-10. See FORK_CHANGES.md; AGPL-3.0.
 import { AccountAvatar } from "@/components/ui/account-avatar";
 import type { User } from "@supabase/supabase-js";
 import { Camera, ClosedCaptioning, Cursor, Gear, FrameCorners } from "@/components/ui/icons";
@@ -109,7 +110,7 @@ export function EditorSidebar({
 						variant="ghost"
 						isIconOnly
 						className="mt-auto"
-						aria-label="Recordly account"
+						aria-label="OmvaLens account"
 						onPress={onAccountClick}
 					>
 						<AccountAvatar user={accountUser} className="!size-7" />

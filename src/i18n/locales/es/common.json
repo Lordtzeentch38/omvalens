@@ -1,7 +1,7 @@
 {
 	"app": {
-		"name": "Recordly",
-		"editorTitle": "Editor de Recordly",
+		"name": "OmvaLens",
+		"editorTitle": "Editor de OmvaLens",
 		"subtitle": "Grabación de pantalla y edición",
 		"language": "Idioma",
 		"manageRecordings": "Abrir carpeta de grabaciones"

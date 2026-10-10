@@ -1,3 +1,4 @@
+// Modified by the OmvaLens fork, 2026-10-10. See FORK_CHANGES.md; AGPL-3.0.
 import { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
@@ -43,12 +44,12 @@ export function ExportErrorReportButton({
 					</DialogHeader>
 					{sent ? (
 						<p className="text-sm">
-							Thanks. The technical report was sent to Recordly support.
+							Thanks. The technical report was sent to OmvaLens support.
 						</p>
 					) : (
 						<>
 							<p className="text-sm text-muted-foreground">
-								Send technical details to Recordly support through Supabase. No
+								Send technical details to OmvaLens support through Supabase. No
 								account ID, email, recording, file path, attachments or console logs
 								are included. Supabase may keep connection logs separately.
 							</p>

@@ -1,3 +1,4 @@
+// Modified by the OmvaLens fork, 2026-10-10. See FORK_CHANGES.md; AGPL-3.0.
 import { demoLoginEnabled, demoUser, hasDemoSession, setDemoSession } from "./demoSession";
 import { createClient, type Provider, type User } from "@supabase/supabase-js";
 
@@ -23,7 +24,7 @@ export const recordlyAuth = recordlyAuthConfigured
 function requireAuth() {
 	if (!recordlyAuth) {
 		throw new Error(
-			"Recordly Auth is not configured. Add the Supabase URL and publishable key.",
+			"OmvaLens Auth is not configured. Add the Supabase URL and publishable key.",
 		);
 	}
 	return recordlyAuth;
@@ -95,7 +96,7 @@ async function exchangeAuthCallback(url: string): Promise<void> {
 	if (providerError) throw new Error(providerError);
 	const code = params.get("code");
 	if (!code) {
-		throw new Error("Request a new sign-in link from Recordly, then open it on this computer.");
+		throw new Error("Request a new sign-in link from OmvaLens, then open it on this computer.");
 	}
 	const client = requireAuth();
 	const { error } = await client.auth.exchangeCodeForSession(code);

@@ -1,10 +1,14 @@
-# ScreenRecorder
+> **Nuova identità: OmvaLens** (10 ottobre 2026). Nome e logo originali;
+> attribuzione a Recordly conservata nei crediti. Vedi [BRANDING_IT.md](BRANDING_IT.md).
+> Gli indirizzi dei repository e i formati dei progetti restano compatibili.
+
+# OmvaLens
 
 An independent, open-source screen recorder and editor based on Recordly.
-ScreenRecorder is a provisional name and may change before release.
+Formerly developed under the provisional name ScreenRecorder.
 
 - **Our additions:** portable projects, media checks before video export, and backup recovery.
-- **Project status:** development version; native Windows recording and installer verification remain outstanding.
+- **Project status:** development version; Windows recording, packaging and startup have been checked. See [VALIDAZIONE_IT.md](VALIDAZIONE_IT.md) for results and remaining manual checks.
 - **Italian guide:** [LEGGIMI_IT.md](LEGGIMI_IT.md).
 - **Changes and validation:** [FORK_CHANGES.md](FORK_CHANGES.md).
 - **Hosting and contribution destinations:** [HOSTING.md](HOSTING.md).

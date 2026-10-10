@@ -1,3 +1,4 @@
+// Modified by the OmvaLens fork, 2026-10-10. See FORK_CHANGES.md; AGPL-3.0.
 import packageInfo from "../../../package.json";
 import type {
 	CloudPlan,
@@ -39,7 +40,7 @@ export function buildExportErrorReport(
 		?.split("\nSoftware decoder failure:")[0];
 	const output = bounded.match(/Output: (\d{1,5})x(\d{1,5}) @ (\d{1,3}(?:\.\d{1,3})?) FPS/);
 	const version =
-		bounded.match(/Recordly version: (\d{1,4}\.\d{1,4}\.\d{1,4})\b/)?.[1] ??
+		bounded.match(/(?:OmvaLens|Recordly) version: (\d{1,4}\.\d{1,4}\.\d{1,4})\b/)?.[1] ??
 		packageInfo.version;
 	const userAgent = typeof navigator === "undefined" ? "" : navigator.userAgent;
 	const platform =

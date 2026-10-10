@@ -1,3 +1,4 @@
+// Modified by the OmvaLens fork, 2026-10-10. AGPL-3.0; see FORK_CHANGES.md.
 import ThemeToggle from "./ThemeToggle";
 import { Avatar, Button, Input, Label, Skeleton, TextField, toast } from "@heroui/react";
 import { ChatCircleIcon, LockKeyIcon, ArrowClockwiseIcon } from "@phosphor-icons/react";
@@ -208,15 +209,15 @@ export default function SharePage() {
 			const result = await fetchShareData(code);
 			if (isExpired(result)) {
 				setView("expired");
-				document.title = "Recording unavailable — Recordly";
+				document.title = "Recording unavailable — OmvaLens";
 			} else if (isPasswordRequired(result)) {
 				setView("password");
 				setTitle(result.title);
-				document.title = `${result.title} — Recordly`;
+				document.title = `${result.title} — OmvaLens`;
 			} else if (isShareData(result)) {
 				setData(result);
 				setView("recording");
-				document.title = `${result.video.title} — Recordly`;
+				document.title = `${result.video.title} — OmvaLens`;
 			} else setView("error");
 		} catch {
 			setView("error");

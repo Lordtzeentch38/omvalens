@@ -1,7 +1,8 @@
+// Modified by the OmvaLens fork, 2026-10-10. See FORK_CHANGES.md; AGPL-3.0.
 export const STABLE_UPDATE_CHANNEL = "latest";
 export const EXPERIMENTAL_UPDATE_CHANNEL = "beta";
 export const EXPERIMENTAL_UPDATE_DESCRIPTION =
-	"You've opted into experimental updates so you have the choice to test the latest update of Recordly before it's widely available.";
+	"You've opted into experimental updates so you have the choice to test the latest update of OmvaLens before it's widely available.";
 
 export interface UpdateChannelConfiguration {
 	channel: typeof STABLE_UPDATE_CHANNEL | typeof EXPERIMENTAL_UPDATE_CHANNEL;

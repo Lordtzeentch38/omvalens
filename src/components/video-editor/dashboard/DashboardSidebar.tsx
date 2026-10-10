@@ -1,5 +1,6 @@
 // Modified by the ScreenRecorder fork, 2026-10-10. See FORK_CHANGES.md; AGPL-3.0.
 import { FeedbackDialog } from "@/components/feedback/FeedbackDialog";
+import { CreditsDialog } from "@/components/CreditsDialog";
 import { Button } from "@/components/ui/button";
 import { Cloud, File, GearSix, House, Plus, UserCircle } from "@/components/ui/icons";
 import { FolderRow } from "./FolderRow";
@@ -45,11 +46,11 @@ export function DashboardSidebar({
 			>
 				<div className="mb-4 flex h-10 items-center gap-2.5 px-3">
 					<img
-						src={`${import.meta.env.BASE_URL}app-icons/screenrecorder-64.png`}
+						src={`${import.meta.env.BASE_URL}app-icons/omvalens-64.png`}
 						alt=""
 						className="size-7 rounded-lg"
 					/>
-					<span className="text-[15px] font-semibold tracking-tight">ScreenRecorder</span>
+					<span className="text-[15px] font-semibold tracking-tight">OmvaLens</span>
 				</div>
 				<RecordNewButton busy={busy} run={run} className="mb-5 w-full" />
 				<nav className="space-y-1">
@@ -135,18 +136,7 @@ export function DashboardSidebar({
 					))}
 				</div>
 				<div className="space-y-1 pt-6">
-					<button
-						type="button"
-						className="px-3 text-left text-xs text-muted-foreground hover:text-foreground"
-						onClick={() =>
-							void window.electronAPI.openExternalUrl(
-								"https://github.com/webadderallorg/Recordly",
-							)
-						}
-						title="Based on Recordly by webadderallorg and contributors. Licensed under AGPLv3."
-					>
-						Based on Recordly · AGPLv3
-					</button>
+					<CreditsDialog />
 					<SidebarCards />
 					<FeedbackDialog showLabel className={navClass(false)} onSignIn={onSignIn} />
 					<Button

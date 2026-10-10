@@ -1,6 +1,6 @@
 {
 	"cloud": {
-		"signInRequired": "공유 링크를 만들기 전에 Recordly에 로그인하세요.",
+		"signInRequired": "공유 링크를 만들기 전에 OmvaLens에 로그인하세요.",
 		"prepareFailed": "현재 편집본을 공유할 준비를 하지 못했습니다.",
 		"uploadFailed": "클라우드 업로드에 실패했습니다.",
 		"linkCreated": "공유 링크가 생성되었습니다",
@@ -17,15 +17,15 @@
 		"publish": "게시하고 링크 만들기",
 		"createLinkTitle": "공유 가능한 링크 만들기",
 		"notesPlaceholder": "시청자를 위한 설명, 안내 또는 간단한 요약을 추가하세요…",
-		"description": "현재 편집본을 Recordly 시청 및 피드백 페이지에 게시합니다. 다운로드할 필요가 없습니다. 공유 동영상은 최대 1080p로 준비됩니다.",
+		"description": "현재 편집본을 OmvaLens 시청 및 피드백 페이지에 게시합니다. 다운로드할 필요가 없습니다. 공유 동영상은 최대 1080p로 준비됩니다.",
 		"uploading": "업로드 중… {progress}%",
-		"googleUnavailable": "Google 로그인이 아직 활성화되지 않았습니다. 이메일을 사용하거나 Recordly 관리자에게 Google 연결을 요청하세요.",
-		"xUnavailable": "X 로그인이 아직 활성화되지 않았습니다. 이메일을 사용하거나 Recordly 관리자에게 X 연결을 요청하세요.",
+		"googleUnavailable": "Google 로그인이 아직 활성화되지 않았습니다. 이메일을 사용하거나 OmvaLens 관리자에게 Google 연결을 요청하세요.",
+		"xUnavailable": "X 로그인이 아직 활성화되지 않았습니다. 이메일을 사용하거나 OmvaLens 관리자에게 X 연결을 요청하세요.",
 		"providerUnavailable": "이 로그인 방식은 아직 활성화되지 않았습니다. 이메일을 사용하세요.",
 		"enterEmail": "먼저 이메일 주소를 입력하세요.",
 		"resetSent": "비밀번호 재설정 이메일을 보냈습니다.",
-		"accountHeading": "내 Recordly 계정",
-		"signInHeading": "Recordly에 로그인",
+		"accountHeading": "내 OmvaLens 계정",
+		"signInHeading": "OmvaLens에 로그인",
 		"signInShareDescription": "이 동영상을 게시하고 공유 링크를 관리하려면 로그인하세요.",
 		"signInDescription": "녹화 및 공유 링크에 접근하세요.",
 		"signingOut": "로그아웃 중…",
@@ -61,7 +61,6 @@
 		"arrow": "화살표",
 		"blur": "흐리게",
 		"textContent": "텍스트 내용",
-
 		"textPlaceholder": "텍스트를 입력하세요...",
 		"fontStyle": "글꼴 스타일",
 		"selectStyle": "스타일 선택",
@@ -92,7 +91,6 @@
 		"solidColor": "단색 (검열)",
 		"borderRadius": "테두리 반경"
 	},
-
 	"fontStyles": {
 		"classic": "클래식",
 		"editor": "에디터",
@@ -163,17 +161,23 @@
 		"unsavedChangesTitle": "저장되지 않은 변경 사항",
 		"unsavedChangesDescription": "{{action}} 전에 현재 프로젝트를 저장하시겠습니까?",
 		"discardChanges": "변경 사항 버리기",
-		"saveProject": "프로젝트 저장"
+		"saveProject": "프로젝트 저장",
+		"portableExport": "이동식 프로젝트",
+		"packaging": "프로젝트 패키징 중…",
+		"portableDescription": "프로젝트와 로컬 미디어를 이동식 아카이브로 내보냅니다."
 	},
 	"exportTips": {
 		"autoZooms": "팁: 설정에서 자동 적용 확대를 끌 수 있습니다",
 		"experimentalBuilds": "팁: 설정에서 실험적 빌드 액세스를 켜 보세요",
 		"cursorAppearance": "팁: 커서 모양을 사용자 지정할 수 있습니다"
 	},
-	"account": { "title": "계정", "comingSoon": "계정 기능 준비 중" },
+	"account": {
+		"title": "계정",
+		"comingSoon": "계정 기능 준비 중"
+	},
 	"nativeCaptureUnavailable": {
 		"title": "문제가 생긴 것은 아니지만, 애니메이션 커서 오버레이를 렌더링할 수 없습니다.",
-		"description": "이 장치는 네이티브 캡처를 지원하지 않습니다. 아직 확인하지 못한 여러 이유가 있을 수 있습니다. Recordly는 계속 작동하지만 커서 스무딩은 사용할 수 없습니다.",
+		"description": "이 장치는 네이티브 캡처를 지원하지 않습니다. 아직 확인하지 못한 여러 이유가 있을 수 있습니다. OmvaLens는 계속 작동하지만 커서 스무딩은 사용할 수 없습니다.",
 		"confirm": "확인"
 	},
 	"exportStatus": {

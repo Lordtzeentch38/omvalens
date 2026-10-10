@@ -64,6 +64,12 @@ import {
 } from "./windows";
 
 const electronMainDir = path.dirname(fileURLToPath(import.meta.url));
+app.setName("OmvaLens");
+app.setAboutPanelOptions({
+	applicationName: "OmvaLens",
+	credits:
+		"Based on Recordly by webadderallorg and contributors. Independent fork under GNU AGPLv3. See FORK_CHANGES.md for our additions.",
+});
 const IS_SMOKE_EXPORT = process.env.RECORDLY_SMOKE_EXPORT === "1";
 
 function ignoreBrokenConsolePipe(stream: NodeJS.WritableStream | undefined) {
@@ -261,7 +267,7 @@ let defaultTrayIcon: ReturnType<typeof getTrayIcon> | null = null;
 let recordingTrayIcon: ReturnType<typeof getTrayIcon> | null = null;
 
 function getPlatformAppIconFilename(size: 32 | 128 | 512) {
-	const baseName = "screenrecorder";
+	const baseName = "omvalens";
 	return `app-icons/${baseName}-${size}.png`;
 }
 
@@ -534,12 +540,12 @@ function setupApplicationMenu() {
 			label: "Help",
 			submenu: [
 				{
-					label: "About ScreenRecorder",
+					label: "About OmvaLens",
 					click: () =>
 						void dialog.showMessageBox({
-							title: "ScreenRecorder",
-							message: "ScreenRecorder — independent open-source fork",
-							detail: "Based on Recordly by webadderallorg and contributors. Licensed under GNU AGPLv3. Original copyright notices are retained.\n\nFork additions: portable projects, export file checks and guided backup recovery (10 October 2026). This software is provided without warranty. See LICENSE.md and FORK_CHANGES.md in the source distribution.",
+							title: "OmvaLens",
+							message: "OmvaLens — independent open-source fork",
+							detail: "Based on Recordly by webadderallorg and contributors. Licensed under GNU AGPLv3. Original copyright notices are retained.\n\nOur additions: original name and logo, portable projects, export file checks, guided backup recovery and Windows window capture fixes (10 October 2026). This software is provided without warranty. See LICENSE.md, BRANDING_IT.md and FORK_CHANGES.md in the distribution.",
 						}),
 				},
 				{
@@ -734,7 +740,7 @@ ipcMain.handle("check-for-app-updates", async () => {
 function updateTrayMenu(recording: boolean = false) {
 	if (!tray) return;
 	const trayIcon = recording ? getRecordingTrayIcon() : getDefaultTrayIcon();
-	const trayToolTip = recording ? `Recording: ${selectedSourceName}` : "ScreenRecorder";
+	const trayToolTip = recording ? `Recording: ${selectedSourceName}` : "OmvaLens";
 	const menuTemplate = recording
 		? [
 				{

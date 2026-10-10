@@ -264,10 +264,10 @@ function createDownloadingUpdateToastPayload(
 		phase: "downloading",
 		detail:
 			normalizedProgress >= 100
-				? "Finishing the update download. Recordly will restart as soon as the installer is ready."
+				? "Finishing the update download. OmvaLens will restart as soon as the installer is ready."
 				: remainingMb !== null
-					? `${remainingMb.toFixed(1)} MB left before Recordly restarts.`
-					: "Downloading the update now. Recordly will restart when it finishes.",
+					? `${remainingMb.toFixed(1)} MB left before OmvaLens restarts.`
+					: "Downloading the update now. OmvaLens will restart when it finishes.",
 		delayMs: UPDATE_REMINDER_DELAY_MS,
 		isExperimental,
 		progressPercent: normalizedProgress,
@@ -474,7 +474,7 @@ export async function downloadAvailableUpdate(
 	setUpdateStatusSummary({
 		status: "downloading",
 		availableVersion,
-		detail: `Downloading Recordly ${availableVersion}`,
+		detail: `Downloading OmvaLens ${availableVersion}`,
 	});
 	emitUpdateToastState(
 		sendToRenderer,
@@ -592,7 +592,7 @@ async function showAvailableUpdateDialog(
 	const result = await showMessageBox(getMainWindow, {
 		type: "info",
 		title: isExperimental ? "Experimental Update Available" : "Update Available",
-		message: `Recordly ${version} is available${isExperimental ? " on the experimental channel" : ""}.`,
+		message: `OmvaLens ${version} is available${isExperimental ? " on the experimental channel" : ""}.`,
 		detail: isPreview
 			? `${isExperimental ? EXPERIMENTAL_UPDATE_DESCRIPTION : "This is a development preview of the standard update flow."} No real update will be installed.`
 			: isExperimental
@@ -636,8 +636,8 @@ async function showDownloadedUpdateDialog(
 		type: "info",
 		title: "Update Ready",
 		message: isPreview
-			? `Recordly ${version} is ready to install.`
-			: `Recordly ${version} has been downloaded.`,
+			? `OmvaLens ${version} is ready to install.`
+			: `OmvaLens ${version} has been downloaded.`,
 		detail: isPreview
 			? "Development preview of the native update prompt. No real update will be installed."
 			: "Install and restart now, or remind me later.",
@@ -689,7 +689,7 @@ async function showUpdateErrorDialog(
 	await showMessageBox(getMainWindow, {
 		type: "error",
 		title: "Update Failed",
-		message: `Recordly ${version} could not be downloaded.`,
+		message: `OmvaLens ${version} could not be downloaded.`,
 		detail: String(error),
 		buttons: ["OK"],
 		defaultId: 0,
@@ -785,7 +785,7 @@ export function setupAutoUpdates(
 		setUpdateStatusSummary({
 			status: "available",
 			availableVersion: info.version,
-			detail: `Recordly ${info.version} is available.`,
+			detail: `OmvaLens ${info.version} is available.`,
 		});
 		if (skippedVersion === info.version) {
 			manualCheckRequested = false;
@@ -813,7 +813,7 @@ export function setupAutoUpdates(
 		setUpdateStatusSummary({
 			status: "up-to-date",
 			availableVersion: null,
-			detail: `Recordly ${app.getVersion()} is up to date.`,
+			detail: `OmvaLens ${app.getVersion()} is up to date.`,
 		});
 		clearVisibleUpdateToast(sendToRenderer);
 		manualCheckRequested = false;
@@ -828,7 +828,7 @@ export function setupAutoUpdates(
 		setUpdateStatusSummary({
 			status: "downloading",
 			availableVersion,
-			detail: `Downloading Recordly ${availableVersion}`,
+			detail: `Downloading OmvaLens ${availableVersion}`,
 		});
 		writeUpdaterLog(
 			`Download progress for ${availableVersion}: ${progress.percent.toFixed(1)}%`,
@@ -887,7 +887,7 @@ export function setupAutoUpdates(
 		setUpdateStatusSummary({
 			status: "ready",
 			availableVersion: info.version,
-			detail: `Recordly ${info.version} is ready to install.`,
+			detail: `OmvaLens ${info.version} is ready to install.`,
 		});
 		clearDeferredReminderTimer();
 

@@ -1,3 +1,4 @@
+// Modified by the OmvaLens fork, 2026-10-10. See FORK_CHANGES.md; AGPL-3.0.
 export type SidebarCard = {
 	id: string;
 	image?: string;
@@ -18,7 +19,7 @@ export const sidebarCardConfig: { enabled: boolean; cards: SidebarCard[] } = {
 			image: "announcements/placeholder-1.svg",
 			imageAlt: "Placeholder banner",
 			heading: "Coming soon",
-			subheading: "News from Recordly",
+			subheading: "News from OmvaLens",
 			paragraph: "A place for updates, tips, and announcements.",
 		},
 	],

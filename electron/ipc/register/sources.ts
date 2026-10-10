@@ -1,3 +1,4 @@
+// Modified by the OmvaLens fork, 2026-10-10. See FORK_CHANGES.md; AGPL-3.0.
 import { createRecordingEditorNavigation } from "../../recordingEditorNavigation";
 import { execFile } from "node:child_process";
 import { promisify } from "node:util";
@@ -165,7 +166,7 @@ export function registerSourceHandlers({
 		const ownWindowNames = new Set(
 			[
 				app.getName(),
-				"Recordly",
+				"OmvaLens",
 				...BrowserWindow.getAllWindows().flatMap((win) => {
 					const title = win.getTitle().trim();
 					return title ? [title] : [];

@@ -1,3 +1,4 @@
+// Modified by the OmvaLens fork, 2026-10-10. AGPL-3.0; see FORK_CHANGES.md.
 // Adapted from Voom (MIT), Copyright (c) 2026 Aritro Paul.
 // See ../../LICENSE and ../../../../THIRD_PARTY_NOTICES.md for attribution.
 
@@ -389,7 +390,7 @@ export async function handleRequest(request, env) {
 	}
 
 	if (path === "/") {
-		return new Response("Recordly Share", { status: 200 });
+		return new Response("OmvaLens Share", { status: 200 });
 	}
 
 	// Fall through to static assets

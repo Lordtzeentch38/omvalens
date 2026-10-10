@@ -7,7 +7,7 @@ test("settings button replays login and the expanding feature tour", async ({ pa
 	await expect(page.getByRole("button", { name: "Home", exact: true })).toBeVisible();
 	await page.getByRole("radio", { name: "Settings", exact: true }).click();
 	await page.getByRole("button", { name: "Show onboarding" }).click();
-	const tour = page.getByRole("dialog", { name: "Welcome to Recordly" });
+	const tour = page.getByRole("dialog", { name: "Welcome to OmvaLens" });
 	await expect(tour).toHaveAttribute("data-onboarding-state", "login");
 	await expect(tour.getByText("Sign in to get started", { exact: true })).toBeVisible();
 	await expect(tour.getByRole("button", { name: "Email me a magic link" })).toBeVisible();
@@ -50,7 +50,7 @@ test("first launch persists completion and signed-in users can continue", async 
 		sessionStorage.setItem("recordly.demo-session", "1");
 	});
 	await page.goto("/?windowType=editor");
-	const tour = page.getByRole("dialog", { name: "Welcome to Recordly" });
+	const tour = page.getByRole("dialog", { name: "Welcome to OmvaLens" });
 	await tour.getByRole("button", { name: "Continue", exact: true }).click();
 	await tour.getByRole("button", { name: "Next", exact: true }).click();
 	await tour.getByRole("button", { name: "Next", exact: true }).click();
@@ -71,7 +71,7 @@ test("feature banner fits a compact window with reduced motion", async ({ page }
 	await expect(page.getByRole("button", { name: "Home", exact: true })).toBeVisible();
 	await page.getByRole("radio", { name: "Settings", exact: true }).click();
 	await page.getByRole("button", { name: "Show onboarding" }).click();
-	const tour = page.getByRole("dialog", { name: "Welcome to Recordly" });
+	const tour = page.getByRole("dialog", { name: "Welcome to OmvaLens" });
 	await tour.getByRole("button", { name: "Continue without signing in" }).click();
 	await expect(tour.getByRole("button", { name: "Next", exact: true })).toBeInViewport();
 	await page.screenshot({ path: "test-results/onboarding-compact.png" });
@@ -85,7 +85,7 @@ test("successful sign-in advances to Feature without closing onboarding", async 
 	await expect(page.getByRole("button", { name: "Home", exact: true })).toBeVisible();
 	await page.getByRole("radio", { name: "Settings", exact: true }).click();
 	await page.getByRole("button", { name: "Show onboarding" }).click();
-	const tour = page.getByRole("dialog", { name: "Welcome to Recordly" });
+	const tour = page.getByRole("dialog", { name: "Welcome to OmvaLens" });
 	await tour.getByPlaceholder("you@example.com").fill("test@email.com");
 	await tour.locator('input[type="password"]').fill("1234");
 	await tour.getByRole("button", { name: "Sign in", exact: true }).click();

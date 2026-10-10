@@ -1,5 +1,22 @@
 # Verifiche della versione di sviluppo — 10 ottobre 2026
 
+## Cambio di identità: OmvaLens
+
+- Nome e logo originali in avvio, onboarding, libreria, finestre, icone,
+  traduzioni, messaggi di errore e aggiornamento e confezionamento Windows.
+- Informazioni e crediti: origine da Recordly, autori, licenza AGPLv3 e nostre
+  aggiunte, con collegamenti al progetto originale e al nostro Forgejo.
+- Dopo il cambio: 1.490 test superati, 7 esclusi; TypeScript superato;
+  lint senza errori (un avviso preesistente); coerenza delle traduzioni superata.
+- Sei scenari di onboarding/accesso superati, più uno scenario dedicato che
+  verifica nome, caricamento dell'icona e apertura/chiusura dei crediti.
+- Le immagini del logo e dei crediti sono state ispezionate visivamente.
+- Installer `OmvaLens-windows-x64.exe` creato; avvio del programma confezionato
+  superato con nome verificato, profilo isolato, nuova icona nell'onboarding,
+  editor e trasferimento tramite progetto portabile. Nessun errore del renderer.
+- I dati esistenti rimangono nella cartella ScreenRecorder; chiavi e formati dei
+  progetti sono mantenuti per compatibilità. Vedi `BRANDING_IT.md`.
+
 Ambiente: Windows x64, Node.js 22.14.0, Electron 43.7.9, Visual Studio Build Tools
 2022 e CMake. Questa è una versione da collaudare, non una certificazione di
 compatibilità con tutti i dispositivi.

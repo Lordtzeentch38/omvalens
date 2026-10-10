@@ -1,3 +1,4 @@
+// Modified by the OmvaLens fork, 2026-10-10. AGPL-3.0; see FORK_CHANGES.md.
 import { Alert, Button, Card, Link, Toast, toast } from "@heroui/react";
 import { LinkSimpleIcon, WarningCircleIcon } from "@phosphor-icons/react";
 import type { ReactNode } from "react";
@@ -5,13 +6,13 @@ import type { ReactNode } from "react";
 export function Brand() {
 	return (
 		<Link
-			href="https://github.com/webadderallorg/Recordly"
+			href="https://git.omvas.mooo.com/LordT78/screenrecorder"
 			target="_blank"
 			rel="noopener noreferrer"
 			className="brand"
 		>
 			<img src="/icon-64.png" alt="" width="28" height="28" />
-			<span>Recordly</span>
+			<span>OmvaLens</span>
 		</Link>
 	);
 }

@@ -28,7 +28,7 @@ export default function App() {
 		() => new URLSearchParams(window.location.search).get("windowType") || "",
 	);
 	const { t } = useI18n();
-	const appIconSrc = `${import.meta.env.BASE_URL}app-icons/screenrecorder-128.png`;
+	const appIconSrc = `${import.meta.env.BASE_URL}app-icons/omvalens-128.png`;
 
 	useEffect(() => {
 		document.documentElement.dataset.windowType = windowType;

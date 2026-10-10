@@ -1,6 +1,10 @@
-# ScreenRecorder — development fork
+> **Nuova identità: OmvaLens** (10 ottobre 2026). Nome e logo originali;
+> attribuzione a Recordly conservata nei crediti. Vedi [BRANDING_IT.md](BRANDING_IT.md).
+> Gli indirizzi dei repository e i formati dei progetti restano compatibili.
 
-Working name: **ScreenRecorder**. This is an independent, open-source derivative of
+# OmvaLens — development fork
+
+Product name: **OmvaLens**, formerly ScreenRecorder. This is an independent, open-source derivative of
 [Recordly](https://github.com/webadderallorg/Recordly), based on commit `535d1cf`
 (7 October 2026). It is not an official Recordly release.
 
