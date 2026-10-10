@@ -1,4 +1,4 @@
-# ScreenRecorder project context
+# OmvaLens project context
 
 - User instruction, 10 October 2026: proceed without additional conversational
   confirmation for routine reading, verification, project work and authorized
@@ -8,7 +8,8 @@
 
 - This is an independent AGPLv3 derivative of Recordly. Preserve upstream credits,
   the license, third-party notices and dated notices for modified source files.
-- The software name is OmvaLens. Repository URLs still use `screenrecorder`.
+- The software and repository name is OmvaLens / `omvalens`.
+- Forgejo SSH push URL: `ssh://git@192.168.4.90:2222/LordT78/omvalens.git`.
 - Read `BRANDING_IT.md` for original logo assets and compatibility identifiers.
 - The owner's Forgejo server is **https://git.omvas.mooo.com/**, account **LordT78**.
   Use that destination for this project's primary repository.

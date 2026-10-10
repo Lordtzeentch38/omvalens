@@ -14,8 +14,8 @@ nelle attribuzioni originali e nella documentazione del fork. Il codice interno
 mantiene alcuni nomi storici: chiavi delle impostazioni, formati `.recordly` e
 `.screenrecorder`, nomi dei componenti e dei programmi nativi. La cartella dati
 ScreenRecorder e l'identificatore dell'installazione restano invariati per
-conservare l'accesso ai progetti esistenti. I repository continuano a chiamarsi
-`screenrecorder`: il nome del prodotto non richiede di cambiare gli indirizzi.
+conservare l'accesso ai progetti esistenti. Entrambi i repository sono stati
+rinominati da `screenrecorder` a `omvalens`; collegamenti e remoti sono aggiornati.
 
 L'interfaccia, l'avvio, la schermata iniziale, le finestre, le traduzioni, i
 messaggi di aggiornamento e i filtri dei progetti usano OmvaLens. I collegamenti

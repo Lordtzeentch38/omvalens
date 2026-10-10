@@ -21,8 +21,8 @@ import { formatBinding, SHORTCUT_ACTIONS, SHORTCUT_LABELS } from "@/lib/shortcut
 import { formatShortcut } from "@/utils/platformUtils";
 import { toast } from "@/components/ui/toast";
 
-export const RECORDLY_ISSUES_URL = "https://git.omvas.mooo.com/LordT78/screenrecorder/issues";
-const RECORDLY_DISCORD_URL = "https://git.omvas.mooo.com/LordT78/screenrecorder";
+export const RECORDLY_ISSUES_URL = "https://git.omvas.mooo.com/LordT78/omvalens/issues";
+const RECORDLY_DISCORD_URL = "https://git.omvas.mooo.com/LordT78/omvalens";
 export const APP_HEADER_ACTION_BUTTON_CLASS =
 	"h-7 px-2 text-xs text-muted-foreground hover:bg-foreground/10 hover:text-foreground transition-all gap-1.5";
 export const APP_HEADER_ICON_BUTTON_CLASS =

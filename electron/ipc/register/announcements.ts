@@ -2,7 +2,7 @@
 import { ipcMain } from "electron";
 
 const DEFAULT_ANNOUNCEMENT_FEED_URL =
-	"https://git.omvas.mooo.com/LordT78/screenrecorder/raw/branch/main/announcements.json";
+	"https://git.omvas.mooo.com/LordT78/omvalens/raw/branch/main/announcements.json";
 const ANNOUNCEMENT_FETCH_TIMEOUT_MS = 5_000;
 const ANNOUNCEMENT_CACHE_TTL_MS = 6 * 60 * 60 * 1_000;
 const MAX_ANNOUNCEMENT_FEED_BYTES = 1_000_000;

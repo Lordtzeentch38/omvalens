@@ -60,7 +60,7 @@ export function CreditsDialog() {
 						variant="outline"
 						onClick={() =>
 							void window.electronAPI.openExternalUrl(
-								"https://git.omvas.mooo.com/LordT78/screenrecorder",
+								"https://git.omvas.mooo.com/LordT78/omvalens",
 							)
 						}
 					>

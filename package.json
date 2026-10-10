@@ -4,13 +4,13 @@
 	"license": "AGPL-3.0",
 	"description": "A free, creator-focused screen recorder with auto-zoom, cursor effects, backgrounds, annotations, and more - built for polished videos out of the box.",
 	"author": "webadderall",
-	"homepage": "https://git.omvas.mooo.com/LordT78/screenrecorder",
+	"homepage": "https://git.omvas.mooo.com/LordT78/omvalens",
 	"repository": {
 		"type": "git",
-		"url": "https://git.omvas.mooo.com/LordT78/screenrecorder.git"
+		"url": "https://git.omvas.mooo.com/LordT78/omvalens.git"
 	},
 	"bugs": {
-		"url": "https://git.omvas.mooo.com/LordT78/screenrecorder/issues"
+		"url": "https://git.omvas.mooo.com/LordT78/omvalens/issues"
 	},
 	"private": true,
 	"version": "0.1.0",

@@ -6,7 +6,7 @@ import type { ReactNode } from "react";
 export function Brand() {
 	return (
 		<Link
-			href="https://git.omvas.mooo.com/LordT78/screenrecorder"
+			href="https://git.omvas.mooo.com/LordT78/omvalens"
 			target="_blank"
 			rel="noopener noreferrer"
 			className="brand"

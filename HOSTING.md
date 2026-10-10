@@ -4,14 +4,15 @@ Hosting preferences supplied and clarified by the project owner on 10 October 20
 
 | Role | Host | Account | Repository |
 | --- | --- | --- | --- |
-| Primary destination | Forgejo, https://git.omvas.mooo.com/ | `LordT78` | `screenrecorder` |
-| Optional GitHub copy, explicit requests only | https://github.com/ | `Lordtzeentch38` | `screenrecorder` |
+| Primary destination | Forgejo, https://git.omvas.mooo.com/ | `LordT78` | `omvalens` |
+| Optional GitHub copy, explicit requests only | https://github.com/ | `Lordtzeentch38` | `omvalens` |
 | Original project | https://github.com/ | `webadderallorg` | `Recordly` |
 
-The name **ScreenRecorder** and repository name **screenrecorder** are provisional.
-They can change later. A software rename should cover visible labels, icons,
-installer metadata, update URLs and a migration of existing user data. Repository
-renames also require updating remotes and documentation links.
+The application is **OmvaLens**. Both repositories were renamed from
+`screenrecorder` to `omvalens` on 10 October 2026. Git remotes, project metadata,
+support and announcement links, and documentation use the new addresses.
+Existing profile directories, installation IDs and project formats retain their
+historical identifiers so saved data remains accessible.
 
 Local Git remote names:
 
@@ -32,8 +33,8 @@ access; an API token is a separate credential and was not located in that check.
 
 Public repository links:
 
-- Primary: https://git.omvas.mooo.com/LordT78/screenrecorder
-- GitHub: https://github.com/Lordtzeentch38/screenrecorder
+- Primary: https://git.omvas.mooo.com/LordT78/omvalens
+- GitHub: https://github.com/Lordtzeentch38/omvalens
 
 Upstream distribution and automatic translation workflows are preserved in
 `.github/workflows/upstream-disabled/` and do not run. They refer to Recordly's
