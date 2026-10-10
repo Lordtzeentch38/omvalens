@@ -4,10 +4,13 @@ import path from "node:path";
 import { app } from "electron";
 
 if (typeof app.setPath === "function") {
-	const devUserDataPath = path.join(
+	const defaultUserDataPath = path.join(
 		app.getPath("appData"),
 		process.env["VITE_DEV_SERVER_URL"] ? "ScreenRecorder-dev" : "ScreenRecorder",
 	);
+	const devUserDataPath = process.env.SCREENRECORDER_USER_DATA_DIR
+		? path.resolve(process.env.SCREENRECORDER_USER_DATA_DIR)
+		: defaultUserDataPath;
 	const sessionDataPath = path.join(devUserDataPath, "session");
 	mkdirSync(sessionDataPath, { recursive: true });
 	app.setPath("userData", devUserDataPath);

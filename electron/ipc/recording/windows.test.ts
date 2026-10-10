@@ -1,3 +1,4 @@
+// Modified by the ScreenRecorder fork, 2026-10-10. See FORK_CHANGES.md; AGPL-3.0.
 import { EventEmitter } from "node:events";
 import { readFileSync } from "node:fs";
 import { PassThrough } from "node:stream";
@@ -109,14 +110,14 @@ describe("waitForWindowsCaptureStop", () => {
 });
 
 describe("native Windows window capture", () => {
-	it("crops monitor frames to the selected window bounds", () => {
-		expect(windowsCaptureSource).not.toContain("CreateForWindow(");
-		expect(windowsCaptureSource).toContain("DwmGetWindowAttribute(");
+	it("captures the selected HWND instead of the desktop behind overlapping windows", () => {
+		expect(windowsCaptureSource).toContain("CreateForWindow(");
+		expect(windowsCaptureSource).not.toContain("MonitorFromWindow(");
 		expect(windowsCaptureSource).toContain("CopySubresourceRegion(cropTexture_");
 	});
 
-	it("maps desktop bounds into WGC texture coordinates and keeps the encoder size fixed", () => {
-		expect(windowsCaptureSource).toContain("normalized * framePoolWidth_");
+	it("uses window-local texture coordinates and keeps the encoder size fixed", () => {
+		expect(windowsCaptureSource).toContain("cropRect_ = {0, 0, copyWidth, copyHeight}");
 		expect(windowsCaptureSource).toContain(
 			"d3dDevice_->CreateTexture2D(&desc, nullptr, &resizedTexture)",
 		);

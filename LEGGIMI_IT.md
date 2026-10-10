@@ -21,22 +21,28 @@ conservati; [FORK_CHANGES.md](FORK_CHANGES.md) distingue la base dalle nostre ag
   conservati. Il recupero non ripara video danneggiati.
 - **Identità propria**: nome, icona e cartella dati separati da Recordly,
   con attribuzione visibile. Gli aggiornamenti di Recordly sono disabilitati.
+- **Cattura finestra Windows corretta**: registra la finestra selezionata anche
+  quando un’altra finestra la copre, invece di registrare un ritaglio del monitor.
 
 ## Stato della versione
 
-È una versione di sviluppo del codice, non ancora un installer pronto alla
-distribuzione. Sono passati il controllo TypeScript e 1.489 test automatici;
-7 test sono esclusi per condizioni di piattaforma. Sono state provate anche
-l’interfaccia del nuovo pulsante e la gestione dell’annullamento, con un ambiente
-desktop simulato. La compilazione delle parti web ed Electron è riuscita.
+È una versione di sviluppo per Windows x64. I componenti di cattura, cursore e
+conversione video sono stati compilati; è stato creato un installer NSIS.
+La prova automatica nativa registra una finestra con contenuto generato, verifica
+pausa e ripresa, immagini in movimento e conversione H.264 con FFmpeg.
+Sono disponibili anche controlli di avvio dell’app confezionata e dei suoi binari.
+Il rapporto aggiornato è in [VALIDAZIONE_IT.md](VALIDAZIONE_IT.md).
 
-Restano da verificare una registrazione reale su Windows, l’esportazione con
-hardware e codec effettivi e la creazione dell’installer. La scansione delle
-dipendenze segnala 36 problemi, da valutare e correggere prima della pubblicazione.
+Le dipendenze sono state aggiornate: la scansione del 10 ottobre 2026 segnala
+zero vulnerabilità note. Questo risultato non sostituisce le prove manuali
+su webcam, microfono, audio di sistema, registrazioni lunghe e altri computer.
+Usa [CHECKLIST_TEST_IT.md](CHECKLIST_TEST_IT.md) per queste verifiche.
 
 ## Avvio per lo sviluppo
 
-La base usa Electron e TypeScript. Per i componenti nativi Windows servono
+La base usa Electron e TypeScript. Serve Node.js 22.12 o successivo della serie
+22, oppure una versione supportata indicata in `package.json`.
+Per i componenti nativi Windows servono
 Visual Studio Build Tools e CMake, come descritto nel README originale.
 
 ```sh
@@ -44,15 +50,31 @@ npm install
 npm run dev
 ```
 
-L’installazione normale costruisce anche i componenti nativi. Nell’ambiente
-di verifica sono state installate le dipendenze senza eseguire automaticamente
-tutte queste compilazioni: il solo completamento dei test non garantisce quindi
-che i componenti di cattura nativi siano già disponibili.
+L’installazione normale prepara anche i componenti nativi. Per creare il pacchetto:
+
+```sh
+npm run build:win
+npm run smoke:packaged-binaries -- release/win-unpacked
+npm run smoke:packaged-app -- release/win-unpacked/ScreenRecorder.exe
+npm run smoke:windows-recording
+```
+
+L’installer viene scritto in `release/ScreenRecorder-windows-x64.exe`.
+La prova nativa apre e registra esclusivamente una finestra di test.
+La prova dell’app usa una cartella dati separata in `.tmp/packaged-app-smoke`.
+È possibile specificare un’altra cartella dati con `SCREENRECORDER_USER_DATA_DIR`.
+
+Il compositore CUDA NVIDIA specializzato ereditato è escluso dal pacchetto:
+il suo binario non corrisponde ai sorgenti attuali e richiede una nuova compilazione
+con CUDA e Video Codec SDK. Restano disponibili le altre vie di esportazione.
+L’installer di sviluppo non dispone di un certificato di firma dell’editore.
+Per le prime prove lascia disattivata l’esportazione nativa sperimentale:
+il motore Windows GPU ha mostrato un blocco in un tentativo diretto.
 
 ## Passi successivi
 
-1. Completare le prove su Windows e preparare un installer del fork.
-2. Aggiornare le dipendenze e configurare servizi e aggiornamenti propri.
+1. Completare le prove sui dispositivi reali e l’installazione su un altro PC.
+2. Configurare servizi e aggiornamenti propri quando serviranno.
 3. Aggiungere più revisioni recuperabili, capitoli e montaggio dalla trascrizione.
 
 Il recupero attuale usa l’ultimo backup disponibile; non è ancora una cronologia

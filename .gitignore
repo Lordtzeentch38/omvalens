@@ -53,3 +53,5 @@ gpu-export-probe.mp4
 # Browser test output
 test-results/
 playwright-report/
+dependency-audit.json
+electron/native/bin/*/*.dll

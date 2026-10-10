@@ -14,7 +14,7 @@
   "productName": "ScreenRecorder",
   "protocols": [],
   "npmRebuild": true,
-  "buildDependenciesFromSource": true,
+  "buildDependenciesFromSource": false,
   "compression": "normal",
   "directories": {
     "output": "release"
@@ -24,6 +24,7 @@
     "!dist/wallpapers/**",
     "dist-electron",
     "electron/native/bin",
+    "!electron/native/bin/**/recordly-nvidia-cuda-compositor.exe",
     "!electron/native/bin/**/whisper-bench*",
     "!electron/native/bin/**/whisper-quantize*",
     "!electron/native/bin/**/whisper-server*",

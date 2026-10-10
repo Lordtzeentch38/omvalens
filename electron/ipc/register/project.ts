@@ -828,6 +828,14 @@ export function registerProjectHandlers() {
 
 	ipcMain.handle("open-project-file-at-path", async (_, filePath: string) => {
 		try {
+			if (path.extname(filePath).toLowerCase() === `.${PORTABLE_EXTENSION}`) {
+				const imported = await importPortableProject(
+					filePath,
+					await getRecordingsDir(),
+					await getProjectsDir(),
+				);
+				filePath = imported.path;
+			}
 			return await loadProjectFromPath(filePath);
 		} catch (error) {
 			console.error("Failed to open project file at path:", error);

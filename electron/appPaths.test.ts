@@ -9,6 +9,27 @@ let root: string;
 beforeEach(async () => {
 	root = await fs.mkdtemp(path.join(os.tmpdir(), "screenrecorder-startup-test-"));
 	vi.resetModules();
+	vi.stubEnv("SCREENRECORDER_USER_DATA_DIR", "");
+});
+
+it("isolates an explicitly configured data directory from the user's projects", async () => {
+	const custom = path.join(root, "isolated-profile");
+	vi.stubEnv("SCREENRECORDER_USER_DATA_DIR", custom);
+	const paths = new Map<string, string>([["appData", root]]);
+	vi.doMock("electron", () => ({
+		app: {
+			getPath: (name: string) => paths.get(name),
+			setPath: (name: string, value: string) => {
+				if (!existsSync(value)) throw new Error("Missing data directory");
+				paths.set(name, value);
+			},
+		},
+	}));
+	const { USER_DATA_PATH, RECORDINGS_DIR } = await import("./appPaths");
+	expect(USER_DATA_PATH).toBe(custom);
+	expect(RECORDINGS_DIR).toBe(path.join(custom, "recordings"));
+	expect(paths.get("sessionData")).toBe(path.join(custom, "session"));
+	expect(await fs.readdir(root)).toEqual(["isolated-profile"]);
 });
 afterEach(async () => {
 	vi.unstubAllEnvs();

@@ -1,3 +1,4 @@
+// Modified by the ScreenRecorder fork, 2026-10-10. See FORK_CHANGES.md; AGPL-3.0.
 import { execSync } from "node:child_process";
 import { copyFileSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
@@ -49,9 +50,10 @@ function fallbackToBundledHelperOrExit(reason) {
 			binaryName: "recordly-nvidia-cuda-compositor.exe",
 		});
 		if (!verification.ok) {
-			console.warn(
+			console.error(
 				formatNativeHelperManifestWarning("build-nvidia-cuda-compositor", verification),
 			);
+			process.exit(1);
 		}
 		console.log(`[build-nvidia-cuda-compositor] ${reason}`);
 		console.log(`[build-nvidia-cuda-compositor] Using bundled helper: ${bundledExePath}`);

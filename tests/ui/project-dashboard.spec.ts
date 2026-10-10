@@ -370,6 +370,8 @@ test("cards rename inline, preserve folder chips and use existing share links", 
 test("dashboard supports creation sort, independent folders, shared settings and precise captions", async ({
 	page,
 }) => {
+	// This scenario traverses several settings panels and imports media on cold starts.
+	test.setTimeout(90000);
 	await installDesktopBridge(page);
 	await page.addInitScript(() => {
 		localStorage.setItem(

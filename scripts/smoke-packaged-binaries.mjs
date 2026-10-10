@@ -1,9 +1,10 @@
+// Modified by the ScreenRecorder fork, 2026-10-10. See FORK_CHANGES.md; AGPL-3.0.
 import { execFileSync } from "node:child_process";
 import { accessSync, constants, existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import path from "node:path";
 
 const projectRoot = process.cwd();
-const releaseRoot = path.join(projectRoot, "release");
+const releaseRoot = path.resolve(projectRoot, process.argv[2] ?? "release");
 const packageJson = JSON.parse(readFileSync(path.join(projectRoot, "package.json"), "utf8"));
 const productName = packageJson.productName ?? packageJson.name ?? "Recordly";
 const packageName = packageJson.name ?? "recordly";
@@ -175,7 +176,7 @@ function getExpectedNativeHelperFiles(archTag) {
 			{ name: "whisper-cli.exe", label: "Whisper CLI runtime", executable: true },
 			{ name: "whisper-runtime.json", label: "Whisper runtime manifest" },
 		];
-		if (archTag === "win32-x64") {
+		if (archTag === "win32-x64" && process.env.SCREENRECORDER_REQUIRE_CUDA_HELPER === "1") {
 			helpers.push({
 				name: "recordly-nvidia-cuda-compositor.exe",
 				label: "NVIDIA CUDA compositor helper",

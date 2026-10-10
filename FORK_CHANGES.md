@@ -74,7 +74,7 @@ Validation on Windows, 10 October 2026: TypeScript checks pass; the complete
 unit/integration suite passes 1,489 tests with 7 platform-specific skips. The two
 new browser interface tests cover portable export, its busy state and cancellation
 using a simulated desktop bridge. Production renderer and Electron bundles compile.
-An installer and a real capture/export session have not yet been verified.
+A subsequent Windows preparation pass is documented in VALIDAZIONE_IT.md.
 
 The 15 selected browser scenarios for the editor and dashboard also passed
 across the final verification runs. One dashboard scenario was repeated after a
@@ -87,11 +87,39 @@ fork's identity, dependencies, portable-project labels or introductory notices;
 their changes are dated 10 October 2026. Modified source files carry a matching
 notice. Icons are generated from this fork's own geometric design.
 
-Dependency audit currently reports 36 findings (1 low, 8 moderate, 25 high,
-2 critical), including inherited Vitest/Tinypool development dependencies.
-These require a separate dependency update and regression check before release;
-no blanket major-version upgrade has been applied. The added ZIP libraries have
-no findings in that audit.
+Windows preparation, 10 October 2026: dependencies were updated and the lockfile
+regenerated. Vite moved to the maintained 6.4 branch and Vitest to version 5;
+the supported Node minimum is now 22.12. A global-agent 4 override removes the
+vulnerable legacy logging dependency used by the packaging downloader. The final
+npm audit reports zero known vulnerabilities. Regression checks were repeated.
+
+Windows packaging now uses Node-API prebuilds instead of forcing a source rebuild
+of uiohook in paths with spaces, and reuses the installed Electron distribution
+to avoid extraction/rename failures on this workspace drive. Native capture,
+cursor and GPU-export binaries and their manifests were rebuilt from source.
+The inherited specialized CUDA compositor is excluded from the package because
+its binary does not match its source fingerprint; it is no longer part of the
+default helper build. Its manual build refuses an unverifiable fallback binary.
+Other upstream export routes remain available.
+
+Real window-capture inspection also exposed an upstream defect: the HWND route
+captured a cropped monitor region, so another window covering that region could
+appear in the recording. It now uses WGC CreateForWindow directly. The encoded
+canvas remains fixed during resize, with black padding when the window shrinks.
+The native smoke deliberately overlays a separate magenta window and verifies
+that the recorded target still shows its blue generated content.
+
+Added repeatable real Windows capture/conversion and packaged startup smoke
+scripts, including an isolated data profile through SCREENRECORDER_USER_DATA_DIR.
+The capture fixture records only its own generated window, with pause/resume,
+changing-frame checks, FFprobe inspection and FFmpeg decode validation.
+The real packaged transfer check exposed and fixed direct opening of portable
+archives: the open-at-path handler now imports them before loading the project,
+matching the existing file-picker behavior. The smoke script can optionally open
+the captured clip in the editor, export a portable project and import its own
+media copy through real IPC without mocking the desktop bridge.
+Device audio, webcam, long sessions, the entire editor export flow and a clean
+machine installation still need the manual checks in CHECKLIST_TEST_IT.md.
 
 ## Next development stages
 

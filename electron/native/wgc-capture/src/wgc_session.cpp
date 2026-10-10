@@ -1,3 +1,4 @@
+// Modified by the ScreenRecorder fork, 2026-10-10. See FORK_CHANGES.md; AGPL-3.0.
 #include "wgc_session.h"
 
 #include <windows.graphics.capture.interop.h>
@@ -188,66 +189,34 @@ bool WgcSession::initialize(HWND hwnd, int fps) {
         return false;
     }
 
-    HMONITOR monitor = MonitorFromWindow(hwnd, MONITOR_DEFAULTTONEAREST);
-    if (!monitor) return false;
-
-    captureItem_ = createCaptureItemForMonitor(monitor);
+    auto factory = winrt::get_activation_factory<
+        winrt::Windows::Graphics::Capture::GraphicsCaptureItem>();
+    auto interop = factory.as<IGraphicsCaptureItemInterop>();
+    const HRESULT hr = interop->CreateForWindow(
+        hwnd,
+        winrt::guid_of<ABI::Windows::Graphics::Capture::IGraphicsCaptureItem>(),
+        winrt::put_abi(captureItem_));
+    if (FAILED(hr)) {
+        std::cerr << "ERROR: CreateForWindow failed: 0x" << std::hex << hr << std::dec << std::endl;
+        return false;
+    }
     return initializeWithItem(fps) && initializeWindowCrop(hwnd);
 }
 
 bool WgcSession::initializeWindowCrop(HWND hwnd) {
     windowHandle_ = hwnd;
-    MONITORINFO monitorInfo{};
-    monitorInfo.cbSize = sizeof(monitorInfo);
-    if (!GetMonitorInfoW(MonitorFromWindow(hwnd, MONITOR_DEFAULTTONEAREST), &monitorInfo)) return false;
-    monitorBounds_ = monitorInfo.rcMonitor;
-
     return updateWindowCropRect(true);
 }
 
 bool WgcSession::updateWindowCropRect(bool initializeSize) {
-    RECT windowBounds{};
-    if (FAILED(DwmGetWindowAttribute(windowHandle_, DWMWA_EXTENDED_FRAME_BOUNDS, &windowBounds, sizeof(windowBounds))) &&
-        !GetWindowRect(windowHandle_, &windowBounds)) return false;
-    RECT clipped{};
-    if (!IntersectRect(&clipped, &windowBounds, &monitorBounds_)) return false;
-
-    const LONG monitorWidth = monitorBounds_.right - monitorBounds_.left;
-    const LONG monitorHeight = monitorBounds_.bottom - monitorBounds_.top;
-    if (monitorWidth <= 0 || monitorHeight <= 0 || framePoolWidth_ < 2 || framePoolHeight_ < 2) return false;
-
-    // WGC textures are in capture-surface pixels, while Win32 monitor/window
-    // rectangles can be DPI-virtualized. Map both edges into texture space
-    // instead of assuming those coordinate systems are identical.
-    const auto mapX = [this, monitorWidth](LONG desktopX) {
-        const double normalized = static_cast<double>(desktopX - monitorBounds_.left) /
-            static_cast<double>(monitorWidth);
-        return std::clamp(
-            static_cast<LONG>(std::llround(normalized * framePoolWidth_)),
-            0L,
-            static_cast<LONG>(framePoolWidth_));
-    };
-    const auto mapY = [this, monitorHeight](LONG desktopY) {
-        const double normalized = static_cast<double>(desktopY - monitorBounds_.top) /
-            static_cast<double>(monitorHeight);
-        return std::clamp(
-            static_cast<LONG>(std::llround(normalized * framePoolHeight_)),
-            0L,
-            static_cast<LONG>(framePoolHeight_));
-    };
-
-    LONG left = mapX(clipped.left);
-    LONG top = mapY(clipped.top);
-    LONG right = mapX(clipped.right);
-    LONG bottom = mapY(clipped.bottom);
-    const LONG mappedWidth = (right - left) & ~1L;
-    const LONG mappedHeight = (bottom - top) & ~1L;
+    // The texture belongs to the selected HWND, never to the monitor behind it.
+    // Keep the encoded canvas fixed and pad a smaller resized window with black.
+    const LONG mappedWidth = framePoolWidth_ & ~1L;
+    const LONG mappedHeight = framePoolHeight_ & ~1L;
     if (mappedWidth < 2 || mappedHeight < 2) return false;
-
     if (initializeSize) {
         captureWidth_ = static_cast<int>(mappedWidth);
         captureHeight_ = static_cast<int>(mappedHeight);
-
         D3D11_TEXTURE2D_DESC desc{};
         desc.Width = static_cast<UINT>(captureWidth_);
         desc.Height = static_cast<UINT>(captureHeight_);
@@ -257,7 +226,6 @@ bool WgcSession::updateWindowCropRect(bool initializeSize) {
         desc.SampleDesc.Count = 1;
         desc.Usage = D3D11_USAGE_DEFAULT;
         desc.BindFlags = D3D11_BIND_RENDER_TARGET;
-
         ComPtr<ID3D11Texture2D> resizedTexture;
         if (FAILED(d3dDevice_->CreateTexture2D(&desc, nullptr, &resizedTexture))) return false;
         ComPtr<ID3D11RenderTargetView> renderTargetView;
@@ -265,18 +233,10 @@ bool WgcSession::updateWindowCropRect(bool initializeSize) {
         cropTexture_ = resizedTexture;
         cropRenderTargetView_ = renderTargetView;
     }
-
     if (!cropTexture_ || !cropRenderTargetView_) return false;
-
-    // The encoder's dimensions are fixed for the lifetime of the MP4. Keep the
-    // crop texture fixed too: reallocating it after a resize made the encoder
-    // pad the changed frame with black bars. If the selected window shrinks,
-    // copy only its current area so the crop never exposes nearby desktop pixels.
     const LONG copyWidth = (std::min)(mappedWidth, static_cast<LONG>(captureWidth_));
     const LONG copyHeight = (std::min)(mappedHeight, static_cast<LONG>(captureHeight_));
-    left = std::clamp(left, 0L, static_cast<LONG>(framePoolWidth_) - copyWidth);
-    top = std::clamp(top, 0L, static_cast<LONG>(framePoolHeight_) - copyHeight);
-    cropRect_ = {left, top, left + copyWidth, top + copyHeight};
+    cropRect_ = {0, 0, copyWidth, copyHeight};
     return true;
 }
 
