@@ -21,6 +21,9 @@
 - Read `CHECKLIST_SVILUPPO_IT.md` before selecting implementation work. Keep it
   updated during each task and check completed items only after their stated
   verification criteria pass; record dated evidence and remaining limitations.
+- Keep coding (C), validation (V), and distribution (D) items separate. Completing
+  code does not automatically complete its validation items. Pending validation
+  does not imply a missing feature; create coding items for demonstrated defects.
 - Git remote `upstream` is the original Recordly project. Never push fork changes there.
 - Treat generic repository upload/publish requests as targeting Forgejo only.
   Do not synchronize GitHub automatically or merely to keep the copies aligned.
