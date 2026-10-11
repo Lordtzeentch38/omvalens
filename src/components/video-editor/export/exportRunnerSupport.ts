@@ -1,3 +1,5 @@
+// Modified by OmvaLens, 2026-10-11: localized interface text. AGPL-3.0.
+import { useUiText } from "@/contexts/I18nContext";
 import type { RefObject } from "react";
 import { useCallback } from "react";
 import { toast } from "@/components/ui/toast";
@@ -46,25 +48,33 @@ export function showExportErrorToast(message: string) {
 }
 
 export function useExportSuccessToast() {
-	return useCallback((filePath: string) => {
-		toast.success(`Exported successfully to ${filePath}`, {
-			action: {
-				label: "Show in Folder",
-				onClick: async () => {
-					try {
-						const result = await window.electronAPI.revealInFolder(filePath);
-						if (!result.success) {
+	const uiText = useUiText();
+	return useCallback(
+		(filePath: string) => {
+			toast.success(uiText("Exported successfully to {{value1}}", { value1: filePath }), {
+				action: {
+					label: uiText("Show in Folder"),
+					onClick: async () => {
+						try {
+							const result = await window.electronAPI.revealInFolder(filePath);
+							if (!result.success) {
+								toast.error(
+									result.error ||
+										result.message ||
+										"Failed to reveal item in folder.",
+								);
+							}
+						} catch (error) {
 							toast.error(
-								result.error ||
-									result.message ||
-									"Failed to reveal item in folder.",
+								uiText("Error revealing in folder: {{value1}}", {
+									value1: String(error),
+								}),
 							);
 						}
-					} catch (error) {
-						toast.error(`Error revealing in folder: ${String(error)}`);
-					}
+					},
 				},
-			},
-		});
-	}, []);
+			});
+		},
+		[uiText],
+	);
 }

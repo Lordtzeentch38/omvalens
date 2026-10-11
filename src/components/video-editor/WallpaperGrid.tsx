@@ -1,3 +1,5 @@
+// Modified by OmvaLens, 2026-10-11: interpolated UI translations. AGPL-3.0.
+import { useUiText } from "@/contexts/I18nContext";
 import { Button, ToggleButton } from "@heroui/react";
 import { Check, Plus, X } from "@/components/ui/icons";
 import { useEffect, useState } from "react";
@@ -28,12 +30,13 @@ export function WallpaperGrid({
 	onRemove: (value: string) => void;
 	isSelected: (value: string, previewUrl?: string) => boolean;
 }) {
+	const uiText = useUiText();
 	return (
 		<div className="grid grid-cols-5 gap-2">
 			<Button
 				variant="secondary"
 				isIconOnly
-				aria-label={addLabel}
+				aria-label={uiText(addLabel)}
 				onPress={onAdd}
 				className="aspect-[4/3] h-auto w-full min-w-0 rounded-md p-0 text-muted"
 			>
@@ -71,7 +74,7 @@ export function WallpaperGrid({
 							<Button
 								variant="secondary"
 								isIconOnly
-								aria-label={`Remove ${item.label}`}
+								aria-label={uiText("Remove {{value1}}", { value1: item.label })}
 								onPress={() => onRemove(item.value)}
 								className="absolute right-0.5 top-0.5 z-10 size-5 min-w-0 rounded-full p-0 bg-overlay text-foreground shadow-sm opacity-0 transition-opacity group-hover:opacity-100 group-focus-within:opacity-100 [@media(hover:none)]:opacity-100"
 							>

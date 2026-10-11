@@ -1,3 +1,5 @@
+// Modified by OmvaLens, 2026-10-11: localized interface text. AGPL-3.0.
+import { useUiText } from "@/contexts/I18nContext";
 // Modified by the ScreenRecorder fork, 2026-10-10. See FORK_CHANGES.md; AGPL-3.0.
 import { FeedbackDialog } from "@/components/feedback/FeedbackDialog";
 import { CreditsDialog } from "@/components/CreditsDialog";
@@ -38,10 +40,11 @@ export function DashboardSidebar({
 	| "onSignIn"
 	| "accountLabel"
 >) {
+	const uiText = useUiText();
 	return (
 		<>
 			<aside
-				aria-label="Library navigation"
+				aria-label={uiText("Library navigation")}
 				className="flex w-48 shrink-0 flex-col bg-transparent px-4 pb-5 pt-12 lg:w-56"
 			>
 				<div className="mb-4 flex h-10 items-center gap-2.5 px-3">
@@ -61,7 +64,7 @@ export function DashboardSidebar({
 						onClick={() => setSection("projects")}
 					>
 						<House weight="fill" className="size-[18px]" />
-						Home
+						{uiText("Home")}
 					</Button>
 					<Button
 						variant="ghost"
@@ -73,7 +76,7 @@ export function DashboardSidebar({
 							weight={section === "shared" ? "fill" : "regular"}
 							className="size-[18px]"
 						/>
-						Shared
+						{uiText("Shared")}
 					</Button>
 					<Button
 						variant="ghost"
@@ -85,23 +88,24 @@ export function DashboardSidebar({
 							weight={section === "raw" ? "fill" : "regular"}
 							className="size-[18px]"
 						/>
-						Raw
+						{uiText("Raw")}
 					</Button>
 				</nav>
 				<div className="mb-2 mt-9 flex items-center justify-between pl-3">
 					<h2 className="text-[13px] font-semibold tracking-tight text-foreground/80">
-						Folders
+						{uiText("Folders")}
 					</h2>
 					<Button
 						variant="ghost"
 						size="icon"
 						className="size-7 min-w-7"
-						aria-label="New folder"
+						aria-label={uiText("New folder")}
 						onClick={() => {
-							let name = "Untitled folder",
+							const baseName = uiText("Untitled folder");
+							let name = baseName,
 								index = 1;
 							while (folders.some((folder) => folder.name === name))
-								name = `Untitled folder ${index++}`;
+								name = `${baseName} ${index++}`;
 							save([
 								...folders,
 								{
@@ -149,11 +153,11 @@ export function DashboardSidebar({
 							weight={section === "settings" ? "fill" : "regular"}
 							className="size-[18px]"
 						/>
-						Settings
+						{uiText("Settings")}
 					</Button>
 					<Button variant="ghost" className={navClass(false)} onClick={onSignIn}>
 						<UserCircle weight="fill" className="size-[18px] shrink-0" />
-						<span className="truncate">{accountLabel || "Sign in"}</span>
+						<span className="truncate">{accountLabel || uiText("Sign in")}</span>
 					</Button>
 				</div>
 			</aside>

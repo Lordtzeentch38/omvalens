@@ -1,3 +1,5 @@
+// Modified by OmvaLens, 2026-10-11: localized interface text. AGPL-3.0.
+import { useUiText } from "@/contexts/I18nContext";
 import { Popover as HeroPopover } from "@heroui/react";
 import { createContext, useContext, useState, type ComponentProps, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
@@ -56,6 +58,7 @@ export function PopoverContent({
 	animated: _animated,
 	...props
 }: ContentProps) {
+	const uiText = useUiText();
 	const modal = useContext(ModalContext);
 	const scopedPortalContainer = useUNSAFE_PortalContext().getContainer?.();
 	const close = useContext(CloseContext);
@@ -79,7 +82,7 @@ export function PopoverContent({
 			className="max-w-[calc(100vw-24px)]"
 		>
 			<HeroPopover.Dialog
-				aria-label={props["aria-label"] ?? "Options"}
+				aria-label={props["aria-label"] ?? uiText("Options")}
 				className={cn("max-w-full max-h-[min(80vh,640px)] overflow-y-auto p-4", className)}
 			>
 				<div

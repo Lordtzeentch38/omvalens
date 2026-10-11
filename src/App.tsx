@@ -1,4 +1,4 @@
-// Modified by the ScreenRecorder fork, 2026-10-10. See FORK_CHANGES.md; AGPL-3.0.
+// Modified by OmvaLens, 2026-10-11: localized window title. See FORK_CHANGES.md; AGPL-3.0.
 import { Card } from "@heroui/react";
 import { lazy, Suspense, useEffect, useState } from "react";
 import { EditorLoadingSkeleton } from "./components/video-editor/layout/EditorLoadingSkeleton";
@@ -57,8 +57,8 @@ export default function App() {
 	}, [windowType]);
 
 	useEffect(() => {
-		document.title = windowType === "editor" ? `${APP_NAME} Editor` : APP_NAME;
-	}, [windowType]);
+		document.title = windowType === "editor" ? t("common.app.editorTitle") : APP_NAME;
+	}, [windowType, t]);
 
 	let content;
 	switch (windowType) {

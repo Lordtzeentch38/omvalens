@@ -1,3 +1,5 @@
+// Modified by OmvaLens, 2026-10-11: localized interface text. AGPL-3.0.
+import { useUiText } from "@/contexts/I18nContext";
 // Modified by the OmvaLens fork, 2026-10-10. See FORK_CHANGES.md; AGPL-3.0.
 import { AccountAvatar } from "@/components/ui/account-avatar";
 import type { User } from "@supabase/supabase-js";
@@ -37,6 +39,7 @@ export function EditorSidebar({
 	panelContent,
 	onAccountClick,
 }: Props) {
+	const uiText = useUiText();
 	const [advancedSections, setAdvancedSections] = useState<Record<string, boolean>>({});
 	const advanced = advancedSections[activeSection] ?? false;
 	const hasAdvanced =
@@ -110,16 +113,16 @@ export function EditorSidebar({
 						variant="ghost"
 						isIconOnly
 						className="mt-auto"
-						aria-label="OmvaLens account"
+						aria-label={uiText("OmvaLens account")}
 						onPress={onAccountClick}
 					>
 						<AccountAvatar user={accountUser} className="!size-7" />
 					</Button>
-					<Tooltip.Content placement="right">Account</Tooltip.Content>
+					<Tooltip.Content placement="right">{uiText("Account")}</Tooltip.Content>
 				</Tooltip>
 			</nav>
 			<aside
-				aria-label={panelContent ? "Clips" : undefined}
+				aria-label={panelContent ? uiText("Clips") : undefined}
 				className="editor-inspector [--text-sm:0.8125rem] [--text-base:0.8125rem] flex w-[320px] min-h-0 flex-col"
 			>
 				<Card className="min-h-0 flex-1 gap-0 overflow-hidden p-0">
@@ -147,10 +150,10 @@ export function EditorSidebar({
 												[activeSection]: value,
 											}))
 										}
-										aria-label="Advanced settings"
+										aria-label={uiText("Advanced settings")}
 									>
 										<Switch.Content>
-											<Label className="text-xs">Advanced</Label>
+											<Label className="text-xs">{uiText("Advanced")}</Label>
 											<Switch.Control>
 												<Switch.Thumb />
 											</Switch.Control>

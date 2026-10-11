@@ -1,3 +1,5 @@
+// Modified by OmvaLens, 2026-10-11: localized interface text. AGPL-3.0.
+import { useUiText } from "@/contexts/I18nContext";
 import { Plus } from "@/components/ui/icons";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -13,6 +15,7 @@ export function RecordNewButton({
 	className?: string;
 	first?: boolean;
 }) {
+	const uiText = useUiText();
 	return (
 		<Button
 			variant="default"
@@ -21,7 +24,7 @@ export function RecordNewButton({
 			className={cn("h-10 shrink-0 gap-2 text-[13px]", className)}
 		>
 			<Plus className="size-4" />
-			{first ? "Record your first video" : "Record new"}
+			{first ? uiText("Record your first video") : uiText("Record new")}
 		</Button>
 	);
 }

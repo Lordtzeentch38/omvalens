@@ -1,3 +1,5 @@
+// Modified by OmvaLens, 2026-10-11: localized interface text. AGPL-3.0.
+import { useUiText } from "@/contexts/I18nContext";
 import { Dropdown, Label, Separator, Kbd } from "@heroui/react";
 import { type ComponentProps, type ReactNode } from "react";
 export function DropdownMenu({
@@ -19,13 +21,14 @@ export function DropdownMenuContent({
 	align?: "start" | "end" | "center";
 	sideOffset?: number;
 }) {
+	const uiText = useUiText();
 	return (
 		<Dropdown.Popover
 			{...props}
 			placement={align === "center" ? "bottom" : `bottom ${align}`}
 			offset={sideOffset}
 		>
-			<Dropdown.Menu aria-label="Actions">{children}</Dropdown.Menu>
+			<Dropdown.Menu aria-label={uiText("Actions")}>{children}</Dropdown.Menu>
 		</Dropdown.Popover>
 	);
 }

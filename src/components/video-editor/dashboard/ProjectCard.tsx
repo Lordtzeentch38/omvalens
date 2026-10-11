@@ -1,3 +1,5 @@
+// Modified by OmvaLens, 2026-10-11: localized interface text. AGPL-3.0.
+import { useI18n, useUiText } from "@/contexts/I18nContext";
 import { Globe } from "@phosphor-icons/react";
 import { ProjectFolderChips } from "./ProjectFolderChips";
 import { RawThumbnail } from "./RawRecordings";
@@ -45,6 +47,8 @@ export function ProjectCard({
 	save,
 	assignFolder,
 }: Props) {
+	const uiText = useUiText();
+	const { locale } = useI18n();
 	const [hovering, setHovering] = useState(false);
 	const [editing, setEditing] = useState(false);
 	const renaming = useRef(false);
@@ -129,7 +133,11 @@ export function ProjectCard({
 							<input
 								autoFocus
 								onFocus={(event) => event.currentTarget.select()}
-								aria-label={entry.rawSource ? "Raw file name" : "Project name"}
+								aria-label={
+									entry.rawSource
+										? uiText("Raw file name")
+										: uiText("Project name")
+								}
 								className="inline-project-name h-5 w-full pr-8 text-[12px] font-medium"
 								value={name}
 								disabled={busy}
@@ -154,19 +162,21 @@ export function ProjectCard({
 					)}
 					<div className="mt-1 flex h-6 min-w-0 items-center gap-2">
 						<p className="shrink-0 text-[11px] text-muted-foreground">
-							{new Date(entry.updatedAt).toLocaleDateString(undefined, {
+							{new Date(entry.updatedAt).toLocaleDateString(locale, {
 								month: "short",
 								day: "numeric",
 							})}
 						</p>
 						{webUrl && (
 							<Globe
-								aria-label="Web project"
+								aria-label={uiText("Web project")}
 								className="size-3.5 text-muted-foreground"
 							/>
 						)}
 						{webUrl && !webReady && (
-							<span className="text-xs text-muted-foreground">Incomplete upload</span>
+							<span className="text-xs text-muted-foreground">
+								{uiText("Incomplete upload")}
+							</span>
 						)}
 						{!webUrl && (
 							<>
@@ -179,14 +189,16 @@ export function ProjectCard({
 									<Button
 										variant="ghost"
 										size="sm"
-										aria-label={`Add folder to ${entry.name}`}
+										aria-label={uiText("Add folder to {{value1}}", {
+											value1: entry.name,
+										})}
 										className="h-6 min-w-0 shrink-0 gap-1.5 rounded-full px-2.5 text-[11px] text-muted-foreground opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 focus:opacity-100"
 									>
 										<Plus className="size-3" />
-										Add folder
+										{uiText("Add folder")}
 									</Button>
 									<Dropdown.Popover>
-										<Dropdown.Menu aria-label="Assign project folder">
+										<Dropdown.Menu aria-label={uiText("Assign project folder")}>
 											{folders.map((item) => (
 												<Dropdown.Item
 													key={item.id}
@@ -213,12 +225,12 @@ export function ProjectCard({
 														assignFolder(entry.path, "none")
 													}
 												>
-													Remove from all folders
+													{uiText("Remove from all folders")}
 												</Dropdown.Item>
 											)}
 											{!folders.length && (
 												<Dropdown.Item id="empty" isDisabled>
-													Create a folder in the sidebar
+													{uiText("Create a folder in the sidebar")}
 												</Dropdown.Item>
 											)}
 										</Dropdown.Menu>
@@ -232,23 +244,23 @@ export function ProjectCard({
 					<Button
 						variant="ghost"
 						size="icon"
-						aria-label={`Options for ${entry.name}`}
+						aria-label={uiText("Options for {{value1}}", { value1: entry.name })}
 						className="absolute right-0 top-5 size-6 min-w-6 text-muted-foreground"
 					>
 						<DotsThree weight="bold" className="size-5" />
 					</Button>
 					<Dropdown.Popover>
-						<Dropdown.Menu aria-label="Project options">
+						<Dropdown.Menu aria-label={uiText("Project options")}>
 							<Dropdown.Item
 								id="open"
 								isDisabled={Boolean(webUrl) && !webReady}
 								onAction={() => openEntry(entry)}
 							>
 								{webUrl
-									? "Open link"
+									? uiText("Open link")
 									: entry.rawSource
-										? "Preview file"
-										: "Open project"}
+										? uiText("Preview file")
+										: uiText("Open project")}
 							</Dropdown.Item>
 							{!webUrl && (
 								<>
@@ -256,10 +268,12 @@ export function ProjectCard({
 										id="rename"
 										onAction={() => {
 											setName(entry.name);
-											requestAnimationFrame(() => requestAnimationFrame(() => setEditing(true)));
+											requestAnimationFrame(() =>
+												requestAnimationFrame(() => setEditing(true)),
+											);
 										}}
 									>
-										Rename
+										{uiText("Rename")}
 									</Dropdown.Item>
 									{!entry.rawSource && (
 										<Dropdown.Item
@@ -274,13 +288,15 @@ export function ProjectCard({
 												})
 											}
 										>
-											{shareUrl ? "View in web" : "Share"}
+											{shareUrl ? uiText("View in web") : uiText("Share")}
 										</Dropdown.Item>
 									)}
 									<Dropdown.Item
 										aria-label={
 											entry.rawSource
-												? `Show ${entry.name} in folder`
+												? uiText("Show {{value1}} in folder", {
+														value1: entry.name,
+													})
 												: undefined
 										}
 										id="reveal"
@@ -290,7 +306,7 @@ export function ProjectCard({
 											})
 										}
 									>
-										Show in folder
+										{uiText("Show in folder")}
 									</Dropdown.Item>
 								</>
 							)}
@@ -303,10 +319,10 @@ export function ProjectCard({
 									onAction={onDelete}
 								>
 									{webUrl
-										? "Delete recording"
+										? uiText("Delete recording")
 										: entry.rawSource
-											? "Remove from library"
-											: "Delete project"}
+											? uiText("Remove from library")
+											: uiText("Delete project")}
 								</Dropdown.Item>
 							)}
 						</Dropdown.Menu>

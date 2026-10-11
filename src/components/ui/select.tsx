@@ -1,3 +1,5 @@
+// Modified by OmvaLens, 2026-10-11: localized interface text. AGPL-3.0.
+import { useUiText } from "@/contexts/I18nContext";
 import { Select as HeroSelect, ListBox, Label, Separator } from "@heroui/react";
 import { type ComponentProps, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
@@ -15,10 +17,11 @@ export function Select({
 	disabled?: boolean;
 	children: ReactNode;
 }) {
+	const uiText = useUiText();
 	return (
 		<HeroSelect
 			{...props}
-			aria-label={props["aria-label"] ?? "Select option"}
+			aria-label={props["aria-label"] ?? uiText("Select option")}
 			value={value || null}
 			defaultValue={defaultValue}
 			onChange={(key) => onValueChange?.(String(key ?? ""))}
@@ -45,9 +48,10 @@ export function SelectValue({
 	placeholder,
 	...props
 }: ComponentProps<typeof HeroSelect.Value> & { placeholder?: string }) {
+	const uiText = useUiText();
 	return (
 		<HeroSelect.Value {...props}>
-			{({ selectedText }) => selectedText || placeholder || "Select"}
+			{({ selectedText }) => selectedText || placeholder || uiText("Select")}
 		</HeroSelect.Value>
 	);
 }

@@ -1,13 +1,16 @@
+// Modified by OmvaLens, 2026-10-11: localized interface text. AGPL-3.0.
+import { useUiText } from "@/contexts/I18nContext";
 import { Card } from "@heroui/react";
 import { Button } from "@/components/ui/button";
 import { toast } from "@/components/ui/toast";
 import { sidebarCardConfig } from "./sidebarCardConfig";
 
 export function SidebarCards() {
+	const uiText = useUiText();
 	if (!sidebarCardConfig.enabled || sidebarCardConfig.cards.length === 0) return null;
 	return (
 		<div
-			aria-label="Sidebar announcements"
+			aria-label={uiText("Sidebar announcements")}
 			className="mb-4 max-h-[35vh] space-y-3 overflow-y-auto"
 		>
 			{sidebarCardConfig.cards.map((card) => (
@@ -53,7 +56,7 @@ export function SidebarCards() {
 										.catch((error) => toast.error(String(error)))
 								}
 							>
-								{card.linkLabel ?? "Learn more"}
+								{card.linkLabel ?? uiText("Learn more")}
 							</Button>
 						</Card.Footer>
 					)}

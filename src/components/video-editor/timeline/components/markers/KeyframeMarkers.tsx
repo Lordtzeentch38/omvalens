@@ -1,3 +1,5 @@
+// Modified by OmvaLens, 2026-10-11: interpolated UI translations. AGPL-3.0.
+import { useUiText } from "@/contexts/I18nContext";
 import { useTimelinePresentation } from "../../core/TimelinePresentation";
 import { getPlayheadDisplayTime, getTimeAtClipSeam } from "../../core/clipPresentation";
 import { useTimelineContext } from "dnd-timeline";
@@ -25,6 +27,7 @@ const KeyframeMarkers: React.FC<KeyframeMarkersProps> = ({
 	videoDurationMs,
 	timelineRef,
 }) => {
+	const uiText = useUiText();
 	const { sidebarWidth, range, valueToPixels, pixelsToValue } = useTimelineContext();
 	const { clips } = useTimelinePresentation();
 	const [draggingKeyframeId, setDraggingKeyframeId] = useState<string | null>(null);
@@ -98,7 +101,10 @@ const KeyframeMarkers: React.FC<KeyframeMarkersProps> = ({
 							e.stopPropagation();
 							setSelectedKeyframeId(kf.id);
 						}}
-						title={`Keyframe @ ${Math.round(kf.time)}ms (drag to move, Delete/Backspace to remove)`}
+						title={uiText(
+							"Keyframe @ {{value1}}ms (drag to move, Delete/Backspace to remove)",
+							{ value1: Math.round(kf.time) },
+						)}
 					>
 						<div
 							style={{

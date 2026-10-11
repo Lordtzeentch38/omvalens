@@ -3,7 +3,7 @@
 		"level": "Livello di zoom",
 		"selectRegion": "Seleziona una regione di zoom da modificare",
 		"deleteZoom": "Elimina zoom",
-		"modeAuto": "Auto",
+		"modeAuto": "Automatico",
 		"modeManual": "Manuale",
 		"modeManualDescription": "Imposta un punto focale fisso per questo zoom",
 		"modeAutoDescription": "La camera si ricentra quando il cursore si avvicina al bordo della vista zoomata"
@@ -38,7 +38,7 @@
 			"tahoe-inverted": "Tahoe invertito",
 			"windows11": "Windows 11",
 			"dot": "Punto",
-			"figma": "Minimal",
+			"figma": "Minimale",
 			"lavender": "Lavanda",
 			"parched": "Parched",
 			"chooper": "Chooper",
@@ -47,7 +47,7 @@
 		},
 		"backgroundBlur": "Sfocatura",
 		"zoomMotionBlur": "Motion blur dello zoom",
-		"auto": "Auto",
+		"auto": "Automatico",
 		"connectZooms": "Connetti zoom",
 		"connectZoomsDescription": "Unisce regioni di zoom consecutive in un movimento di camera continuo.",
 		"autoApplyFreshRecordingZooms": "Applica automaticamente zoom alle nuove registrazioni",
@@ -84,7 +84,7 @@
 		"connectedZoomEasing": "Curva pan connesso",
 		"zoomEasingOptions": {
 			"recordly": "OmvaLens",
-			"glide": "Glide",
+			"glide": "Scorrimento",
 			"smooth": "Fluido",
 			"snappy": "Rapido",
 			"linear": "Lineare"
@@ -94,31 +94,31 @@
 		"cursorSpringStiffness": "Rigidezza molla cursore",
 		"cursorSpringDamping": "Smorzamento molla cursore",
 		"cursorSpringMass": "Massa molla cursore",
-		"off": "Off",
+		"off": "Disattivato",
 		"cursorClickEffects": {
-			"title": "Click Effects",
-			"advanced": "Advanced",
-			"advancedShow": "Show advanced click effect controls",
-			"advancedHide": "Hide advanced click effect controls",
-			"color": "Effect Color",
-			"size": "Effect Size",
-			"opacity": "Effect Opacity",
-			"duration": "Effect Duration",
+			"title": "Effetti dei clic",
+			"advanced": "Avanzate",
+			"advancedShow": "Mostra controlli avanzati degli effetti dei clic",
+			"advancedHide": "Nascondi controlli avanzati degli effetti dei clic",
+			"color": "Colore dell’effetto",
+			"size": "Dimensione dell’effetto",
+			"opacity": "Opacità dell’effetto",
+			"duration": "Durata dell’effetto",
 			"none": {
-				"label": "Off",
-				"description": "No click graphic. Only the cursor motion changes when you click."
+				"label": "Disattivato",
+				"description": "Nessun elemento grafico per il clic. Cambia solo il movimento del cursore quando fai clic."
 			},
 			"ripple": {
-				"label": "Ripple",
-				"description": "Expanding rings radiate from each click so taps read clearly in motion."
+				"label": "Onde",
+				"description": "Cerchi in espansione partono da ogni clic per rendere chiaramente visibili i tocchi."
 			},
 			"spotlight": {
-				"label": "Spotlight",
-				"description": "A soft halo flashes around the pointer to emphasize the clicked area."
+				"label": "Alone",
+				"description": "Un alone morbido lampeggia intorno al puntatore per evidenziare l’area selezionata."
 			},
 			"echo": {
-				"label": "Echo",
-				"description": "A pair of soft rings that spread outward with a cleaner pulse."
+				"label": "Eco",
+				"description": "Una coppia di cerchi morbidi si espande verso l’esterno con un impulso più netto."
 			}
 		},
 		"cursorMotionBlur": "Motion blur del cursore",
@@ -144,7 +144,7 @@
 		"shadow": "Ombra",
 		"radius": "Raggio",
 		"roundness": "Arrotondamento",
-		"padding": "Padding",
+		"padding": "Margini",
 		"paddingLinked": "Collegato (uniforme)",
 		"paddingUnlinked": "Scollegato (asimmetrico)",
 		"paddingTop": "Alto",
@@ -182,22 +182,22 @@
 		"fontSize": "Dimensione font",
 		"rowCount": "Righe",
 		"animation": "Animazione",
-		"animationOff": "Off",
+		"animationOff": "Disattivata",
 		"animationFade": "Dissolvenza",
 		"animationRise": "Salita",
-		"animationPop": "Pop",
+		"animationPop": "Comparsa",
 		"bottomOffset": "Margine inferiore",
 		"maxWidth": "Larghezza massima",
 		"boxRadius": "Raggio riquadro",
 		"backgroundOpacity": "Opacità sfondo",
 		"textColor": "Colore testo",
 		"editor": {
-			"text": "Text",
-			"start": "Start",
-			"end": "End",
-			"split": "Split",
-			"merge": "Merge",
-			"delete": "Delete"
+			"text": "Testo",
+			"start": "Inizio",
+			"end": "Fine",
+			"split": "Dividi",
+			"merge": "Unisci",
+			"delete": "Elimina"
 		}
 	},
 	"crop": {
@@ -232,7 +232,7 @@
 		},
 		"fpsTitle": "FPS",
 		"loop": "Loop",
-		"outputDimensions": "Output: {{dimensions}}px",
+		"outputDimensions": "Dimensioni: {{dimensions}} px",
 		"sizePresetOriginalShort": "Orig",
 		"sizePresetMediumShort": "Med",
 		"sizePresetLargeShort": "Gr",

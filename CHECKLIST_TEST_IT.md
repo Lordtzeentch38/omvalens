@@ -1,4 +1,6 @@
-# Prove manuali di ScreenRecorder
+# Prove manuali di OmvaLens
+
+Avanzamento delle implementazioni: [CHECKLIST_SVILUPPO_IT.md](CHECKLIST_SVILUPPO_IT.md).
 
 Usa prima filmati di 30–60 secondi e progetti di prova. Segna versione, Windows,
 scheda video e dispositivi usati. Le prove distruttive riguardano soltanto copie.

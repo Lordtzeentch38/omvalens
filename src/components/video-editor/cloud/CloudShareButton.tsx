@@ -1,3 +1,5 @@
+// Modified by OmvaLens, 2026-10-11: localized interface text. AGPL-3.0.
+import { useUiText } from "@/contexts/I18nContext";
 import {
 	checkShareCapacity,
 	RECORDING_LIMIT_MESSAGE,
@@ -55,6 +57,7 @@ export function CloudShareButton({
 	onBusyChange,
 	onRequestSignIn,
 }: Props) {
+	const uiText = useUiText();
 	const { t } = useI18n();
 	const [internalOpen, setInternalOpen] = useState(false);
 	const open = controlledOpen ?? internalOpen;
@@ -173,7 +176,7 @@ export function CloudShareButton({
 		setShareUrl(undefined);
 		try {
 			if (!DEFAULT_CLOUD_ENDPOINT)
-				throw new Error("Cloud sharing is not available in this build yet.");
+				throw new Error(uiText("Cloud sharing is not available in this build yet."));
 			if (!authToken) throw new Error(t("editor.cloud.signInRequired"));
 			const available = await checkShareCapacity(DEFAULT_CLOUD_ENDPOINT, authToken);
 			if (!isCurrentAccount()) return;
@@ -216,7 +219,7 @@ export function CloudShareButton({
 				try {
 					saveProjectShareLink(projectPath, result.shareUrl);
 				} catch {
-					toast.error("Share created, but its link could not be saved locally");
+					toast.error(uiText("Share created, but its link could not be saved locally"));
 				}
 			}
 			toast.success(t("editor.cloud.linkCreated"));
@@ -229,7 +232,7 @@ export function CloudShareButton({
 			setUploadId(undefined);
 			activeUploadId.current = undefined;
 		}
-	}, [projectPath, authToken, filePath, notes, prepareFile, projectTitle, t]);
+	}, [uiText, projectPath, authToken, filePath, notes, prepareFile, projectTitle, t]);
 
 	const handleCancel = useCallback(async () => {
 		cancelRequestedRef.current = true;
@@ -254,7 +257,7 @@ export function CloudShareButton({
 			{shareUrl ? (
 				<Button type="button" size="lg" onClick={copyShareUrl} className="w-full">
 					{copied ? <Check className="h-4 w-4" /> : <LinkSimple className="h-4 w-4" />}
-					{copied ? t("editor.cloud.copied") : "Copy link"}
+					{copied ? t("editor.cloud.copied") : uiText("Copy link")}
 				</Button>
 			) : (
 				<div className="space-y-4">
@@ -284,7 +287,10 @@ export function CloudShareButton({
 									style={{ width: `${progress}%` }}
 								/>
 							</div>
-							<p className="text-xs text-muted-foreground">Uploading · {progress}%</p>
+							<p className="text-xs text-muted-foreground">
+								{uiText("Uploading ·")}
+								{progress}%
+							</p>
 						</div>
 					) : null}
 					{error || capacityAvailable === false ? (
@@ -316,7 +322,7 @@ export function CloudShareButton({
 								}}
 							>
 								<Export className="h-4 w-4" />
-								{authToken ? "Share" : "Sign in to share"}
+								{authToken ? uiText("Share") : uiText("Sign in to share")}
 							</Button>
 						)}
 					</div>
@@ -349,7 +355,7 @@ export function CloudShareButton({
 						<DialogTitle>{t("editor.cloud.heading")}</DialogTitle>
 						<DialogDescription>{t("editor.cloud.description")}</DialogDescription>
 						<p className="text-xs text-muted-foreground">
-							Free-plan links expire after 14 days.
+							{uiText("Free-plan links expire after 14 days.")}
 						</p>
 					</DialogHeader>
 

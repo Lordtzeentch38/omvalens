@@ -1,3 +1,5 @@
+// Modified by OmvaLens, 2026-10-11: localized interface text. AGPL-3.0.
+import { useUiText } from "@/contexts/I18nContext";
 import { type Dispatch, type SetStateAction, useCallback, useEffect, useRef } from "react";
 import { toast } from "@/components/ui/toast";
 import { resolveAutoCaptionSourcePath } from "../autoCaptionSource";
@@ -60,6 +62,7 @@ export function useAutoCaptionController({
 	setAutoCaptions,
 	syncActiveVideoSource,
 }: UseAutoCaptionControllerParams) {
+	const uiText = useUiText();
 	const captionGenerationInFlightRef = useRef(false);
 	const activeSourceRef = useRef({ videoSourcePath, videoPath });
 	activeSourceRef.current = { videoSourcePath, videoPath };
@@ -104,8 +107,8 @@ export function useAutoCaptionController({
 		const result = await window.electronAPI.openWhisperExecutablePicker();
 		if (!result.success || !result.path) return;
 		setWhisperExecutablePath(result.path);
-		toast.success("Whisper executable selected");
-	}, [setWhisperExecutablePath]);
+		toast.success(uiText("Whisper executable selected"));
+	}, [uiText, setWhisperExecutablePath]);
 
 	const handleDownloadWhisperSmallModel = useCallback(async () => {
 		if (whisperModelDownloadStatus === "downloading") return;
@@ -133,8 +136,8 @@ export function useAutoCaptionController({
 		const result = await window.electronAPI.openWhisperModelPicker();
 		if (!result.success || !result.path) return;
 		setWhisperModelPath(result.path);
-		toast.success("Whisper model selected");
-	}, [setWhisperModelPath]);
+		toast.success(uiText("Whisper model selected"));
+	}, [uiText, setWhisperModelPath]);
 
 	const handleDeleteWhisperSmallModel = useCallback(async () => {
 		const result = await window.electronAPI.deleteWhisperSmallModel();
@@ -146,8 +149,9 @@ export function useAutoCaptionController({
 		setDownloadedWhisperModelPath(null);
 		setWhisperModelDownloadStatus("idle");
 		setWhisperModelDownloadProgress(0);
-		toast.success("Whisper small model deleted");
+		toast.success(uiText("Whisper small model deleted"));
 	}, [
+		uiText,
 		downloadedWhisperModelPath,
 		setDownloadedWhisperModelPath,
 		setWhisperModelDownloadProgress,
@@ -161,7 +165,7 @@ export function useAutoCaptionController({
 		setIsGeneratingCaptions(true);
 		try {
 			if (!whisperModelPath) {
-				toast.error("Select a Whisper model or download the small model first");
+				toast.error(uiText("Select a Whisper model or download the small model first"));
 				return;
 			}
 			let sourcePath = resolveAutoCaptionSourcePath({ videoSourcePath, videoPath });
@@ -179,7 +183,7 @@ export function useAutoCaptionController({
 				});
 			}
 			if (!sourcePath) {
-				toast.error("No source video is loaded");
+				toast.error(uiText("No source video is loaded"));
 				return;
 			}
 			// Refreshing an unchanged session revokes active companion-audio URLs.
@@ -195,7 +199,7 @@ export function useAutoCaptionController({
 				language: autoCaptionSettings.language,
 			});
 			if (resolveAutoCaptionSourcePath(activeSourceRef.current) !== sourcePath) {
-				toast.info("Recording changed; generated captions were not applied.");
+				toast.info(uiText("Recording changed; generated captions were not applied."));
 				return;
 			}
 			if (!result.success || !result.cues) {
@@ -207,7 +211,10 @@ export function useAutoCaptionController({
 			if (result.cues.length > 0) {
 				setAutoCaptionSettings((current) => ({ ...current, enabled: true }));
 			}
-			toast.success(result.message || `Generated ${result.cues.length} captions`);
+			toast.success(
+				result.message ||
+					uiText("Generated {{value1}} captions", { value1: result.cues.length }),
+			);
 		} catch (error) {
 			toast.error(getErrorMessage(error));
 		} finally {
@@ -215,6 +222,7 @@ export function useAutoCaptionController({
 			setIsGeneratingCaptions(false);
 		}
 	}, [
+		uiText,
 		autoCaptionSettings.language,
 		isGeneratingCaptions,
 		setAutoCaptionSettings,

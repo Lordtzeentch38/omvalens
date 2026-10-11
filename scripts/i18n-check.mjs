@@ -1,3 +1,4 @@
+// Modified by OmvaLens, 2026-10-11: validate interpolation and UI catalog references.
 import fs from "node:fs";
 import path from "node:path";
 
@@ -57,6 +58,17 @@ const namespaceFiles = fs
 
 let hasErrors = false;
 
+function valueAt(data, key) {
+	return key.split(".").reduce((value, part) => value?.[part], data);
+}
+function variables(value) {
+	return typeof value === "string"
+		? [...new Set([...value.matchAll(/\{\{\s*(\w+)\s*\}\}/g)].map((match) => match[1]))]
+				.sort()
+				.join(",")
+		: "";
+}
+
 for (const namespaceFile of namespaceFiles) {
 	const baseData = loadJson(path.join(baseLocaleDir, namespaceFile));
 	const baseKeys = new Set(collectKeyPaths(baseData));
@@ -79,6 +91,19 @@ for (const namespaceFile of namespaceFiles) {
 				console.error(`i18n-check: missing key ${locale}/${namespaceFile}:${key}`);
 				hasErrors = true;
 			}
+			const baseValue = valueAt(baseData, key);
+			const translatedValue = valueAt(localeData, key);
+			if (typeof translatedValue !== "string" || !translatedValue.trim()) {
+				console.error(
+					`i18n-check: empty or non-string value ${locale}/${namespaceFile}:${key}`,
+				);
+				hasErrors = true;
+			} else if (variables(baseValue) !== variables(translatedValue)) {
+				console.error(
+					`i18n-check: interpolation mismatch ${locale}/${namespaceFile}:${key}`,
+				);
+				hasErrors = true;
+			}
 		}
 
 		for (const key of localeKeys) {
@@ -90,8 +115,21 @@ for (const namespaceFile of namespaceFiles) {
 	}
 }
 
+const uiKeys = loadJson(path.join(root, "src/i18n/uiTextKeys.json"));
+const common = loadJson(path.join(baseLocaleDir, "common.json"));
+for (const [source, key] of Object.entries(uiKeys)) {
+	if (common.ui?.[key] !== source) {
+		console.error(
+			`i18n-check: UI source phrase has no matching English catalog entry: ${source}`,
+		);
+		hasErrors = true;
+	}
+}
+
 if (hasErrors) {
 	process.exit(1);
 }
 
-console.log("i18n-check: locale files are structurally consistent");
+console.log(
+	"i18n-check: keys, nonempty strings, interpolation variables and UI catalog references are consistent",
+);

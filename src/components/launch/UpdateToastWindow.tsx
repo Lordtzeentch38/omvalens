@@ -1,3 +1,5 @@
+// Modified by OmvaLens, 2026-10-11: localized interface text. AGPL-3.0.
+import { useUiText } from "@/contexts/I18nContext";
 // Modified by the OmvaLens fork, 2026-10-10. See FORK_CHANGES.md; AGPL-3.0.
 import { Card, Chip, ProgressBar } from "@heroui/react";
 import {
@@ -96,6 +98,7 @@ export function UpdateToastWindow({
 }: {
 	payload?: UpdateToastPayload;
 } = {}) {
+	const uiText = useUiText();
 	const [livePayload, setPayload] = useState<UpdateToastPayload | null>(null);
 	const payload = suppliedPayload ?? livePayload;
 	const { t } = useI18n();
@@ -159,7 +162,11 @@ export function UpdateToastWindow({
 
 	return (
 		<div className={`${styles.window} launch-theme`}>
-			<Card className="w-full flex-row gap-3" aria-live="polite" aria-label="OmvaLens update">
+			<Card
+				className="w-full flex-row gap-3"
+				aria-live="polite"
+				aria-label={uiText("OmvaLens update")}
+			>
 				<div
 					className={`${styles.icon} ${payload.phase === "error" ? styles.iconError : ""}`}
 				>
@@ -185,7 +192,7 @@ export function UpdateToastWindow({
 
 					{payload.phase === "downloading" ? (
 						<div className={styles.progressBlock}>
-							<ProgressBar aria-label="Downloading update" value={progress}>
+							<ProgressBar aria-label={uiText("Downloading update")} value={progress}>
 								<ProgressBar.Track>
 									<ProgressBar.Fill />
 								</ProgressBar.Track>

@@ -1,3 +1,5 @@
+// Modified by OmvaLens, 2026-10-11: localized interface text. AGPL-3.0.
+import { useUiText } from "@/contexts/I18nContext";
 import { useRef, useState } from "react";
 import { Button, Description, Form, Input, Label, TextArea, TextField } from "@heroui/react";
 import { useRecordlyAuth } from "@/components/auth/useRecordlyAuth";
@@ -25,6 +27,7 @@ export function FeedbackDialog({
 	showLabel?: boolean;
 	onSignIn?: () => void;
 }) {
+	const uiText = useUiText();
 	const auth = useRecordlyAuth();
 	const [open, setOpen] = useState(false);
 	const [subject, setSubject] = useState("");
@@ -55,20 +58,27 @@ export function FeedbackDialog({
 			}}
 		>
 			<DialogTrigger asChild>
-				<Button variant="ghost" size="sm" className={className} aria-label="Feedback">
+				<Button
+					variant="ghost"
+					size="sm"
+					className={className}
+					aria-label={uiText("Feedback")}
+				>
 					<ChatDots className="size-4" />
-					{showLabel && "Feedback"}
+					{showLabel && uiText("Feedback")}
 				</Button>
 			</DialogTrigger>
 			<DialogContent className="max-w-sm max-h-[90vh] overflow-y-auto">
 				<DialogHeader>
-					<DialogTitle>{sent ? "Thanks for your feedback" : "Send feedback"}</DialogTitle>
+					<DialogTitle>
+						{sent ? uiText("Thanks for your feedback") : uiText("Send feedback")}
+					</DialogTitle>
 				</DialogHeader>
 				{sent ? (
-					<Button onPress={() => setOpen(false)}>Done</Button>
+					<Button onPress={() => setOpen(false)}>{uiText("Done")}</Button>
 				) : !auth.user ? (
 					<div className="flex flex-col gap-4">
-						<Description>Sign in to send feedback.</Description>
+						<Description>{uiText("Sign in to send feedback.")}</Description>
 						{onSignIn ? (
 							<Button
 								onPress={() => {
@@ -76,10 +86,10 @@ export function FeedbackDialog({
 									onSignIn();
 								}}
 							>
-								Sign in
+								{uiText("Sign in")}
 							</Button>
 						) : (
-							<Description>Open Home to sign in.</Description>
+							<Description>{uiText("Open Home to sign in.")}</Description>
 						)}
 					</div>
 				) : (
@@ -126,8 +136,8 @@ export function FeedbackDialog({
 							}}
 							className="w-full"
 						>
-							<Label>Subject</Label>
-							<Input maxLength={160} placeholder="What’s on your mind?" />
+							<Label>{uiText("Subject")}</Label>
+							<Input maxLength={160} placeholder={uiText("What’s on your mind?")} />
 						</TextField>
 						<TextField
 							name="description"
@@ -140,12 +150,12 @@ export function FeedbackDialog({
 							}}
 							className="w-full"
 						>
-							<Label>Description</Label>
+							<Label>{uiText("Description")}</Label>
 							<TextArea
 								maxLength={10000}
 								rows={5}
 								className="resize-y"
-								placeholder="Tell us more…"
+								placeholder={uiText("Tell us more…")}
 								onPaste={(event) => {
 									const pasted = Array.from(event.clipboardData.files);
 									if (pasted.length) {
@@ -161,7 +171,7 @@ export function FeedbackDialog({
 							multiple
 							hidden
 							disabled={sending}
-							aria-label="Attach files"
+							aria-label={uiText("Attach files")}
 							onChange={(event) => {
 								addFiles(Array.from(event.target.files ?? []));
 								event.target.value = "";
@@ -176,7 +186,7 @@ export function FeedbackDialog({
 							onPress={() => picker.current?.click()}
 						>
 							<File className="size-4" />
-							Attach files
+							{uiText("Attach files")}
 						</Button>
 						{files.length > 0 && (
 							<div className="flex flex-col gap-1">
@@ -192,7 +202,9 @@ export function FeedbackDialog({
 											size="sm"
 											variant="ghost"
 											isDisabled={sending}
-											aria-label={`Remove ${file.name}`}
+											aria-label={uiText("Remove {{value1}}", {
+												value1: file.name,
+											})}
 											onPress={() =>
 												setFiles(files.filter((_, i) => i !== index))
 											}
@@ -204,7 +216,7 @@ export function FeedbackDialog({
 							</div>
 						)}
 						<Description className="text-xs">
-							Diagnostics will be sent along with your feedback.
+							{uiText("Diagnostics will be sent along with your feedback.")}
 						</Description>
 						{error && (
 							<Description role="alert" className="text-danger">
@@ -212,7 +224,7 @@ export function FeedbackDialog({
 							</Description>
 						)}
 						<Button type="submit" isDisabled={sending} className="w-full">
-							{sending ? "Sending…" : "Send feedback"}
+							{sending ? uiText("Sending…") : uiText("Send feedback")}
 						</Button>
 					</Form>
 				)}

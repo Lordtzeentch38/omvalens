@@ -1,3 +1,5 @@
+// Modified by OmvaLens, 2026-10-11: localized interface text. AGPL-3.0.
+import { useUiText } from "@/contexts/I18nContext";
 import { LibrarySkeleton } from "./LibrarySkeleton";
 import { SharedRecordings } from "../cloud/SharedRecordings";
 import { CLOUD_SHARE_ENDPOINT } from "../cloud/endpoint";
@@ -76,6 +78,7 @@ export function DashboardGrid({
 	| "deleteEntries"
 	| "run"
 >) {
+	const uiText = useUiText();
 	return (
 		<>
 			<main className="custom-scrollbar min-h-0 flex-1 overflow-y-auto px-7 pb-10 lg:px-10">
@@ -102,12 +105,12 @@ export function DashboardGrid({
 							<Cloud weight="fill" className="size-8 opacity-40" />
 							<p>
 								{authToken
-									? "Cloud sharing is not available in this build yet."
-									: "Sign in to manage shared videos."}
+									? uiText("Cloud sharing is not available in this build yet.")
+									: uiText("Sign in to manage shared videos.")}
 							</p>
 							{!authToken && (
 								<Button variant="secondary" onClick={onSignIn}>
-									Sign in
+									{uiText("Sign in")}
 								</Button>
 							)}
 						</div>
@@ -116,7 +119,7 @@ export function DashboardGrid({
 					<LibrarySkeleton />
 				) : visible.length ? (
 					<ul
-						aria-label={isRaw ? "Raw files" : "Your projects"}
+						aria-label={isRaw ? uiText("Raw files") : uiText("Your projects")}
 						className="grid grid-cols-[repeat(auto-fill,minmax(min(100%,280px),1fr))] gap-x-7 gap-y-10 lg:gap-x-9"
 					>
 						{visible.map((entry) => (
@@ -153,24 +156,24 @@ export function DashboardGrid({
 						<p>
 							{isRaw
 								? rawLoading
-									? "Loading recordings…"
+									? uiText("Loading recordings…")
 									: rawError ||
 										(hasActiveFilters
-											? "No matching raw files"
-											: "No raw recordings yet")
+											? uiText("No matching raw files")
+											: uiText("No raw recordings yet"))
 								: hasActiveFilters
-									? "No matching projects"
-									: "It's looking empty in here..."}
+									? uiText("No matching projects")
+									: uiText("It's looking empty in here...")}
 						</p>
 						{!isRaw && !hasActiveFilters && (
 							<RecordNewButton busy={busy} run={run} first className="mt-2" />
 						)}
 						{isRaw && rawError && (
-							<Button onClick={() => void refreshRaw()}>Retry</Button>
+							<Button onClick={() => void refreshRaw()}>{uiText("Retry")}</Button>
 						)}
 						{query && (
 							<Button variant="ghost" size="sm" onClick={() => setQuery("")}>
-								Clear search
+								{uiText("Clear search")}
 							</Button>
 						)}
 					</div>

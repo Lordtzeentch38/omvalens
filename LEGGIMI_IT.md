@@ -11,6 +11,10 @@ conservati; [FORK_CHANGES.md](FORK_CHANGES.md) distingue la base dalle nostre ag
 
 ## Migliorie disponibili
 
+Avanzamento e prossime attività: [checklist condivisa](CHECKLIST_SVILUPPO_IT.md).
+Le caselle vengono spuntate dopo le verifiche. La prima fase italiana dei testi
+è completata; limiti e altre lingue sono in [TRADUZIONI_IT.md](TRADUZIONI_IT.md).
+
 - **Progetto portabile**: il pulsante nell’editor salva un archivio
   `.screenrecorder` con lo stato attuale del montaggio, video, webcam, audio,
   sfondi personalizzati e dati associati della registrazione. Non serve spostare

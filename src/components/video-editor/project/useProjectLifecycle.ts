@@ -1,4 +1,6 @@
 /* biome-ignore-all lint/correctness/useExhaustiveDependencies: editor domain setters and refs are stable. */
+// Modified by OmvaLens, 2026-10-11: localized interface text. AGPL-3.0.
+import { useUiText } from "@/contexts/I18nContext";
 import {
 	type Dispatch,
 	type MutableRefObject,
@@ -69,6 +71,7 @@ type Input = {
 };
 
 export function useProjectLifecycle(input: Input) {
+	const uiText = useUiText();
 	const { project, appearance } = input;
 	const inputRef = useRef(input);
 	inputRef.current = input;
@@ -77,147 +80,154 @@ export function useProjectLifecycle(input: Input) {
 		resolve(decision: UnsavedChangesDecision): void;
 	} | null>(null);
 
-	const applyLoadedProject = useCallback(async (candidate: unknown, path?: string | null) => {
-		const current = inputRef.current;
-		const { project, appearance, timeline, refs } = current;
-		if (!validateProjectData(candidate)) return false;
-		const loadedProject = candidate;
-		const sourcePath = fromFileUrl(loadedProject.videoPath);
-		const persistedEditor = stripPersistedDevMotionBlurSettings(loadedProject.editor ?? {});
-		const editor = normalizeProjectEditor({
-			...persistedEditor,
-			borderRadius:
-				loadedProject.version < 2 && typeof persistedEditor.borderRadius === "number"
-					? persistedEditor.borderRadius === 0
-						? getDefaultBorderRadiusPercent()
-						: legacyBorderRadiusPixelsToPercent(persistedEditor.borderRadius)
-					: persistedEditor.borderRadius,
-		});
-		try {
-			current.videoPlaybackRef.current?.pause();
-		} catch {
-			/* preview may be tearing down */
-		}
-		current.setIsPlaying(false);
-		current.setCurrentTime(0);
-		current.setDuration(0);
-		project.setError(null);
-
-		refs.pendingFreshRecordingAutoZoomPathRef.current = null;
-		if (editor.webcam.sourcePath) {
-			const result = await window.electronAPI.setCurrentRecordingSession?.(
-				{
-					videoPath: sourcePath,
-					webcamPath: editor.webcam.sourcePath,
-					timeOffsetMs: editor.webcam.timeOffsetMs,
-				},
-				{ preserveProjectPath: Boolean(path) },
-			);
-			if (result && !result.success) throw new Error("Could not load project media");
-			const session = await window.electronAPI.getCurrentRecordingSession?.();
-			current.applySessionPresentation(session?.success ? session.session : null);
-		} else {
-			const result = await window.electronAPI.setCurrentVideoPath(sourcePath, {
-				preserveProjectPath: Boolean(path),
+	const applyLoadedProject = useCallback(
+		async (candidate: unknown, path?: string | null) => {
+			const current = inputRef.current;
+			const { project, appearance, timeline, refs } = current;
+			if (!validateProjectData(candidate)) return false;
+			const loadedProject = candidate;
+			const sourcePath = fromFileUrl(loadedProject.videoPath);
+			const persistedEditor = stripPersistedDevMotionBlurSettings(loadedProject.editor ?? {});
+			const editor = normalizeProjectEditor({
+				...persistedEditor,
+				borderRadius:
+					loadedProject.version < 2 && typeof persistedEditor.borderRadius === "number"
+						? persistedEditor.borderRadius === 0
+							? getDefaultBorderRadiusPercent()
+							: legacyBorderRadiusPixelsToPercent(persistedEditor.borderRadius)
+						: persistedEditor.borderRadius,
 			});
-			if (!result.success) throw new Error("Could not load project media");
-			current.applySessionPresentation(null);
-		}
-		const videoUrl = await resolveVideoUrl(sourcePath);
-		project.setVideoSourcePath(sourcePath);
-		project.setCurrentProjectPath(path ?? null);
-		project.setVideoPath(videoUrl);
+			try {
+				current.videoPlaybackRef.current?.pause();
+			} catch {
+				/* preview may be tearing down */
+			}
+			current.setIsPlaying(false);
+			current.setCurrentTime(0);
+			current.setDuration(0);
+			project.setError(null);
 
-		appearance.setWallpaper(editor.wallpaper);
-		appearance.setShadowIntensity(editor.shadowIntensity);
-		appearance.setBackgroundBlur(editor.backgroundBlur);
-		appearance.setZoomMotionBlur(editor.zoomMotionBlur);
-		appearance.setZoomMotionBlurTuning({ ...editor.zoomMotionBlurTuning });
-		appearance.setConnectZooms(editor.connectZooms);
-		appearance.setZoomInDurationMs(editor.zoomInDurationMs);
-		appearance.setZoomInOverlapMs(editor.zoomInOverlapMs);
-		appearance.setZoomOutDurationMs(editor.zoomOutDurationMs);
-		appearance.setConnectedZoomGapMs(editor.connectedZoomGapMs);
-		appearance.setConnectedZoomDurationMs(editor.connectedZoomDurationMs);
-		appearance.setZoomInEasing(editor.zoomInEasing);
-		appearance.setZoomOutEasing(editor.zoomOutEasing);
-		appearance.setConnectedZoomEasing(editor.connectedZoomEasing);
-		appearance.setShowCursor(editor.showCursor);
-		appearance.setLoopCursor(editor.loopCursor);
-		appearance.setCursorStyle(editor.cursorStyle);
-		appearance.setCursorSize(editor.cursorSize);
-		appearance.setCursorSmoothing(editor.cursorSmoothing);
-		appearance.setCursorSpringStiffnessMultiplier(editor.cursorSpringStiffnessMultiplier);
-		appearance.setCursorSpringDampingMultiplier(editor.cursorSpringDampingMultiplier);
-		appearance.setCursorSpringMassMultiplier(editor.cursorSpringMassMultiplier);
-		appearance.setCameraSpringStiffnessMultiplier(editor.cameraSpringStiffnessMultiplier);
-		appearance.setCameraSpringDampingMultiplier(editor.cameraSpringDampingMultiplier);
-		appearance.setCameraSpringMassMultiplier(editor.cameraSpringMassMultiplier);
-		appearance.setCursorClickEffect(editor.cursorClickEffect);
-		appearance.setCursorClickEffectColor(editor.cursorClickEffectColor);
-		appearance.setCursorClickEffectScale(editor.cursorClickEffectScale);
-		appearance.setCursorClickEffectOpacity(editor.cursorClickEffectOpacity);
-		appearance.setCursorClickEffectDurationMs(editor.cursorClickEffectDurationMs);
-		appearance.setZoomSmoothness(editor.zoomSmoothness);
-		appearance.setZoomClassicMode(editor.zoomClassicMode);
-		appearance.setCursorMotionBlur(editor.cursorMotionBlur);
-		appearance.setCursorClickBounce(editor.cursorClickBounce);
-		appearance.setCursorClickBounceDuration(editor.cursorClickBounceDuration);
-		appearance.setCursorSway(editor.cursorSway);
-		appearance.setBorderRadius(editor.borderRadius);
-		appearance.setPadding(editor.padding);
-		appearance.setCropRegion(editor.cropRegion);
-		appearance.setWebcam(editor.webcam);
-		timeline.setZoomRegions(editor.zoomRegions);
-		timeline.setTrimRegions(editor.trimRegions);
-		timeline.setClipRegions(editor.clipRegions);
-		// An explicit empty clip list means the user deleted all footage, not a legacy project.
-		refs.clipInitializedRef.current = Array.isArray(persistedEditor.clipRegions);
-		refs.autoFullTrackClipIdRef.current = null;
-		refs.autoFullTrackClipEndMsRef.current = null;
-		timeline.setSpeedRegions(editor.speedRegions);
-		timeline.setAnnotationRegions(editor.annotationRegions);
-		timeline.setAudioRegions(editor.audioRegions);
-		timeline.setSourceAudioTrackSettingsByClip(editor.sourceAudioTrackSettingsByClip ?? {});
-		timeline.setDefaultSourceAudioTrackSettings(editor.defaultSourceAudioTrackSettings ?? {});
-		timeline.setAutoCaptions(editor.autoCaptions);
-		timeline.setAutoCaptionSettings(editor.autoCaptionSettings);
-		current.setAspectRatio(editor.aspectRatio);
-		timeline.setSelectedZoomId(null);
-		timeline.setSelectedClipId(null);
-		timeline.setSelectedAnnotationId(null);
-		timeline.setSelectedAudioId(null);
-		refs.nextZoomIdRef.current = deriveNextId(
-			"zoom",
-			editor.zoomRegions.map(({ id }) => id),
-		);
-		refs.nextClipIdRef.current = deriveNextId(
-			"clip",
-			editor.clipRegions.map(({ id }) => id),
-		);
-		refs.nextAudioIdRef.current = deriveNextId(
-			"audio",
-			editor.audioRegions.map(({ id }) => id),
-		);
-		refs.nextAnnotationIdRef.current = deriveNextId(
-			"annotation",
-			editor.annotationRegions.map(({ id }) => id),
-		);
-		refs.nextAnnotationZIndexRef.current =
-			editor.annotationRegions.reduce((max, region) => Math.max(max, region.zIndex), 0) + 1;
-		current.resetHistory();
-		project.setLastSavedSnapshot(
-			cloneStructured(
-				createProjectData(
-					sourcePath,
-					current.buildPersistedEditorState(editor),
-					loadedProject.projectId ?? null,
+			refs.pendingFreshRecordingAutoZoomPathRef.current = null;
+			if (editor.webcam.sourcePath) {
+				const result = await window.electronAPI.setCurrentRecordingSession?.(
+					{
+						videoPath: sourcePath,
+						webcamPath: editor.webcam.sourcePath,
+						timeOffsetMs: editor.webcam.timeOffsetMs,
+					},
+					{ preserveProjectPath: Boolean(path) },
+				);
+				if (result && !result.success)
+					throw new Error(uiText("Could not load project media"));
+				const session = await window.electronAPI.getCurrentRecordingSession?.();
+				current.applySessionPresentation(session?.success ? session.session : null);
+			} else {
+				const result = await window.electronAPI.setCurrentVideoPath(sourcePath, {
+					preserveProjectPath: Boolean(path),
+				});
+				if (!result.success) throw new Error(uiText("Could not load project media"));
+				current.applySessionPresentation(null);
+			}
+			const videoUrl = await resolveVideoUrl(sourcePath);
+			project.setVideoSourcePath(sourcePath);
+			project.setCurrentProjectPath(path ?? null);
+			project.setVideoPath(videoUrl);
+
+			appearance.setWallpaper(editor.wallpaper);
+			appearance.setShadowIntensity(editor.shadowIntensity);
+			appearance.setBackgroundBlur(editor.backgroundBlur);
+			appearance.setZoomMotionBlur(editor.zoomMotionBlur);
+			appearance.setZoomMotionBlurTuning({ ...editor.zoomMotionBlurTuning });
+			appearance.setConnectZooms(editor.connectZooms);
+			appearance.setZoomInDurationMs(editor.zoomInDurationMs);
+			appearance.setZoomInOverlapMs(editor.zoomInOverlapMs);
+			appearance.setZoomOutDurationMs(editor.zoomOutDurationMs);
+			appearance.setConnectedZoomGapMs(editor.connectedZoomGapMs);
+			appearance.setConnectedZoomDurationMs(editor.connectedZoomDurationMs);
+			appearance.setZoomInEasing(editor.zoomInEasing);
+			appearance.setZoomOutEasing(editor.zoomOutEasing);
+			appearance.setConnectedZoomEasing(editor.connectedZoomEasing);
+			appearance.setShowCursor(editor.showCursor);
+			appearance.setLoopCursor(editor.loopCursor);
+			appearance.setCursorStyle(editor.cursorStyle);
+			appearance.setCursorSize(editor.cursorSize);
+			appearance.setCursorSmoothing(editor.cursorSmoothing);
+			appearance.setCursorSpringStiffnessMultiplier(editor.cursorSpringStiffnessMultiplier);
+			appearance.setCursorSpringDampingMultiplier(editor.cursorSpringDampingMultiplier);
+			appearance.setCursorSpringMassMultiplier(editor.cursorSpringMassMultiplier);
+			appearance.setCameraSpringStiffnessMultiplier(editor.cameraSpringStiffnessMultiplier);
+			appearance.setCameraSpringDampingMultiplier(editor.cameraSpringDampingMultiplier);
+			appearance.setCameraSpringMassMultiplier(editor.cameraSpringMassMultiplier);
+			appearance.setCursorClickEffect(editor.cursorClickEffect);
+			appearance.setCursorClickEffectColor(editor.cursorClickEffectColor);
+			appearance.setCursorClickEffectScale(editor.cursorClickEffectScale);
+			appearance.setCursorClickEffectOpacity(editor.cursorClickEffectOpacity);
+			appearance.setCursorClickEffectDurationMs(editor.cursorClickEffectDurationMs);
+			appearance.setZoomSmoothness(editor.zoomSmoothness);
+			appearance.setZoomClassicMode(editor.zoomClassicMode);
+			appearance.setCursorMotionBlur(editor.cursorMotionBlur);
+			appearance.setCursorClickBounce(editor.cursorClickBounce);
+			appearance.setCursorClickBounceDuration(editor.cursorClickBounceDuration);
+			appearance.setCursorSway(editor.cursorSway);
+			appearance.setBorderRadius(editor.borderRadius);
+			appearance.setPadding(editor.padding);
+			appearance.setCropRegion(editor.cropRegion);
+			appearance.setWebcam(editor.webcam);
+			timeline.setZoomRegions(editor.zoomRegions);
+			timeline.setTrimRegions(editor.trimRegions);
+			timeline.setClipRegions(editor.clipRegions);
+			// An explicit empty clip list means the user deleted all footage, not a legacy project.
+			refs.clipInitializedRef.current = Array.isArray(persistedEditor.clipRegions);
+			refs.autoFullTrackClipIdRef.current = null;
+			refs.autoFullTrackClipEndMsRef.current = null;
+			timeline.setSpeedRegions(editor.speedRegions);
+			timeline.setAnnotationRegions(editor.annotationRegions);
+			timeline.setAudioRegions(editor.audioRegions);
+			timeline.setSourceAudioTrackSettingsByClip(editor.sourceAudioTrackSettingsByClip ?? {});
+			timeline.setDefaultSourceAudioTrackSettings(
+				editor.defaultSourceAudioTrackSettings ?? {},
+			);
+			timeline.setAutoCaptions(editor.autoCaptions);
+			timeline.setAutoCaptionSettings(editor.autoCaptionSettings);
+			current.setAspectRatio(editor.aspectRatio);
+			timeline.setSelectedZoomId(null);
+			timeline.setSelectedClipId(null);
+			timeline.setSelectedAnnotationId(null);
+			timeline.setSelectedAudioId(null);
+			refs.nextZoomIdRef.current = deriveNextId(
+				"zoom",
+				editor.zoomRegions.map(({ id }) => id),
+			);
+			refs.nextClipIdRef.current = deriveNextId(
+				"clip",
+				editor.clipRegions.map(({ id }) => id),
+			);
+			refs.nextAudioIdRef.current = deriveNextId(
+				"audio",
+				editor.audioRegions.map(({ id }) => id),
+			);
+			refs.nextAnnotationIdRef.current = deriveNextId(
+				"annotation",
+				editor.annotationRegions.map(({ id }) => id),
+			);
+			refs.nextAnnotationZIndexRef.current =
+				editor.annotationRegions.reduce((max, region) => Math.max(max, region.zIndex), 0) +
+				1;
+			current.resetHistory();
+			project.setLastSavedSnapshot(
+				cloneStructured(
+					createProjectData(
+						sourcePath,
+						current.buildPersistedEditorState(editor),
+						loadedProject.projectId ?? null,
+					),
 				),
-			),
-		);
-		await current.refreshProjectLibrary();
-		return true;
-	}, []);
+			);
+			await current.refreshProjectLibrary();
+			return true;
+		},
+		[uiText],
+	);
 
 	const currentProjectSnapshot = useMemo(
 		() =>

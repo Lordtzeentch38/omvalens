@@ -1,3 +1,5 @@
+// Modified by OmvaLens, 2026-10-11: localized interface text. AGPL-3.0.
+import { useUiText } from "@/contexts/I18nContext";
 // Modified by the OmvaLens fork, 2026-10-10. See FORK_CHANGES.md; AGPL-3.0.
 import { Button, Description, Modal, Surface } from "@heroui/react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
@@ -33,6 +35,7 @@ const features = [
 
 // Decorative product illustrations stay crisp as the image frame changes size.
 function FeatureIllustration({ step }: { step: number }) {
+	const uiText = useUiText();
 	return (
 		<div aria-hidden="true" className="flex h-full items-center justify-center p-6 sm:p-10">
 			<div className="relative w-full max-w-[580px] overflow-hidden rounded-2xl border border-white/50 bg-white/85 text-zinc-900 shadow-2xl backdrop-blur-xl">
@@ -41,7 +44,7 @@ function FeatureIllustration({ step }: { step: number }) {
 						<span key={i} className="size-2 rounded-full bg-zinc-300" />
 					))}
 					<span className="ml-3 text-xs font-medium">
-						{features[step].name === "Share" ? "Your recording" : "OmvaLens"}
+						{features[step].name === "Share" ? uiText("Your recording") : "OmvaLens"}
 					</span>
 				</div>
 				<div className="relative mx-5 mb-5 mt-4 flex aspect-video items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-indigo-200 via-sky-100 to-rose-200">
@@ -54,7 +57,7 @@ function FeatureIllustration({ step }: { step: number }) {
 					{step === 0 && (
 						<div className="absolute bottom-3 flex items-center gap-3 rounded-xl bg-white px-4 py-2 shadow-lg">
 							<Monitor size={20} />
-							<span className="text-xs">Entire screen</span>
+							<span className="text-xs">{uiText("Entire screen")}</span>
 							<Record size={24} weight="fill" className="text-red-500" />
 						</div>
 					)}
@@ -62,7 +65,7 @@ function FeatureIllustration({ step }: { step: number }) {
 						<div className="absolute bottom-3 flex items-center gap-3 rounded-xl bg-white px-4 py-2 shadow-lg">
 							<SlidersHorizontal size={20} />
 							<div className="h-1.5 w-24 rounded-full bg-blue-500" />
-							<span className="text-xs">Preview</span>
+							<span className="text-xs">{uiText("Preview")}</span>
 						</div>
 					)}
 					{step === 2 && (
@@ -74,7 +77,7 @@ function FeatureIllustration({ step }: { step: number }) {
 				{step === 2 && (
 					<div className="mx-5 mb-5 flex items-center justify-center gap-2 rounded-lg bg-blue-500 p-3 text-sm font-medium text-white">
 						<Link size={18} />
-						Copy link
+						{uiText("Copy link")}
 						<Check size={16} />
 					</div>
 				)}
@@ -92,6 +95,7 @@ export function OnboardingFeature({
 	onStep: (step: number) => void;
 	onFinish: () => void;
 }) {
+	const uiText = useUiText();
 	const reduceMotion = useReducedMotion();
 	const feature = features[step];
 	return (
@@ -114,16 +118,18 @@ export function OnboardingFeature({
 				<div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
 					<Modal.Header aria-live="polite" className="min-w-0 flex-1 gap-2">
 						<Modal.Heading className="text-2xl font-semibold tracking-tight sm:text-3xl">
-							{feature.title}
+							{uiText(feature.title)}
 						</Modal.Heading>
 						<Description className="text-sm leading-relaxed">
-							{feature.description}
+							{uiText(feature.description)}
 						</Description>
 					</Modal.Header>
 					<Modal.Footer className="shrink-0 gap-2">
 						<Button
 							isIconOnly
-							aria-label={step === 0 ? "Back to sign in" : "Previous feature"}
+							aria-label={
+								step === 0 ? uiText("Back to sign in") : uiText("Previous feature")
+							}
 							variant="secondary"
 							onPress={() => onStep(step - 1)}
 						>
@@ -131,7 +137,7 @@ export function OnboardingFeature({
 						</Button>
 						<Button
 							isIconOnly
-							aria-label={step === 2 ? "Get started" : "Next"}
+							aria-label={step === 2 ? uiText("Get started") : uiText("Next")}
 							variant="secondary"
 							onPress={() => (step === 2 ? onFinish() : onStep(step + 1))}
 						>

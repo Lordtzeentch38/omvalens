@@ -1,3 +1,5 @@
+// Modified by OmvaLens, 2026-10-11: native dialog translations. AGPL-3.0.
+import { nativeText, localeEvents } from "./nativeI18n";
 // Modified by the ScreenRecorder fork, 2026-10-10. See FORK_CHANGES.md; AGPL-3.0.
 import fs from "node:fs/promises";
 import path from "node:path";
@@ -475,25 +477,25 @@ function setupApplicationMenu() {
 
 	template.push(
 		{
-			label: "File",
+			label: nativeText("File"),
 			submenu: [
 				{
-					label: "Open Projects…",
+					label: nativeText("Open Projects…"),
 					accelerator: "CmdOrCtrl+O",
 					click: () => sendEditorMenuAction("menu-load-project"),
 				},
 				{
-					label: "Save Project…",
+					label: nativeText("Save Project…"),
 					accelerator: "CmdOrCtrl+S",
 					click: () => sendEditorMenuAction("menu-save-project"),
 				},
 				{
-					label: "Save Project As…",
+					label: nativeText("Save Project As…"),
 					accelerator: "CmdOrCtrl+Shift+S",
 					click: () => sendEditorMenuAction("menu-save-project-as"),
 				},
 				{
-					label: "Export Portable Project…",
+					label: nativeText("Export Portable Project…"),
 					click: () => sendEditorMenuAction("menu-export-portable-project"),
 				},
 				...(isMac
@@ -505,7 +507,7 @@ function setupApplicationMenu() {
 			],
 		},
 		{
-			label: "Edit",
+			label: nativeText("Edit"),
 			submenu: [
 				{ role: "undo" },
 				{ role: "redo" },
@@ -517,7 +519,7 @@ function setupApplicationMenu() {
 			],
 		},
 		{
-			label: "View",
+			label: nativeText("View"),
 			submenu: [
 				{ role: "reload" },
 				{ role: "forceReload" },
@@ -531,25 +533,27 @@ function setupApplicationMenu() {
 			],
 		},
 		{
-			label: "Window",
+			label: nativeText("Window"),
 			submenu: isMac
 				? [{ role: "minimize" }, { role: "zoom" }, { type: "separator" }, { role: "front" }]
 				: [{ role: "minimize" }, { role: "close" }],
 		},
 		{
-			label: "Help",
+			label: nativeText("Help"),
 			submenu: [
 				{
-					label: "About OmvaLens",
+					label: nativeText("About OmvaLens"),
 					click: () =>
 						void dialog.showMessageBox({
 							title: "OmvaLens",
-							message: "OmvaLens — independent open-source fork",
-							detail: "Based on Recordly by webadderallorg and contributors. Licensed under GNU AGPLv3. Original copyright notices are retained.\n\nOur additions: original name and logo, portable projects, export file checks, guided backup recovery and Windows window capture fixes (10 October 2026). This software is provided without warranty. See LICENSE.md, BRANDING_IT.md and FORK_CHANGES.md in the distribution.",
+							message: nativeText("OmvaLens — independent open-source fork"),
+							detail: nativeText(
+								"Based on Recordly by webadderallorg and contributors. Licensed under GNU AGPLv3. Original copyright notices are retained.\n\nOur additions: original name and logo, portable projects, export file checks, guided backup recovery and Windows window capture fixes (10 October 2026). This software is provided without warranty. See LICENSE.md, BRANDING_IT.md and FORK_CHANGES.md in the distribution.",
+							),
 						}),
 				},
 				{
-					label: "Check for Updates…",
+					label: nativeText("Check for Updates…"),
 					click: () => {
 						void checkForAppUpdates(getUpdateDialogWindow, { manual: true });
 					},
@@ -558,9 +562,42 @@ function setupApplicationMenu() {
 		},
 	);
 
+	const roleLabels: Record<string, string> = {
+		undo: "Undo",
+		redo: "Redo",
+		cut: "Cut",
+		copy: "Copy",
+		paste: "Paste",
+		selectAll: "Select All",
+		reload: "Reload",
+		forceReload: "Force Reload",
+		toggleDevTools: "Toggle Developer Tools",
+		resetZoom: "Actual Size",
+		zoomIn: "Zoom In",
+		zoomOut: "Zoom Out",
+		togglefullscreen: "Toggle Full Screen",
+		minimize: "Minimize",
+		close: "Close",
+		quit: "Quit",
+		about: "About OmvaLens",
+	};
+	const localizeRoles = (items: Electron.MenuItemConstructorOptions[]) => {
+		for (const item of items) {
+			if (!item.label && item.role && roleLabels[item.role])
+				item.label = nativeText(roleLabels[item.role]);
+			if (Array.isArray(item.submenu)) localizeRoles(item.submenu);
+		}
+	};
+	localizeRoles(template);
 	const menu = Menu.buildFromTemplate(template);
 	Menu.setApplicationMenu(menu);
 }
+
+let trayRecording = false;
+localeEvents.on("changed", () => {
+	setupApplicationMenu();
+	updateTrayMenu(trayRecording);
+});
 
 function isPrimaryTrayClick(event: unknown) {
 	const button =
@@ -738,13 +775,16 @@ ipcMain.handle("check-for-app-updates", async () => {
 });
 
 function updateTrayMenu(recording: boolean = false) {
+	trayRecording = recording;
 	if (!tray) return;
 	const trayIcon = recording ? getRecordingTrayIcon() : getDefaultTrayIcon();
-	const trayToolTip = recording ? `Recording: ${selectedSourceName}` : "OmvaLens";
+	const trayToolTip = recording
+		? nativeText("Recording: {{source}}", { source: selectedSourceName })
+		: "OmvaLens";
 	const menuTemplate = recording
 		? [
 				{
-					label: "Show Controls",
+					label: nativeText("Show Controls"),
 					click: () => {
 						if (!showHudOverlayFromTray()) {
 							focusOrCreateMainWindow();
@@ -752,7 +792,7 @@ function updateTrayMenu(recording: boolean = false) {
 					},
 				},
 				{
-					label: "Stop Recording",
+					label: nativeText("Stop Recording"),
 					click: () => {
 						if (mainWindow && !mainWindow.isDestroyed()) {
 							mainWindow.webContents.send("stop-recording-from-tray");
@@ -762,7 +802,7 @@ function updateTrayMenu(recording: boolean = false) {
 			]
 		: [
 				{
-					label: "Open",
+					label: nativeText("Open"),
 					click: () => {
 						if (!showHudOverlayFromTray()) {
 							focusOrCreateMainWindow();
@@ -770,7 +810,7 @@ function updateTrayMenu(recording: boolean = false) {
 					},
 				},
 				{
-					label: "Quit",
+					label: nativeText("Quit"),
 					click: () => {
 						app.quit();
 					},
@@ -858,11 +898,13 @@ function createEditorWindowWrapper() {
 		offerDiscard: async () => {
 			const result = await dialog.showMessageBox(editorWindow, {
 				type: "warning",
-				buttons: ["Discard & Close", "Cancel"],
+				buttons: [nativeText("Discard & Close"), nativeText("Cancel")],
 				defaultId: 1,
 				cancelId: 1,
-				title: "Project could not be saved",
-				message: "Saving failed or did not respond. Discard unsaved changes and close?",
+				title: nativeText("Project could not be saved"),
+				message: nativeText(
+					"Saving failed or did not respond. Discard unsaved changes and close?",
+				),
 			});
 			return result.response === 0;
 		},

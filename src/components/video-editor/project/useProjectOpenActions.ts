@@ -1,3 +1,5 @@
+// Modified by OmvaLens, 2026-10-11: localized interface text. AGPL-3.0.
+import { useUiText } from "@/contexts/I18nContext";
 import {
 	type Dispatch,
 	type MutableRefObject,
@@ -52,6 +54,7 @@ export function useProjectOpenActions({
 	handleSaveProject,
 	handleSaveProjectAs,
 }: UseProjectOpenActionsInput) {
+	const uiText = useUiText();
 	const confirmReplaceSourceWithUnsavedChanges = useCallback(
 		async (_actionLabel: string) => {
 			if (!hasUnsavedChanges) return true;
@@ -108,12 +111,14 @@ export function useProjectOpenActions({
 				project.setProjectBrowserOpen(false);
 				await refreshProjectLibrary();
 				toast.success(
-					result.path ? `Project loaded from ${result.path}` : "Project loaded",
+					result.path
+						? uiText("Project loaded from {{value1}}", { value1: result.path })
+						: "Project loaded",
 				);
 				return;
 			}
 			if (!result.path) {
-				toast.error("No media file selected");
+				toast.error(uiText("No media file selected"));
 				return;
 			}
 
@@ -121,7 +126,7 @@ export function useProjectOpenActions({
 			const setPathResult = await window.electronAPI.setCurrentVideoPath(sourcePath, {
 				preserveProjectPath: false,
 			});
-			if (!setPathResult.success) throw new Error("Could not load media");
+			if (!setPathResult.success) throw new Error(uiText("Could not load media"));
 			const sourceVideoUrl = await resolveVideoUrl(sourcePath);
 			try {
 				videoPlaybackRef.current?.pause();
@@ -148,13 +153,14 @@ export function useProjectOpenActions({
 			applySessionPresentation(null);
 			project.setProjectBrowserOpen(false);
 			await refreshProjectLibrary();
-			toast.success("Media imported");
+			toast.success(uiText("Media imported"));
 		} catch (error) {
 			project.setError(
 				`Could not load file: ${error instanceof Error ? error.message : String(error)}`,
 			);
 		}
 	}, [
+		uiText,
 		confirmReplaceSourceWithUnsavedChanges,
 		applyLoadedProject,
 		project,

@@ -1,3 +1,5 @@
+// Modified by OmvaLens, 2026-10-11: localized interface text. AGPL-3.0.
+import { useUiText } from "@/contexts/I18nContext";
 // Modified by the OmvaLens fork, 2026-10-10. See FORK_CHANGES.md; AGPL-3.0.
 import { fixWebmDuration } from "@fix-webm-duration/fix";
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -375,6 +377,7 @@ async function createAudioInputDeviceSnapshot(): Promise<
 }
 
 export function useScreenRecorder(): UseScreenRecorderReturn {
+	const uiText = useUiText();
 	const [recording, setRecording] = useState(false);
 	const [paused, setPaused] = useState(false);
 	const [starting, setStarting] = useState(false);
@@ -920,14 +923,20 @@ export function useScreenRecorder(): UseScreenRecorderReturn {
 						result.error || "Failed to save the fallback microphone audio track";
 					console.warn("Failed to store microphone sidecar:", errorMessage);
 					toast.error(
-						`${errorMessage}. Recording was saved without the fallback microphone track.`,
+						uiText(
+							"{{value1}}. Recording was saved without the fallback microphone track.",
+							{ value1: errorMessage },
+						),
 						{ id: MICROPHONE_SIDECAR_ERROR_TOAST_ID, duration: 10000 },
 					);
 				}
 			} catch (error) {
 				console.warn("Failed to store microphone sidecar:", error);
 				toast.error(
-					`${getErrorMessage(error)}. Recording was saved without the fallback microphone track.`,
+					uiText(
+						"{{value1}}. Recording was saved without the fallback microphone track.",
+						{ value1: getErrorMessage(error) },
+					),
 					{ id: MICROPHONE_SIDECAR_ERROR_TOAST_ID, duration: 10000 },
 				);
 			} finally {
@@ -939,7 +948,7 @@ export function useScreenRecorder(): UseScreenRecorderReturn {
 				resetMicFallbackTimingDiagnostics();
 			}
 		},
-		[resetMicFallbackTimingDiagnostics],
+		[uiText, resetMicFallbackTimingDiagnostics],
 	);
 
 	const stopWebcamRecorder = useCallback(async () => {
@@ -1133,7 +1142,7 @@ export function useScreenRecorder(): UseScreenRecorderReturn {
 		const selectedSource =
 			existingSource ?? (platform === "linux" ? LINUX_PORTAL_SOURCE : null);
 		if (!selectedSource) {
-			alert("Please select a source to record");
+			alert(uiText("Please select a source to record"));
 			return null;
 		}
 
@@ -1174,7 +1183,9 @@ export function useScreenRecorder(): UseScreenRecorderReturn {
 					void logNativeCaptureDiagnostics("is-native-windows-capture-available");
 					hasShownNativeWindowsFallbackToast.current = true;
 					toast.info(
-						"Native Windows capture is unavailable. Falling back to browser capture.",
+						uiText(
+							"Native Windows capture is unavailable. Falling back to browser capture.",
+						),
 					);
 				}
 			} catch {
@@ -1182,7 +1193,9 @@ export function useScreenRecorder(): UseScreenRecorderReturn {
 				if (!hasShownNativeWindowsFallbackToast.current) {
 					hasShownNativeWindowsFallbackToast.current = true;
 					toast.info(
-						"Unable to check native Windows capture. Falling back to browser capture.",
+						uiText(
+							"Unable to check native Windows capture. Falling back to browser capture.",
+						),
 					);
 				}
 			}
@@ -1209,6 +1222,7 @@ export function useScreenRecorder(): UseScreenRecorderReturn {
 			micLabel,
 		};
 	}, [
+		uiText,
 		logNativeCaptureDiagnostics,
 		microphoneDeviceId,
 		microphoneEnabled,
@@ -1741,7 +1755,9 @@ export function useScreenRecorder(): UseScreenRecorderReturn {
 						if (!hasShownNativeWindowsFallbackToast.current) {
 							hasShownNativeWindowsFallbackToast.current = true;
 							toast.warning(
-								"Native Windows capture failed to start. Falling back to browser capture.",
+								uiText(
+									"Native Windows capture failed to start. Falling back to browser capture.",
+								),
 							);
 						}
 					} else if (!nativeResult.userNotified) {
@@ -1880,7 +1896,10 @@ export function useScreenRecorder(): UseScreenRecorderReturn {
 							toast.error(
 								permissionDenied
 									? "Microphone permission denied. Recording will continue without microphone audio."
-									: `${getErrorMessage(micError)}. Recording will continue without microphone audio.`,
+									: uiText(
+											"{{value1}}. Recording will continue without microphone audio.",
+											{ value1: getErrorMessage(micError) },
+										),
 								{ id: MICROPHONE_FALLBACK_ERROR_TOAST_ID, duration: 10000 },
 							);
 						}
@@ -1936,7 +1955,7 @@ export function useScreenRecorder(): UseScreenRecorderReturn {
 				browserCaptureSource?.id?.startsWith("window:fallback:")
 			) {
 				throw new Error(
-					"Selected display is not available for browser capture on this system.",
+					uiText("Selected display is not available for browser capture on this system."),
 				);
 			}
 
@@ -2006,7 +2025,9 @@ export function useScreenRecorder(): UseScreenRecorderReturn {
 							audioError,
 						);
 						alert(
-							"System audio is not available for this source. Recording will continue without system audio.",
+							uiText(
+								"System audio is not available for this source. Recording will continue without system audio.",
+							),
 						);
 						screenMediaStream = useLinuxPortal
 							? await acquireLinuxPortalStream(false)
@@ -2029,7 +2050,7 @@ export function useScreenRecorder(): UseScreenRecorderReturn {
 
 				videoTrack = screenMediaStream.getVideoTracks()[0];
 				if (!videoTrack) {
-					throw new Error("Video track is not available.");
+					throw new Error(uiText("Video track is not available."));
 				}
 
 				stream.current.addTrack(videoTrack);
@@ -2045,7 +2066,9 @@ export function useScreenRecorder(): UseScreenRecorderReturn {
 					} catch (audioError) {
 						console.warn("Failed to get microphone access:", audioError);
 						alert(
-							"Microphone access was denied. Recording will continue without microphone audio.",
+							uiText(
+								"Microphone access was denied. Recording will continue without microphone audio.",
+							),
 						);
 						setMicrophoneEnabled(false);
 					}
@@ -2107,7 +2130,7 @@ export function useScreenRecorder(): UseScreenRecorderReturn {
 			}
 
 			if (!stream.current || !videoTrack) {
-				throw new Error("Media stream is not available.");
+				throw new Error(uiText("Media stream is not available."));
 			}
 
 			try {
@@ -2258,7 +2281,7 @@ export function useScreenRecorder(): UseScreenRecorderReturn {
 			console.error("Failed to start recording:", error);
 			alert(
 				error instanceof Error
-					? `Failed to start recording: ${error.message}`
+					? uiText("Failed to start recording: {{value1}}", { value1: error.message })
 					: "Failed to start recording",
 			);
 			setRecording(false);

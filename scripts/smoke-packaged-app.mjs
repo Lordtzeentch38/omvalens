@@ -1,4 +1,4 @@
-// ScreenRecorder fork, 2026-10-10. AGPL-3.0; see FORK_CHANGES.md.
+// Modified by OmvaLens, 2026-10-11: verify Italian renderer/native UI. AGPL-3.0.
 import assert from "node:assert/strict";
 import { copyFile, mkdir, stat, writeFile } from "node:fs/promises";
 import path from "node:path";
@@ -51,13 +51,27 @@ try {
 			undefined,
 			{ timeout: 30000 },
 		);
-		const welcome = editor.getByRole("dialog", { name: "Welcome to OmvaLens" });
+		const welcome = editor.getByRole("dialog", {
+			name: /^(Welcome to|Benvenuto in) OmvaLens$/,
+		});
 		if (await welcome.isVisible()) {
 			await welcome.screenshot({ path: path.join(artifacts, "welcome.png") });
 			assert.equal(await welcome.locator('img[src*="omvalens-128.png"]').count(), 1);
 			await welcome.getByRole("button", { name: /^(Close|Chiudi)$/ }).click();
 			await welcome.waitFor({ state: "hidden" });
 		}
+		await editor.evaluate(() => {
+			localStorage.setItem("recordly.locale", "it");
+			window.dispatchEvent(
+				new StorageEvent("storage", { key: "recordly.locale", newValue: "it" }),
+			);
+		});
+		await editor.waitForFunction(() => document.documentElement.lang === "it");
+		const nativeMenu = await app.evaluate(({ Menu }) =>
+			Menu.getApplicationMenu()?.items.map((item) => item.label),
+		);
+		assert.ok(nativeMenu.includes("Modifica"), JSON.stringify(nativeMenu));
+		result.nativeMenu = nativeMenu;
 		const archive = path.join(artifacts, "smoke-project.screenrecorder");
 		await app.evaluate(({ dialog }, archive) => {
 			dialog.showSaveDialog = async () => ({ canceled: false, filePath: archive });
@@ -66,7 +80,9 @@ try {
 		await editor
 			.getByRole("button", { name: /^(Portable project|Progetto portabile)$/ })
 			.click();
-		await editor.getByText("Portable project exported", { exact: true }).waitFor();
+		await editor
+			.getByText(/^(Portable project exported|Progetto portabile esportato)$/)
+			.waitFor();
 		assert.ok((await stat(archive)).size > 0);
 		const imported = await editor.evaluate(
 			(archive) => window.electronAPI.openProjectFileAtPath(archive),

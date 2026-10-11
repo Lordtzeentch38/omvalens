@@ -12,6 +12,22 @@ Original copyright and attribution notices are retained. This fork and its
 integrated modifications are licensed under [AGPLv3](LICENSE.md). Existing
 third-party notices remain in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
+## Changes introduced in this fork — 11 October 2026
+
+- **Shared progress tracking:** checkable development checklist with completion
+  criteria, dated evidence and pending manual validation. Project instructions
+  require updating it after each completed task.
+- **Italian UI migration:** 567 additional catalog-backed phrases covering the
+  onboarding, authentication, dashboard, editor tools, accessible labels,
+  notifications and native menus/dialogs. Existing Italian catalog omissions
+  corrected. Language selection persists, synchronizes between windows and
+  updates native menus. User content and compatibility identifiers are retained.
+- **Translation validation:** nonempty catalog values, interpolation parity,
+  English source mappings, candidate audit and locale-switching UI tests.
+  Existing translations reused for other locales; untranslated additions retain
+  English fallback. Full multilingual completion remains tracked separately in
+  [CHECKLIST_SVILUPPO_IT.md](CHECKLIST_SVILUPPO_IT.md).
+
 ## Changes introduced in this fork — 10 October 2026
 
 - **Hosting preparation**: project owner/account references and hosting guidance,

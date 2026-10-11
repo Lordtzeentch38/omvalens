@@ -1,8 +1,11 @@
+// Modified by OmvaLens, 2026-10-11: localized interface text. AGPL-3.0.
+import { useUiText } from "@/contexts/I18nContext";
 import { useEffect, useRef, useState } from "react";
 import { FilmStrip } from "@/components/ui/icons";
 import type { RecordingLibraryEntry } from "@/types/recordingLibrary";
 
 export function RecordingThumbnail({ entry }: { entry: RecordingLibraryEntry }) {
+	const uiText = useUiText();
 	const host = useRef<HTMLSpanElement>(null);
 	const [src, setSrc] = useState<string>();
 	const [failed, setFailed] = useState(false);
@@ -51,11 +54,11 @@ export function RecordingThumbnail({ entry }: { entry: RecordingLibraryEntry }) 
 					}}
 				/>
 			) : failed ? (
-				<FilmStrip className="size-5" aria-label="Preview unavailable" />
+				<FilmStrip className="size-5" aria-label={uiText("Preview unavailable")} />
 			) : (
 				<span
 					className="size-full animate-pulse bg-default"
-					aria-label="Loading preview image"
+					aria-label={uiText("Loading preview image")}
 				/>
 			)}
 		</span>

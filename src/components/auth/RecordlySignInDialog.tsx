@@ -1,3 +1,5 @@
+// Modified by OmvaLens, 2026-10-11: localized interface text. AGPL-3.0.
+import { useUiText } from "@/contexts/I18nContext";
 // Modified by the OmvaLens fork, 2026-10-10. See FORK_CHANGES.md; AGPL-3.0.
 import { GithubLogo } from "@phosphor-icons/react";
 import { OnboardingFeature } from "./OnboardingFeature";
@@ -52,8 +54,10 @@ function friendlyAuthError(
 		if (action === "google") {
 			return t("editor.cloud.googleUnavailable");
 		}
-		if (action === "azure") return "Microsoft sign-in is not available yet.";
-		if (action === "github") return "GitHub sign-in is not available yet.";
+		if (action === "azure")
+			return t("common.auth.providerUnavailable", undefined, { provider: "Microsoft" });
+		if (action === "github")
+			return t("common.auth.providerUnavailable", undefined, { provider: "GitHub" });
 		return t("editor.cloud.providerUnavailable");
 	}
 	return message;
@@ -69,6 +73,7 @@ export function RecordlySignInDialog({
 	callbackError,
 	onAuthenticated,
 }: Props) {
+	const uiText = useUiText();
 	const { t } = useI18n();
 	const awaitingSignIn = useRef(false);
 	const wide = onboarding || variant === "wide";
@@ -110,7 +115,7 @@ export function RecordlySignInDialog({
 		try {
 			await action();
 		} catch (error) {
-			setMessage(friendlyAuthError(error, label, t));
+			setMessage(uiText(friendlyAuthError(error, label, t)));
 		} finally {
 			setBusy(undefined);
 		}
@@ -125,7 +130,7 @@ export function RecordlySignInDialog({
 		}
 		void run("email", async () => {
 			if (!configured && email.trim().toLowerCase() !== "test@email.com") {
-				throw new Error("Email sign-in is not available yet.");
+				throw new Error(uiText("Email sign-in is not available yet."));
 			}
 			await signInWithEmail(email.trim(), password);
 		});
@@ -139,7 +144,9 @@ export function RecordlySignInDialog({
 		void run("link", async () => {
 			await sendSignInLink(email.trim());
 			setMessage(
-				"Check your inbox to verify your email and continue to OmvaLens. Open the link on this computer with OmvaLens running.",
+				uiText(
+					"Check your inbox to verify your email and continue to OmvaLens. Open the link on this computer with OmvaLens running.",
+				),
 			);
 			setLinkSent(true);
 		});
@@ -162,7 +169,7 @@ export function RecordlySignInDialog({
 					<MotionDialog
 						layout={!onboarding}
 						transition={transition}
-						aria-label={onboarding ? "Welcome to OmvaLens" : undefined}
+						aria-label={onboarding ? uiText("Welcome to OmvaLens") : undefined}
 						data-onboarding-state={
 							onboarding ? (feature ? "feature" : "login") : undefined
 						}
@@ -220,11 +227,15 @@ export function RecordlySignInDialog({
 											</div>
 											<Modal.Heading className="whitespace-nowrap text-[clamp(12px,5cqw,22px)] font-semibold leading-tight tracking-tight">
 												{user
-													? "Your account"
-													: "Beautiful, shareable screen recordings"}
+													? uiText("Your account")
+													: uiText(
+															"Beautiful, shareable screen recordings",
+														)}
 											</Modal.Heading>
 											<Description className="text-sm">
-												{user ? user.email : "Sign in to get started"}
+												{user
+													? user.email
+													: uiText("Sign in to get started")}
 											</Description>
 										</Modal.Header>
 									</motion.div>
@@ -234,7 +245,7 @@ export function RecordlySignInDialog({
 											className="w-full"
 											onPress={() => setFeatureStep(0)}
 										>
-											Continue
+											{uiText("Continue")}
 										</Button>
 									) : user ? (
 										<Button
@@ -280,7 +291,11 @@ export function RecordlySignInDialog({
 													<Button
 														key={provider}
 														variant="secondary"
-														aria-label={`Continue with ${label}`}
+														aria-label={t(
+															"common.auth.continueWith",
+															undefined,
+															{ provider: label },
+														)}
 														className="h-11 w-full min-w-0 gap-2 rounded-xl px-2 text-xs font-medium text-foreground @[360px]:text-sm"
 														isDisabled={disabled || !configured}
 														onPress={() =>
@@ -309,7 +324,7 @@ export function RecordlySignInDialog({
 											<div className="flex items-center gap-4">
 												<Separator className="flex-1" />
 												<span className="text-xs text-muted">
-													or continue with email
+													{uiText("or continue with email")}
 												</span>
 												<Separator className="flex-1" />
 											</div>
@@ -327,7 +342,7 @@ export function RecordlySignInDialog({
 													isRequired
 													isDisabled={disabled}
 												>
-													<Label>Email</Label>
+													<Label>{uiText("Email")}</Label>
 													<Input
 														className="h-12"
 														placeholder="you@example.com"
@@ -343,8 +358,8 @@ export function RecordlySignInDialog({
 														isDisabled={disabled || !configured}
 													>
 														{busy === "link"
-															? "Sending sign-in link…"
-															: "Email me a magic link"}
+															? uiText("Sending sign-in link…")
+															: uiText("Email me a magic link")}
 													</Button>
 												)}
 												<AnimatePresence initial={false}>
@@ -375,7 +390,9 @@ export function RecordlySignInDialog({
 																	isRequired
 																	isDisabled={disabled}
 																>
-																	<Label>Password</Label>
+																	<Label>
+																		{uiText("Password")}
+																	</Label>
 																	<Input
 																		className="h-12"
 																		autoComplete="current-password"
@@ -396,7 +413,7 @@ export function RecordlySignInDialog({
 																		? t(
 																				"editor.cloud.signingIn",
 																			)
-																		: "Sign in"}
+																		: uiText("Sign in")}
 																</Button>
 															</motion.div>
 														</motion.div>
@@ -411,7 +428,7 @@ export function RecordlySignInDialog({
 											className="w-full"
 											onPress={() => setFeatureStep(0)}
 										>
-											Continue without signing in
+											{uiText("Continue without signing in")}
 										</Button>
 									)}
 									{message || callbackError ? (
@@ -423,7 +440,10 @@ export function RecordlySignInDialog({
 											<Alert.Indicator />
 											<Alert.Content>
 												<Alert.Description>
-													{message || callbackError}
+													{message ||
+														(callbackError
+															? uiText(callbackError)
+															: undefined)}
 												</Alert.Description>
 											</Alert.Content>
 										</Alert>

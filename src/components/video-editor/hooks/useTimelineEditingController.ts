@@ -1,3 +1,5 @@
+// Modified by OmvaLens, 2026-10-11: interpolated UI translations. AGPL-3.0.
+import { useUiText } from "@/contexts/I18nContext";
 import type { Dispatch, MutableRefObject, RefObject, SetStateAction } from "react";
 import { useCallback } from "react";
 import { toast } from "@/components/ui/toast";
@@ -58,13 +60,19 @@ type Input = {
 };
 
 export function useTimelineEditingController(input: Input) {
+	const uiText = useUiText();
 	const { timeline } = input;
-	const handleSourceFallbackLoadError = useCallback((error: unknown) => {
-		toast.warning(
-			`Could not load companion audio source: ${summarizeErrorMessage(getErrorMessage(error))}`,
-			{ duration: 10000 },
-		);
-	}, []);
+	const handleSourceFallbackLoadError = useCallback(
+		(error: unknown) => {
+			toast.warning(
+				uiText("Could not load companion audio source: {{value1}}", {
+					value1: summarizeErrorMessage(getErrorMessage(error)),
+				}),
+				{ duration: 10000 },
+			);
+		},
+		[uiText],
+	);
 	const cursor = useCursorTelemetry({
 		videoPath: input.videoPath,
 		videoSourcePath: input.videoSourcePath,

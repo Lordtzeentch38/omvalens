@@ -1,3 +1,5 @@
+// Modified by OmvaLens, 2026-10-11: localized interface text. AGPL-3.0.
+import { useUiText } from "@/contexts/I18nContext";
 import { Dropdown, Input } from "@heroui/react";
 import { DotsThree } from "@/components/ui/icons";
 import { useState } from "react";
@@ -22,6 +24,7 @@ export function FolderRow({
 	colors: string[];
 	onColors: (colors: string[]) => void;
 }) {
+	const uiText = useUiText();
 	const [editing, setEditing] = useState(false);
 	const [draft, setDraft] = useState(folder.name);
 	const finish = () => {
@@ -54,7 +57,7 @@ export function FolderRow({
 					<Input
 						autoFocus
 						onFocus={(event) => event.currentTarget.select()}
-						aria-label="Folder name"
+						aria-label={uiText("Folder name")}
 						className="h-8 w-full min-w-0 border-0 bg-transparent px-0 text-[13px] shadow-none"
 						value={draft}
 						maxLength={80}
@@ -83,18 +86,18 @@ export function FolderRow({
 				<Button
 					variant="ghost"
 					size="icon"
-					aria-label={`Options for ${folder.name}`}
+					aria-label={uiText("Options for {{value1}}", { value1: folder.name })}
 					className="size-6 min-w-6 text-muted-foreground opacity-0 group-hover:opacity-100 focus:opacity-100"
 				>
 					<DotsThree className="size-4" />
 				</Button>
 				<Dropdown.Popover>
-					<Dropdown.Menu aria-label="Folder options">
+					<Dropdown.Menu aria-label={uiText("Folder options")}>
 						<Dropdown.Item id="rename" onAction={edit}>
-							Rename
+							{uiText("Rename")}
 						</Dropdown.Item>
 						<Dropdown.Item id="remove" onAction={onRemove}>
-							Remove folder
+							{uiText("Remove folder")}
 						</Dropdown.Item>
 					</Dropdown.Menu>
 				</Dropdown.Popover>

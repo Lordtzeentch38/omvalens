@@ -18,6 +18,9 @@
   explicit request naming GitHub for that operation. The initial upload does not
   authorize subsequent GitHub uploads.
 - Read `HOSTING.md`, `FORK_CHANGES.md` and `LEGGIMI_IT.md` for current status.
+- Read `CHECKLIST_SVILUPPO_IT.md` before selecting implementation work. Keep it
+  updated during each task and check completed items only after their stated
+  verification criteria pass; record dated evidence and remaining limitations.
 - Git remote `upstream` is the original Recordly project. Never push fork changes there.
 - Treat generic repository upload/publish requests as targeting Forgejo only.
   Do not synchronize GitHub automatically or merely to keep the copies aligned.

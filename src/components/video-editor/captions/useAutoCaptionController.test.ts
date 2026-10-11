@@ -1,5 +1,7 @@
 import { beforeEach, afterEach, expect, it, vi } from "vitest";
 import { useAutoCaptionController } from "./useAutoCaptionController";
+// Modified by OmvaLens, 2026-10-11: isolate this controller from React's locale provider.
+vi.mock("@/contexts/I18nContext", () => ({ useUiText: () => (source: string) => source }));
 const state = vi.hoisted(() => ({ refs: [] as { current: unknown }[], index: 0 }));
 vi.mock("react", () => ({
 	useCallback: (callback: unknown) => callback,

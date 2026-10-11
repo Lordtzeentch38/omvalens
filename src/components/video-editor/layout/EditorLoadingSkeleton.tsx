@@ -1,15 +1,18 @@
+// Modified by OmvaLens, 2026-10-11: localized interface text. AGPL-3.0.
+import { useUiText } from "@/contexts/I18nContext";
 import { Card, Skeleton } from "@heroui/react";
 
 /** Keep the editor's proportions visible while project media is being opened. */
 export function EditorLoadingSkeleton() {
+	const uiText = useUiText();
 	return (
 		<div
 			className="flex h-screen flex-col overflow-hidden bg-editor-bg"
 			role="status"
-			aria-label="Loading editor"
+			aria-label={uiText("Loading editor")}
 			aria-busy="true"
 		>
-			<span className="sr-only">Loading editor…</span>
+			<span className="sr-only">{uiText("Loading editor…")}</span>
 			<div
 				aria-hidden="true"
 				className="flex h-14 shrink-0 items-center justify-between px-5"

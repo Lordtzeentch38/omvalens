@@ -1,3 +1,5 @@
+// Modified by OmvaLens, 2026-10-11: localized interface text. AGPL-3.0.
+import { useUiText } from "@/contexts/I18nContext";
 // Modified by the ScreenRecorder fork, 2026-10-10. See FORK_CHANGES.md; AGPL-3.0.
 import { type RefObject, useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { toast } from "@/components/ui/toast";
@@ -47,6 +49,7 @@ export function useProjectSaveActions({
 	refreshProjectLibrary,
 	remountPreview,
 }: UseProjectSaveActionsInput) {
+	const uiText = useUiText();
 	const {
 		currentProjectPath,
 		lastSavedSnapshot,
@@ -90,7 +93,7 @@ export function useProjectSaveActions({
 			return queueSave(async () => {
 				if (activeSourceRef.current !== currentSourcePath) return false;
 				if (!currentSourcePath) {
-					if (!options?.silent) toast.error("No video loaded");
+					if (!options?.silent) toast.error(uiText("No video loaded"));
 					return false;
 				}
 
@@ -127,7 +130,7 @@ export function useProjectSaveActions({
 								thumbnail,
 							);
 					if (result.canceled) {
-						if (!options?.silent) toast.info("Project save canceled");
+						if (!options?.silent) toast.info(uiText("Project save canceled"));
 						return false;
 					}
 					if (!result.success) {
@@ -153,7 +156,11 @@ export function useProjectSaveActions({
 
 					return true;
 				} catch (error) {
-					toast.error(`Could not save project: ${getErrorMessage(error)}`);
+					toast.error(
+						uiText("Could not save project: {{value1}}", {
+							value1: getErrorMessage(error),
+						}),
+					);
 					return false;
 				} finally {
 					if (remount) remountPreview();
@@ -161,6 +168,7 @@ export function useProjectSaveActions({
 			});
 		},
 		[
+			uiText,
 			clearPendingAutosave,
 			queueSave,
 			currentSourcePath,
@@ -206,11 +214,11 @@ export function useProjectSaveActions({
 		async (name: string, mode: "rename" | "copy" = "rename") => {
 			const trimmedName = name.trim();
 			if (!trimmedName) {
-				toast.error("Project name is required");
+				toast.error(uiText("Project name is required"));
 				return false;
 			}
 			if (!currentSourcePath) {
-				toast.error("No video loaded");
+				toast.error(uiText("No video loaded"));
 				return false;
 			}
 			clearPendingAutosave();
@@ -233,7 +241,7 @@ export function useProjectSaveActions({
 						mode,
 					);
 					if (result.canceled) {
-						toast.info("Project save canceled");
+						toast.info(uiText("Project save canceled"));
 						return false;
 					}
 					if (!result.success) {
@@ -252,7 +260,9 @@ export function useProjectSaveActions({
 							moveProjectShareLink(previousPath, result.path);
 						} catch {
 							toast.error(
-								"Project renamed, but library preferences could not be updated",
+								uiText(
+									"Project renamed, but library preferences could not be updated",
+								),
 							);
 						}
 					}
@@ -278,6 +288,7 @@ export function useProjectSaveActions({
 			});
 		},
 		[
+			uiText,
 			clearPendingAutosave,
 			queueSave,
 			currentSourcePath,
@@ -297,7 +308,7 @@ export function useProjectSaveActions({
 			event?.preventDefault();
 			const name = projectSaveDialogDraft.trim();
 			if (!name) {
-				toast.error("Project name is required");
+				toast.error(uiText("Project name is required"));
 				projectSaveDialogInputRef.current?.focus();
 				return;
 			}
@@ -317,6 +328,7 @@ export function useProjectSaveActions({
 			}
 		},
 		[
+			uiText,
 			projectSaveDialogDraft,
 			setIsSavingProjectDialog,
 			projectSaveDialogInputRef,
@@ -366,7 +378,7 @@ export function useProjectSaveActions({
 	const packagingRef = useRef(false);
 	const handleExportPortableProject = useCallback(async () => {
 		if (packagingRef.current) return;
-		if (!currentSourcePath) return toast.error("No video loaded");
+		if (!currentSourcePath) return toast.error(uiText("No video loaded"));
 		packagingRef.current = true;
 		setIsPackagingProject(true);
 		try {
@@ -380,11 +392,11 @@ export function useProjectSaveActions({
 			if (result.canceled) return;
 			if (!result.success)
 				return toast.error(result.error || "Could not export portable project");
-			toast.success("Portable project exported", {
-				description: "Includes project media, audio and cursor data.",
+			toast.success(uiText("Portable project exported"), {
+				description: uiText("Includes project media, audio and cursor data."),
 				action: result.path
 					? {
-							label: "Show in Folder",
+							label: uiText("Show in Folder"),
 							onClick: () => void window.electronAPI.revealInFolder(result.path!),
 						}
 					: undefined,
@@ -396,6 +408,7 @@ export function useProjectSaveActions({
 			setIsPackagingProject(false);
 		}
 	}, [
+		uiText,
 		currentSourcePath,
 		currentProjectSnapshot,
 		currentPersistedEditorState,

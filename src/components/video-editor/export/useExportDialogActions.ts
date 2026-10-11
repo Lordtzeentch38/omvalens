@@ -1,3 +1,5 @@
+// Modified by OmvaLens, 2026-10-11: localized interface text. AGPL-3.0.
+import { useUiText } from "@/contexts/I18nContext";
 import { type RefObject, useCallback } from "react";
 import { toast } from "@/components/ui/toast";
 import type { ExportFormat, ExportSettings } from "@/lib/exporter";
@@ -31,9 +33,10 @@ export function useExportDialogActions({
 	handleExport,
 	showExportSuccessToast,
 }: UseExportDialogActionsInput) {
+	const uiText = useUiText();
 	const handleOpenExportDropdown = useCallback(() => {
 		if (!videoPath) {
-			toast.error("No video loaded");
+			toast.error(uiText("No video loaded"));
 			return;
 		}
 
@@ -48,21 +51,21 @@ export function useExportDialogActions({
 		session.setExportProgress(null);
 		session.setExportError(null);
 		session.setExportedFilePath(undefined);
-	}, [videoPath, session]);
+	}, [uiText, videoPath, session]);
 
 	const resolveCurrentSettings = useCallback(
 		(exportFormat: ExportFormat = settings.exportFormat) => {
 			const video = videoPlaybackRef.current?.video;
 			if (!videoPath) {
-				toast.error("No video loaded");
+				toast.error(uiText("No video loaded"));
 				return null;
 			}
 			if (!video) {
-				toast.error("Video not ready");
+				toast.error(uiText("Video not ready"));
 				return null;
 			}
 			if (video.videoWidth <= 0 || video.videoHeight <= 0) {
-				toast.error("Video metadata is still loading");
+				toast.error(uiText("Video metadata is still loading"));
 				return null;
 			}
 
@@ -81,7 +84,7 @@ export function useExportDialogActions({
 				gifSizePreset: settings.gifSizePreset,
 			});
 		},
-		[videoPath, videoPlaybackRef, hasCaptionsForSidecar, settings],
+		[uiText, videoPath, videoPlaybackRef, hasCaptionsForSidecar, settings],
 	);
 
 	const handleStartExportFromDropdown = useCallback(() => {
@@ -107,14 +110,14 @@ export function useExportDialogActions({
 		session.exportRunIdRef.current += 1;
 		session.exporterRef.current?.cancel();
 		session.exporterRef.current = null;
-		toast.info("Export canceled");
+		toast.info(uiText("Export canceled"));
 		session.clearPendingExportSave();
 		session.setShowExportDropdown(false);
 		session.setIsExporting(false);
 		session.setExportProgress(null);
 		session.setExportError(null);
 		session.setExportedFilePath(undefined);
-	}, [session]);
+	}, [uiText, session]);
 
 	const handleExportDropdownClose = useCallback(() => {
 		session.clearPendingExportSave();
@@ -140,13 +143,13 @@ export function useExportDialogActions({
 						pendingSave.fileName,
 						pendingSave.captionSidecar,
 					)
-				: { success: false, message: "No pending export to save" };
+				: { success: false, message: uiText("No pending export to save") };
 
 		if (saveResult.canceled) {
 			session.setExportError(
 				"Save dialog canceled. Click Save Again to save without re-rendering.",
 			);
-			toast.info("Save canceled. You can try again.");
+			toast.info(uiText("Save canceled. You can try again."));
 			return;
 		}
 		if (saveResult.success && saveResult.path) {
@@ -162,7 +165,7 @@ export function useExportDialogActions({
 		const errorMessage = saveResult.message || "Failed to save video";
 		session.setExportError(errorMessage);
 		toast.error(errorMessage);
-	}, [session, showExportSuccessToast]);
+	}, [uiText, session, showExportSuccessToast]);
 
 	const revealExportedFile = useCallback(async () => {
 		if (!session.exportedFilePath) return;
@@ -172,9 +175,11 @@ export function useExportDialogActions({
 				toast.error(result.error || result.message || "Failed to reveal item in folder.");
 			}
 		} catch (error) {
-			toast.error(`Failed to reveal item in folder: ${String(error)}`);
+			toast.error(
+				uiText("Failed to reveal item in folder: {{value1}}", { value1: String(error) }),
+			);
 		}
-	}, [session.exportedFilePath]);
+	}, [uiText, session.exportedFilePath]);
 
 	return {
 		handleOpenExportDropdown,

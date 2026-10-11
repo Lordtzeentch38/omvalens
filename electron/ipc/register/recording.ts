@@ -1,3 +1,5 @@
+// Modified by OmvaLens, 2026-10-11: native dialog translations. AGPL-3.0.
+import { nativeText } from "../../nativeI18n";
 // Modified by the OmvaLens fork, 2026-10-10. See FORK_CHANGES.md; AGPL-3.0.
 import type { ChildProcessWithoutNullStreams } from "node:child_process";
 import { execFile, spawn } from "node:child_process";
@@ -839,11 +841,14 @@ export function registerRecordingHandlers(
 				) {
 					const { response } = await dialog.showMessageBox({
 						type: "warning",
-						title: "Screen Recording Permission Required",
-						message:
+						title: nativeText("Screen Recording Permission Required"),
+						message: nativeText(
 							"OmvaLens needs screen recording permission to capture your screen.",
-						detail: "Please open System Settings > Privacy & Security > Screen Recording, make sure OmvaLens is toggled ON, then try recording again.",
-						buttons: ["Open System Settings", "Cancel"],
+						),
+						detail: nativeText(
+							"Please open System Settings > Privacy & Security > Screen Recording, make sure OmvaLens is toggled ON, then try recording again.",
+						),
+						buttons: [nativeText("Open System Settings"), nativeText("Cancel")],
 						defaultId: 0,
 						cancelId: 1,
 					});
@@ -873,10 +878,14 @@ export function registerRecordingHandlers(
 				if (errorStr.includes("MICROPHONE_PERMISSION_DENIED")) {
 					const { response } = await dialog.showMessageBox({
 						type: "warning",
-						title: "Microphone Permission Required",
-						message: "OmvaLens needs microphone permission to record audio.",
-						detail: "Please open System Settings > Privacy & Security > Microphone, make sure OmvaLens is toggled ON, then try recording again.",
-						buttons: ["Open System Settings", "Cancel"],
+						title: nativeText("Microphone Permission Required"),
+						message: nativeText(
+							"OmvaLens needs microphone permission to record audio.",
+						),
+						detail: nativeText(
+							"Please open System Settings > Privacy & Security > Microphone, make sure OmvaLens is toggled ON, then try recording again.",
+						),
+						buttons: [nativeText("Open System Settings"), nativeText("Cancel")],
 						defaultId: 0,
 						cancelId: 1,
 					});

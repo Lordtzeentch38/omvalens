@@ -1,3 +1,5 @@
+// Modified by OmvaLens, 2026-10-11: interpolated UI translations. AGPL-3.0.
+import { useUiText } from "@/contexts/I18nContext";
 import { useTimelineContext } from "dnd-timeline";
 import { useEffect, useState, type RefObject } from "react";
 import { cn } from "@/lib/utils";
@@ -28,6 +30,7 @@ export default function PlaybackCursor({
 	keyframes = [],
 	isLoading = false,
 }: PlaybackCursorProps) {
+	const uiText = useUiText();
 	const { sidebarWidth, direction, range, valueToPixels, pixelsToValue } = useTimelineContext();
 	const sideProperty = direction === "rtl" ? "right" : "left";
 	const [isDragging, setIsDragging] = useState(false);
@@ -107,7 +110,9 @@ export default function PlaybackCursor({
 			>
 				<button
 					type="button"
-					aria-label={`Playhead ${formatPlayheadTime(clampedTime)}`}
+					aria-label={uiText("Playhead {{value1}}", {
+						value1: formatPlayheadTime(clampedTime),
+					})}
 					data-testid="playhead-cap"
 					onMouseEnter={() => setIsHovered(true)}
 					onMouseLeave={() => setIsHovered(false)}

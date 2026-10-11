@@ -1,3 +1,5 @@
+// Modified by OmvaLens, 2026-10-11: interpolated UI translations. AGPL-3.0.
+import { useUiText } from "@/contexts/I18nContext";
 import { Kbd, Description, Modal } from "@heroui/react";
 import { Keyboard, ArrowCounterClockwise as RotateCcw } from "@/components/ui/icons";
 import { useCallback, useEffect, useState } from "react";
@@ -28,6 +30,7 @@ import { useScopedT } from "../../contexts/I18nContext";
 const MODIFIER_KEYS = new Set(["Control", "Shift", "Alt", "Meta"]);
 
 export function ShortcutsConfigDialog() {
+	const uiText = useUiText();
 	const t = useScopedT("dialogs");
 	const { shortcuts, isMac, isConfigOpen, closeConfig, setShortcuts, persistShortcuts } =
 		useShortcuts();
@@ -147,7 +150,7 @@ export function ShortcutsConfigDialog() {
 								<div key={action}>
 									<div className="flex items-center justify-between gap-4 border-b border-separator py-3">
 										<span className="text-[13px] text-foreground">
-											{SHORTCUT_LABELS[action]}
+											{uiText(SHORTCUT_LABELS[action])}
 										</span>
 										<Button
 											type="button"
@@ -155,8 +158,19 @@ export function ShortcutsConfigDialog() {
 											size="sm"
 											aria-label={
 												isCapturing
-													? `${SHORTCUT_LABELS[action]}: ${t("shortcutsConfig.pressAKey")}`
-													: `Change ${SHORTCUT_LABELS[action]} shortcut, currently ${formatBinding(draft[action], isMac)}`
+													? `${uiText(SHORTCUT_LABELS[action])}: ${t("shortcutsConfig.pressAKey")}`
+													: uiText(
+															"Change {{value1}} shortcut, currently {{value2}}",
+															{
+																value1: uiText(
+																	SHORTCUT_LABELS[action],
+																),
+																value2: formatBinding(
+																	draft[action],
+																	isMac,
+																),
+															},
+														)
 											}
 											onClick={() => {
 												setConflict(null);
@@ -225,8 +239,8 @@ export function ShortcutsConfigDialog() {
 								key={label}
 								className="flex items-center justify-between gap-4 border-b border-separator py-3 last:border-0"
 							>
-								<span className="text-[13px] text-foreground">{label}</span>
-								<Kbd className="min-w-[90px] justify-center">{display}</Kbd>
+								<span className="text-[13px] text-foreground">{uiText(label)}</span>
+								<Kbd className="min-w-[90px] justify-center">{uiText(display)}</Kbd>
 							</div>
 						))}
 					</div>

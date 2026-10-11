@@ -1,3 +1,5 @@
+// Modified by OmvaLens, 2026-10-11: native dialog translations. AGPL-3.0.
+import { nativeText } from "../../nativeI18n";
 // Modified by the ScreenRecorder fork, 2026-10-10. See FORK_CHANGES.md; AGPL-3.0.
 import { randomUUID } from "node:crypto";
 import { constants as fsConstants } from "node:fs";
@@ -250,9 +252,11 @@ export function registerProjectHandlers() {
 		try {
 			await preflightProjectMedia(project, authorizeMedia);
 			const result = await dialog.showSaveDialog({
-				title: "Export portable project",
+				title: nativeText("Export portable project"),
 				defaultPath: `${normalizeProjectSaveName(name) || "Project"}.${PORTABLE_EXTENSION}`,
-				filters: [{ name: "Portable project", extensions: [PORTABLE_EXTENSION] }],
+				filters: [
+					{ name: nativeText("Portable project"), extensions: [PORTABLE_EXTENSION] },
+				],
 				properties: ["createDirectory", "showOverwriteConfirmation"],
 			});
 			if (result.canceled || !result.filePath) return { success: false, canceled: true };
@@ -459,7 +463,7 @@ export function registerProjectHandlers() {
 		try {
 			const current = await getRecordingsDir();
 			const result = await dialog.showOpenDialog({
-				title: "Choose recordings folder",
+				title: nativeText("Choose recordings folder"),
 				defaultPath: current,
 				properties: ["openDirectory", "createDirectory", "promptToCreate"],
 			});
@@ -536,11 +540,14 @@ export function registerProjectHandlers() {
 				const defaultName = `${safeName}.${PROJECT_FILE_EXTENSION}`;
 
 				const result = await dialog.showSaveDialog({
-					title: "Save OmvaLens Project",
+					title: nativeText("Save OmvaLens Project"),
 					defaultPath: path.join(projectsDir, defaultName),
 					filters: [
-						{ name: "OmvaLens Project", extensions: [PROJECT_FILE_EXTENSION] },
-						{ name: "JSON", extensions: ["json"] },
+						{
+							name: nativeText("OmvaLens Project"),
+							extensions: [PROJECT_FILE_EXTENSION],
+						},
+						{ name: nativeText("JSON"), extensions: ["json"] },
 					],
 					properties: ["createDirectory", "showOverwriteConfirmation"],
 				});
@@ -689,19 +696,19 @@ export function registerProjectHandlers() {
 		try {
 			const projectsDir = await getProjectsDir();
 			const result = await dialog.showOpenDialog({
-				title: "Open OmvaLens Project",
+				title: nativeText("Open OmvaLens Project"),
 				defaultPath: projectsDir,
 				filters: [
 					{
-						name: "OmvaLens Project",
+						name: nativeText("OmvaLens Project"),
 						extensions: [
 							PROJECT_FILE_EXTENSION,
 							...LEGACY_PROJECT_FILE_EXTENSIONS,
 							PORTABLE_EXTENSION,
 						],
 					},
-					{ name: "JSON", extensions: ["json"] },
-					{ name: "All Files", extensions: ["*"] },
+					{ name: nativeText("JSON"), extensions: ["json"] },
+					{ name: nativeText("All Files"), extensions: ["*"] },
 				],
 				properties: ["openFile"],
 			});

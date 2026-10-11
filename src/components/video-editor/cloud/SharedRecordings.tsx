@@ -1,3 +1,5 @@
+// Modified by OmvaLens, 2026-10-11: localized interface text. AGPL-3.0.
+import { useUiText } from "@/contexts/I18nContext";
 import { parseSharedRecordingDate } from "./sharedRecordingDate";
 import { FREE_RECORDING_LIMIT, notifyShareCapacityChanged } from "./shareCapacity";
 import { LibrarySkeleton } from "../dashboard/LibrarySkeleton";
@@ -31,6 +33,7 @@ export function SharedRecordings({
 	standalone?: boolean;
 	accountLabel?: string;
 }) {
+	const uiText = useUiText();
 	const [query, setQuery] = useState("");
 	const [period, setPeriod] = useState("all");
 	const [sort, setSort] = useState("recent");
@@ -158,7 +161,7 @@ export function SharedRecordings({
 						<LibrarySkeleton />
 					) : entries.length ? (
 						<ul
-							aria-label="Shared projects"
+							aria-label={uiText("Shared projects")}
 							className="grid grid-cols-[repeat(auto-fill,minmax(min(100%,280px),1fr))] gap-x-7 gap-y-10 lg:gap-x-9"
 						>
 							{entries.map((entry) => (
@@ -202,8 +205,8 @@ export function SharedRecordings({
 							</span>
 							<p>
 								{query || period !== "all"
-									? "No matching projects"
-									: "It's looking empty in here..."}
+									? uiText("No matching projects")
+									: uiText("It's looking empty in here...")}
 							</p>
 						</div>
 					)}
@@ -221,14 +224,16 @@ export function SharedRecordings({
 					onPress={() => setExpanded((value) => !value)}
 					aria-expanded={expanded}
 				>
-					{expanded ? "Hide shared recordings" : "Manage shared recordings"}
+					{expanded
+						? uiText("Hide shared recordings")
+						: uiText("Manage shared recordings")}
 				</Button>
 				{expanded && (
 					<Button
 						variant="ghost"
 						size="sm"
 						isIconOnly
-						aria-label="Refresh recordings"
+						aria-label={uiText("Refresh recordings")}
 						isDisabled={loading || Boolean(deleting)}
 						onPress={() => void load()}
 					>
@@ -240,8 +245,11 @@ export function SharedRecordings({
 				<>
 					<p className="text-xs text-muted">
 						{loading
-							? "Loading recordings…"
-							: `${recordings.length} of ${FREE_RECORDING_LIMIT} recordings · 1 GB each · Free links expire after 14 days`}
+							? uiText("Loading recordings…")
+							: uiText(
+									"{{value1}} of {{value2}} recordings · 1 GB each · Free links expire after 14 days",
+									{ value1: recordings.length, value2: FREE_RECORDING_LIMIT },
+								)}
 					</p>
 					{loading ? (
 						<LibrarySkeleton />
@@ -259,7 +267,7 @@ export function SharedRecordings({
 											</p>
 											<p className="text-xs text-muted">
 												{(recording.size / 1024 / 1024).toFixed(1)} MB
-												{!recording.ready && " · Incomplete upload"}
+												{!recording.ready && uiText("· Incomplete upload")}
 											</p>
 										</div>
 										{recording.ready && (
@@ -267,7 +275,9 @@ export function SharedRecordings({
 												variant="ghost"
 												size="sm"
 												isIconOnly
-												aria-label={`Open ${recording.title}`}
+												aria-label={uiText("Open {{value1}}", {
+													value1: recording.title,
+												})}
 												onPress={() =>
 													void window.electronAPI.openExternalUrl(
 														recording.url,
@@ -281,7 +291,9 @@ export function SharedRecordings({
 											variant="ghost"
 											size="sm"
 											isIconOnly
-											aria-label={`Delete ${recording.title}`}
+											aria-label={uiText("Delete {{value1}}", {
+												value1: recording.title,
+											})}
 											isDisabled={Boolean(deleting)}
 											className="text-danger"
 											onPress={() => void remove(recording.code)}
@@ -292,7 +304,9 @@ export function SharedRecordings({
 								</li>
 							))}
 							{!recordings.length && !error && (
-								<li className="text-sm text-muted">No shared recordings yet.</li>
+								<li className="text-sm text-muted">
+									{uiText("No shared recordings yet.")}
+								</li>
 							)}
 						</ul>
 					)}

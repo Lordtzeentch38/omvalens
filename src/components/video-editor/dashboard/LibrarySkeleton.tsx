@@ -1,8 +1,11 @@
+// Modified by OmvaLens, 2026-10-11: localized interface text. AGPL-3.0.
+import { useUiText } from "@/contexts/I18nContext";
 import { Skeleton } from "@heroui/react";
 export function LibrarySkeleton() {
+	const uiText = useUiText();
 	return (
 		<div
-			aria-label="Loading projects"
+			aria-label={uiText("Loading projects")}
 			aria-busy="true"
 			className="grid grid-cols-[repeat(auto-fill,minmax(min(100%,280px),1fr))] gap-x-7 gap-y-10 lg:gap-x-9"
 		>

@@ -1,3 +1,5 @@
+// Modified by OmvaLens, 2026-10-11: localized interface text. AGPL-3.0.
+import { useUiText } from "@/contexts/I18nContext";
 import { useRef } from "react";
 import { Rnd } from "react-rnd";
 import { cn } from "@/lib/utils";
@@ -55,6 +57,7 @@ export function AnnotationOverlay({
 	zIndex,
 	isSelectedBoost,
 }: AnnotationOverlayProps) {
+	const uiText = useUiText();
 	const safeRecordingRect =
 		recordingRect.width > 0 && recordingRect.height > 0
 			? recordingRect
@@ -153,7 +156,7 @@ export function AnnotationOverlay({
 					return (
 						<img
 							src={annotation.content}
-							alt="Annotation"
+							alt={uiText("Annotation")}
 							className="w-full h-full object-contain"
 							draggable={false}
 						/>
@@ -161,7 +164,7 @@ export function AnnotationOverlay({
 				}
 				return (
 					<div className="w-full h-full flex items-center justify-center text-muted-foreground text-sm">
-						No image
+						{uiText("No image")}
 					</div>
 				);
 
@@ -169,7 +172,7 @@ export function AnnotationOverlay({
 				if (!annotation.figureData) {
 					return (
 						<div className="w-full h-full flex items-center justify-center text-muted-foreground text-sm">
-							No arrow data
+							{uiText("No arrow data")}
 						</div>
 					);
 				}

@@ -1,3 +1,5 @@
+// Modified by OmvaLens, 2026-10-11: localize application notifications. AGPL-3.0.
+import { currentUiText } from "@/i18n/catalogText";
 import { Toast, toast as heroToast } from "@heroui/react";
 import { isValidElement, type ReactNode } from "react";
 
@@ -20,6 +22,24 @@ function plainText(value: ReactNode): string {
 
 // Keep existing callers compatible while HeroUI owns the queue and presentation.
 function notify(title: ReactNode, options: Options = {}, variant: Variant = "default") {
+	// Translate only catalogued application messages; unknown diagnostic text stays intact.
+	if (typeof title === "string") title = currentUiText(title);
+	options = {
+		...options,
+		description:
+			typeof options.description === "string"
+				? currentUiText(options.description)
+				: options.description,
+		action: options.action
+			? {
+					...options.action,
+					label:
+						typeof options.action.label === "string"
+							? currentUiText(options.action.label)
+							: options.action.label,
+				}
+			: undefined,
+	};
 	const errorText = [plainText(title), plainText(options.description)]
 		.filter(Boolean)
 		.join("\n\n");
@@ -42,12 +62,12 @@ function notify(title: ReactNode, options: Options = {}, variant: Variant = "def
 				}
 			: variant === "danger" && errorText
 				? {
-						children: "Copy",
+						children: currentUiText("Copy"),
 						onPress: () => {
 							void navigator.clipboard.writeText(errorText).then(
-								() => heroToast.success("Error copied"),
+								() => heroToast.success(currentUiText("Error copied")),
 								() =>
-									heroToast.danger("Could not copy error", {
+									heroToast.danger(currentUiText("Could not copy error"), {
 										description: errorText,
 									}),
 							);

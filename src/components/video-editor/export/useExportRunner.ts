@@ -1,3 +1,5 @@
+// Modified by OmvaLens, 2026-10-11: localized interface text. AGPL-3.0.
+import { useUiText } from "@/contexts/I18nContext";
 // Modified by the ScreenRecorder fork, 2026-10-10. See FORK_CHANGES.md; AGPL-3.0.
 import { useCallback, useRef } from "react";
 import { toast } from "@/components/ui/toast";
@@ -23,6 +25,7 @@ import {
 } from "./exportRunnerSupport";
 
 export function useExportRunner(input: ExportRunnerInput) {
+	const uiText = useUiText();
 	const inputRef = useRef(input);
 	inputRef.current = input;
 	const showExportSuccessToast = useExportSuccessToast();
@@ -76,13 +79,13 @@ export function useExportRunner(input: ExportRunnerInput) {
 				cancelledExportRunIdRef,
 			} = exportSession;
 			if (!videoPath) {
-				toast.error("No video loaded");
+				toast.error(uiText("No video loaded"));
 				return;
 			}
 
 			const video = videoPlaybackRef.current?.video;
 			if (!video) {
-				toast.error("Video not ready");
+				toast.error(uiText("Video not ready"));
 				return;
 			}
 
@@ -117,7 +120,9 @@ export function useExportRunner(input: ExportRunnerInput) {
 					video.videoHeight <= 0
 				)
 					throw new Error(
-						"The video is not ready to export. Wait for the preview to load and try again.",
+						uiText(
+							"The video is not ready to export. Wait for the preview to load and try again.",
+						),
 					);
 				const checked = await window.electronAPI.preflightProjectMedia({
 					version: 2,
@@ -199,7 +204,7 @@ export function useExportRunner(input: ExportRunnerInput) {
 						if (options?.destination === "share") {
 							const tempPath = await streamExportBlobToTempFile(result.blob, "gif");
 							if (!tempPath)
-								throw new Error("Could not prepare the GIF for sharing.");
+								throw new Error(uiText("Could not prepare the GIF for sharing."));
 							return tempPath;
 						}
 						markExportAsSaving();
@@ -220,7 +225,9 @@ export function useExportRunner(input: ExportRunnerInput) {
 							setExportError(
 								"Save dialog canceled. Click Save Again to save without re-rendering.",
 							);
-							toast.info("Save canceled. You can save again without re-exporting.");
+							toast.info(
+								uiText("Save canceled. You can save again without re-exporting."),
+							);
 							keepExportDialogOpen = true;
 						} else if (saveResult.success && saveResult.path) {
 							if (smokeExportStartedAt !== null) {
@@ -385,7 +392,7 @@ export function useExportRunner(input: ExportRunnerInput) {
 								);
 								if (tempPath) return tempPath;
 							}
-							throw new Error("Could not prepare the video for sharing.");
+							throw new Error(uiText("Could not prepare the video for sharing."));
 						}
 						const sidecarForThisExport =
 							settings.includeCaptionSidecar && captionSidecarPayload
@@ -444,7 +451,10 @@ export function useExportRunner(input: ExportRunnerInput) {
 							saveResult = blobSave.saveResult;
 							pendingOnCancel = blobSave.pendingSave;
 						} else {
-							saveResult = { success: false, message: "Export produced no output" };
+							saveResult = {
+								success: false,
+								message: uiText("Export produced no output"),
+							};
 							pendingOnCancel = { fileName };
 						}
 
@@ -459,7 +469,7 @@ export function useExportRunner(input: ExportRunnerInput) {
 									encodingMode,
 									shadowIntensity: effectiveShadowIntensity,
 									elapsedMs: smokeExportElapsedMs,
-									error: "Save canceled",
+									error: uiText("Save canceled"),
 									progressSamples: smokeProgressSamples,
 									metrics: result.metrics,
 								});
@@ -469,7 +479,9 @@ export function useExportRunner(input: ExportRunnerInput) {
 							setExportError(
 								"Save dialog canceled. Click Save Again to save without re-rendering.",
 							);
-							toast.info("Save canceled. You can save again without re-exporting.");
+							toast.info(
+								uiText("Save canceled. You can save again without re-exporting."),
+							);
 							keepExportDialogOpen = true;
 						} else if (saveResult.success && saveResult.path) {
 							if (smokeExportConfig.enabled) {
@@ -598,7 +610,7 @@ export function useExportRunner(input: ExportRunnerInput) {
 				}
 			}
 		},
-		[showExportSuccessToast],
+		[uiText, showExportSuccessToast],
 	);
 
 	return { handleExport, showExportSuccessToast };

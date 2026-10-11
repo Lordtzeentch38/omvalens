@@ -1,3 +1,5 @@
+// Modified by OmvaLens, 2026-10-11: localized interface text. AGPL-3.0.
+import { useUiText } from "@/contexts/I18nContext";
 // Modified by the ScreenRecorder fork, 2026-10-10. See FORK_CHANGES.md; AGPL-3.0.
 import { type ComponentProps, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { EditorAnnouncementBanner } from "@/components/announcements/EditorAnnouncementBanner";
@@ -57,6 +59,7 @@ type Props = {
 };
 
 export function EditorShell(props: Props) {
+	const uiText = useUiText();
 	const [onboardingRequest, setOnboardingRequest] = useState(0);
 	const showOnboarding = useCallback(() => setOnboardingRequest((value) => value + 1), []);
 	const [signInOpen, setSignInOpen] = useState(false);
@@ -236,7 +239,7 @@ export function EditorShell(props: Props) {
 						onClick={openActions.handleOpenProjectBrowser}
 						className="px-3 py-1.5 text-sm"
 					>
-						Open Projects
+						{uiText("Open Projects")}
 					</Button>
 				</div>
 				<RecordlySignInDialog

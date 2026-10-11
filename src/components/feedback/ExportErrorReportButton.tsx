@@ -1,3 +1,5 @@
+// Modified by OmvaLens, 2026-10-11: localized interface text. AGPL-3.0.
+import { useUiText } from "@/contexts/I18nContext";
 // Modified by the OmvaLens fork, 2026-10-10. See FORK_CHANGES.md; AGPL-3.0.
 import { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -15,6 +17,7 @@ export function ExportErrorReportButton({
 	error: string;
 	format: "mp4" | "gif";
 }) {
+	const uiText = useUiText();
 	const [open, setOpen] = useState(false);
 	const [plan, setPlan] = useState<CloudPlan>("unknown");
 	const [sending, setSending] = useState(false);
@@ -30,7 +33,7 @@ export function ExportErrorReportButton({
 				className="h-8 text-xs"
 				onClick={() => setOpen(true)}
 			>
-				{sent ? "Report sent" : "Report error"}
+				{sent ? uiText("Report sent") : uiText("Report error")}
 			</Button>
 			<Dialog
 				open={open}
@@ -40,42 +43,48 @@ export function ExportErrorReportButton({
 			>
 				<DialogContent className="max-w-md">
 					<DialogHeader>
-						<DialogTitle>{sent ? "Report sent" : "Report export error"}</DialogTitle>
+						<DialogTitle>
+							{sent ? uiText("Report sent") : uiText("Report export error")}
+						</DialogTitle>
 					</DialogHeader>
 					{sent ? (
 						<p className="text-sm">
-							Thanks. The technical report was sent to OmvaLens support.
+							{uiText("Thanks. The technical report was sent to OmvaLens support.")}
 						</p>
 					) : (
 						<>
 							<p className="text-sm text-muted-foreground">
-								Send technical details to OmvaLens support through Supabase. No
-								account ID, email, recording, file path, attachments or console logs
-								are included. Supabase may keep connection logs separately.
+								{uiText(
+									"Send technical details to OmvaLens support through Supabase. No account ID, email, recording, file path, attachments or console logs are included. Supabase may keep connection logs separately.",
+								)}
 							</p>
 							<label className="flex flex-col gap-2 text-sm">
-								Cloud plan (optional, self-reported)
+								{uiText("Cloud plan (optional, self-reported)")}
 								<select
 									value={plan}
 									onChange={(event) => setPlan(event.target.value as CloudPlan)}
 									disabled={sending}
 									className="rounded-md border bg-background p-2"
 								>
-									<option value="unknown">Unknown / prefer not to say</option>
-									<option value="paid">Paid cloud plan</option>
-									<option value="not_paid">No paid cloud plan</option>
+									<option value="unknown">
+										{uiText("Unknown / prefer not to say")}
+									</option>
+									<option value="paid">{uiText("Paid cloud plan")}</option>
+									<option value="not_paid">{uiText("No paid cloud plan")}</option>
 								</select>
 							</label>
 							<details>
 								<summary className="cursor-pointer text-sm">
-									View data to be sent
+									{uiText("View data to be sent")}
 								</summary>
 								<pre className="max-h-48 overflow-auto whitespace-pre-wrap break-words text-xs mt-2">
 									{JSON.stringify(report, null, 2)}
 								</pre>
 							</details>
 							<p className="text-xs text-muted-foreground">
-								Reports are kept for 30 days, then removed by daily cleanup.
+								{uiText(
+									"Reports are kept for 30 days, then removed by daily cleanup.",
+								)}
 							</p>
 							{sendError && (
 								<p role="alert" className="text-sm text-destructive">
@@ -104,7 +113,7 @@ export function ExportErrorReportButton({
 									}
 								}}
 							>
-								{sending ? "Sending…" : "Send report"}
+								{sending ? uiText("Sending…") : uiText("Send report")}
 							</Button>
 						</>
 					)}

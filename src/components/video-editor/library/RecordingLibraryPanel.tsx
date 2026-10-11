@@ -1,3 +1,5 @@
+// Modified by OmvaLens, 2026-10-11: localized interface text. AGPL-3.0.
+import { useUiText } from "@/contexts/I18nContext";
 import { RecordingThumbnail } from "./RecordingThumbnail";
 import { useEffect, useRef, useState } from "react";
 import { Checkbox, Label, Dropdown, SearchField, Button as HeroButton } from "@heroui/react";
@@ -20,6 +22,7 @@ export function RecordingLibraryPanel({
 }: {
 	library: ReturnType<typeof useRecordingLibrary>;
 }) {
+	const uiText = useUiText();
 	const panelRef = useRef<HTMLElement>(null);
 	const [query, setQuery] = useState("");
 	// biome-ignore lint/correctness/useExhaustiveDependencies: restore focus when removal unmounts the focused recording.
@@ -43,7 +46,7 @@ export function RecordingLibraryPanel({
 		<section
 			ref={panelRef}
 			tabIndex={-1}
-			aria-label="Clips library"
+			aria-label={uiText("Clips library")}
 			data-recording-library
 			className="outline-none flex min-h-0 flex-1 flex-col"
 			onKeyDown={(event) => {
@@ -74,25 +77,25 @@ export function RecordingLibraryPanel({
 			}}
 		>
 			<header className="flex min-h-14 shrink-0 items-center gap-2 px-5 py-3">
-				<h2 className="flex-1 text-[14px] font-semibold">Clips</h2>
+				<h2 className="flex-1 text-[14px] font-semibold">{uiText("Clips")}</h2>
 				<Dropdown>
 					<HeroButton
 						isIconOnly
 						variant="ghost"
 						size="sm"
-						aria-label="Clip library actions"
+						aria-label={uiText("Clip library actions")}
 					>
 						<DotsThree className="size-5" />
 					</HeroButton>
 					<Dropdown.Popover placement="bottom end">
-						<Dropdown.Menu aria-label="Clip library actions">
+						<Dropdown.Menu aria-label={uiText("Clip library actions")}>
 							<Dropdown.Item
 								id="folder"
 								textValue="Open recordings folder"
 								onAction={() => void window.electronAPI.openRecordingsFolder()}
 							>
 								<FolderOpen weight="fill" className="size-4" />
-								<Label>Open recordings folder</Label>
+								<Label>{uiText("Open recordings folder")}</Label>
 							</Dropdown.Item>
 							<Dropdown.Item
 								id="trash"
@@ -106,7 +109,7 @@ export function RecordingLibraryPanel({
 								}
 							>
 								<Trash className="size-4" />
-								<Label>Move all to Trash</Label>
+								<Label>{uiText("Move all to Trash")}</Label>
 							</Dropdown.Item>
 						</Dropdown.Menu>
 					</Dropdown.Popover>
@@ -115,24 +118,24 @@ export function RecordingLibraryPanel({
 					variant="ghost"
 					size="icon"
 					className="size-7"
-					aria-label="Close Clips"
+					aria-label={uiText("Close Clips")}
 					onClick={() => library.setOpen(false)}
 				>
 					<X />
 				</Button>
 			</header>
 			<div className="px-5 pb-3">
-				<SearchField aria-label="Search videos" value={query} onChange={setQuery}>
+				<SearchField aria-label={uiText("Search videos")} value={query} onChange={setQuery}>
 					<SearchField.Group>
 						<SearchField.SearchIcon />
-						<SearchField.Input placeholder="Search videos" />
+						<SearchField.Input placeholder={uiText("Search videos")} />
 						<SearchField.ClearButton />
 					</SearchField.Group>
 				</SearchField>
 			</div>
 			<div className="flex min-h-10 items-center gap-2 px-5 pb-2">
 				<Checkbox
-					aria-label="Select all videos"
+					aria-label={uiText("Select all videos")}
 					isSelected={allSelected}
 					isIndeterminate={!allSelected && library.selected.size > 0}
 					isDisabled={!entries.length || library.busy || library.importing}
@@ -155,16 +158,16 @@ export function RecordingLibraryPanel({
 				</Checkbox>
 				<span className="flex-1 text-xs text-muted-foreground">
 					{library.selected.size
-						? `${library.selected.size} selected`
-						: `${entries.length} ${entries.length === 1 ? "recording" : "recordings"}`}
+						? uiText("{{value1}} selected", { value1: library.selected.size })
+						: `${entries.length} ${entries.length === 1 ? uiText("recording") : uiText("recordings")}`}
 				</span>
 				{library.selected.size > 0 && (
 					<Button
 						variant="ghost"
 						size="icon"
 						className="size-7"
-						aria-label="Move selected videos to Trash"
-						title="Move selected to Trash"
+						aria-label={uiText("Move selected videos to Trash")}
+						title={uiText("Move selected to Trash")}
 						disabled={library.busy || library.importing}
 						onClick={() => void library.remove([...library.selected])}
 					>
@@ -175,14 +178,14 @@ export function RecordingLibraryPanel({
 			<div className="custom-scrollbar min-h-0 flex-1 space-y-1 overflow-y-auto overflow-x-hidden px-3 pb-3">
 				{library.loading && (
 					<p role="status" className="px-2 py-4 text-xs text-muted-foreground">
-						Loading videos…
+						{uiText("Loading videos…")}
 					</p>
 				)}
 				{library.error && (
 					<div role="alert" className="p-2 text-xs">
 						<p>{library.error}</p>
 						<Button variant="ghost" size="sm" onClick={() => void library.refresh()}>
-							Retry
+							{uiText("Retry")}
 						</Button>
 					</div>
 				)}
@@ -190,10 +193,14 @@ export function RecordingLibraryPanel({
 					<div className="flex flex-col items-center gap-2 px-5 py-12 text-center text-muted-foreground">
 						<FilmStrip className="size-7" />
 						<p className="text-sm">
-							{query ? "No matching videos" : "Your recordings appear here"}
+							{query
+								? uiText("No matching videos")
+								: uiText("Your recordings appear here")}
 						</p>
 						<p className="text-xs">
-							{query ? "Try another search." : "Record a video to get started."}
+							{query
+								? uiText("Try another search.")
+								: uiText("Record a video to get started.")}
 						</p>
 					</div>
 				)}
@@ -217,7 +224,7 @@ export function RecordingLibraryPanel({
 						)}
 					>
 						<Checkbox
-							aria-label={`Select ${entry.name}`}
+							aria-label={uiText("Select {{value1}}", { value1: entry.name })}
 							isDisabled={library.busy || library.importing}
 							isSelected={library.selected.has(entry.path)}
 							onChange={(checked) => toggle(entry.path, checked)}
@@ -257,8 +264,10 @@ export function RecordingLibraryPanel({
 							variant="ghost"
 							size="icon"
 							className="size-7 shrink-0"
-							aria-label={`Add ${entry.name} to timeline`}
-							title="Add to timeline"
+							aria-label={uiText("Add {{value1}} to timeline", {
+								value1: entry.name,
+							})}
+							title={uiText("Add to timeline")}
 							disabled={library.busy || library.importing}
 							onClick={() => void library.addToTimeline(entry.path)}
 						>
@@ -269,7 +278,9 @@ export function RecordingLibraryPanel({
 			</div>
 			<footer className="flex items-center gap-2 px-5 py-3 text-[11px] text-muted-foreground">
 				<span className="flex-1">
-					{library.canUndo ? "Moved to Trash" : "Drag to the timeline or click + to add."}
+					{library.canUndo
+						? uiText("Moved to Trash")
+						: uiText("Drag to the timeline or click + to add.")}
 				</span>
 				{library.canUndo && (
 					<Button
@@ -277,10 +288,10 @@ export function RecordingLibraryPanel({
 						size="sm"
 						disabled={library.busy || library.importing}
 						onClick={() => void library.undo()}
-						title="Undo (⌘Z / Ctrl+Z)"
+						title={uiText("Undo (⌘Z / Ctrl+Z)")}
 					>
 						<ArrowCounterClockwise className="size-3.5" />
-						Undo
+						{uiText("Undo")}
 					</Button>
 				)}
 			</footer>

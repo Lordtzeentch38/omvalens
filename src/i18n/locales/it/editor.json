@@ -91,7 +91,6 @@
 		"solidColor": "Colore pieno (Censura)",
 		"borderRadius": "Raggio bordo"
 	},
-
 	"fontStyles": {
 		"classic": "Classico",
 		"editor": "Editor",
@@ -111,7 +110,7 @@
 	"gifOptions": {
 		"frameRate": "Frequenza fotogrammi",
 		"outputSize": "Dimensione output",
-		"outputDimensions": "Output: {{width}} × {{height}}px",
+		"outputDimensions": "Dimensioni: {{width}} × {{height}} px",
 		"loopAnimation": "Riproduci in loop",
 		"loopDescription": "La GIF verrà riprodotta continuamente"
 	},
@@ -134,7 +133,7 @@
 		"adjustDesc": "Trascina i bordi della regione rossa per coprire esattamente ciò che vuoi tagliare."
 	},
 	"feedback": {
-		"trigger": "Feedback",
+		"trigger": "Invia un commento",
 		"title": "Feedback e contatti",
 		"description": "Contattaci direttamente o apri una segnalazione se qualcosa non funziona o manca.",
 		"emailLabel": "Email",
@@ -172,7 +171,10 @@
 		"experimentalBuilds": "Suggerimento: Attiva l’accesso alle build sperimentali nelle impostazioni",
 		"cursorAppearance": "Suggerimento: Puoi personalizzare l’aspetto del cursore"
 	},
-	"account": { "title": "Account", "comingSoon": "Account in arrivo" },
+	"account": {
+		"title": "Account",
+		"comingSoon": "Account in arrivo"
+	},
 	"nativeCaptureUnavailable": {
 		"title": "Niente è rotto, ma non sarà possibile renderizzare un overlay del cursore animato.",
 		"description": "Il tuo dispositivo non supporta la cattura nativa. Le cause possono essere varie e non ancora identificate. OmvaLens funziona comunque, ma non è possibile applicare lo smoothing del cursore.",

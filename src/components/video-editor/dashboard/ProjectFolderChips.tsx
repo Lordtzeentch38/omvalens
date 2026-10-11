@@ -1,3 +1,5 @@
+// Modified by OmvaLens, 2026-10-11: interpolated UI translations. AGPL-3.0.
+import { useUiText } from "@/contexts/I18nContext";
 import { useLayoutEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { FolderSimple } from "@/components/ui/icons";
@@ -12,6 +14,7 @@ export function ProjectFolderChips({
 	name: string;
 	onRemove: (id: string) => void;
 }) {
+	const uiText = useUiText();
 	const host = useRef<HTMLDivElement>(null);
 	const measurement = useRef<HTMLDivElement>(null);
 	const counter = useRef<HTMLSpanElement>(null);
@@ -54,7 +57,10 @@ export function ProjectFolderChips({
 			variant="ghost"
 			size="sm"
 			tabIndex={measuring ? -1 : undefined}
-			aria-label={`Remove ${name} from ${folder.name}`}
+			aria-label={uiText("Remove {{value1}} from {{value2}}", {
+				value1: name,
+				value2: folder.name,
+			})}
 			title={folder.name}
 			onClick={measuring ? undefined : () => onRemove(folder.id)}
 			className="h-6 min-w-0 max-w-28 shrink gap-1.5 rounded-full bg-default/40 px-2.5 text-[11px]"
@@ -71,14 +77,17 @@ export function ProjectFolderChips({
 	return (
 		<div
 			ref={host}
-			aria-label={`Folders for ${name}`}
+			aria-label={uiText("Folders for {{value1}}", { value1: name })}
 			className="relative flex min-w-0 flex-1 items-center gap-1.5"
 		>
 			{folders.slice(0, visible).map((folder) => chip(folder))}
 			{hidden.length > 0 && (
 				<span
 					className="shrink-0 text-[11px] text-muted-foreground"
-					aria-label={`${hidden.length} more folders: ${hidden.map((folder) => folder.name).join(", ")}`}
+					aria-label={uiText("{{value1}} more folders: {{value2}}", {
+						value1: hidden.length,
+						value2: hidden.map((folder) => folder.name).join(", "),
+					})}
 					title={hidden.map((folder) => folder.name).join(", ")}
 				>
 					+{hidden.length}

@@ -1,3 +1,6 @@
+// Modified by OmvaLens, 2026-10-11: catalog-backed UI text. AGPL-3.0.
+import { translateCatalogText } from "@/i18n/catalogText";
+import { I18nProvider as AriaI18nProvider } from "react-aria";
 import {
 	createContext,
 	type ReactNode,
@@ -304,7 +307,7 @@ function translateForLocale(
 		fallback ??
 		key;
 
-	return interpolate(rawValue, vars);
+	return interpolate(translateCatalogText(locale, rawValue), vars);
 }
 
 export function I18nProvider({ children }: { children: ReactNode }) {
@@ -319,7 +322,21 @@ export function I18nProvider({ children }: { children: ReactNode }) {
 
 	useEffect(() => {
 		document.documentElement.lang = locale;
+		window.localStorage.setItem(LOCALE_STORAGE_KEY, locale);
+		// The native process cannot read renderer localStorage. Persist the same
+		// choice so menus and operating-system dialogs use the selected language.
+		window.electronAPI?.setAppSetting?.(LOCALE_STORAGE_KEY, locale);
 	}, [locale]);
+
+	useEffect(() => {
+		const syncLocale = (event: StorageEvent) => {
+			if (event.key === LOCALE_STORAGE_KEY && event.newValue) {
+				setLocaleState(normalizeLocale(event.newValue));
+			}
+		};
+		window.addEventListener("storage", syncLocale);
+		return () => window.removeEventListener("storage", syncLocale);
+	}, []);
 
 	const t = useCallback(
 		(key: string, fallback?: string, vars?: Record<string, string | number>) => {
@@ -337,7 +354,11 @@ export function I18nProvider({ children }: { children: ReactNode }) {
 		[locale, setLocale, t],
 	);
 
-	return <I18nContext.Provider value={value}>{children}</I18nContext.Provider>;
+	return (
+		<AriaI18nProvider locale={locale}>
+			<I18nContext.Provider value={value}>{children}</I18nContext.Provider>
+		</AriaI18nProvider>
+	);
 }
 
 export function useI18n() {
@@ -346,6 +367,19 @@ export function useI18n() {
 		throw new Error("useI18n must be used within <I18nProvider>");
 	}
 	return context;
+}
+
+/** Catalog-backed migration helper. The source phrase is an explicit English
+ * fallback; user data must never be passed through this function. */
+export function useUiText() {
+	const context = useContext(I18nContext);
+	const locale = context?.locale ?? DEFAULT_LOCALE;
+	return useCallback(
+		(source: string, vars?: Record<string, string | number>) => {
+			return translateCatalogText(locale, source, vars);
+		},
+		[locale],
+	);
 }
 
 export function useScopedT(namespace: I18nNamespace) {

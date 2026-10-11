@@ -1,3 +1,5 @@
+// Modified by OmvaLens, 2026-10-11: localized interface text. AGPL-3.0.
+import { useUiText } from "@/contexts/I18nContext";
 // Modified by the ScreenRecorder fork, 2026-10-10. See FORK_CHANGES.md; AGPL-3.0.
 import { Separator } from "@heroui/react";
 import type { CSSProperties, FormEvent, RefObject } from "react";
@@ -65,6 +67,7 @@ type Props = {
 };
 
 export function EditorHeader(props: Props) {
+	const uiText = useUiText();
 	const {
 		t,
 		headerLeftControlsPaddingClass,
@@ -120,11 +123,11 @@ export function EditorHeader(props: Props) {
 					size="sm"
 					onClick={handleOpenProjectBrowser}
 					className="h-9 shrink-0 gap-2 px-3"
-					title="Home"
-					aria-label="Home"
+					title={uiText("Home")}
+					aria-label={uiText("Home")}
 				>
 					<House weight="fill" className="h-4 w-4" />
-					<span>Home</span>
+					<span>{uiText("Home")}</span>
 				</Button>
 				<span
 					aria-hidden="true"
@@ -191,7 +194,7 @@ export function EditorHeader(props: Props) {
 					onClick={props.onToggleClips}
 				>
 					<FilmStrip weight={props.clipsOpen ? "fill" : "regular"} className="size-4" />
-					Clips
+					{uiText("Clips")}
 				</Button>
 			</div>
 

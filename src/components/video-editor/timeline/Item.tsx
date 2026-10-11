@@ -1,3 +1,5 @@
+// Modified by OmvaLens, 2026-10-11: localized interface text. AGPL-3.0.
+import { useUiText } from "@/contexts/I18nContext";
 import {
 	Gauge,
 	MagnifyingGlassPlus as ZoomIn,
@@ -92,6 +94,7 @@ export default function Item({
 	loadingLabel,
 	children,
 }: ItemProps) {
+	const uiText = useUiText();
 	const timeline = useTimelineContext();
 	const presentation = useTimelinePresentation();
 	const clipPresentation =
@@ -218,7 +221,7 @@ export default function Item({
 			>
 				<Skeleton
 					animationType="shimmer"
-					aria-label={loadingLabel || "Loading..."}
+					aria-label={loadingLabel || uiText("Loading...")}
 					className="w-full"
 					style={{ height: "85%", minHeight: 22 }}
 				/>
@@ -274,7 +277,10 @@ export default function Item({
 			data-end-ms={span.end}
 			aria-label={
 				isClip
-					? `Clip${clipSpeedLabel ? ` ${clipSpeedLabel}` : ""} · ${timeLabel}`
+					? uiText("Clip{{value1}} · {{value2}}", {
+							value1: clipSpeedLabel ? ` ${clipSpeedLabel}` : "",
+							value2: timeLabel,
+						})
 					: undefined
 			}
 			onPointerDownCapture={handleSelect}
@@ -332,7 +338,7 @@ export default function Item({
 							pointerEvents: isClip ? "none" : "auto",
 							display: isClip && sharedLeftGrip ? "none" : undefined,
 						}}
-						title="Resize left"
+						title={uiText("Resize left")}
 					/>
 					<div
 						className={cn(
@@ -345,7 +351,7 @@ export default function Item({
 							pointerEvents: isClip ? "none" : "auto",
 							display: isClip && sharedRightGrip ? "none" : undefined,
 						}}
-						title="Resize right"
+						title={uiText("Resize right")}
 					/>
 					{showAudioWaveform && waveformPeaks && (
 						<AudioWaveform
@@ -366,7 +372,7 @@ export default function Item({
 					{/* Normal-speed clips show only the filmstrip and resize handles. */}
 					{(!isClip || clipSpeedLabel) && (
 						<div
-							title={`${isZoom ? `${ZOOM_LABELS[zoomDepth]} ${zoomMode === "manual" ? "Manual" : "Auto"}` : typeof children === "string" ? children : "Clip"} · ${timeLabel}`}
+							title={`${isZoom ? `${ZOOM_LABELS[zoomDepth]} ${zoomMode === "manual" ? uiText("Manual") : uiText("Auto")}` : typeof children === "string" ? children : uiText("Clip")} · ${timeLabel}`}
 							className={cn(
 								"relative z-10 flex max-w-full items-center justify-center gap-1 px-1 text-[11px] font-medium text-black/70 dark:text-white/90 select-none overflow-hidden",
 								isClip &&
@@ -386,7 +392,9 @@ export default function Item({
 									<span className="zoom-value whitespace-nowrap">
 										{ZOOM_LABELS[zoomDepth] || `${zoomDepth}×`}
 										<span className="zoom-mode font-normal">
-											{zoomMode === "manual" ? "Manual" : "Auto"}
+											{zoomMode === "manual"
+												? uiText("Manual")
+												: uiText("Auto")}
 										</span>
 									</span>
 								</>
@@ -404,7 +412,11 @@ export default function Item({
 										<MessageSquare className="size-3 shrink-0" />
 									)}
 									<span className="truncate">
-										{isTrim ? "Trim" : isSpeed ? `${speedValue}×` : children}
+										{isTrim
+											? uiText("Trim")
+											: isSpeed
+												? `${speedValue}×`
+												: children}
 									</span>
 								</>
 							)}

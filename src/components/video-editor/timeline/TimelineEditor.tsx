@@ -1,3 +1,5 @@
+// Modified by OmvaLens, 2026-10-11: localized interface text. AGPL-3.0.
+import { useUiText } from "@/contexts/I18nContext";
 import { Plus } from "@/components/ui/icons";
 import type { Span } from "dnd-timeline";
 import { forwardRef, useEffect, useMemo, useRef, useState } from "react";
@@ -173,6 +175,7 @@ const TimelineEditor = forwardRef<TimelineEditorHandle, TimelineEditorProps>(
 		},
 		ref,
 	) {
+		const uiText = useUiText();
 		const t = useScopedT("settings");
 		const totalMs = useMemo(
 			() => Math.max(0, Math.round(videoDuration * 1000)),
@@ -410,9 +413,11 @@ const TimelineEditor = forwardRef<TimelineEditorHandle, TimelineEditorProps>(
 						<Plus className="w-6 h-6 text-muted-foreground" />
 					</div>
 					<div className="text-center">
-						<p className="text-sm font-medium text-muted-foreground">No Video Loaded</p>
+						<p className="text-sm font-medium text-muted-foreground">
+							{uiText("No Video Loaded")}
+						</p>
 						<p className="text-xs text-muted-foreground/70 mt-1">
-							Drag and drop a video to start editing
+							{uiText("Drag and drop a video to start editing")}
 						</p>
 					</div>
 				</div>

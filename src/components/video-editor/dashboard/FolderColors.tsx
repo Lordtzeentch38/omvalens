@@ -1,3 +1,5 @@
+// Modified by OmvaLens, 2026-10-11: localized interface text. AGPL-3.0.
+import { useUiText } from "@/contexts/I18nContext";
 import {
 	ColorArea,
 	ColorField,
@@ -24,20 +26,24 @@ export function FolderColors({
 	onCustomChange: (colors: string[]) => void;
 	name: string;
 }) {
+	const uiText = useUiText();
 	const colors = [...new Set([...FOLDER_COLORS, ...custom])];
 	return (
 		<ColorPicker value={value} onChange={(color) => onChange(color.toString("hex"))}>
 			<Button
 				variant="ghost"
 				size="icon"
-				aria-label={`Change color for ${name}`}
+				aria-label={uiText("Change color for {{value1}}", { value1: name })}
 				className="size-8 min-w-8 rounded-md"
 			>
 				<FolderSimple weight="fill" className="size-[18px]" style={{ color: value }} />
 			</Button>
 			<ColorPicker.Popover>
-				<Popover.Dialog aria-label="Folder color" className="flex w-60 flex-col gap-3 p-3">
-					<ColorSwatchPicker aria-label="Folder colors">
+				<Popover.Dialog
+					aria-label={uiText("Folder color")}
+					className="flex w-60 flex-col gap-3 p-3"
+				>
+					<ColorSwatchPicker aria-label={uiText("Folder colors")}>
 						{colors.map((color) => (
 							<ColorSwatchPicker.Item key={color} color={color}>
 								<ColorSwatchPicker.Swatch />
@@ -59,14 +65,16 @@ export function FolderColors({
 						</ColorSlider.Track>
 					</ColorSlider>
 					<div className="flex items-center gap-2">
-						<ColorField aria-label="Hex color" className="min-w-0 flex-1">
-							<Input aria-label="Hex color" className="h-8 text-xs" />
+						<ColorField aria-label={uiText("Hex color")} className="min-w-0 flex-1">
+							<Input aria-label={uiText("Hex color")} className="h-8 text-xs" />
 						</ColorField>
 						<Button
 							variant="ghost"
 							size="icon"
 							aria-label={
-								custom.includes(value) ? "Remove custom color" : "Save custom color"
+								custom.includes(value)
+									? uiText("Remove custom color")
+									: uiText("Save custom color")
 							}
 							disabled={FOLDER_COLORS.includes(value)}
 							className="size-8 min-w-8"

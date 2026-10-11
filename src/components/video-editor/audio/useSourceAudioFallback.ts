@@ -1,3 +1,5 @@
+// Modified by OmvaLens, 2026-10-11: interpolated UI translations. AGPL-3.0.
+import { useUiText } from "@/contexts/I18nContext";
 import { useEffect, useRef, useState } from "react";
 import { toast } from "@/components/ui/toast";
 import { SOURCE_AUDIO_FALLBACK_TOAST_ID } from "@/components/video-editor/audio/audioTypes";
@@ -13,6 +15,7 @@ export function useSourceAudioFallback({
 	refreshKey = 0,
 	summarizeErrorMessage,
 }: UseSourceAudioFallbackParams) {
+	const uiText = useUiText();
 	const [sourceAudioFallbackPaths, setSourceAudioFallbackPaths] = useState<string[]>([]);
 	const [sourceAudioFallbackStartDelayMsByPath, setSourceAudioFallbackStartDelayMsByPath] =
 		useState<Record<string, number>>({});
@@ -49,7 +52,9 @@ export function useSourceAudioFallback({
 					}
 					toast.warning(
 						result.error
-							? `Could not load companion audio sources: ${summarizeErrorMessage(result.error)}`
+							? uiText("Could not load companion audio sources: {{value1}}", {
+									value1: summarizeErrorMessage(result.error),
+								})
 							: "Could not load companion audio sources. Playback and export may miss microphone audio.",
 						{ id: SOURCE_AUDIO_FALLBACK_TOAST_ID, duration: 10000 },
 					);
@@ -66,7 +71,9 @@ export function useSourceAudioFallback({
 						setSourceAudioFallbackStartDelayMsByPath({});
 					}
 					toast.warning(
-						`Could not load companion audio sources: ${summarizeErrorMessage(String(error))}`,
+						uiText("Could not load companion audio sources: {{value1}}", {
+							value1: summarizeErrorMessage(String(error)),
+						}),
 						{ id: SOURCE_AUDIO_FALLBACK_TOAST_ID, duration: 10000 },
 					);
 				}
@@ -76,7 +83,7 @@ export function useSourceAudioFallback({
 		return () => {
 			cancelled = true;
 		};
-	}, [currentSourcePath, refreshKey, summarizeErrorMessage]);
+	}, [uiText, currentSourcePath, refreshKey, summarizeErrorMessage]);
 
 	return { sourceAudioFallbackPaths, sourceAudioFallbackStartDelayMsByPath };
 }

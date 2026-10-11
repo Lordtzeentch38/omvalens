@@ -1,3 +1,5 @@
+// Modified by OmvaLens, 2026-10-11: localized interface text. AGPL-3.0.
+import { useUiText } from "@/contexts/I18nContext";
 import { Modal } from "@heroui/react";
 import { useEffect, useRef, useState } from "react";
 import { MusicNotes } from "@/components/ui/icons";
@@ -70,6 +72,7 @@ export function RawPreview({
 	entry: ProjectLibraryEntry | null;
 	onClose: () => void;
 }) {
+	const uiText = useUiText();
 	return (
 		<Modal
 			isOpen={!!entry}
@@ -79,7 +82,7 @@ export function RawPreview({
 		>
 			<Modal.Backdrop>
 				<Modal.Container size="lg">
-					<Modal.Dialog aria-label="Raw file preview">
+					<Modal.Dialog aria-label={uiText("Raw file preview")}>
 						<Modal.CloseTrigger />
 						<Modal.Header>
 							<Modal.Heading>{entry?.name}</Modal.Heading>

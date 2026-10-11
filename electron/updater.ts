@@ -1,5 +1,6 @@
 // Modified by the ScreenRecorder fork, 2026-10-10. See FORK_CHANGES.md; AGPL-3.0.
 import fs from "node:fs";
+import { nativeText } from "./nativeI18n";
 import path from "node:path";
 import type { MessageBoxOptions, MessageBoxReturnValue } from "electron";
 import { app, BrowserWindow, dialog } from "electron";
@@ -174,10 +175,18 @@ function getDialogWindow(getMainWindow: () => BrowserWindow | null) {
 	return window && !window.isDestroyed() ? window : undefined;
 }
 
+// Modified by OmvaLens, 2026-10-11: native update messages follow the app locale.
 function showMessageBox(
 	getMainWindow: () => BrowserWindow | null,
 	options: MessageBoxOptions,
 ): Promise<MessageBoxReturnValue> {
+	options = {
+		...options,
+		title: options.title ? nativeText(options.title) : options.title,
+		message: nativeText(options.message),
+		detail: options.detail ? nativeText(options.detail) : options.detail,
+		buttons: options.buttons?.map((button) => nativeText(button)),
+	};
 	if (process.platform !== "darwin") {
 		return dialog.showMessageBox(options);
 	}
@@ -592,7 +601,12 @@ async function showAvailableUpdateDialog(
 	const result = await showMessageBox(getMainWindow, {
 		type: "info",
 		title: isExperimental ? "Experimental Update Available" : "Update Available",
-		message: `OmvaLens ${version} is available${isExperimental ? " on the experimental channel" : ""}.`,
+		message: nativeText(
+			isExperimental
+				? "OmvaLens {{version}} is available on the experimental channel."
+				: "OmvaLens {{version}} is available.",
+			{ version },
+		),
 		detail: isPreview
 			? `${isExperimental ? EXPERIMENTAL_UPDATE_DESCRIPTION : "This is a development preview of the standard update flow."} No real update will be installed.`
 			: isExperimental
@@ -636,8 +650,8 @@ async function showDownloadedUpdateDialog(
 		type: "info",
 		title: "Update Ready",
 		message: isPreview
-			? `OmvaLens ${version} is ready to install.`
-			: `OmvaLens ${version} has been downloaded.`,
+			? nativeText("OmvaLens {{version}} is ready to install.", { version })
+			: nativeText("OmvaLens {{version}} has been downloaded.", { version }),
 		detail: isPreview
 			? "Development preview of the native update prompt. No real update will be installed."
 			: "Install and restart now, or remind me later.",
@@ -689,7 +703,7 @@ async function showUpdateErrorDialog(
 	await showMessageBox(getMainWindow, {
 		type: "error",
 		title: "Update Failed",
-		message: `OmvaLens ${version} could not be downloaded.`,
+		message: nativeText("OmvaLens {{version}} could not be downloaded.", { version }),
 		detail: String(error),
 		buttons: ["OK"],
 		defaultId: 0,

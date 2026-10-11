@@ -1,3 +1,5 @@
+// Modified by OmvaLens, 2026-10-11: localized interface text. AGPL-3.0.
+import { useUiText } from "@/contexts/I18nContext";
 import { MagnifyingGlass, UploadSimple, ArrowClockwise } from "@/components/ui/icons";
 import { type CSSProperties } from "react";
 import { Button } from "@/components/ui/button";
@@ -21,6 +23,7 @@ export function DashboardToolbar({
 	DashboardProps & DashboardModel,
 	"onImportFile" | "query" | "setQuery" | "run" | "busy" | "isRaw"
 > & { actionLabel?: string; action?: "import" | "refresh" }) {
+	const uiText = useUiText();
 	return (
 		<>
 			<header
@@ -35,8 +38,10 @@ export function DashboardToolbar({
 					<Input
 						value={query}
 						onChange={(e) => setQuery(e.target.value)}
-						aria-label={isRaw ? "Search raw files" : "Search projects"}
-						placeholder={isRaw ? "Search raw files…" : "Search projects…"}
+						aria-label={isRaw ? uiText("Search raw files") : uiText("Search projects")}
+						placeholder={
+							isRaw ? uiText("Search raw files…") : uiText("Search projects…")
+						}
 						className="h-11 w-full border-0 bg-default/30 pl-10 shadow-none"
 					/>
 				</div>
@@ -52,7 +57,7 @@ export function DashboardToolbar({
 						) : (
 							<UploadSimple className="size-4" />
 						)}
-						{actionLabel}
+						{uiText(actionLabel)}
 					</Button>
 				</div>
 			</header>

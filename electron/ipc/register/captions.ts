@@ -1,3 +1,5 @@
+// Modified by OmvaLens, 2026-10-11: native dialog translations. AGPL-3.0.
+import { nativeText } from "../../nativeI18n";
 // Modified by the ScreenRecorder fork, 2026-10-10. See FORK_CHANGES.md; AGPL-3.0.
 import path from "node:path";
 import { dialog, ipcMain } from "electron";
@@ -37,7 +39,7 @@ export function registerCaptionHandlers() {
 					...(includeProjects
 						? [
 								{
-									name: "Media or OmvaLens Projects",
+									name: nativeText("Media or OmvaLens Projects"),
 									extensions: [
 										...VIDEO_FILE_EXTENSIONS,
 										...PROJECT_FILE_EXTENSIONS,
@@ -45,11 +47,16 @@ export function registerCaptionHandlers() {
 								},
 							]
 						: []),
-					{ name: "Video Files", extensions: VIDEO_FILE_EXTENSIONS },
+					{ name: nativeText("Video Files"), extensions: VIDEO_FILE_EXTENSIONS },
 					...(includeProjects
-						? [{ name: "OmvaLens Projects", extensions: PROJECT_FILE_EXTENSIONS }]
+						? [
+								{
+									name: nativeText("OmvaLens Projects"),
+									extensions: PROJECT_FILE_EXTENSIONS,
+								},
+							]
 						: []),
-					{ name: "All Files", extensions: ["*"] },
+					{ name: nativeText("All Files"), extensions: ["*"] },
 				],
 				properties: ["openFile"],
 			});
@@ -99,13 +106,13 @@ export function registerCaptionHandlers() {
 	ipcMain.handle("open-audio-file-picker", async () => {
 		try {
 			const result = await dialog.showOpenDialog({
-				title: "Select Audio File",
+				title: nativeText("Select Audio File"),
 				filters: [
 					{
-						name: "Audio Files",
+						name: nativeText("Audio Files"),
 						extensions: ["mp3", "wav", "aac", "m4a", "flac", "ogg"],
 					},
-					{ name: "All Files", extensions: ["*"] },
+					{ name: nativeText("All Files"), extensions: ["*"] },
 				],
 				properties: ["openFile"],
 			});
@@ -132,13 +139,13 @@ export function registerCaptionHandlers() {
 	ipcMain.handle("open-whisper-executable-picker", async () => {
 		try {
 			const result = await dialog.showOpenDialog({
-				title: "Select Whisper Executable",
+				title: nativeText("Select Whisper Executable"),
 				filters: [
 					{
-						name: "Executables",
+						name: nativeText("Executables"),
 						extensions: process.platform === "win32" ? ["exe", "cmd", "bat"] : ["*"],
 					},
-					{ name: "All Files", extensions: ["*"] },
+					{ name: nativeText("All Files"), extensions: ["*"] },
 				],
 				properties: ["openFile"],
 			});
@@ -158,10 +165,10 @@ export function registerCaptionHandlers() {
 	ipcMain.handle("open-whisper-model-picker", async () => {
 		try {
 			const result = await dialog.showOpenDialog({
-				title: "Select Whisper Model",
+				title: nativeText("Select Whisper Model"),
 				filters: [
-					{ name: "Whisper Models", extensions: ["bin"] },
-					{ name: "All Files", extensions: ["*"] },
+					{ name: nativeText("Whisper Models"), extensions: ["bin"] },
+					{ name: nativeText("All Files"), extensions: ["*"] },
 				],
 				properties: ["openFile"],
 			});

@@ -1,3 +1,5 @@
+// Modified by OmvaLens, 2026-10-11: localized interface text. AGPL-3.0.
+import { useUiText } from "@/contexts/I18nContext";
 import {
 	House,
 	MicrophoneIcon,
@@ -33,10 +35,15 @@ export function RecordingControls({
 	onCancelRecording,
 	formatTime,
 }: RecordingControlsProps) {
+	const uiText = useUiText();
 	const t = useScopedT("launch");
 	const actionClass = `size-9 min-w-9 rounded-full ${styles.electronNoDrag}`;
 	return (
-		<div role="group" aria-label="Recording controls" className="flex items-center gap-2">
+		<div
+			role="group"
+			aria-label={uiText("Recording controls")}
+			className="flex items-center gap-2"
+		>
 			<Button
 				isIconOnly
 				variant="ghost"
@@ -67,7 +74,9 @@ export function RecordingControls({
 					variant="ghost"
 					isDisabled
 					className={actionClass}
-					aria-label={microphoneEnabled ? "Microphone on" : "Microphone off"}
+					aria-label={
+						microphoneEnabled ? uiText("Microphone on") : uiText("Microphone off")
+					}
 				>
 					{microphoneEnabled ? (
 						<MicrophoneIcon weight="fill" className="size-4" />

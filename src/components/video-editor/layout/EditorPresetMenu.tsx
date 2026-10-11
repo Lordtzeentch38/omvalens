@@ -1,3 +1,5 @@
+// Modified by OmvaLens, 2026-10-11: localized interface text. AGPL-3.0.
+import { useUiText } from "@/contexts/I18nContext";
 import { BookmarkSimple, CaretDown, Check, X } from "@/components/ui/icons";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -12,6 +14,7 @@ type Props = {
 };
 
 export function EditorPresetMenu({ t, presets }: Props) {
+	const uiText = useUiText();
 	const {
 		editorPresets,
 		presetPopoverOpen,
@@ -46,7 +49,7 @@ export function EditorPresetMenu({ t, presets }: Props) {
 			<PopoverContent
 				align="end"
 				sideOffset={10}
-				aria-label="Presets"
+				aria-label={uiText("Presets")}
 				className="w-[320px] p-4"
 			>
 				<div className="space-y-4">

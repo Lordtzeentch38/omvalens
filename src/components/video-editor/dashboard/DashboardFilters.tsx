@@ -1,3 +1,5 @@
+// Modified by OmvaLens, 2026-10-11: localized interface text. AGPL-3.0.
+import { useUiText } from "@/contexts/I18nContext";
 import type { DashboardProps } from "./types";
 import { Dropdown } from "@heroui/react";
 import { CaretDown, Trash } from "@/components/ui/icons";
@@ -35,10 +37,11 @@ export function DashboardFilters({
 	| "busy"
 	| "deleteEntries"
 > & { hideSelection?: boolean }) {
+	const uiText = useUiText();
 	return (
 		<>
 			<div className="flex items-center gap-3 px-7 pb-7 lg:px-10">
-				<div className="flex gap-2" aria-label="Time filters">
+				<div className="flex gap-2" aria-label={uiText("Time filters")}>
 					{[
 						["all", "All"],
 						["week", "Last 7 days"],
@@ -52,7 +55,7 @@ export function DashboardFilters({
 							onClick={() => setPeriod(id)}
 							className={`h-7 rounded-lg px-3 text-xs ${period === id ? "bg-default/60 text-foreground" : "text-muted-foreground"}`}
 						>
-							{label}
+							{uiText(label)}
 						</Button>
 					))}
 					{!hideSelection && (
@@ -61,7 +64,9 @@ export function DashboardFilters({
 							size="icon"
 							className="size-7 min-w-7 text-danger"
 							aria-label={
-								isRaw ? "Select raw files to remove" : "Select projects to delete"
+								isRaw
+									? uiText("Select raw files to remove")
+									: uiText("Select projects to delete")
 							}
 							aria-pressed={selecting}
 							onClick={() => {
@@ -78,30 +83,34 @@ export function DashboardFilters({
 						<Button
 							variant="ghost"
 							size="sm"
-							aria-label={isRaw ? "Sort raw files" : "Sort projects"}
+							aria-label={isRaw ? uiText("Sort raw files") : uiText("Sort projects")}
 							className="h-7 gap-2 text-xs text-muted-foreground"
 						>
 							{sort === "recent"
 								? isRaw
-									? "Last created"
-									: "Last edited"
+									? uiText("Last created")
+									: uiText("Last edited")
 								: sort === "created"
-									? "Last created"
-									: "Name"}
+									? uiText("Last created")
+									: uiText("Name")}
 							<CaretDown className="size-3" />
 						</Button>
 						<Dropdown.Popover>
-							<Dropdown.Menu aria-label={isRaw ? "Sort raw files" : "Sort projects"}>
+							<Dropdown.Menu
+								aria-label={
+									isRaw ? uiText("Sort raw files") : uiText("Sort projects")
+								}
+							>
 								{!isRaw && (
 									<Dropdown.Item id="recent" onAction={() => setSort("recent")}>
-										Last edited
+										{uiText("Last edited")}
 									</Dropdown.Item>
 								)}
 								<Dropdown.Item id="created" onAction={() => setSort("created")}>
-									Last created
+									{uiText("Last created")}
 								</Dropdown.Item>
 								<Dropdown.Item id="name" onAction={() => setSort("name")}>
-									Name
+									{uiText("Name")}
 								</Dropdown.Item>
 							</Dropdown.Menu>
 						</Dropdown.Popover>
@@ -115,16 +124,18 @@ export function DashboardFilters({
 						size="sm"
 						onClick={() => setSelected(visible.map((e) => e.path))}
 					>
-						Select all
+						{uiText("Select all")}
 					</Button>
-					<span>{selected.length} selected</span>
+					<span>
+						{selected.length} {uiText("selected")}
+					</span>
 					<Button
 						variant="destructive"
 						size="sm"
 						disabled={!selected.length || busy}
 						onClick={() => void deleteEntries(selected)}
 					>
-						{isRaw ? "Remove" : "Delete"}
+						{isRaw ? uiText("Remove") : uiText("Delete")}
 					</Button>
 					<Button
 						variant="ghost"
@@ -134,7 +145,7 @@ export function DashboardFilters({
 							setSelected([]);
 						}}
 					>
-						Cancel
+						{uiText("Cancel")}
 					</Button>
 				</div>
 			)}

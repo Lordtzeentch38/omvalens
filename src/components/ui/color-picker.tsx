@@ -1,3 +1,5 @@
+// Modified by OmvaLens, 2026-10-11: localized interface text. AGPL-3.0.
+import { useUiText } from "@/contexts/I18nContext";
 import {
 	ColorArea,
 	ColorField,
@@ -18,10 +20,11 @@ type PaletteProps = {
 	style?: React.CSSProperties;
 };
 export function ColorPalette({ color = "#000000", colors, onChange }: PaletteProps) {
+	const uiText = useUiText();
 	return (
 		<div className="flex flex-col gap-3">
 			<ColorSwatchPicker
-				aria-label="Colors"
+				aria-label={uiText("Colors")}
 				value={color}
 				onChange={(value) => onChange({ hex: value.toString("hex") })}
 			>
@@ -50,6 +53,7 @@ export function ColorControl({
 	compact?: boolean;
 	onClear?: () => void;
 }) {
+	const uiText = useUiText();
 	return (
 		<ColorPicker
 			value={value === "transparent" ? "#00000000" : value}
@@ -62,7 +66,11 @@ export function ColorControl({
 			>
 				<ColorSwatch size="sm" />
 				<span className="truncate">
-					{compact ? (value === "transparent" ? "None" : value.toUpperCase()) : label}
+					{compact
+						? value === "transparent"
+							? uiText("None")
+							: value.toUpperCase()
+						: label}
 				</span>
 			</Button>
 			<ColorPicker.Popover>
@@ -76,7 +84,7 @@ export function ColorControl({
 						</ColorSlider.Track>
 					</ColorSlider>
 					{colors && (
-						<ColorSwatchPicker aria-label="Preset colors">
+						<ColorSwatchPicker aria-label={uiText("Preset colors")}>
 							{colors.map((color) => (
 								<ColorSwatchPicker.Item key={color} color={color}>
 									<ColorSwatchPicker.Swatch />
@@ -86,12 +94,12 @@ export function ColorControl({
 						</ColorSwatchPicker>
 					)}
 					<ColorField>
-						<Label>Hex color</Label>
+						<Label>{uiText("Hex color")}</Label>
 						<Input />
 					</ColorField>
 					{onClear && (
 						<Button variant="ghost" onClick={onClear}>
-							Clear background
+							{uiText("Clear background")}
 						</Button>
 					)}
 				</Popover.Dialog>

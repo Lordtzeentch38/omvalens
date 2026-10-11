@@ -1,3 +1,5 @@
+// Modified by OmvaLens, 2026-10-11: localized interface text. AGPL-3.0.
+import { useUiText } from "@/contexts/I18nContext";
 import { createContext, useContext, useState, type ReactNode } from "react";
 import { ChoiceGroup, ChoiceItem } from "@/components/ui/choice-group";
 
@@ -19,6 +21,7 @@ export function SettingsSections({
 	children: ReactNode;
 	categories: Category[];
 }) {
+	const uiText = useUiText();
 	const parent = useContext(SettingsCategoryContext);
 	const [selected, setSelected] = useState<Category>("general");
 	if (parent) return <div className="space-y-6">{children}</div>;
@@ -27,18 +30,22 @@ export function SettingsSections({
 		<SettingsCategoryContext.Provider value={active}>
 			<div className="space-y-6">
 				<ChoiceGroup
-					aria-label="Settings sections"
+					aria-label={uiText("Settings sections")}
 					value={active}
 					onValueChange={(value) => setSelected(value as Category)}
 					size="sm"
 				>
 					{categories.map((category) => (
 						<ChoiceItem key={category} value={category}>
-							{labels[category]}
+							{uiText(labels[category])}
 						</ChoiceItem>
 					))}
 				</ChoiceGroup>
-				<div role="region" aria-label={`${labels[active]} settings`} className="space-y-6">
+				<div
+					role="region"
+					aria-label={uiText("{{value1}} settings", { value1: uiText(labels[active]) })}
+					className="space-y-6"
+				>
 					{children}
 				</div>
 			</div>

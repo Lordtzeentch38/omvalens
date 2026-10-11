@@ -1,6 +1,37 @@
-# Verifiche della versione di sviluppo — 10 ottobre 2026
+# Verifiche della versione di sviluppo
 
-## Cambio di identità: OmvaLens
+## Checklist e prima fase italiana — 11 ottobre 2026
+
+- Checklist condivisa con caselle, criteri di completamento e registro:
+  [CHECKLIST_SVILUPPO_IT.md](CHECKLIST_SVILUPPO_IT.md). Obbligo di aggiornarla
+  dopo ogni attività inserito nelle istruzioni del progetto.
+- 567 frasi aggiuntive nei cataloghi e in italiano; corretti testi inglesi
+  nei cataloghi italiani preesistenti. Menu nativi e notifiche seguono la lingua.
+- Controllo tipi e cataloghi superati. Lint: zero errori, un avviso preesistente
+  relativo alla dipendenza `revision` di ProjectThumbnail.
+- Suite completa: 1.495 test riusciti, 7 esclusi; 171 file di test riusciti e uno
+  escluso. Inclusi test nuovi per ripiego della lingua, variabili, preservazione
+  dei percorsi e lettura della preferenza nel processo nativo.
+- Interfaccia: 11 scenari riusciti, comprendenti italiano, cambio a inglese,
+  persistenza dopo riavvio, propagazione tra finestre, onboarding/accesso e crediti.
+- Controllo visivo di guida/accesso, crediti e impostazioni. Immagini locali
+  conservate in `.tmp/localization-ui/`.
+- Renderer, processo principale e preload compilati; verifica CJS riuscita.
+  Installer locale `release/OmvaLens-windows-x64.exe` ricreato; checksum aggiornati.
+- Verifica dei binari inclusi riuscita. App Windows avviata con profilo isolato:
+  editor in italiano, menu `File / Modifica / Visualizza / Finestra / Aiuto`,
+  esportazione/reimportazione portabile con media indipendenti, zero errori del
+  renderer. Risultato e immagini in `.tmp/packaged-brand-smoke/`; editor
+  ispezionato visivamente. Il filmato sintetico e il nome di un progetto già
+  salvato contengono testo inglese: sono contenuti dell'utente e restano invariati.
+- Le altre lingue riutilizzano traduzioni disponibili o il ripiego inglese per
+  nuove frasi. Revisione linguistica e candidati residui restano aperti, come
+  descritto in [TRADUZIONI_IT.md](TRADUZIONI_IT.md). Nessuna certificazione di
+  localizzazione completa per tutte le lingue.
+- Le prove su dispositivi reali, installazione pulita e GPU rimangono separate;
+  nessun intervento sull'accelerazione hardware è stato avviato.
+
+## Cambio di identità: OmvaLens — 10 ottobre 2026
 
 - Nome e logo originali in avvio, onboarding, libreria, finestre, icone,
   traduzioni, messaggi di errore e aggiornamento e confezionamento Windows.
@@ -97,12 +128,12 @@ npm exec -- playwright test tests/ui/portable-project.spec.ts tests/ui/project-d
 npm run smoke:windows-recording
 npm run build:win
 npm run smoke:packaged-binaries -- release/win-unpacked
-npm run smoke:packaged-app -- release/win-unpacked/ScreenRecorder.exe
+npm run smoke:packaged-app -- release/win-unpacked/OmvaLens.exe
 # Dopo la prova nativa, verifica anche editor e trasferimento portabile:
-npm run smoke:packaged-app -- release/win-unpacked/ScreenRecorder.exe .tmp/windows-smoke/capture.mp4
+npm run smoke:packaged-app -- release/win-unpacked/OmvaLens.exe .tmp/windows-smoke/capture.mp4
 ```
 
 La prova di cattura produce i risultati in `.tmp/windows-smoke`; quella di avvio
-in `.tmp/packaged-app-smoke`. Il profilo di quest’ultima non tocca i progetti
-dell’utente. Forgejo resta il repository primario; GitHub viene aggiornato per
-questa operazione su richiesta esplicita del proprietario.
+in `.tmp/packaged-brand-smoke`. Il profilo di quest’ultima non tocca i progetti
+dell’utente. Forgejo resta il repository primario; GitHub viene aggiornato solo
+su richiesta esplicita per ciascuna operazione.

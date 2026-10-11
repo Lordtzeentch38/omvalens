@@ -1,3 +1,5 @@
+// Modified by OmvaLens, 2026-10-11: localized interface text. AGPL-3.0.
+import { useUiText } from "@/contexts/I18nContext";
 import type { useAppearanceState } from "../state/useAppearanceState";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { toast } from "@/components/ui/toast";
@@ -20,6 +22,7 @@ export function useRecordingLibrary(
 	ui: ReturnType<typeof useEditorUiState>,
 	appearance: ReturnType<typeof useAppearanceState>,
 ) {
+	const uiText = useUiText();
 	const [open, setOpen] = useState(false);
 	const [entries, setEntries] = useState<RecordingLibraryEntry[]>([]);
 	const [selected, setSelected] = useState<Set<string>>(new Set());
@@ -66,7 +69,7 @@ export function useRecordingLibrary(
 			setEntries((previous) => previous.filter((entry) => !paths.includes(entry.path)));
 			setSelected(new Set());
 		} catch (error) {
-			toast.error(`Could not remove videos: ${String(error)}`);
+			toast.error(uiText("Could not remove videos: {{value1}}", { value1: String(error) }));
 		} finally {
 			lock.current = false;
 			setBusy(false);
@@ -83,7 +86,7 @@ export function useRecordingLibrary(
 			setRemoved((previous) => previous.slice(0, -1));
 			await refresh();
 		} catch (error) {
-			toast.error(`Could not restore videos: ${String(error)}`);
+			toast.error(uiText("Could not restore videos: {{value1}}", { value1: String(error) }));
 		} finally {
 			lock.current = false;
 			setBusy(false);
@@ -98,7 +101,9 @@ export function useRecordingLibrary(
 		try {
 			await window.electronAPI.cancelRecordingImport();
 		} catch (error) {
-			toast.error(`Could not stop import processing: ${String(error)}`);
+			toast.error(
+				uiText("Could not stop import processing: {{value1}}", { value1: String(error) }),
+			);
 		}
 	};
 	const addToTimeline = async (paths: string | string[], index?: number) => {
@@ -132,7 +137,7 @@ export function useRecordingLibrary(
 				completed++;
 				if (current.current.project.videoSourcePath !== source)
 					throw new Error(
-						"The project changed while importing. Add the recordings again.",
+						uiText("The project changed while importing. Add the recordings again."),
 					);
 				media = result.value;
 				sourcePath = media.path;
@@ -183,13 +188,17 @@ export function useRecordingLibrary(
 			if (!media) return;
 			const { project, timeline, ui, appearance } = current.current;
 			if (project.videoSourcePath !== source)
-				throw new Error("The project changed while importing. Add the recordings again.");
+				throw new Error(
+					uiText("The project changed while importing. Add the recordings again."),
+				);
 			// Prepare cleanup while retaining rollback ownership until the project check passes.
 			const prepared = await window.electronAPI.finishRecordingImport(media.path);
 			if (!prepared.success)
 				throw new Error(prepared.error || "Could not finalize imported media");
 			if (current.current.project.videoSourcePath !== source)
-				throw new Error("The project changed while importing. Add the recordings again.");
+				throw new Error(
+					uiText("The project changed while importing. Add the recordings again."),
+				);
 			// Send acceptance before synchronous project state updates; no await can switch projects here.
 			void window.electronAPI
 				.finishRecordingImport(media.path, true)
@@ -221,10 +230,11 @@ export function useRecordingLibrary(
 			toast.success(
 				completed === 1
 					? "Video added to timeline"
-					: `${completed} videos added to timeline`,
+					: uiText("{{value1}} videos added to timeline", { value1: completed }),
 			);
 		} catch (error) {
-			if (!cancelled.current) toast.error(`Could not add video: ${String(error)}`);
+			if (!cancelled.current)
+				toast.error(uiText("Could not add video: {{value1}}", { value1: String(error) }));
 		} finally {
 			try {
 				const cleanup = await window.electronAPI.finishRecordingImport(

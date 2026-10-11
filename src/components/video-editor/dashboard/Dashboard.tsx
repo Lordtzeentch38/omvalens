@@ -1,3 +1,5 @@
+// Modified by OmvaLens, 2026-10-11: localized interface text. AGPL-3.0.
+import { useUiText } from "@/contexts/I18nContext";
 import { DashboardAnnouncements } from "./DashboardAnnouncements";
 import { Card, Modal } from "@heroui/react";
 import { DashboardFilters } from "./DashboardFilters";
@@ -7,6 +9,7 @@ import { DashboardToolbar } from "./DashboardToolbar";
 import type { DashboardProps } from "./types";
 import { useDashboardModel } from "./useDashboardModel";
 export function Dashboard(props: DashboardProps) {
+	const uiText = useUiText();
 	const model = useDashboardModel(props);
 	const view = { ...props, ...model };
 	return (
@@ -15,7 +18,7 @@ export function Dashboard(props: DashboardProps) {
 				<Modal.Backdrop>
 					<Modal.Container size="full">
 						<Modal.Dialog
-							aria-label="Projects dashboard"
+							aria-label={uiText("Projects dashboard")}
 							className="dashboard-surface dashboard-shell flex h-full flex-row gap-0 rounded-none bg-background p-0 text-foreground"
 						>
 							<DashboardSidebar {...view} />

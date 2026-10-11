@@ -1,4 +1,6 @@
 import { createCountdownController } from "../../countdownController";
+// Modified by OmvaLens, 2026-10-11: keep native menus in the selected locale.
+import { localeEvents } from "../../nativeI18n";
 import fs from "node:fs/promises";
 import { app, BrowserWindow, ipcMain } from "electron";
 import { hasAppSetting, readAppSettingsStore, writeAppSettingsStore } from "../../appSettingsStore";
@@ -91,6 +93,7 @@ export function registerSettingsHandlers() {
 			const store = readAppSettingsStore();
 			store[key] = value;
 			writeAppSettingsStore(store);
+			if (key === "recordly.locale") localeEvents.emit("changed");
 			event.returnValue = { success: true };
 		} catch (error) {
 			console.error("Failed to save app setting:", error);

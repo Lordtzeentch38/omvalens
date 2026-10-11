@@ -1,3 +1,5 @@
+// Modified by OmvaLens, 2026-10-11: native dialog translations. AGPL-3.0.
+import { nativeText } from "../../nativeI18n";
 // Modified by the ScreenRecorder fork, 2026-10-10. See FORK_CHANGES.md; AGPL-3.0.
 import { randomUUID } from "node:crypto";
 import { existsSync, constants as fsConstants, realpathSync, type Stats } from "node:fs";
@@ -521,10 +523,14 @@ export async function loadProjectFromPath(projectPath: string) {
 			async () => {
 				const answer = await dialog.showMessageBox({
 					type: "warning",
-					title: "Recover project",
-					message: "This project could not be opened. A saved backup is available.",
-					detail: "Open the backup as a new project? The original file will be preserved. Recent edits may be missing.",
-					buttons: ["Open backup", "Cancel"],
+					title: nativeText("Recover project"),
+					message: nativeText(
+						"This project could not be opened. A saved backup is available.",
+					),
+					detail: nativeText(
+						"Open the backup as a new project? The original file will be preserved. Recent edits may be missing.",
+					),
+					buttons: [nativeText("Open backup"), nativeText("Cancel")],
 					defaultId: 0,
 					cancelId: 1,
 				});
