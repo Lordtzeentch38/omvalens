@@ -6,7 +6,10 @@
 		"modeAuto": "自动",
 		"modeManual": "手动",
 		"modeManualDescription": "为此缩放设置固定焦点",
-		"modeAutoDescription": "镜头会自动跟随光标"
+		"modeAutoDescription": "镜头会自动跟随光标",
+		"mode": "模式",
+		"amount": "金额",
+		"globalSettings": "动画"
 	},
 	"trim": {
 		"deleteRegion": "删除修剪区域"
@@ -15,7 +18,8 @@
 		"playbackSpeed": "播放速度",
 		"selectRegion": "选择变速区域以调整",
 		"deleteRegion": "删除变速区域",
-		"label": "速度"
+		"label": "速度",
+		"unsupported": "不支持在此设备上预览"
 	},
 	"clip": {
 		"title": "片段",
@@ -38,21 +42,21 @@
 			"tahoe-inverted": "Tahoe 反相",
 			"windows11": "Windows 11",
 			"dot": "圆点",
-			"figma": "Minimal",
+			"figma": "极简",
 			"lavender": "Lavender",
 			"parched": "Parched",
 			"chooper": "Chooper",
 			"amongus": "Among Us",
-			"turtle": "Turtle"
+			"turtle": "海龟"
 		},
 		"backgroundBlur": "模糊",
 		"zoomMotionBlur": "缩放运动模糊",
-		"auto": "Auto",
+		"auto": "自动",
 		"connectZooms": "连接缩放",
 		"connectZoomsDescription": "将连续的缩放区域平滑连接为一次连续的镜头移动。",
 		"autoApplyFreshRecordingZooms": "自动为新录制应用缩放",
 		"autoApplyFreshRecordingZoomsDescription": "打开新录制时自动建议跟随光标的缩放。",
-		"zoomGeneralTitle": "全局",
+		"zoomGeneralTitle": "常规",
 		"zoomGeneralDescription": "控制所有缩放过渡的整体运动设置。",
 		"zoomInTitle": "进入缩放",
 		"zoomInDescription": "控制镜头进入缩放区域的方式。",
@@ -66,7 +70,7 @@
 		"cursorMotionPresets": "光标运动预设",
 		"motionPresets": {
 			"focused": {
-				"label": "专注",
+				"label": "聚焦",
 				"description": "更利落，适合演示、讲解和日常录屏。"
 			},
 			"smooth": {
@@ -84,7 +88,7 @@
 		"connectedZoomEasing": "连接平移曲线",
 		"zoomEasingOptions": {
 			"recordly": "OmvaLens",
-			"glide": "滑行",
+			"glide": "滑动",
 			"smooth": "平滑",
 			"snappy": "利落",
 			"linear": "线性"
@@ -94,31 +98,31 @@
 		"cursorSpringStiffness": "光标弹簧刚度",
 		"cursorSpringDamping": "光标弹簧阻尼",
 		"cursorSpringMass": "光标弹簧质量",
-		"off": "关",
+		"off": "关闭",
 		"cursorClickEffects": {
-			"title": "Click Effects",
-			"advanced": "Advanced",
-			"advancedShow": "Show advanced click effect controls",
-			"advancedHide": "Hide advanced click effect controls",
-			"color": "Effect Color",
-			"size": "Effect Size",
-			"opacity": "Effect Opacity",
-			"duration": "Effect Duration",
+			"title": "点击效果",
+			"advanced": "高级",
+			"advancedShow": "显示高级点击效果控件",
+			"advancedHide": "隐藏高级点击效果控制",
+			"color": "效果颜色",
+			"size": "效果尺寸",
+			"opacity": "不透明度",
+			"duration": "效果持续时间",
 			"none": {
-				"label": "Off",
-				"description": "No click graphic. Only the cursor motion changes when you click."
+				"label": "关闭",
+				"description": "没有点击图形。 当您点击时,仅光标移动会发生变化。"
 			},
 			"ripple": {
-				"label": "Ripple",
-				"description": "Expanding rings radiate from each click so taps read clearly in motion."
+				"label": "涟漪",
+				"description": "每次点击都会有扩展环辐射出来,因此在移动时可以清晰读取点击。"
 			},
 			"spotlight": {
-				"label": "Spotlight",
-				"description": "A soft halo flashes around the pointer to emphasize the clicked area."
+				"label": "聚光灯",
+				"description": "指针周围会闪烁柔和的光环,以强调点按的区域。"
 			},
 			"echo": {
-				"label": "Echo",
-				"description": "A pair of soft rings that spread outward with a cleaner pulse."
+				"label": "回声",
+				"description": "一对柔软的环,以更清洁的脉冲向外扩散。"
 			}
 		},
 		"cursorMotionBlur": "光标运动模糊",
@@ -151,7 +155,30 @@
 		"paddingBottom": "下",
 		"paddingLeft": "左",
 		"paddingRight": "右",
-		"removeBackground": "移除背景"
+		"removeBackground": "移除背景",
+		"devSection": "Dev",
+		"devSectionHint": "临时测试原生捕获和运动调整控制。",
+		"nativeCaptureWarningTester": "本地捕获警告",
+		"nativeCaptureWarningTesterUnavailable": "此项目目前标记为本地捕获不可用。",
+		"nativeCaptureWarningTesterAvailable": "此项目未标记为不支持,但您仍可以打开模块进行 UI 测试。",
+		"openNativeCaptureWarning": "打开警告",
+		"cameraDebugTuning": "摄像机调试设置",
+		"cameraDebugTuningHint": "仅用于开发的相机运动弹簧调谐控制。",
+		"cameraSpringStiffnessMultiplier": "相机刚度",
+		"cameraSpringDampingMultiplier": "相機減衰",
+		"cameraSpringMassMultiplier": "相機質量",
+		"cursorDebugTuning": "光标调试设置",
+		"cursorDebugTuningHint": "仅开发弹簧调整控制。",
+		"cursorSpringStiffnessMultiplier": "弹簧刚度",
+		"cursorSpringDampingMultiplier": "弹簧减振",
+		"cursorSpringMassMultiplier": "弹簧质量",
+		"classicZoom": "经典动画",
+		"cursorDebugMovedToDev": "光标弹簧调整可在\"设置\">\"开发\"中进行。",
+		"webcamPosition": "职位",
+		"webcamCustomPosition": "自定义位置",
+		"webcamHorizontal": "水平",
+		"webcamVertical": "垂直",
+		"webcamMargin": "边距"
 	},
 	"sections": {
 		"scene": "场景",
@@ -161,7 +188,8 @@
 		"cursor": "光标",
 		"webcam": "摄像头",
 		"frame": "边框",
-		"crop": "裁剪"
+		"crop": "裁剪",
+		"appearance": "外表"
 	},
 	"captions": {
 		"selectOnTimeline": "在时间轴上选择字幕进行编辑。",
@@ -192,13 +220,16 @@
 		"backgroundOpacity": "背景透明度",
 		"textColor": "文字颜色",
 		"editor": {
-			"text": "Text",
-			"start": "Start",
-			"end": "End",
-			"split": "Split",
-			"merge": "Merge",
-			"delete": "Delete"
-		}
+			"text": "文本",
+			"start": "开始",
+			"end": "结束",
+			"split": "拆分",
+			"merge": "合并",
+			"delete": "删除"
+		},
+		"generation": "世代",
+		"useCustomModel": "使用自定义",
+		"generatingStatus": "生成字幕,可能需要一会儿。"
 	},
 	"crop": {
 		"title": "裁剪视频",
@@ -218,7 +249,11 @@
 		"uploadCustom": "上传自定义",
 		"uploadSuccess": "自定义图片上传成功！",
 		"uploadError": "请上传 JPG 或 JPEG 图片文件。",
-		"uploadErrorDescription": "仅支持 JPG 和 JPEG 图片。"
+		"uploadErrorDescription": "仅支持 JPG 和 JPEG 图片。",
+		"video": "视频",
+		"addWallpaper": "添加壁纸",
+		"addVideoWallpaper": "添加视频壁纸",
+		"customWallpaper": "自定义壁纸"
 	},
 	"export": {
 		"title": "导出",
@@ -240,7 +275,23 @@
 		"saveProject": "保存项目",
 		"exportVideo": "导出{{format}}",
 		"reportBug": "报告问题",
-		"starOnGithub": "在 GitHub 上点赞"
+		"starOnGithub": "在 GitHub 上点赞",
+		"format": "格式",
+		"qualityTitle": "质量",
+		"encodingTitle": "编码",
+		"nvidiaCuda": {
+			"title": "NVIDIA CUDA"
+		},
+		"captionSidecar": {
+			"title": "导出字幕文件",
+			"hint": "在导出的视频旁边保存.srt 和.vtt 文件。"
+		},
+		"size": "大小",
+		"encoding": {
+			"fast": "快速",
+			"balanced": "均衡",
+			"quality": "质量"
+		}
 	},
 	"audio": {
 		"title": "音频",
@@ -260,19 +311,22 @@
 		"saveFailed": "无法更改更新频道。"
 	},
 	"hardware": {
-		"title": "Hardware acceleration",
-		"description": "Use a compatible GPU when available, with a software fallback.",
-		"saveError": "Could not save the hardware preference.",
-		"restart": "Close and reopen OmvaLens to apply this change.",
-		"checking": "Checking hardware…",
-		"check": "Check hardware",
-		"noDevice": "No GPU detected",
-		"graphics": "Preview and composition",
-		"video": "Video encoding",
-		"unavailable": "Unavailable",
-		"cuda": "CUDA runtime available",
-		"platform": "Platform runtime",
-		"note": "Availability is checked here; actual use depends on the file and operation. GIF encoding and some effects use the CPU.",
-		"partial": "Some hardware checks failed; the software fallback remains available."
+		"title": "硬件加速",
+		"description": "有兼容 GPU 时使用硬件加速，必要时回退到软件处理。",
+		"saveError": "无法保存硬件首选项。",
+		"restart": "关闭并重新打开 OmvaLens 以应用此更改。",
+		"checking": "正在检查硬件",
+		"check": "检查硬件",
+		"noDevice": "未检测到 GPU",
+		"graphics": "预览和组合",
+		"video": "视频编码",
+		"unavailable": "不详",
+		"cuda": "可用的 CUDA 运行时",
+		"platform": "平台运行时",
+		"note": "此处检查可用性；实际使用取决于文件和操作。GIF 编码和部分效果使用 CPU。",
+		"partial": "一些硬件检查失败;软件备份仍然可用。"
+	},
+	"annotation": {
+		"delete": "删除注释"
 	}
 }

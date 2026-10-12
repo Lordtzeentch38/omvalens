@@ -33,7 +33,8 @@ facoltative non bloccano la prima versione Windows utilizzabile senza account.
   accesso, dashboard, crediti, editor, impostazioni, notifiche e finestre native.
   Corretti testi inglesi nei cataloghi italiani esistenti. Cambio lingua persistente,
   sincronizzazione tra finestre e menu nativi; dati dell'utente preservati.
-  Controlli V05–V07. C07 completa i residui italiani; restano C08 e V08.
+  Controlli V05–V07. C07 completa i residui italiani, C08 le altre lingue;
+  resta la revisione estesa V08.
 - [x] **C06 — Strumenti di controllo delle traduzioni.** Inventario dei candidati
   (`scripts/i18n-audit.mjs`), controllo dei cataloghi, variabili di interpolazione
   e associazioni delle frasi. Controlli V05 e V08.
@@ -44,6 +45,12 @@ facoltative non bloccano la prima versione Windows utilizzabile senza account.
   Tipi, cataloghi, test e build verificati; evidenze in
   [TRADUZIONI_IT.md](TRADUZIONI_IT.md). Diagnostica tecnica e nomi propri
   conservati. Revisione linguistica estesa separata in V08.
+- [x] **C08 — Nuove frasi nelle altre otto lingue selezionabili.** Completata
+  il 12/10/2026: spagnolo, francese, tedesco, olandese, coreano, portoghese
+  brasiliano e cinese semplificato/tradizionale; 6.926 valori aggiornati.
+  Tutte le dieci lingue coprono 1.463 chiavi, senza frasi inglesi prive di
+  motivazione. Nuovo controllo per i ripieghi futuri; variabili, nomi e URL
+  preservati. Cataloghi, tipi, lint e suite verificati. Collaudo distinto in V08.
 
 - [x] **C11 — Accelerazione GPU.** Modalità automatica/CPU coerente per sessione,
   rilevamento hardware, Whisper CUDA Windows x64 con runtime CPU indipendente e
@@ -53,11 +60,6 @@ facoltative non bloccano la prima versione Windows utilizzabile senza account.
 
 ### Da implementare o completare
 
-- [ ] **C08 — Nuove frasi nelle altre otto lingue selezionabili.** Completare
-  spagnolo, francese, tedesco, olandese, coreano, portoghese brasiliano e cinese
-  semplificato/tradizionale. Le traduzioni esistenti sono state riutilizzate;
-  le nuove frasi senza traduzione usano l'inglese. Criterio: rimuovere i ripieghi
-  inglesi delle frasi funzionali; collaudo linguistico distinto in V08.
 - [ ] **C09 — Aggiornamenti dell'app.** Configurare un feed del nostro progetto e
   integrare controllo, download, installazione ed errori. Gli aggiornamenti
   originali Recordly sono disabilitati. Controllo V14.
@@ -105,9 +107,16 @@ facoltative non bloccano la prima versione Windows utilizzabile senza account.
   - [x] Inventario statico ampliato e classificato; lista C07 chiusa, 12/10/2026.
   - [x] Controlli tecnici C07: cataloghi, interpolazione, dati dell'utente,
     messaggi sconosciuti, SVG e percorsi UI italiani, 12/10/2026.
-  - [ ] Revisione visiva delle dieci lingue selezionabili e dei cataloghi,
-    preferibilmente con madrelingua, dopo C08. Coerenza tecnica non equivale
-    a traduzione completa. Il catalogo russo non è selezionabile.
+  - [x] Copertura C08: 1.463 chiavi per lingua; nessun ripiego inglese
+    immotivato, 1.538 test riusciti e 7 esclusi, 12/10/2026.
+  - [x] Dieci scenari UI C08: dashboard, crediti, etichette MP4/GIF, errori
+    dinamici e persistenza; immagini ispezionate a campione per ogni lingua,
+    12/10/2026. Nessuna sovrapposizione nei percorsi visualizzati a 1440×1000.
+    Rieseguiti con esito positivo anche i tre scenari italiani C07.
+  - [ ] Revisione linguistica completa dei cataloghi e dei percorsi meno comuni,
+    preferibilmente con madrelingua; prove native estese nelle otto lingue.
+    La copertura tecnica non certifica la qualità di ogni frase.
+    Il catalogo russo non è selezionabile.
 - [ ] **V09 — Microfono, audio di sistema e webcam reali.** Provare combinazioni,
   sincronizzazione, permessi, cambio/disconnessione e riapertura dei dispositivi.
   Criterio: documentare dispositivi, scenari ed esiti.
@@ -157,6 +166,8 @@ prova fallita. Non considerare una funzionalità mancante prima del collaudo.
   pacchetto Windows ricreato con C11 e poi C07 il 12/10/2026. Con C07 verificati
   avvio/editor italiano, menu nativi, trasferimento portabile e binari inclusi;
   checksum aggiornati. Le modalità GPU/CPU erano state verificate con C11.
+  Ricreato dopo C08: 519.941.993 byte, binari/checksum e prova dell'app Windows
+  con profilo isolato riusciti il 12/10/2026.
   Firma editore e release pubblica restano separate.
 - [ ] **D03 — Release pubblica su Forgejo.** Pubblicare installer, checksum,
   sorgenti, istruzioni e problemi noti della versione collaudata. Un push dei
@@ -178,5 +189,8 @@ prova fallita. Non considerare una funzionalità mancante prima del collaudo.
 | 12/10/2026 | C07 | Completata | 243 nuove frasi; 1.516 test riusciti, 7 esclusi; tipi/cataloghi/lint/build verificati, un avviso lint precedente; nove scenari UI distinti riusciti. |
 | 12/10/2026 | V08 | Collaudo parziale | Inventario di 514 punti classificato, nessun residuo in attesa; test tecnici italiani riusciti. C08 e revisione linguistica/visiva delle dieci lingue restano aperti. |
 | 12/10/2026 | D02 | Aggiornata con C07 | Installer Windows locale ricreato (519.801.334 byte), checksum, binari inclusi e avvio/editor/menu nativi/trasferimento portabile riusciti con profilo isolato. D03 resta aperta. |
+| 12/10/2026 | C08 | Completata | Otto cataloghi completati: 6.926 valori aggiornati, 1.463 chiavi per lingua. Nessuna frase inglese senza motivazione, variabili/nomi/URL preservati; 1.538 test riusciti e 7 esclusi, tipi/cataloghi/lint/build verificati. Un avviso lint preesistente. |
+| 12/10/2026 | V08 | Collaudo parziale dopo C08 | Dieci scenari UI riusciti: dashboard, crediti, etichette MP4/GIF, errori con percorso e persistenza. Controllo visivo a campione nelle dieci lingue; revisione linguistica completa e prove native estese restano aperte. |
+| 12/10/2026 | D02 | Aggiornata con C08 | Installer locale ricreato (519.941.993 byte), checksum/binari verificati; avvio, editor italiano, menu nativi e trasferimento portabile riusciti con profilo isolato. Firma e release pubblica restano separate. |
 
 Ulteriori dettagli sulle traduzioni: [TRADUZIONI_IT.md](TRADUZIONI_IT.md).

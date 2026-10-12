@@ -6,12 +6,15 @@ test.beforeEach(async ({ page }) => {
 	await page.addInitScript(() => localStorage.setItem("recordly.locale", "it"));
 });
 test("Italian GIF export presets display localized names", async ({ page }) => {
+	// A cold development server transforms the editor before the first interaction.
+	test.setTimeout(90000);
 	await installDesktopBridgeOverrides(page, () => {
-		window.electronAPI.onCloudShareProgress = () => () => {};
+		window.electronAPI.onCloudShareProgress = () => () => undefined;
 	});
 	const errors: string[] = [];
 	page.on("pageerror", (error) => errors.push(error.message));
 	await page.goto("/?windowType=editor");
+	await expect(page.locator("html")).toHaveAttribute("data-project-creates", "1");
 	await page.getByRole("button", { name: "Pubblica", exact: true }).click();
 	await page.getByRole("row", { name: "Locale", exact: true }).click();
 	await page.getByRole("row", { name: "GIF", exact: true }).click();

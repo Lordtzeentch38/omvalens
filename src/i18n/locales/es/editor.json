@@ -21,7 +21,7 @@
 		"uploading": "Subiendo… {progress}%",
 		"googleUnavailable": "El inicio de sesión con Google aún no está habilitado. Usa el correo o pide al administrador de OmvaLens que conecte Google.",
 		"xUnavailable": "El inicio de sesión con X aún no está habilitado. Usa el correo o pide al administrador de OmvaLens que conecte X.",
-		"providerUnavailable": "Este método de inicio de sesión aún no está habilitado. Usa el correo.",
+		"providerUnavailable": "Este método de acceso aún no está habilitado para OmvaLens. Usa el correo electrónico por ahora.",
 		"enterEmail": "Introduce primero tu dirección de correo.",
 		"resetSent": "Correo para restablecer la contraseña enviado.",
 		"accountHeading": "Tu cuenta de OmvaLens",
@@ -51,7 +51,8 @@
 		"skipBack": "Retroceder",
 		"skipForward": "Avanzar",
 		"muteUnmute": "Silenciar/activar sonido",
-		"volume": "Volumen de vista previa"
+		"volume": "Volumen de vista previa",
+		"seek": "Posición de reproducción"
 	},
 	"annotations": {
 		"settings": "Configuración de anotaciones",
@@ -89,7 +90,12 @@
 		"imageUploadError": "Por favor sube un archivo de imagen JPG, PNG, GIF o WebP.",
 		"blurStrength": "Fuerza del Desenfoque: {{strength}}",
 		"solidColor": "Color Sólido (Censura)",
-		"borderRadius": "Radio del Borde"
+		"borderRadius": "Radio del Borde",
+		"imageUploadErrorDescription": "Formatos compatibles: JPG, PNG, GIF, WebP",
+		"imageUploadFailed": "Error al subir la imagen",
+		"imageUploadFailedDescription": "Hubo un error al leer el archivo.",
+		"arrowDirectionOption": "Dirección de la flecha: {{direction}}",
+		"customColor": "Color de encargo"
 	},
 	"fontStyles": {
 		"classic": "Clásico",
@@ -105,7 +111,8 @@
 		"mp4Video": "Video MP4",
 		"mp4Description": "Archivo de video de alta calidad",
 		"gifAnimation": "Animación GIF",
-		"gifDescription": "Imagen animada para compartir"
+		"gifDescription": "Imagen animada para compartir",
+		"title": "Formato de exportación"
 	},
 	"gifOptions": {
 		"frameRate": "Velocidad de cuadros",

@@ -51,7 +51,8 @@
 		"skipBack": "Indietro",
 		"skipForward": "Avanti",
 		"muteUnmute": "Disattiva/Attiva audio",
-		"volume": "Volume anteprima"
+		"volume": "Volume anteprima",
+		"seek": "Posizione di riproduzione"
 	},
 	"annotations": {
 		"settings": "Impostazioni annotazione",
@@ -89,7 +90,12 @@
 		"imageUploadError": "Carica un file immagine JPG, PNG, GIF o WebP.",
 		"blurStrength": "Intensità sfocatura: {{strength}}",
 		"solidColor": "Colore pieno (Censura)",
-		"borderRadius": "Raggio bordo"
+		"borderRadius": "Raggio bordo",
+		"imageUploadErrorDescription": "Formati supportati: JPG, PNG, GIF, WebP",
+		"imageUploadFailed": "Caricamento immagine non riuscito",
+		"imageUploadFailedDescription": "Si è verificato un errore durante la lettura del file.",
+		"arrowDirectionOption": "Direzione della freccia: {{direction}}",
+		"customColor": "Colore personalizzato"
 	},
 	"fontStyles": {
 		"classic": "Classico",
@@ -105,7 +111,8 @@
 		"mp4Video": "Video MP4",
 		"mp4Description": "File video di alta qualità",
 		"gifAnimation": "Animazione GIF",
-		"gifDescription": "Immagine animata da condividere"
+		"gifDescription": "Immagine animata da condividere",
+		"title": "Formato di esportazione"
 	},
 	"gifOptions": {
 		"frameRate": "Frequenza fotogrammi",

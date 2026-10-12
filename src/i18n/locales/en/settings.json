@@ -12,7 +12,10 @@
 		"modeAuto": "Auto",
 		"modeManual": "Manual",
 		"modeManualDescription": "Set a fixed focus point for this zoom",
-		"modeAutoDescription": "Camera recenters when the cursor nears the edge of the zoomed view"
+		"modeAutoDescription": "Camera recenters when the cursor nears the edge of the zoomed view",
+		"mode": "Mode",
+		"amount": "Amount",
+		"globalSettings": "Animation"
 	},
 	"trim": {
 		"deleteRegion": "Delete Trim Region"
@@ -21,7 +24,8 @@
 		"playbackSpeed": "Playback Speed",
 		"selectRegion": "Select a speed region to adjust",
 		"deleteRegion": "Delete Speed Region",
-		"label": "Speed"
+		"label": "Speed",
+		"unsupported": "Not supported for preview on this device"
 	},
 	"clip": {
 		"title": "Clip",
@@ -157,7 +161,30 @@
 		"paddingBottom": "Bottom",
 		"paddingLeft": "Left",
 		"paddingRight": "Right",
-		"removeBackground": "Remove background"
+		"removeBackground": "Remove background",
+		"devSection": "Dev",
+		"devSectionHint": "Temporary testing controls for native capture and motion tuning.",
+		"nativeCaptureWarningTester": "Native capture warning",
+		"nativeCaptureWarningTesterUnavailable": "This project is currently marked as native capture unavailable.",
+		"nativeCaptureWarningTesterAvailable": "This project is not marked as unsupported, but you can still open the modal for UI testing.",
+		"openNativeCaptureWarning": "Open warning",
+		"cameraDebugTuning": "Camera Debug Tuning",
+		"cameraDebugTuningHint": "Development-only spring tuning controls for camera motion.",
+		"cameraSpringStiffnessMultiplier": "Camera stiffness",
+		"cameraSpringDampingMultiplier": "Camera damping",
+		"cameraSpringMassMultiplier": "Camera mass",
+		"cursorDebugTuning": "Cursor Debug Tuning",
+		"cursorDebugTuningHint": "Development-only spring tuning controls.",
+		"cursorSpringStiffnessMultiplier": "Spring stiffness",
+		"cursorSpringDampingMultiplier": "Spring damping",
+		"cursorSpringMassMultiplier": "Spring mass",
+		"classicZoom": "Classic Animation",
+		"cursorDebugMovedToDev": "Cursor spring tuning is available in Settings > Dev.",
+		"webcamPosition": "Position",
+		"webcamCustomPosition": "Custom position",
+		"webcamHorizontal": "Horizontal",
+		"webcamVertical": "Vertical",
+		"webcamMargin": "Margin"
 	},
 	"sections": {
 		"scene": "Scene",
@@ -167,7 +194,8 @@
 		"cursor": "Cursor",
 		"webcam": "Webcam",
 		"frame": "Frame",
-		"crop": "Crop"
+		"crop": "Crop",
+		"appearance": "Appearance"
 	},
 	"captions": {
 		"selectOnTimeline": "Select a caption on the timeline to edit it.",
@@ -204,7 +232,10 @@
 			"split": "Split",
 			"merge": "Merge",
 			"delete": "Delete"
-		}
+		},
+		"generation": "Generation",
+		"useCustomModel": "Use custom",
+		"generatingStatus": "Generating captions. This can take a moment."
 	},
 	"crop": {
 		"title": "Crop Video",
@@ -224,7 +255,11 @@
 		"uploadCustom": "Upload Custom",
 		"uploadSuccess": "Custom image uploaded successfully!",
 		"uploadError": "Please upload a JPG or JPEG image file.",
-		"uploadErrorDescription": "Only JPG and JPEG images are supported."
+		"uploadErrorDescription": "Only JPG and JPEG images are supported.",
+		"video": "Video",
+		"addWallpaper": "Add wallpaper",
+		"addVideoWallpaper": "Add video wallpaper",
+		"customWallpaper": "Custom wallpaper"
 	},
 	"export": {
 		"title": "Export",
@@ -246,7 +281,23 @@
 		"saveProject": "Save Project",
 		"exportVideo": "Export {{format}}",
 		"reportBug": "Report Bug",
-		"starOnGithub": "Star on GitHub"
+		"starOnGithub": "Star on GitHub",
+		"format": "Format",
+		"qualityTitle": "Quality",
+		"encodingTitle": "Encoding",
+		"nvidiaCuda": {
+			"title": "NVIDIA CUDA"
+		},
+		"captionSidecar": {
+			"title": "Export captions file",
+			"hint": "Save .srt and .vtt files next to your exported video."
+		},
+		"size": "Size",
+		"encoding": {
+			"fast": "Fast",
+			"balanced": "Balanced",
+			"quality": "Quality"
+		}
 	},
 	"audio": {
 		"title": "Audio",
@@ -274,5 +325,8 @@
 		"platform": "Platform runtime",
 		"note": "Availability is checked here; actual use depends on the file and operation. GIF encoding and some effects use the CPU.",
 		"partial": "Some hardware checks failed; the software fallback remains available."
+	},
+	"annotation": {
+		"delete": "Delete Annotation"
 	}
 }

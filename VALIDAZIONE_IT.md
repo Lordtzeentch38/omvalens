@@ -1,5 +1,50 @@
 # Verifiche della versione di sviluppo
 
+## C08 — completamento dei cataloghi multilingua, 12 ottobre 2026
+
+- Completati spagnolo, francese, tedesco, olandese, coreano, portoghese
+  brasiliano e cinese semplificato/tradizionale: 6.926 valori aggiornati nelle
+  otto lingue. Ogni lingua selezionabile ha 1.463 chiavi; zero frasi inglesi
+  senza motivazione. Nomi propri, formati e termini condivisi conservati tramite
+  eccezioni datate per lingua. Il russo rimane un catalogo non selezionabile.
+- Recuperate 58 chiavi mancanti dai namespace, riutilizzando le traduzioni
+  disponibili: formato/dimensione, qualità/codifica, sottotitoli, annotazioni e
+  caricamento. Queste assenze erano nascoste dai testi di ripiego inglesi;
+  alcune sono emerse dal controllo visivo, le altre dal nuovo inventario dei
+  richiami. I tre nomi dinamici delle opzioni di codifica sono inclusi.
+- Nuovo controllo: 378 richiami letterali a `useScopedT`, nessuna chiave
+  mancante. Le chiavi calcolate e gli alias ambigui tra namespace richiedono
+  prove specifiche. Cataloghi, interpolazione e inventario C07 coerenti.
+- Suite completa: 1.538 test riusciti, 7 esclusi; 177 file riusciti e uno
+  escluso. Inclusi rifiuto di futuri ripieghi inglesi/chiavi mancanti, preservazione
+  di nomi del prodotto e URL eseguibili, errori con nomi di file e diagnostica
+  sconosciuta, distinzione dei controlli cinesi semplificati/tradizionali.
+- Tipi e compilazione renderer/main/preload superati; verifica CJS riuscita.
+  Lint senza errori, con il precedente avviso di ProjectThumbnail.
+- Dieci scenari UI riusciti: dashboard/cartella, crediti e origine Recordly,
+  etichette formato/codifica MP4, dimensione/preset GIF, errore con percorso
+  contenente parentesi graffe, persistenza dopo ricaricamento e assenza di errori
+  del renderer. Immagini in `.tmp/c08-ui/`, ispezionate a campione per ogni lingua
+  a 1440×1000: nessuna sovrapposizione nei percorsi visualizzati.
+  I tentativi iniziali hanno richiesto correzioni del selettore dei crediti e
+  della sequenza della prova; un timeout è coinciso con una ricarica durante
+  una compilazione concorrente. La matrice finale, senza modifiche/compilazione durante
+  le prove, ha superato tutte le dieci lingue.
+- Rieseguiti anche i tre scenari italiani C07: preset GIF, errore portabile con
+  nome file e messaggio IPC della libreria; tutti riusciti. Il test GIF attende
+  ora il progetto pronto e ammette l'avvio a freddo del server di sviluppo,
+  che in questo ambiente supera il precedente limite di 30 secondi.
+- Installer locale `release/OmvaLens-windows-x64.exe` aggiornato: 519.941.993
+  byte. Binari inclusi e checksum verificati. App avviata con profilo isolato:
+  editor italiano, menu nativi, trasferimento portabile e nessun errore del
+  renderer; artefatti in `.tmp/packaged-brand-smoke/`. Installer senza firma
+  editore; installazione su Windows pulito e release pubblica restano separate.
+- Bozze assistite localmente e correzioni di terminologia, comandi, errori,
+  crediti/licenza e privacy; metodo e modello in [TRADUZIONI_IT.md](TRADUZIONI_IT.md).
+  Copertura e prove automatiche non certificano la qualità linguistica di ogni
+  frase. Revisione completa con madrelingua, percorsi meno comuni e menu/finestre
+  native nelle otto lingue rimangono in V08.
+
 ## C11 — accelerazione hardware, 12 ottobre 2026
 
 - Suite: 1.503 test riusciti, 7 esclusi; successivamente 4 nuovi test del
@@ -157,8 +202,9 @@ Git; i repository contengono sorgenti, script e documentazione.
   I tre nuovi scenari sono stati rieseguiti insieme con esito riuscito. Il primo
   tentativo GIF ha evidenziato una funzione mancante nel collegamento simulato
   dei test, aggiunta alla prova; non era un difetto del collegamento Electron.
-- Compilazione renderer/Electron verificata. Le altre otto lingue selezionabili
-  conservano ripieghi inglesi per le nuove frasi: C08/V08 restano aperti.
+- Compilazione renderer/Electron verificata. Alla conclusione di C07, le altre
+  otto lingue conservavano ripieghi inglesi: completati successivamente in C08;
+  la revisione linguistica estesa resta in V08.
 - Installer locale `release/OmvaLens-windows-x64.exe` ricreato: 519.801.334 byte.
   Checksum aggiornati in `release/SHA256SUMS.txt`; binari inclusi verificati.
   Prova dell'app confezionata riuscita con profilo isolato: avvio, editor

@@ -16,7 +16,7 @@
 		"status": "狀態",
 		"format": "格式",
 		"compilingStatus": "編譯中...",
-		"frames": "畫格",
+		"frames": "影格",
 		"cancelExport": "取消匯出",
 		"reopenSaveDialog": "再次開啟儲存對話框",
 		"savedSuccess": "{{format}} 已成功儲存！"
@@ -40,11 +40,13 @@
 		"addSuccess": "已成功新增字型「{{name}}」",
 		"addFailed": "新增字型失敗",
 		"loadTimeout": "字型載入時間過久。請檢查 URL 後再試一次。",
-		"loadFailed": "無法載入字型。請確認 Google Fonts URL 是否正確。"
+		"loadFailed": "無法載入字型。請確認 Google Fonts URL 是否正確。",
+		"alreadyAdded": "此字型已新增。",
+		"cancel": "取消"
 	},
 	"shortcutsConfig": {
 		"title": "鍵盤快捷鍵",
-		"configurable": "可自訂",
+		"configurable": "可設定",
 		"fixed": "固定",
 		"pressEscToCancel": "按下 Esc 以取消",
 		"clickToChange": "點一下以更改",

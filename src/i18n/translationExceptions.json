@@ -1,0 +1,617 @@
+{
+	"OmvaLens": {
+		"locales": ["it", "es", "fr", "de", "nl", "ko", "pt-BR", "zh-CN", "zh-TW"],
+		"reason": "Nome proprio, identificatore tecnico, formato, unità o codice del tasto; conservare la grafia originale.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Recordly": {
+		"locales": ["it", "es", "fr", "de", "nl", "ko", "pt-BR", "zh-CN", "zh-TW"],
+		"reason": "Nome proprio, identificatore tecnico, formato, unità o codice del tasto; conservare la grafia originale.",
+		"reviewedOn": "2026-10-12"
+	},
+	"webadderallorg": {
+		"locales": ["it", "es", "fr", "de", "nl", "ko", "pt-BR", "zh-CN", "zh-TW"],
+		"reason": "Nome proprio, identificatore tecnico, formato, unità o codice del tasto; conservare la grafia originale.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Google": {
+		"locales": ["it", "es", "fr", "de", "nl", "ko", "pt-BR", "zh-CN", "zh-TW"],
+		"reason": "Nome proprio, identificatore tecnico, formato, unità o codice del tasto; conservare la grafia originale.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Microsoft": {
+		"locales": ["it", "es", "fr", "de", "nl", "ko", "pt-BR", "zh-CN", "zh-TW"],
+		"reason": "Nome proprio, identificatore tecnico, formato, unità o codice del tasto; conservare la grafia originale.",
+		"reviewedOn": "2026-10-12"
+	},
+	"GitHub": {
+		"locales": ["it", "es", "fr", "de", "nl", "ko", "pt-BR", "zh-CN", "zh-TW"],
+		"reason": "Nome proprio, identificatore tecnico, formato, unità o codice del tasto; conservare la grafia originale.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Whisper": {
+		"locales": ["it", "es", "fr", "de", "nl", "ko", "pt-BR", "zh-CN", "zh-TW"],
+		"reason": "Nome proprio, identificatore tecnico, formato, unità o codice del tasto; conservare la grafia originale.",
+		"reviewedOn": "2026-10-12"
+	},
+	"ScreenCaptureKit": {
+		"locales": ["it", "es", "fr", "de", "nl", "ko", "pt-BR", "zh-CN", "zh-TW"],
+		"reason": "Nome proprio, identificatore tecnico, formato, unità o codice del tasto; conservare la grafia originale.",
+		"reviewedOn": "2026-10-12"
+	},
+	"FFmpeg": {
+		"locales": ["it", "es", "fr", "de", "nl", "ko", "pt-BR", "zh-CN", "zh-TW"],
+		"reason": "Nome proprio, identificatore tecnico, formato, unità o codice del tasto; conservare la grafia originale.",
+		"reviewedOn": "2026-10-12"
+	},
+	"FFprobe": {
+		"locales": ["it", "es", "fr", "de", "nl", "ko", "pt-BR", "zh-CN", "zh-TW"],
+		"reason": "Nome proprio, identificatore tecnico, formato, unità o codice del tasto; conservare la grafia originale.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Supabase": {
+		"locales": ["it", "es", "fr", "de", "nl", "ko", "pt-BR", "zh-CN", "zh-TW"],
+		"reason": "Nome proprio, identificatore tecnico, formato, unità o codice del tasto; conservare la grafia originale.",
+		"reviewedOn": "2026-10-12"
+	},
+	"macOS": {
+		"locales": ["it", "es", "fr", "de", "nl", "ko", "pt-BR", "zh-CN", "zh-TW"],
+		"reason": "Nome proprio, identificatore tecnico, formato, unità o codice del tasto; conservare la grafia originale.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Windows": {
+		"locales": ["it", "es", "fr", "de", "nl", "ko", "pt-BR", "zh-CN", "zh-TW"],
+		"reason": "Nome proprio, identificatore tecnico, formato, unità o codice del tasto; conservare la grafia originale.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Windows 11": {
+		"locales": ["it", "es", "fr", "de", "nl", "ko", "pt-BR", "zh-CN", "zh-TW"],
+		"reason": "Nome proprio, identificatore tecnico, formato, unità o codice del tasto; conservare la grafia originale.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Tahoe": {
+		"locales": ["it", "es", "fr", "de", "nl", "ko", "pt-BR", "zh-CN", "zh-TW"],
+		"reason": "Nome proprio, identificatore tecnico, formato, unità o codice del tasto; conservare la grafia originale.",
+		"reviewedOn": "2026-10-12"
+	},
+	"CPU": {
+		"locales": ["it", "es", "fr", "de", "nl", "ko", "pt-BR", "zh-CN", "zh-TW"],
+		"reason": "Nome proprio, identificatore tecnico, formato, unità o codice del tasto; conservare la grafia originale.",
+		"reviewedOn": "2026-10-12"
+	},
+	"GPU": {
+		"locales": ["it", "es", "fr", "de", "nl", "ko", "pt-BR", "zh-CN", "zh-TW"],
+		"reason": "Nome proprio, identificatore tecnico, formato, unità o codice del tasto; conservare la grafia originale.",
+		"reviewedOn": "2026-10-12"
+	},
+	"NVIDIA CUDA": {
+		"locales": ["it", "es", "fr", "de", "nl", "ko", "pt-BR", "zh-CN", "zh-TW"],
+		"reason": "Nome proprio, identificatore tecnico, formato, unità o codice del tasto; conservare la grafia originale.",
+		"reviewedOn": "2026-10-12"
+	},
+	"CUDA": {
+		"locales": ["it", "es", "fr", "de", "nl", "ko", "pt-BR", "zh-CN", "zh-TW"],
+		"reason": "Nome proprio, identificatore tecnico, formato, unità o codice del tasto; conservare la grafia originale.",
+		"reviewedOn": "2026-10-12"
+	},
+	"NVENC": {
+		"locales": ["it", "es", "fr", "de", "nl", "ko", "pt-BR", "zh-CN", "zh-TW"],
+		"reason": "Nome proprio, identificatore tecnico, formato, unità o codice del tasto; conservare la grafia originale.",
+		"reviewedOn": "2026-10-12"
+	},
+	"QSV": {
+		"locales": ["it", "es", "fr", "de", "nl", "ko", "pt-BR", "zh-CN", "zh-TW"],
+		"reason": "Nome proprio, identificatore tecnico, formato, unità o codice del tasto; conservare la grafia originale.",
+		"reviewedOn": "2026-10-12"
+	},
+	"AMF": {
+		"locales": ["it", "es", "fr", "de", "nl", "ko", "pt-BR", "zh-CN", "zh-TW"],
+		"reason": "Nome proprio, identificatore tecnico, formato, unità o codice del tasto; conservare la grafia originale.",
+		"reviewedOn": "2026-10-12"
+	},
+	"MP4": {
+		"locales": ["it", "es", "fr", "de", "nl", "ko", "pt-BR", "zh-CN", "zh-TW"],
+		"reason": "Nome proprio, identificatore tecnico, formato, unità o codice del tasto; conservare la grafia originale.",
+		"reviewedOn": "2026-10-12"
+	},
+	"GIF": {
+		"locales": ["it", "es", "fr", "de", "nl", "ko", "pt-BR", "zh-CN", "zh-TW"],
+		"reason": "Nome proprio, identificatore tecnico, formato, unità o codice del tasto; conservare la grafia originale.",
+		"reviewedOn": "2026-10-12"
+	},
+	"FPS": {
+		"locales": ["it", "es", "fr", "de", "nl", "ko", "pt-BR", "zh-CN", "zh-TW"],
+		"reason": "Nome proprio, identificatore tecnico, formato, unità o codice del tasto; conservare la grafia originale.",
+		"reviewedOn": "2026-10-12"
+	},
+	"SRT": {
+		"locales": ["it", "es", "fr", "de", "nl", "ko", "pt-BR", "zh-CN", "zh-TW"],
+		"reason": "Nome proprio, identificatore tecnico, formato, unità o codice del tasto; conservare la grafia originale.",
+		"reviewedOn": "2026-10-12"
+	},
+	"VTT": {
+		"locales": ["it", "es", "fr", "de", "nl", "ko", "pt-BR", "zh-CN", "zh-TW"],
+		"reason": "Nome proprio, identificatore tecnico, formato, unità o codice del tasto; conservare la grafia originale.",
+		"reviewedOn": "2026-10-12"
+	},
+	"WebM": {
+		"locales": ["it", "es", "fr", "de", "nl", "ko", "pt-BR", "zh-CN", "zh-TW"],
+		"reason": "Nome proprio, identificatore tecnico, formato, unità o codice del tasto; conservare la grafia originale.",
+		"reviewedOn": "2026-10-12"
+	},
+	"PNG": {
+		"locales": ["it", "es", "fr", "de", "nl", "ko", "pt-BR", "zh-CN", "zh-TW"],
+		"reason": "Nome proprio, identificatore tecnico, formato, unità o codice del tasto; conservare la grafia originale.",
+		"reviewedOn": "2026-10-12"
+	},
+	"JPEG": {
+		"locales": ["it", "es", "fr", "de", "nl", "ko", "pt-BR", "zh-CN", "zh-TW"],
+		"reason": "Nome proprio, identificatore tecnico, formato, unità o codice del tasto; conservare la grafia originale.",
+		"reviewedOn": "2026-10-12"
+	},
+	"JPG": {
+		"locales": ["it", "es", "fr", "de", "nl", "ko", "pt-BR", "zh-CN", "zh-TW"],
+		"reason": "Nome proprio, identificatore tecnico, formato, unità o codice del tasto; conservare la grafia originale.",
+		"reviewedOn": "2026-10-12"
+	},
+	"H.264": {
+		"locales": ["it", "es", "fr", "de", "nl", "ko", "pt-BR", "zh-CN", "zh-TW"],
+		"reason": "Nome proprio, identificatore tecnico, formato, unità o codice del tasto; conservare la grafia originale.",
+		"reviewedOn": "2026-10-12"
+	},
+	"H.265": {
+		"locales": ["it", "es", "fr", "de", "nl", "ko", "pt-BR", "zh-CN", "zh-TW"],
+		"reason": "Nome proprio, identificatore tecnico, formato, unità o codice del tasto; conservare la grafia originale.",
+		"reviewedOn": "2026-10-12"
+	},
+	"VP9": {
+		"locales": ["it", "es", "fr", "de", "nl", "ko", "pt-BR", "zh-CN", "zh-TW"],
+		"reason": "Nome proprio, identificatore tecnico, formato, unità o codice del tasto; conservare la grafia originale.",
+		"reviewedOn": "2026-10-12"
+	},
+	"AV1": {
+		"locales": ["it", "es", "fr", "de", "nl", "ko", "pt-BR", "zh-CN", "zh-TW"],
+		"reason": "Nome proprio, identificatore tecnico, formato, unità o codice del tasto; conservare la grafia originale.",
+		"reviewedOn": "2026-10-12"
+	},
+	"WebGL": {
+		"locales": ["it", "es", "fr", "de", "nl", "ko", "pt-BR", "zh-CN", "zh-TW"],
+		"reason": "Nome proprio, identificatore tecnico, formato, unità o codice del tasto; conservare la grafia originale.",
+		"reviewedOn": "2026-10-12"
+	},
+	"WebGPU": {
+		"locales": ["it", "es", "fr", "de", "nl", "ko", "pt-BR", "zh-CN", "zh-TW"],
+		"reason": "Nome proprio, identificatore tecnico, formato, unità o codice del tasto; conservare la grafia originale.",
+		"reviewedOn": "2026-10-12"
+	},
+	"JSON": {
+		"locales": ["it", "es", "fr", "de", "nl", "ko", "pt-BR", "zh-CN", "zh-TW"],
+		"reason": "Nome proprio, identificatore tecnico, formato, unità o codice del tasto; conservare la grafia originale.",
+		"reviewedOn": "2026-10-12"
+	},
+	"GNU AGPLv3": {
+		"locales": ["it", "es", "fr", "de", "nl", "ko", "pt-BR", "zh-CN", "zh-TW"],
+		"reason": "Nome proprio, identificatore tecnico, formato, unità o codice del tasto; conservare la grafia originale.",
+		"reviewedOn": "2026-10-12"
+	},
+	"AGPLv3": {
+		"locales": ["it", "es", "fr", "de", "nl", "ko", "pt-BR", "zh-CN", "zh-TW"],
+		"reason": "Nome proprio, identificatore tecnico, formato, unità o codice del tasto; conservare la grafia originale.",
+		"reviewedOn": "2026-10-12"
+	},
+	"AGPL-3.0": {
+		"locales": ["it", "es", "fr", "de", "nl", "ko", "pt-BR", "zh-CN", "zh-TW"],
+		"reason": "Nome proprio, identificatore tecnico, formato, unità o codice del tasto; conservare la grafia originale.",
+		"reviewedOn": "2026-10-12"
+	},
+	"MB": {
+		"locales": ["it", "es", "fr", "de", "nl", "ko", "pt-BR", "zh-CN", "zh-TW"],
+		"reason": "Nome proprio, identificatore tecnico, formato, unità o codice del tasto; conservare la grafia originale.",
+		"reviewedOn": "2026-10-12"
+	},
+	"GB": {
+		"locales": ["it", "es", "fr", "de", "nl", "ko", "pt-BR", "zh-CN", "zh-TW"],
+		"reason": "Nome proprio, identificatore tecnico, formato, unità o codice del tasto; conservare la grafia originale.",
+		"reviewedOn": "2026-10-12"
+	},
+	"px": {
+		"locales": ["it", "es", "fr", "de", "nl", "ko", "pt-BR", "zh-CN", "zh-TW"],
+		"reason": "Nome proprio, identificatore tecnico, formato, unità o codice del tasto; conservare la grafia originale.",
+		"reviewedOn": "2026-10-12"
+	},
+	"REC": {
+		"locales": ["it", "es", "fr", "de", "nl", "ko", "pt-BR", "zh-CN", "zh-TW"],
+		"reason": "Nome proprio, identificatore tecnico, formato, unità o codice del tasto; conservare la grafia originale.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Tab": {
+		"locales": ["it", "es", "fr", "de", "nl", "ko", "pt-BR", "zh-CN", "zh-TW"],
+		"reason": "Nome proprio, identificatore tecnico, formato, unità o codice del tasto; conservare la grafia originale.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Ctrl": {
+		"locales": ["it", "es", "fr", "de", "nl", "ko", "pt-BR", "zh-CN", "zh-TW"],
+		"reason": "Nome proprio, identificatore tecnico, formato, unità o codice del tasto; conservare la grafia originale.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Alt": {
+		"locales": ["it", "es", "fr", "de", "nl", "ko", "pt-BR", "zh-CN", "zh-TW"],
+		"reason": "Nome proprio, identificatore tecnico, formato, unità o codice del tasto; conservare la grafia originale.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Shift": {
+		"locales": ["it", "es", "fr", "de", "nl", "ko", "pt-BR", "zh-CN", "zh-TW"],
+		"reason": "Nome proprio, identificatore tecnico, formato, unità o codice del tasto; conservare la grafia originale.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Esc": {
+		"locales": ["it", "es", "fr", "de", "nl", "ko", "pt-BR", "zh-CN", "zh-TW"],
+		"reason": "Nome proprio, identificatore tecnico, formato, unità o codice del tasto; conservare la grafia originale.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Enter": {
+		"locales": ["it", "es", "fr", "de", "nl", "ko", "pt-BR", "zh-CN", "zh-TW"],
+		"reason": "Nome proprio, identificatore tecnico, formato, unità o codice del tasto; conservare la grafia originale.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Backspace": {
+		"locales": ["it", "es", "fr", "de", "nl", "ko", "pt-BR", "zh-CN", "zh-TW"],
+		"reason": "Nome proprio, identificatore tecnico, formato, unità o codice del tasto; conservare la grafia originale.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Space": {
+		"locales": ["it", "es", "fr", "de", "nl", "ko", "pt-BR", "zh-CN", "zh-TW"],
+		"reason": "Nome proprio, identificatore tecnico, formato, unità o codice del tasto; conservare la grafia originale.",
+		"reviewedOn": "2026-10-12"
+	},
+	"test@email.com": {
+		"locales": ["it", "es", "fr", "de", "nl", "ko", "pt-BR", "zh-CN", "zh-TW"],
+		"reason": "Nome proprio, identificatore tecnico, formato, unità o codice del tasto; conservare la grafia originale.",
+		"reviewedOn": "2026-10-12"
+	},
+	".recordly": {
+		"locales": ["it", "es", "fr", "de", "nl", "ko", "pt-BR", "zh-CN", "zh-TW"],
+		"reason": "Nome proprio, identificatore tecnico, formato, unità o codice del tasto; conservare la grafia originale.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Deco": {
+		"locales": ["it", "es", "fr", "de", "nl", "ko", "pt-BR", "zh-CN", "zh-TW"],
+		"reason": "Nome del font o del preset incluso, conservato per identificarlo senza ambiguità.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Parched": {
+		"locales": ["it", "es", "fr", "de", "nl", "ko", "pt-BR", "zh-CN", "zh-TW"],
+		"reason": "Nome del font o del preset incluso, conservato per identificarlo senza ambiguità.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Chooper": {
+		"locales": ["it", "es", "fr", "de", "nl", "ko", "pt-BR", "zh-CN", "zh-TW"],
+		"reason": "Nome del font o del preset incluso, conservato per identificarlo senza ambiguità.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Among Us": {
+		"locales": ["it", "es", "fr", "de", "nl", "ko", "pt-BR", "zh-CN", "zh-TW"],
+		"reason": "Nome del font o del preset incluso, conservato per identificarlo senza ambiguità.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Lavender": {
+		"locales": ["it", "es", "fr", "de", "nl", "ko", "pt-BR", "zh-CN", "zh-TW"],
+		"reason": "Nome del font o del preset incluso, conservato per identificarlo senza ambiguità.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Email": {
+		"locales": ["it"],
+		"reason": "Termine, prestito o abbreviazione utilizzato anche nella lingua indicata; non è un ripiego inglese.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Password": {
+		"locales": ["it"],
+		"reason": "Termine, prestito o abbreviazione utilizzato anche nella lingua indicata; non è un ripiego inglese.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Home": {
+		"locales": ["it"],
+		"reason": "Termine, prestito o abbreviazione utilizzato anche nella lingua indicata; non è un ripiego inglese.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Account": {
+		"locales": ["it", "nl"],
+		"reason": "Termine, prestito o abbreviazione utilizzato anche nella lingua indicata; non è un ripiego inglese.",
+		"reviewedOn": "2026-10-12"
+	},
+	"File": {
+		"locales": ["it"],
+		"reason": "Termine, prestito o abbreviazione utilizzato anche nella lingua indicata; non è un ripiego inglese.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Font": {
+		"locales": ["it"],
+		"reason": "Termine, prestito o abbreviazione utilizzato anche nella lingua indicata; non è un ripiego inglese.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Loop": {
+		"locales": ["it"],
+		"reason": "Termine, prestito o abbreviazione utilizzato anche nella lingua indicata; non è un ripiego inglese.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Editor": {
+		"locales": ["it", "es", "de", "nl", "pt-BR"],
+		"reason": "Termine, prestito o abbreviazione utilizzato anche nella lingua indicata; non è un ripiego inglese.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Audio": {
+		"locales": ["it", "es", "fr", "de", "nl", "pt-BR"],
+		"reason": "Termine, prestito o abbreviazione utilizzato anche nella lingua indicata; non è un ripiego inglese.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Video": {
+		"locales": ["it", "es", "de", "nl"],
+		"reason": "Termine, prestito o abbreviazione utilizzato anche nella lingua indicata; non è un ripiego inglese.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Volume": {
+		"locales": ["it", "fr", "nl", "pt-BR"],
+		"reason": "Termine, prestito o abbreviazione utilizzato anche nella lingua indicata; non è un ripiego inglese.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Webcam": {
+		"locales": ["it", "es", "fr", "de", "nl", "pt-BR"],
+		"reason": "Termine, prestito o abbreviazione utilizzato anche nella lingua indicata; non è un ripiego inglese.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Clip": {
+		"locales": ["it", "es", "fr", "de", "nl"],
+		"reason": "Termine, prestito o abbreviazione utilizzato anche nella lingua indicata; non è un ripiego inglese.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Clips": {
+		"locales": ["es", "fr", "de", "nl"],
+		"reason": "Termine, prestito o abbreviazione utilizzato anche nella lingua indicata; non è un ripiego inglese.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Clip{{value1}} · {{value2}}": {
+		"locales": ["it", "es", "fr", "de", "nl"],
+		"reason": "Termine, prestito o abbreviazione utilizzato anche nella lingua indicata; non è un ripiego inglese.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Zoom": {
+		"locales": ["it", "es", "fr", "de", "nl", "pt-BR"],
+		"reason": "Termine, prestito o abbreviazione utilizzato anche nella lingua indicata; non è un ripiego inglese.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Zoom {{index}}": {
+		"locales": ["it", "es", "fr", "de", "nl", "pt-BR"],
+		"reason": "Termine, prestito o abbreviazione utilizzato anche nella lingua indicata; non è un ripiego inglese.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Auto": {
+		"locales": ["it", "es", "fr", "de", "nl", "pt-BR"],
+		"reason": "Termine, prestito o abbreviazione utilizzato anche nella lingua indicata; non è un ripiego inglese.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Manual": {
+		"locales": ["es", "pt-BR"],
+		"reason": "Termine, prestito o abbreviazione utilizzato anche nella lingua indicata; non è un ripiego inglese.",
+		"reviewedOn": "2026-10-12"
+	},
+	"General": {
+		"locales": ["es"],
+		"reason": "Termine, prestito o abbreviazione utilizzato anche nella lingua indicata; non è un ripiego inglese.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Original": {
+		"locales": ["es", "fr", "de", "pt-BR"],
+		"reason": "Termine, prestito o abbreviazione utilizzato anche nella lingua indicata; non è un ripiego inglese.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Color": {
+		"locales": ["es"],
+		"reason": "Termine, prestito o abbreviazione utilizzato anche nella lingua indicata; non è un ripiego inglese.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Error": {
+		"locales": ["es"],
+		"reason": "Termine, prestito o abbreviazione utilizzato anche nella lingua indicata; non è un ripiego inglese.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Local": {
+		"locales": ["es", "fr", "pt-BR"],
+		"reason": "Termine, prestito o abbreviazione utilizzato anche nella lingua indicata; non è un ripiego inglese.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Link": {
+		"locales": ["de", "nl", "pt-BR"],
+		"reason": "Termine, prestito o abbreviazione utilizzato anche nella lingua indicata; non è un ripiego inglese.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Echo": {
+		"locales": ["de", "nl"],
+		"reason": "Termine, prestito o abbreviazione utilizzato anche nella lingua indicata; non è un ripiego inglese.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Configurable": {
+		"locales": ["es"],
+		"reason": "Termine, prestito o abbreviazione utilizzato anche nella lingua indicata; non è un ripiego inglese.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Horizontal": {
+		"locales": ["es", "fr", "de", "pt-BR"],
+		"reason": "Termine, prestito o abbreviazione utilizzato anche nella lingua indicata; non è un ripiego inglese.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Vertical": {
+		"locales": ["es", "fr", "pt-BR"],
+		"reason": "Termine, prestito o abbreviazione utilizzato anche nella lingua indicata; non è un ripiego inglese.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Orig": {
+		"locales": ["it", "es", "fr", "de", "nl", "pt-BR"],
+		"reason": "Termine, prestito o abbreviazione utilizzato anche nella lingua indicata; non è un ripiego inglese.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Med": {
+		"locales": ["it", "es", "fr", "de", "nl", "pt-BR"],
+		"reason": "Termine, prestito o abbreviazione utilizzato anche nella lingua indicata; non è un ripiego inglese.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Lar": {
+		"locales": ["pt-BR"],
+		"reason": "Termine, prestito o abbreviazione utilizzato anche nella lingua indicata; non è un ripiego inglese.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Mode": {
+		"locales": ["fr"],
+		"reason": "Termine, prestito o abbreviazione utilizzato anche nella lingua indicata; non è un ripiego inglese.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Pause": {
+		"locales": ["fr", "de"],
+		"reason": "Termine, prestito o abbreviazione utilizzato anche nella lingua indicata; non è un ripiego inglese.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Notes": {
+		"locales": ["fr"],
+		"reason": "Termine, prestito o abbreviazione utilizzato anche nella lingua indicata; non è un ripiego inglese.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Image": {
+		"locales": ["fr"],
+		"reason": "Termine, prestito o abbreviazione utilizzato anche nella lingua indicata; non è un ripiego inglese.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Format": {
+		"locales": ["fr", "de"],
+		"reason": "Termine, prestito o abbreviazione utilizzato anche nella lingua indicata; non è un ripiego inglese.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Simple": {
+		"locales": ["es", "fr"],
+		"reason": "Termine, prestito o abbreviazione utilizzato anche nella lingua indicata; non è un ripiego inglese.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Source": {
+		"locales": ["fr"],
+		"reason": "Termine, prestito o abbreviazione utilizzato anche nella lingua indicata; non è un ripiego inglese.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Actions": {
+		"locales": ["fr"],
+		"reason": "Termine, prestito o abbreviazione utilizzato anche nella lingua indicata; non è un ripiego inglese.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Options": {
+		"locales": ["fr"],
+		"reason": "Termine, prestito o abbreviazione utilizzato anche nella lingua indicata; non è un ripiego inglese.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Position": {
+		"locales": ["fr", "de"],
+		"reason": "Termine, prestito o abbreviazione utilizzato anche nella lingua indicata; non è un ripiego inglese.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Animation": {
+		"locales": ["fr", "de"],
+		"reason": "Termine, prestito o abbreviazione utilizzato anche nella lingua indicata; non è un ripiego inglese.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Microphone": {
+		"locales": ["fr"],
+		"reason": "Termine, prestito o abbreviazione utilizzato anche nella lingua indicata; non è un ripiego inglese.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Name": {
+		"locales": ["de"],
+		"reason": "Termine, prestito o abbreviazione utilizzato anche nella lingua indicata; non è un ripiego inglese.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Text": {
+		"locales": ["de"],
+		"reason": "Termine, prestito o abbreviazione utilizzato anche nella lingua indicata; non è un ripiego inglese.",
+		"reviewedOn": "2026-10-12"
+	},
+	"System": {
+		"locales": ["de"],
+		"reason": "Termine, prestito o abbreviazione utilizzato anche nella lingua indicata; non è un ripiego inglese.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Status": {
+		"locales": ["de", "nl"],
+		"reason": "Termine, prestito o abbreviazione utilizzato anche nella lingua indicata; non è un ripiego inglese.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Videos": {
+		"locales": ["de"],
+		"reason": "Termine, prestito o abbreviazione utilizzato anche nella lingua indicata; non è un ripiego inglese.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Modern": {
+		"locales": ["de", "nl"],
+		"reason": "Termine, prestito o abbreviazione utilizzato anche nella lingua indicata; non è un ripiego inglese.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Linear": {
+		"locales": ["de", "pt-BR"],
+		"reason": "Termine, prestito o abbreviazione utilizzato anche nella lingua indicata; non è un ripiego inglese.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Radius": {
+		"locales": ["de"],
+		"reason": "Termine, prestito o abbreviazione utilizzato anche nella lingua indicata; non è un ripiego inglese.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Feedback": {
+		"locales": ["de", "nl", "pt-BR"],
+		"reason": "Termine, prestito o abbreviazione utilizzato anche nella lingua indicata; non è un ripiego inglese.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Download": {
+		"locales": ["de"],
+		"reason": "Termine, prestito o abbreviazione utilizzato anche nella lingua indicata; non è un ripiego inglese.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Updates": {
+		"locales": ["nl", "de"],
+		"reason": "Termine, prestito o abbreviazione utilizzato anche nella lingua indicata; non è un ripiego inglese.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Start": {
+		"locales": ["nl", "de"],
+		"reason": "Termine, prestito o abbreviazione utilizzato anche nella lingua indicata; non è un ripiego inglese.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Later": {
+		"locales": ["nl"],
+		"reason": "Termine, prestito o abbreviazione utilizzato anche nella lingua indicata; non è un ripiego inglese.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Pop": {
+		"locales": ["nl", "pt-BR"],
+		"reason": "Termine, prestito o abbreviazione utilizzato anche nella lingua indicata; non è un ripiego inglese.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Experimental": {
+		"locales": ["pt-BR", "es"],
+		"reason": "Termine, prestito o abbreviazione utilizzato anche nella lingua indicata; non è un ripiego inglese.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Trim {{index}}": {
+		"locales": ["nl"],
+		"reason": "Termine, prestito o abbreviazione utilizzato anche nella lingua indicata; non è un ripiego inglese.",
+		"reviewedOn": "2026-10-12"
+	},
+	"30 FPS - Maximum": {
+		"locales": ["fr", "de"],
+		"reason": "Termine, prestito o abbreviazione utilizzato anche nella lingua indicata; non è un ripiego inglese.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Dev": {
+		"locales": ["it", "es", "fr", "de", "nl", "ko", "pt-BR", "zh-CN", "zh-TW"],
+		"reason": "Indicatore abbreviato della modalità di sviluppo.",
+		"reviewedOn": "2026-10-12"
+	},
+	"Cursor": {
+		"locales": ["es", "nl", "pt-BR"],
+		"reason": "Termine o prestito utilizzato anche nella lingua indicata.",
+		"reviewedOn": "2026-10-12"
+	}
+}

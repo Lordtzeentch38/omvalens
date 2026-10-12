@@ -54,7 +54,9 @@
 			"upToDateTitle": "OmvaLens {{version}} è aggiornato.",
 			"availableTitle": "OmvaLens {{version}} è disponibile.",
 			"availableGenericTitle": "È disponibile un aggiornamento."
-		}
+		},
+		"preparing": "Preparazione della registrazione",
+		"preparingSubtitle": "L'editor si aprirà tra poco"
 	},
 	"sourceSelector": {
 		"loadingSources": "Caricamento sorgenti...",
@@ -92,5 +94,8 @@
 		"updateNow": "Aggiorna ora",
 		"restartToUpdate": "Riavvia per aggiornare",
 		"tryAgain": "Riprova"
+	},
+	"common": {
+		"loading": "Aggiornamento..."
 	}
 }

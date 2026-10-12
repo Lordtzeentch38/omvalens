@@ -51,7 +51,8 @@
 		"skipBack": "Skip Back",
 		"skipForward": "Skip Forward",
 		"muteUnmute": "Mute/Unmute",
-		"volume": "Preview volume"
+		"volume": "Preview volume",
+		"seek": "Playback position"
 	},
 	"annotations": {
 		"settings": "Annotation Settings",
@@ -89,9 +90,13 @@
 		"imageUploadError": "Please upload a JPG, PNG, GIF, or WebP image file.",
 		"blurStrength": "Blur Strength: {{strength}}",
 		"solidColor": "Solid Color (Censorship)",
-		"borderRadius": "Border Radius"
+		"borderRadius": "Border Radius",
+		"imageUploadErrorDescription": "Supported formats: JPG, PNG, GIF, WebP",
+		"imageUploadFailed": "Failed to upload image",
+		"imageUploadFailedDescription": "There was an error reading the file.",
+		"arrowDirectionOption": "Arrow direction: {{direction}}",
+		"customColor": "Custom color"
 	},
-
 	"fontStyles": {
 		"classic": "Classic",
 		"editor": "Editor",
@@ -106,7 +111,8 @@
 		"mp4Video": "MP4 Video",
 		"mp4Description": "High quality video file",
 		"gifAnimation": "GIF Animation",
-		"gifDescription": "Animated image for sharing"
+		"gifDescription": "Animated image for sharing",
+		"title": "Export format"
 	},
 	"gifOptions": {
 		"frameRate": "Frame Rate",
@@ -172,7 +178,10 @@
 		"experimentalBuilds": "Tip: Try experimental builds by turning on access in settings",
 		"cursorAppearance": "Tip: You can customise your cursor appearance"
 	},
-	"account": { "title": "Account", "comingSoon": "Account coming soon" },
+	"account": {
+		"title": "Account",
+		"comingSoon": "Account coming soon"
+	},
 	"nativeCaptureUnavailable": {
 		"title": "Nothing’s broken, but we won’t be able to render an animated cursor overlay.",
 		"description": "Your device does not support native capture. This could be for a variety of reasons we haven’t figured out yet. This doesn’t break OmvaLens, but it does make cursor smoothing impossible.",

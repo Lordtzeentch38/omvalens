@@ -21,7 +21,7 @@
 		"uploading": "Uploaden… {progress}%",
 		"googleUnavailable": "Aanmelden met Google is nog niet ingeschakeld. Gebruik e-mail of vraag je OmvaLens-beheerder om Google te koppelen.",
 		"xUnavailable": "Aanmelden met X is nog niet ingeschakeld. Gebruik e-mail of vraag je OmvaLens-beheerder om X te koppelen.",
-		"providerUnavailable": "Deze aanmeldmethode is nog niet ingeschakeld. Gebruik voorlopig e-mail.",
+		"providerUnavailable": "Deze aanmeldmethode is nog niet ingeschakeld voor OmvaLens. Gebruik voorlopig e-mail.",
 		"enterEmail": "Voer eerst je e-mailadres in.",
 		"resetSent": "E-mail om je wachtwoord te herstellen verzonden.",
 		"accountHeading": "Je OmvaLens-account",
@@ -51,7 +51,8 @@
 		"skipBack": "Terug springen",
 		"skipForward": "Vooruit springen",
 		"muteUnmute": "Dempen/dempen opheffen",
-		"volume": "Voorbeeldvolume"
+		"volume": "Voorbeeldvolume",
+		"seek": "Afspeelpositie"
 	},
 	"annotations": {
 		"settings": "Annotatie-instellingen",
@@ -89,7 +90,12 @@
 		"imageUploadError": "Upload een JPG-, PNG-, GIF- of WebP-afbeelding.",
 		"blurStrength": "Vervagingssterkte: {{strength}}",
 		"solidColor": "Effen Kleur (Censuur)",
-		"borderRadius": "Hoekradius"
+		"borderRadius": "Hoekradius",
+		"imageUploadErrorDescription": "Ondersteunde formaten: JPG, PNG, GIF, WebP",
+		"imageUploadFailed": "Afbeelding uploaden mislukt",
+		"imageUploadFailedDescription": "Er is een fout opgetreden bij het lezen van het bestand.",
+		"arrowDirectionOption": "Pijlrichting: {{direction}}",
+		"customColor": "De aangepaste kleur"
 	},
 	"fontStyles": {
 		"classic": "Klassiek",
@@ -105,7 +111,8 @@
 		"mp4Video": "MP4-video",
 		"mp4Description": "Videobestand van hoge kwaliteit",
 		"gifAnimation": "GIF-animatie",
-		"gifDescription": "Geanimeerde afbeelding om te delen"
+		"gifDescription": "Geanimeerde afbeelding om te delen",
+		"title": "Exportindeling"
 	},
 	"gifOptions": {
 		"frameRate": "Framesnelheid",
@@ -134,7 +141,7 @@
 	},
 	"feedback": {
 		"trigger": "Feedback",
-		"title": "Feedback & contact",
+		"title": "Feedback en contact",
 		"description": "Neem rechtstreeks contact op of maak een issue aan als er iets kapot of ontbrekend is.",
 		"emailLabel": "E-mail",
 		"xLabel": "X",

@@ -6,7 +6,10 @@
 		"modeAuto": "Автоматически",
 		"modeManual": "Вручную",
 		"modeManualDescription": "Установить фиксированную точку фокусировки",
-		"modeAutoDescription": "Камера выравнивается по центру, когда курсор приближается к краю увеличенного изображения"
+		"modeAutoDescription": "Камера выравнивается по центру, когда курсор приближается к краю увеличенного изображения",
+		"mode": "Mode",
+		"amount": "Amount",
+		"globalSettings": "Анимация"
 	},
 	"trim": {
 		"deleteRegion": "Удалить"
@@ -15,7 +18,8 @@
 		"playbackSpeed": "Скорость воспроизведения",
 		"selectRegion": "Диапазон скорости",
 		"deleteRegion": "Удалить",
-		"label": "Скорость"
+		"label": "Скорость",
+		"unsupported": "Not supported for preview on this device"
 	},
 	"clip": {
 		"title": "Клип",
@@ -151,7 +155,30 @@
 		"paddingBottom": "Снизу",
 		"paddingLeft": "Слева",
 		"paddingRight": "Справа",
-		"removeBackground": "Удалить фон"
+		"removeBackground": "Удалить фон",
+		"devSection": "Dev",
+		"devSectionHint": "Temporary testing controls for native capture and motion tuning.",
+		"nativeCaptureWarningTester": "Native capture warning",
+		"nativeCaptureWarningTesterUnavailable": "This project is currently marked as native capture unavailable.",
+		"nativeCaptureWarningTesterAvailable": "This project is not marked as unsupported, but you can still open the modal for UI testing.",
+		"openNativeCaptureWarning": "Open warning",
+		"cameraDebugTuning": "Camera Debug Tuning",
+		"cameraDebugTuningHint": "Development-only spring tuning controls for camera motion.",
+		"cameraSpringStiffnessMultiplier": "Camera stiffness",
+		"cameraSpringDampingMultiplier": "Camera damping",
+		"cameraSpringMassMultiplier": "Camera mass",
+		"cursorDebugTuning": "Cursor Debug Tuning",
+		"cursorDebugTuningHint": "Development-only spring tuning controls.",
+		"cursorSpringStiffnessMultiplier": "Spring stiffness",
+		"cursorSpringDampingMultiplier": "Spring damping",
+		"cursorSpringMassMultiplier": "Spring mass",
+		"classicZoom": "Classic Animation",
+		"cursorDebugMovedToDev": "Cursor spring tuning is available in Settings > Dev.",
+		"webcamPosition": "Position",
+		"webcamCustomPosition": "Custom position",
+		"webcamHorizontal": "Horizontal",
+		"webcamVertical": "Vertical",
+		"webcamMargin": "Margin"
 	},
 	"sections": {
 		"scene": "Сцена",
@@ -161,7 +188,8 @@
 		"cursor": "Курсор",
 		"webcam": "Веб-камера",
 		"frame": "Рамка",
-		"crop": "Обрезать видео"
+		"crop": "Обрезать видео",
+		"appearance": "Appearance"
 	},
 	"captions": {
 		"selectOnTimeline": "Выберите субтитры на таймлайне, чтобы отредактировать их.",
@@ -198,7 +226,10 @@
 			"split": "Split",
 			"merge": "Merge",
 			"delete": "Delete"
-		}
+		},
+		"generation": "Generation",
+		"useCustomModel": "Use custom",
+		"generatingStatus": "Generating captions. This can take a moment."
 	},
 	"crop": {
 		"title": "Обрезка видео",
@@ -218,7 +249,11 @@
 		"uploadCustom": "Загрузить",
 		"uploadSuccess": "Изображение загружено.",
 		"uploadError": "Загрузите JPG или JPEG.",
-		"uploadErrorDescription": "Поддерживаются только JPG и JPEG."
+		"uploadErrorDescription": "Поддерживаются только JPG и JPEG.",
+		"video": "Video",
+		"addWallpaper": "Add wallpaper",
+		"addVideoWallpaper": "Add video wallpaper",
+		"customWallpaper": "Custom wallpaper"
 	},
 	"export": {
 		"title": "Экспорт",
@@ -240,7 +275,23 @@
 		"saveProject": "Сохранить проект",
 		"exportVideo": "Экспортировать {{format}}",
 		"reportBug": "Сообщить об ошибке",
-		"starOnGithub": "Оценить на GitHub"
+		"starOnGithub": "Оценить на GitHub",
+		"format": "Формат",
+		"qualityTitle": "Quality",
+		"encodingTitle": "Encoding",
+		"nvidiaCuda": {
+			"title": "NVIDIA CUDA"
+		},
+		"captionSidecar": {
+			"title": "Export captions file",
+			"hint": "Save .srt and .vtt files next to your exported video."
+		},
+		"size": "Размер",
+		"encoding": {
+			"fast": "Быстро",
+			"balanced": "Сбалансированно",
+			"quality": "Quality"
+		}
 	},
 	"audio": {
 		"title": "Аудио",
@@ -274,5 +325,8 @@
 		"platform": "Platform runtime",
 		"note": "Availability is checked here; actual use depends on the file and operation. GIF encoding and some effects use the CPU.",
 		"partial": "Some hardware checks failed; the software fallback remains available."
+	},
+	"annotation": {
+		"delete": "Удалить аннотацию"
 	}
 }

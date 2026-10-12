@@ -6,7 +6,10 @@
 		"modeAuto": "Auto",
 		"modeManual": "Manual",
 		"modeManualDescription": "Establece un punto de enfoque fijo para este zoom",
-		"modeAutoDescription": "La cámara sigue el cursor automáticamente"
+		"modeAutoDescription": "La cámara sigue el cursor automáticamente",
+		"mode": "Modo",
+		"amount": "Cantidad",
+		"globalSettings": "Animación"
 	},
 	"trim": {
 		"deleteRegion": "Eliminar región de recorte"
@@ -15,7 +18,8 @@
 		"playbackSpeed": "Velocidad de reproducción",
 		"selectRegion": "Selecciona una región de velocidad para ajustar",
 		"deleteRegion": "Eliminar región de velocidad",
-		"label": "Velocidad"
+		"label": "Velocidad",
+		"unsupported": "No es compatible con la vista previa en este dispositivo"
 	},
 	"clip": {
 		"title": "Clip",
@@ -38,12 +42,12 @@
 			"tahoe-inverted": "Tahoe invertido",
 			"windows11": "Windows 11",
 			"dot": "Punto",
-			"figma": "Minimal",
+			"figma": "Minimalista",
 			"lavender": "Lavender",
 			"parched": "Parched",
 			"chooper": "Chooper",
 			"amongus": "Among Us",
-			"turtle": "Turtle"
+			"turtle": "Tortuga"
 		},
 		"backgroundBlur": "Desenfoque",
 		"zoomMotionBlur": "Desenfoque de movimiento del zoom",
@@ -60,18 +64,18 @@
 		"zoomOutDescription": "Controla cómo sale la cámara de una región de zoom.",
 		"connectedZoomTitle": "Entre zooms",
 		"connectedZoomDescription": "Ajusta el deslizamiento entre regiones de zoom consecutivas cuando la conexión está activada.",
-		"motionPresetsTitle": "Motion Presets",
-		"motionPresetsZoomHint": "Zoom motion presets are available in Settings.",
-		"animationPresets": "Animation Presets",
-		"cursorMotionPresets": "Cursor Motion Presets",
+		"motionPresetsTitle": "Presets de movimiento",
+		"motionPresetsZoomHint": "Los ajustes preestablecidos de movimiento de zoom están disponibles en Configuración.",
+		"animationPresets": "Presets de animación",
+		"cursorMotionPresets": "Presets de movimiento del cursor",
 		"motionPresets": {
 			"focused": {
-				"label": "Focused",
-				"description": "Snappier motion for demos, walkthroughs, and everyday recordings."
+				"label": "Enfocado",
+				"description": "Movimiento más rápido para demos, tutoriales y grabaciones cotidianas."
 			},
 			"smooth": {
-				"label": "Smooth",
-				"description": "Gentler motion for presentations, keynote-style videos, and polished reveals."
+				"label": "Suave",
+				"description": "Movimiento más suave para presentaciones, videos de estilo keynote y revelaciones pulidas."
 			}
 		},
 		"zoomInDuration": "Duración de entrada",
@@ -84,41 +88,41 @@
 		"connectedZoomEasing": "Curva del paneo conectado",
 		"zoomEasingOptions": {
 			"recordly": "OmvaLens",
-			"glide": "Glide",
+			"glide": "Deslizamiento",
 			"smooth": "Suave",
 			"snappy": "Rápida",
 			"linear": "Lineal"
 		},
 		"cursorSize": "Tamaño del cursor",
 		"cursorSmoothing": "Suavizado del cursor",
-		"cursorSpringStiffness": "Cursor Spring Stiffness",
-		"cursorSpringDamping": "Cursor Spring Damping",
-		"cursorSpringMass": "Cursor Spring Mass",
+		"cursorSpringStiffness": "Rigidez del resorte del cursor",
+		"cursorSpringDamping": "Amortiguación del resorte del cursor",
+		"cursorSpringMass": "Masa del resorte del cursor",
 		"off": "Desactivado",
 		"cursorClickEffects": {
-			"title": "Click Effects",
-			"advanced": "Advanced",
-			"advancedShow": "Show advanced click effect controls",
-			"advancedHide": "Hide advanced click effect controls",
-			"color": "Effect Color",
-			"size": "Effect Size",
-			"opacity": "Effect Opacity",
-			"duration": "Effect Duration",
+			"title": "Haga clic en efectos",
+			"advanced": "Avanzado",
+			"advancedShow": "Mostrar controles avanzados de efectos de clic",
+			"advancedHide": "Ocultar controles avanzados de efectos de clic",
+			"color": "Color del efecto",
+			"size": "Tamaño del efecto",
+			"opacity": "Efecto de opacidad",
+			"duration": "Duración del efecto",
 			"none": {
-				"label": "Off",
-				"description": "No click graphic. Only the cursor motion changes when you click."
+				"label": "Desactivado",
+				"description": "Solo el movimiento del cursor cambia cuando se hace clic."
 			},
 			"ripple": {
-				"label": "Ripple",
-				"description": "Expanding rings radiate from each click so taps read clearly in motion."
+				"label": "Onda",
+				"description": "Los anillos de expansión irradian desde cada clic para que los toques se lean claramente en movimiento."
 			},
 			"spotlight": {
-				"label": "Spotlight",
-				"description": "A soft halo flashes around the pointer to emphasize the clicked area."
+				"label": "Foco",
+				"description": "Un halo suave parpadea alrededor del puntero para enfatizar el área en la que se ha hecho clic."
 			},
 			"echo": {
-				"label": "Echo",
-				"description": "A pair of soft rings that spread outward with a cleaner pulse."
+				"label": "Eco",
+				"description": "Un par de anillos suaves que se extienden hacia afuera con un pulso más limpio."
 			}
 		},
 		"cursorMotionBlur": "Desenfoque de movimiento del cursor",
@@ -151,7 +155,30 @@
 		"paddingBottom": "Inferior",
 		"paddingLeft": "Izquierdo",
 		"paddingRight": "Derecho",
-		"removeBackground": "Quitar fondo"
+		"removeBackground": "Quitar fondo",
+		"devSection": "Dev",
+		"devSectionHint": "Controles de prueba temporales para captura nativa y ajuste de movimiento.",
+		"nativeCaptureWarningTester": "Advertencia de captura nativa",
+		"nativeCaptureWarningTesterUnavailable": "Este proyecto está marcado como captura nativa no disponible.",
+		"nativeCaptureWarningTesterAvailable": "Este proyecto no está marcado como no compatible, pero aún puedes abrir el modal para realizar pruebas de IU.",
+		"openNativeCaptureWarning": "Abrir advertencia",
+		"cameraDebugTuning": "Ajustes de depuración de la cámara",
+		"cameraDebugTuningHint": "Controles de ajuste de resorte solo para desarrollo para movimiento de cámara.",
+		"cameraSpringStiffnessMultiplier": "Rigidez de la cámara",
+		"cameraSpringDampingMultiplier": "Amortiguación de cámara",
+		"cameraSpringMassMultiplier": "Masa de la cámara",
+		"cursorDebugTuning": "Ajustes de depuración del cursor",
+		"cursorDebugTuningHint": "Controles de ajuste de resorte solo para desarrollo.",
+		"cursorSpringStiffnessMultiplier": "Rigidez del resorte",
+		"cursorSpringDampingMultiplier": "Amortiguación de primavera",
+		"cursorSpringMassMultiplier": "Misa de primavera",
+		"classicZoom": "Animación clásica",
+		"cursorDebugMovedToDev": "El ajuste de resorte del cursor está disponible en Configuración > Desarrollo.",
+		"webcamPosition": "Posición",
+		"webcamCustomPosition": "Posición personalizada",
+		"webcamHorizontal": "Horizontal",
+		"webcamVertical": "Vertical",
+		"webcamMargin": "Margen"
 	},
 	"sections": {
 		"scene": "Escena",
@@ -161,7 +188,8 @@
 		"cursor": "Cursor",
 		"webcam": "Cámara",
 		"frame": "Marco",
-		"crop": "Recorte"
+		"crop": "Recorte",
+		"appearance": "Apariencia"
 	},
 	"captions": {
 		"selectOnTimeline": "Selecciona un subtítulo en la línea de tiempo para editarlo.",
@@ -182,7 +210,7 @@
 		"fontSize": "Tamaño",
 		"rowCount": "Filas",
 		"animation": "Animación",
-		"animationOff": "Desactivada",
+		"animationOff": "Desactivado",
 		"animationFade": "Desvanecer",
 		"animationRise": "Elevar",
 		"animationPop": "Resaltar",
@@ -192,13 +220,16 @@
 		"backgroundOpacity": "Opacidad del fondo",
 		"textColor": "Color del texto",
 		"editor": {
-			"text": "Text",
-			"start": "Start",
-			"end": "End",
-			"split": "Split",
-			"merge": "Merge",
-			"delete": "Delete"
-		}
+			"text": "Texto",
+			"start": "Inicio",
+			"end": "Fin",
+			"split": "Dividir",
+			"merge": "Fusionar",
+			"delete": "Eliminar"
+		},
+		"generation": "Generación",
+		"useCustomModel": "Usar personalizado",
+		"generatingStatus": "Generando subtítulos. Esto puede tomar un momento."
 	},
 	"crop": {
 		"title": "Recortar video",
@@ -218,7 +249,11 @@
 		"uploadCustom": "Subir personalizado",
 		"uploadSuccess": "¡Imagen personalizada subida exitosamente!",
 		"uploadError": "Por favor sube un archivo de imagen JPG o JPEG.",
-		"uploadErrorDescription": "Solo se admiten imágenes JPG y JPEG."
+		"uploadErrorDescription": "Solo se admiten imágenes JPG y JPEG.",
+		"video": "Vídeo",
+		"addWallpaper": "Añadir fondo de pantalla",
+		"addVideoWallpaper": "Añadir fondo de pantalla de video",
+		"customWallpaper": "Fondo de pantalla personalizado"
 	},
 	"export": {
 		"title": "Exportar",
@@ -240,7 +275,23 @@
 		"saveProject": "Guardar proyecto",
 		"exportVideo": "Exportar {{format}}",
 		"reportBug": "Reportar error",
-		"starOnGithub": "Estrella en GitHub"
+		"starOnGithub": "Estrella en GitHub",
+		"format": "Formato",
+		"qualityTitle": "Calidad",
+		"encodingTitle": "Codificación",
+		"nvidiaCuda": {
+			"title": "NVIDIA CUDA"
+		},
+		"captionSidecar": {
+			"title": "Exportar archivo de subtítulos",
+			"hint": "Guarde los archivos.srt y.vtt junto a su video exportado."
+		},
+		"size": "Tamaño",
+		"encoding": {
+			"fast": "Rápida",
+			"balanced": "Equilibrada",
+			"quality": "Calidad"
+		}
 	},
 	"audio": {
 		"title": "Audio",
@@ -260,19 +311,22 @@
 		"saveFailed": "No se pudo cambiar el canal de actualización."
 	},
 	"hardware": {
-		"title": "Hardware acceleration",
-		"description": "Use a compatible GPU when available, with a software fallback.",
-		"saveError": "Could not save the hardware preference.",
-		"restart": "Close and reopen OmvaLens to apply this change.",
-		"checking": "Checking hardware…",
-		"check": "Check hardware",
-		"noDevice": "No GPU detected",
-		"graphics": "Preview and composition",
-		"video": "Video encoding",
-		"unavailable": "Unavailable",
-		"cuda": "CUDA runtime available",
-		"platform": "Platform runtime",
-		"note": "Availability is checked here; actual use depends on the file and operation. GIF encoding and some effects use the CPU.",
-		"partial": "Some hardware checks failed; the software fallback remains available."
+		"title": "Aceleración por hardware",
+		"description": "Usa una GPU compatible cuando esté disponible; en caso contrario, usa procesamiento por software.",
+		"saveError": "No se pudo guardar la preferencia de hardware.",
+		"restart": "Cierre y vuelva a abrir OmvaLens para aplicar este cambio.",
+		"checking": "Comprobando el hardware…",
+		"check": "Compruebe el hardware",
+		"noDevice": "No se detectó GPU",
+		"graphics": "Vista previa y composición",
+		"video": "Codificación de vídeo",
+		"unavailable": "No disponible",
+		"cuda": "Tiempo de ejecución CUDA disponible",
+		"platform": "Runtime de la plataforma",
+		"note": "Aquí se comprueba la disponibilidad; el uso real depende del archivo y la operación. La codificación GIF y algunos efectos usan la CPU.",
+		"partial": "Algunas comprobaciones de hardware fallaron; el fallback de software sigue disponible."
+	},
+	"annotation": {
+		"delete": "Eliminar anotación"
 	}
 }

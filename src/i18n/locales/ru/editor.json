@@ -51,7 +51,8 @@
 		"skipBack": "Перемотать назад",
 		"skipForward": "Перемотать вперёд",
 		"muteUnmute": "Вкл./выкл. звук",
-		"volume": "Громкость предпросмотра"
+		"volume": "Громкость предпросмотра",
+		"seek": "Playback position"
 	},
 	"annotations": {
 		"settings": "Настройки аннотации",
@@ -89,7 +90,12 @@
 		"imageUploadError": "Загрузите файл JPG, PNG, GIF, или WebP.",
 		"blurStrength": "Сила размытия: {{strength}}",
 		"solidColor": "Сплошной цвет (цензура)",
-		"borderRadius": "Скругление углов"
+		"borderRadius": "Скругление углов",
+		"imageUploadErrorDescription": "Форматы: JPG, PNG, GIF, WebP",
+		"imageUploadFailed": "Не удалось загрузить изображение",
+		"imageUploadFailedDescription": "Произошла ошибка при чтении файла.",
+		"arrowDirectionOption": "Arrow direction: {{direction}}",
+		"customColor": "Custom color"
 	},
 	"fontStyles": {
 		"classic": "Классический",
@@ -105,7 +111,8 @@
 		"mp4Video": "Видео MP4",
 		"mp4Description": "Высококачественный видеофайл",
 		"gifAnimation": "GIF-анимация",
-		"gifDescription": "Анимированное изображение для соцсетей и мессенджеров"
+		"gifDescription": "Анимированное изображение для соцсетей и мессенджеров",
+		"title": "Export format"
 	},
 	"gifOptions": {
 		"frameRate": "Частота кадров",

@@ -11,7 +11,7 @@ Formerly developed under the provisional name ScreenRecorder.
 - **Project status:** development version; Windows recording, packaging and startup have been checked. See [VALIDAZIONE_IT.md](VALIDAZIONE_IT.md) for results and remaining manual checks.
 - **Italian guide:** [LEGGIMI_IT.md](LEGGIMI_IT.md).
 - **Shared development checklist:** [CHECKLIST_SVILUPPO_IT.md](CHECKLIST_SVILUPPO_IT.md), with checked milestones and verification evidence.
-- **Localization progress:** [TRADUZIONI_IT.md](TRADUZIONI_IT.md); Italian UI migration completed, remaining languages and review tracked separately.
+- **Localization progress:** [TRADUZIONI_IT.md](TRADUZIONI_IT.md); all ten selectable catalogs completed (C05–C08), broader linguistic review tracked separately in V08.
 - **Hardware acceleration:** [ACCELERAZIONE_HARDWARE_IT.md](ACCELERAZIONE_HARDWARE_IT.md); automatic/CPU mode, Windows Whisper CUDA and operation-specific limits.
 - **Changes and validation:** [FORK_CHANGES.md](FORK_CHANGES.md).
 - **Hosting and contribution destinations:** [HOSTING.md](HOSTING.md).

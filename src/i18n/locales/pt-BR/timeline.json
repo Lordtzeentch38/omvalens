@@ -12,7 +12,7 @@
 		"noAutoZoomSlots": "Nenhum espaço de auto-zoom disponível",
 		"dwellPointsOverlap": "Pontos de permanência detectados se sobrepõem a regiões de zoom existentes.",
 		"addedSuggestions": "{{count}} sugestão(ões) de zoom por interação adicionada(s)",
-		"label": "Zoom {{index}}",
+		"label": "Zoom de {{index}}",
 		"addZoom": "Adicionar zoom (Z)",
 		"suggestZooms": "Sugerir zooms pelo cursor"
 	},

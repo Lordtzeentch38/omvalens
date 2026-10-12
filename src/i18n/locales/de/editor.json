@@ -21,7 +21,7 @@
 		"uploading": "Wird hochgeladen… {progress}%",
 		"googleUnavailable": "Die Google-Anmeldung ist noch nicht aktiviert. Nutze E-Mail oder bitte deinen OmvaLens-Administrator, Google zu verbinden.",
 		"xUnavailable": "Die X-Anmeldung ist noch nicht aktiviert. Nutze E-Mail oder bitte deinen OmvaLens-Administrator, X zu verbinden.",
-		"providerUnavailable": "Diese Anmeldemethode ist noch nicht aktiviert. Nutze vorerst E-Mail.",
+		"providerUnavailable": "Diese Anmeldemethode ist für OmvaLens noch nicht aktiviert. Nutze vorerst E-Mail.",
 		"enterEmail": "Gib zuerst deine E-Mail-Adresse ein.",
 		"resetSent": "E-Mail zum Zurücksetzen des Passworts gesendet.",
 		"accountHeading": "Dein OmvaLens-Konto",
@@ -51,7 +51,8 @@
 		"skipBack": "Zurück springen",
 		"skipForward": "Vorwärts springen",
 		"muteUnmute": "Stummschalten/Stummschaltung aufheben",
-		"volume": "Vorschaulautstärke"
+		"volume": "Vorschaulautstärke",
+		"seek": "Wiedergabeposition"
 	},
 	"annotations": {
 		"settings": "Einstellungen für Anmerkungen",
@@ -89,7 +90,12 @@
 		"imageUploadError": "Bitte lade eine JPG-, PNG-, GIF- oder WebP-Bilddatei hoch.",
 		"blurStrength": "Unschärfestärke: {{strength}}",
 		"solidColor": "Einfarbig (Zensur)",
-		"borderRadius": "Randradius"
+		"borderRadius": "Randradius",
+		"imageUploadErrorDescription": "Unterstützte Formate: JPG, PNG, GIF, WebP",
+		"imageUploadFailed": "Bild konnte nicht hochgeladen werden",
+		"imageUploadFailedDescription": "Beim Lesen der Datei ist ein Fehler aufgetreten.",
+		"arrowDirectionOption": "Pfeilrichtung: {{direction}}",
+		"customColor": "Benutzerdefinierte Farbe"
 	},
 	"fontStyles": {
 		"classic": "Klassisch",
@@ -99,13 +105,14 @@
 		"deco": "Dekorativ",
 		"simple": "Einfach",
 		"modern": "Modern",
-		"clean": "Clean"
+		"clean": "Klar"
 	},
 	"format": {
 		"mp4Video": "MP4-Video",
 		"mp4Description": "Hochwertige Videodatei",
 		"gifAnimation": "GIF-Animation",
-		"gifDescription": "Animiertes Bild zum Teilen"
+		"gifDescription": "Animiertes Bild zum Teilen",
+		"title": "Exportformat"
 	},
 	"gifOptions": {
 		"frameRate": "Bildfrequenz",
@@ -178,7 +185,7 @@
 	"nativeCaptureUnavailable": {
 		"title": "Es ist nichts kaputt, aber wir können kein animiertes Cursor-Overlay rendern.",
 		"description": "Ihr Gerät unterstützt keine native Erfassung. Dies kann verschiedene Gründe haben, die wir noch nicht ermittelt haben. OmvaLens funktioniert weiterhin, aber eine Cursor-Glättung ist nicht möglich.",
-		"confirm": "Okay"
+		"confirm": "Okay."
 	},
 	"exportStatus": {
 		"exporting": "Exportieren",

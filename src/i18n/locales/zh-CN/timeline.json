@@ -19,7 +19,7 @@
 	"trim": {
 		"cannotPlace": "无法在此处放置修剪",
 		"existsOrNoSpace": "此位置已存在修剪或空间不足。",
-		"label": "修剪 {{index}}",
+		"label": "裁剪 {{index}}",
 		"addTrim": "添加修剪 (T)"
 	},
 	"speed": {

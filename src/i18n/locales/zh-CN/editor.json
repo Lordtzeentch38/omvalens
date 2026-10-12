@@ -21,7 +21,7 @@
 		"uploading": "正在上传… {progress}%",
 		"googleUnavailable": "尚未启用 Google 登录。请使用邮箱，或请 OmvaLens 管理员连接 Google。",
 		"xUnavailable": "尚未启用 X 登录。请使用邮箱，或请 OmvaLens 管理员连接 X。",
-		"providerUnavailable": "尚未启用此登录方式，请先使用邮箱。",
+		"providerUnavailable": "OmvaLens 尚未启用此登录方式。请暂时使用电子邮件。",
 		"enterEmail": "请先输入邮箱地址。",
 		"resetSent": "密码重置邮件已发送。",
 		"accountHeading": "你的 OmvaLens 账户",
@@ -51,7 +51,8 @@
 		"skipBack": "后退",
 		"skipForward": "前进",
 		"muteUnmute": "静音/取消静音",
-		"volume": "预览音量"
+		"volume": "预览音量",
+		"seek": "播放位置"
 	},
 	"annotations": {
 		"settings": "注释设置",
@@ -89,7 +90,12 @@
 		"imageUploadError": "请上传 JPG、PNG、GIF 或 WebP 图片文件。",
 		"blurStrength": "模糊强度: {{strength}}",
 		"solidColor": "纯色 (审查)",
-		"borderRadius": "边框半径"
+		"borderRadius": "边框半径",
+		"imageUploadErrorDescription": "支持格式：JPG、PNG、GIF、WebP",
+		"imageUploadFailed": "上传图片失败",
+		"imageUploadFailedDescription": "读取文件时出错。",
+		"arrowDirectionOption": "箭头方向:{{direction}}",
+		"customColor": "自定义颜色"
 	},
 	"fontStyles": {
 		"classic": "经典",
@@ -105,7 +111,8 @@
 		"mp4Video": "MP4 视频",
 		"mp4Description": "高质量视频文件",
 		"gifAnimation": "GIF 动画",
-		"gifDescription": "可分享的动态图片"
+		"gifDescription": "可分享的动态图片",
+		"title": "导出格式"
 	},
 	"gifOptions": {
 		"frameRate": "帧率",

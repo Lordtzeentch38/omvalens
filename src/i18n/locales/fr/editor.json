@@ -21,7 +21,7 @@
 		"uploading": "Envoi… {progress}%",
 		"googleUnavailable": "La connexion Google n’est pas encore activée. Utilisez votre e-mail ou demandez à votre administrateur OmvaLens de connecter Google.",
 		"xUnavailable": "La connexion X n’est pas encore activée. Utilisez votre e-mail ou demandez à votre administrateur OmvaLens de connecter X.",
-		"providerUnavailable": "Ce mode de connexion n’est pas encore activé. Utilisez votre e-mail.",
+		"providerUnavailable": "Ce mode de connexion n’est pas encore activé pour OmvaLens. Utilisez votre e-mail pour le moment.",
 		"enterEmail": "Saisissez d’abord votre adresse e-mail.",
 		"resetSent": "E-mail de réinitialisation du mot de passe envoyé.",
 		"accountHeading": "Votre compte OmvaLens",
@@ -51,7 +51,8 @@
 		"skipBack": "Reculer",
 		"skipForward": "Avancer",
 		"muteUnmute": "Activer/Désactiver le son",
-		"volume": "Volume de l’aperçu"
+		"volume": "Volume de l’aperçu",
+		"seek": "Position de lecture"
 	},
 	"annotations": {
 		"settings": "Paramètres des annotations",
@@ -89,7 +90,12 @@
 		"imageUploadError": "Veuillez importer une image JPG, PNG, GIF ou WebP.",
 		"blurStrength": "Intensité du flou : {{strength}}",
 		"solidColor": "Couleur unie (censure)",
-		"borderRadius": "Rayon de bordure"
+		"borderRadius": "Rayon de bordure",
+		"imageUploadErrorDescription": "Formats pris en charge : JPG, PNG, GIF, WebP",
+		"imageUploadFailed": "Échec du téléchargement de l’image",
+		"imageUploadFailedDescription": "Une erreur s’est produite lors de la lecture du fichier.",
+		"arrowDirectionOption": "Flèche direction: {{direction}}",
+		"customColor": "Couleur personnalisée"
 	},
 	"fontStyles": {
 		"classic": "Classique",
@@ -105,7 +111,8 @@
 		"mp4Video": "Vidéo MP4",
 		"mp4Description": "Fichier vidéo de haute qualité",
 		"gifAnimation": "Animation GIF",
-		"gifDescription": "Image animée à partager"
+		"gifDescription": "Image animée à partager",
+		"title": "Format d'exportation"
 	},
 	"gifOptions": {
 		"frameRate": "Fréquence d’images",
@@ -136,7 +143,7 @@
 		"trigger": "Retour",
 		"title": "Retour et contact",
 		"description": "Contactez-nous directement ou ouvrez un ticket si quelque chose ne fonctionne pas ou manque.",
-		"emailLabel": "Email",
+		"emailLabel": "E-mail",
 		"xLabel": "X",
 		"reportIssue": "Signaler un problème / envoyer un retour",
 		"openFailed": "Échec de l’ouverture du lien."

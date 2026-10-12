@@ -15,8 +15,9 @@ Accelerazione GPU, modalità CPU e limiti per operazione:
 [guida hardware](ACCELERAZIONE_HARDWARE_IT.md).
 
 Avanzamento e prossime attività: [checklist condivisa](CHECKLIST_SVILUPPO_IT.md).
-Le caselle vengono spuntate dopo le verifiche. La prima fase italiana e i residui
-C07 sono completati; limiti e altre lingue sono in [TRADUZIONI_IT.md](TRADUZIONI_IT.md).
+Le caselle vengono spuntate dopo le verifiche. I cataloghi delle dieci lingue
+sono completi (C05–C08); la revisione linguistica estesa resta distinta in V08.
+Dettagli e limiti in [TRADUZIONI_IT.md](TRADUZIONI_IT.md).
 
 - **Progetto portabile**: il pulsante nell’editor salva un archivio
   `.screenrecorder` con lo stato attuale del montaggio, video, webcam, audio,

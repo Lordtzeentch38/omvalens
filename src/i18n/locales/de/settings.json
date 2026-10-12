@@ -6,7 +6,10 @@
 		"modeAuto": "Automatisch",
 		"modeManual": "Manuell",
 		"modeManualDescription": "Legen Sie einen festen Fokuspunkt für diesen Zoom fest",
-		"modeAutoDescription": "Die Kamera zentriert sich neu, wenn sich der Cursor dem Rand der gezoomten Ansicht nähert"
+		"modeAutoDescription": "Die Kamera zentriert sich neu, wenn sich der Cursor dem Rand der gezoomten Ansicht nähert",
+		"mode": "Modus",
+		"amount": "Betrag",
+		"globalSettings": "Animation"
 	},
 	"trim": {
 		"deleteRegion": "Trimmbereich löschen"
@@ -15,7 +18,8 @@
 		"playbackSpeed": "Wiedergabegeschwindigkeit",
 		"selectRegion": "Wähle einen Geschwindigkeitsbereich zum Anpassen aus",
 		"deleteRegion": "Geschwindigkeitsbereich löschen",
-		"label": "Geschwindigkeit"
+		"label": "Geschwindigkeit",
+		"unsupported": "Nicht für die Vorschau auf diesem Gerät unterstützt"
 	},
 	"clip": {
 		"title": "Clip",
@@ -38,16 +42,16 @@
 			"tahoe-inverted": "Tahoe invertiert",
 			"windows11": "Windows 11",
 			"dot": "Punkt",
-			"figma": "Minimal",
+			"figma": "Minimalistisch",
 			"lavender": "Lavender",
 			"parched": "Parched",
 			"chooper": "Chooper",
 			"amongus": "Among Us",
-			"turtle": "Turtle"
+			"turtle": "Schildkröte"
 		},
 		"backgroundBlur": "Unschärfe",
 		"zoomMotionBlur": "Zoom-Bewegungsunschärfe",
-		"auto": "Auto",
+		"auto": "Automatisch",
 		"connectZooms": "Zooms verbinden",
 		"connectZoomsDescription": "Füge aufeinanderfolgende Zoom-Bereiche zu einer kontinuierlichen Kamerabewegung zusammen.",
 		"autoApplyFreshRecordingZooms": "Neue Aufzeichnungszooms automatisch anwenden",
@@ -84,16 +88,16 @@
 		"connectedZoomEasing": "Kurve für verbundenen Schwenk",
 		"zoomEasingOptions": {
 			"recordly": "OmvaLens",
-			"glide": "Glide",
-			"smooth": "Smooth",
-			"snappy": "Snappy",
+			"glide": "Gleiten",
+			"smooth": "Sanft",
+			"snappy": "Zackig",
 			"linear": "Linear"
 		},
 		"cursorSize": "Cursorgröße",
 		"cursorSmoothing": "Cursor-Glättung",
 		"cursorSpringStiffness": "Cursor-Federkonstante",
 		"cursorSpringDamping": "Cursor-Federdämpfung",
-		"cursorSpringMass": "Cursor-Federmasse",
+		"cursorSpringMass": "Federmasse des Mauszeigers",
 		"off": "Aus",
 		"cursorClickEffects": {
 			"title": "Klick-Effekte",
@@ -109,11 +113,11 @@
 				"description": "Keine Klickgrafik. Beim Klicken ändert sich lediglich die Cursorbewegung."
 			},
 			"ripple": {
-				"label": "Ripple",
+				"label": "Welle",
 				"description": "Von jedem Klick gehen kreisförmige Ringe aus, sodass die Töne auch in Bewegung deutlich zu hören sind."
 			},
 			"spotlight": {
-				"label": "Im Fokus",
+				"label": "Scheinwerfer",
 				"description": "Um den Zeiger blitzt ein sanfter Lichtschein auf, um den angeklickten Bereich hervorzuheben."
 			},
 			"echo": {
@@ -151,17 +155,41 @@
 		"paddingBottom": "Unten",
 		"paddingLeft": "Links",
 		"paddingRight": "Rechts",
-		"removeBackground": "Hintergrund entfernen"
+		"removeBackground": "Hintergrund entfernen",
+		"devSection": "Dev",
+		"devSectionHint": "Temporäre Teststeuerelemente für native Erfassung und Motion Tuning.",
+		"nativeCaptureWarningTester": "Native Capture-Warnung",
+		"nativeCaptureWarningTesterUnavailable": "Dieses Projekt ist derzeit als native Capture nicht verfügbar markiert.",
+		"nativeCaptureWarningTesterAvailable": "Dieses Projekt ist nicht als nicht unterstützt markiert, aber Sie können das Modal weiterhin für UI-Tests öffnen.",
+		"openNativeCaptureWarning": "Warnung öffnen",
+		"cameraDebugTuning": "Kamera-Debug-Einstellungen",
+		"cameraDebugTuningHint": "Nur in der Entwicklung verfügbare Federabstimmungssteuerungen für Kamerabewegungen.",
+		"cameraSpringStiffnessMultiplier": "Kamerasteifigkeit",
+		"cameraSpringDampingMultiplier": "Kameradämpfung",
+		"cameraSpringMassMultiplier": "Kameramasse",
+		"cursorDebugTuning": "Mauszeiger-Debug-Einstellungen",
+		"cursorDebugTuningHint": "Nur für Entwicklungszwecke geeignete Federabstimmungskontrollen.",
+		"cursorSpringStiffnessMultiplier": "Federsteifigkeit",
+		"cursorSpringDampingMultiplier": "Federdämpfung",
+		"cursorSpringMassMultiplier": "Frühlingsmesse",
+		"classicZoom": "Klassische Animation",
+		"cursorDebugMovedToDev": "Die Cursor-Federabstimmung ist in Einstellungen > Entwicklung verfügbar.",
+		"webcamPosition": "Position",
+		"webcamCustomPosition": "Benutzerdefinierte Position",
+		"webcamHorizontal": "Horizontal",
+		"webcamVertical": "Vertikal",
+		"webcamMargin": "Rand"
 	},
 	"sections": {
 		"scene": "Szene",
 		"captions": "Untertitel",
 		"caption": "Untertitel",
 		"zoom": "Zoom",
-		"cursor": "Cursor",
+		"cursor": "Mauszeiger",
 		"webcam": "Webcam",
-		"frame": "Bild",
-		"crop": "Zuschneiden"
+		"frame": "Rahmen",
+		"crop": "Zuschneiden",
+		"appearance": "Aussehen"
 	},
 	"captions": {
 		"selectOnTimeline": "Wählen Sie einen Untertitel auf der Zeitleiste aus, um ihn zu bearbeiten.",
@@ -198,7 +226,10 @@
 			"split": "Teilen",
 			"merge": "Zusammenführen",
 			"delete": "Löschen"
-		}
+		},
+		"generation": "Erzeugung",
+		"useCustomModel": "Benutzerdefiniert verwenden",
+		"generatingStatus": "Untertitel werden generiert. Dies kann einen Moment dauern."
 	},
 	"crop": {
 		"title": "Video zuschneiden",
@@ -218,7 +249,11 @@
 		"uploadCustom": "Benutzerdefiniertes Bild hochladen",
 		"uploadSuccess": "Benutzerdefiniertes Bild erfolgreich hochgeladen!",
 		"uploadError": "Bitte lade eine JPG- oder JPEG-Bilddatei hoch.",
-		"uploadErrorDescription": "Es werden nur JPG- und JPEG-Bilder unterstützt."
+		"uploadErrorDescription": "Es werden nur JPG- und JPEG-Bilder unterstützt.",
+		"video": "Video",
+		"addWallpaper": "Hintergrundbild hinzufügen",
+		"addVideoWallpaper": "Videohintergrund hinzufügen",
+		"customWallpaper": "Benutzerdefinierte Tapete"
 	},
 	"export": {
 		"title": "Exportieren",
@@ -235,12 +270,28 @@
 		"outputDimensions": "Ausgabe: {{dimensions}}px",
 		"sizePresetOriginalShort": "Orig",
 		"sizePresetMediumShort": "Med",
-		"sizePresetLargeShort": "Lar",
+		"sizePresetLargeShort": "Groß",
 		"loadProject": "Projekt laden",
 		"saveProject": "Projekt speichern",
 		"exportVideo": "{{format}} exportieren",
 		"reportBug": "Fehler melden",
-		"starOnGithub": "Auf GitHub markieren"
+		"starOnGithub": "Auf GitHub markieren",
+		"format": "Format",
+		"qualityTitle": "Qualität",
+		"encodingTitle": "Codierung",
+		"nvidiaCuda": {
+			"title": "NVIDIA CUDA"
+		},
+		"captionSidecar": {
+			"title": "Untertiteldatei exportieren",
+			"hint": "Speichern Sie.srt und.vtt Dateien neben Ihrem exportierten Video."
+		},
+		"size": "Größe",
+		"encoding": {
+			"fast": "Schnell",
+			"balanced": "Ausgewogen",
+			"quality": "Qualität"
+		}
 	},
 	"audio": {
 		"title": "Audio",
@@ -260,19 +311,22 @@
 		"saveFailed": "Update-Kanal konnte nicht geändert werden."
 	},
 	"hardware": {
-		"title": "Hardware acceleration",
-		"description": "Use a compatible GPU when available, with a software fallback.",
-		"saveError": "Could not save the hardware preference.",
-		"restart": "Close and reopen OmvaLens to apply this change.",
-		"checking": "Checking hardware…",
-		"check": "Check hardware",
-		"noDevice": "No GPU detected",
-		"graphics": "Preview and composition",
-		"video": "Video encoding",
-		"unavailable": "Unavailable",
-		"cuda": "CUDA runtime available",
-		"platform": "Platform runtime",
-		"note": "Availability is checked here; actual use depends on the file and operation. GIF encoding and some effects use the CPU.",
-		"partial": "Some hardware checks failed; the software fallback remains available."
+		"title": "Hardwarebeschleunigung",
+		"description": "Eine kompatible GPU verwenden, wenn verfügbar; andernfalls Softwareverarbeitung nutzen.",
+		"saveError": "Die Hardwareeinstellung konnte nicht gespeichert werden.",
+		"restart": "Schließen Sie OmvaLens und öffnen Sie es erneut, um diese Änderung zu übernehmen.",
+		"checking": "Hardware wird geprüft…",
+		"check": "Hardware prüfen",
+		"noDevice": "Keine GPU erkannt",
+		"graphics": "Vorschau und Komposition",
+		"video": "Videokodierung",
+		"unavailable": "Nicht verfügbar",
+		"cuda": "CUDA-Laufzeit verfügbar",
+		"platform": "Plattform-Laufzeit",
+		"note": "Hier wird die Verfügbarkeit geprüft; die tatsächliche Nutzung hängt von der Datei und dem Vorgang ab. Die GIF-Kodierung und einige Effekte nutzen die CPU.",
+		"partial": "Einige Hardware-Prüfungen sind fehlgeschlagen; das Software-Fallback bleibt verfügbar."
+	},
+	"annotation": {
+		"delete": "Anmerkung löschen"
 	}
 }

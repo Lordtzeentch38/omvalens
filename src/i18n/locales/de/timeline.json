@@ -19,7 +19,7 @@
 	"trim": {
 		"cannotPlace": "Trim kann hier nicht platziert werden",
 		"existsOrNoSpace": "Trim existiert bereits an dieser Stelle oder es ist nicht genügend Platz verfügbar.",
-		"label": "Trim {{index}}",
+		"label": "Zuschnitt {{index}}",
 		"addTrim": "Trim hinzufügen (T)"
 	},
 	"speed": {

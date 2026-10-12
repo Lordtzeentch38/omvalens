@@ -14,13 +14,25 @@ third-party notices remain in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
 ## Changes introduced in this fork — 12 October 2026
 
+- **Eight-language catalog completion (C08):** 6,926 values updated across
+  Spanish, French, German, Dutch, Korean, Brazilian Portuguese and Simplified/
+  Traditional Chinese. All ten selectable locales cover 1,463 keys. Existing
+  translations reused; assisted local drafts reviewed for commands, terminology,
+  errors, credits/legal notices and privacy. Locale-specific dated exceptions
+  retain proper names/formats/shared terms; a coverage guard rejects unexplained
+  English fallbacks. Dynamic values and unknown diagnostics are preserved.
+  Recovered 58 missing namespace keys that previously displayed fallback text,
+  including export format/size/encoding and annotation errors; a source-reference
+  check covers 378 literal scoped calls. Added the dynamic encoding options.
+  Automated coverage/UI checks are separate from broader linguistic review V08;
+  see [translation status](TRADUZIONI_IT.md).
 - **Residual Italian localization (C07):** 243 additional catalog phrases;
   known dynamic errors localized at UI/native boundaries while keeping paths,
   filenames, raw error reports and unknown codec/driver diagnostics intact.
   GIF/cursor presets, accessibility labels and bundled announcement SVG text
   localized. Static inventory expanded to 514 classified sites with dated,
   explicit exclusions and a check for newly unreviewed text. Other language
-  completion and broader linguistic review remain separate C08/V08 work.
+  completion is now covered by C08; broader linguistic review remains V08.
 - **Hardware policy:** persistent automatic/CPU mode, applied on next startup,
   capability reporting and safer Chromium defaults without forcing blocked GPUs.
 - **Whisper CUDA on Windows x64:** pinned official runtime archive, file hashes

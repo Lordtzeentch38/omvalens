@@ -54,7 +54,9 @@
 			"upToDateTitle": "OmvaLens {{version}}은(는) 최신 버전입니다.",
 			"availableTitle": "OmvaLens {{version}}을(를) 사용할 수 있습니다.",
 			"availableGenericTitle": "업데이트를 사용할 수 있습니다."
-		}
+		},
+		"preparing": "녹음 준비 중",
+		"preparingSubtitle": "에디터를 열고 순간"
 	},
 	"sourceSelector": {
 		"loadingSources": "소스를 불러오는 중...",
@@ -92,5 +94,8 @@
 		"updateNow": "지금 업데이트",
 		"restartToUpdate": "다시 시작하여 업데이트",
 		"tryAgain": "다시 시도"
+	},
+	"common": {
+		"loading": "네, 맞습니다."
 	}
 }

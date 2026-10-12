@@ -54,7 +54,9 @@
 			"upToDateTitle": "OmvaLens {{version}} is up-to-date.",
 			"availableTitle": "OmvaLens {{version}} is beschikbaar.",
 			"availableGenericTitle": "Er is een update beschikbaar."
-		}
+		},
+		"preparing": "Opname voorbereiden",
+		"preparingSubtitle": "Opening van de editor in een ogenblik"
 	},
 	"sourceSelector": {
 		"loadingSources": "Bronnen laden...",
@@ -87,10 +89,13 @@
 		"checkErrorTitle": "Kan niet controleren op updates",
 		"downloadErrorTitle": "Kan de update niet downloaden",
 		"experimentalBadge": "Experimenteel",
-		"previewBadge": "Preview",
+		"previewBadge": "Voorbeeld",
 		"notNow": "Niet nu",
 		"updateNow": "Nu updaten",
 		"restartToUpdate": "Opnieuw starten om te updaten",
 		"tryAgain": "Opnieuw proberen"
+	},
+	"common": {
+		"loading": "Een verfrissende..."
 	}
 }

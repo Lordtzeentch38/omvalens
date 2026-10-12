@@ -6,9 +6,9 @@ This project uses a namespace-based i18n setup so contributors can localize safe
 
 All locale files live under:
 
-- `src/i18n/locales/en/`
-- `src/i18n/locales/es/`
-- `src/i18n/locales/zh-CN/`
+`src/i18n/locales/<locale>/`: `en`, `es`, `fr`, `de`, `it`, `nl`, `ko`,
+`pt-BR`, `zh-CN`, and `zh-TW` are selectable. The historical `ru` catalog is
+not selectable; preserve its key structure without presenting it as supported.
 
 Each locale has the same namespace files:
 
@@ -49,6 +49,20 @@ This checks for:
 - Missing namespace files
 - Missing keys compared to `en`
 - Extra keys not present in `en`
+- Empty values and differing interpolation variables
+- UI source mappings and dated static-audit reviews
+- Unexplained English phrases in selectable non-English catalogs
+- Literal calls through `useScopedT` aliases whose catalog keys are missing
+
+`npm run i18n:coverage` runs the last check separately. English names, formats
+and genuinely shared terms require a locale-specific, dated reason in
+`src/i18n/translationExceptions.json`. Do not exempt missing functional translations.
+Preserve user content, paths, brand names and variables. Unknown system/driver
+diagnostics remain original; app-owned errors use explicit message templates.
+`scripts/i18n-references.mjs` checks literal scoped keys in source code, including
+calls with an English fallback that would otherwise hide an absent key. Computed
+keys still require focused tests; aliases reused for different namespaces in one
+file are skipped rather than incorrectly resolved.
 
 ## Contributor Workflow
 
@@ -56,10 +70,12 @@ This checks for:
 2. Update `en/<namespace>.json` with new keys if needed.
 3. Add matching keys to other locale files.
 4. Run `npm run i18n:check`.
-5. Run app locally (`npm run dev`) and spot-check UI text.
+5. Run relevant unit/UI tests and review wording and layout in the target languages.
 6. Open PR with a short summary of changed namespaces.
 
 ## Scope Notes
 
-Current framework is app-wide and ready for full localization rollout.
-Not every UI string is migrated yet. Migration should be done incrementally by namespace to keep PRs reviewable and low-risk.
+As of 12 October 2026, all ten selectable locales cover the same 1,463 catalog
+keys, with no unexplained English fallback. This is a technical coverage result,
+not a native-speaker certification. Broader linguistic/layout review remains V08
+in `CHECKLIST_SVILUPPO_IT.md`; keep coding, validation and distribution separate.

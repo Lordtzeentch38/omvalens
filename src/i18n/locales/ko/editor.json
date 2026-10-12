@@ -21,7 +21,7 @@
 		"uploading": "업로드 중… {progress}%",
 		"googleUnavailable": "Google 로그인이 아직 활성화되지 않았습니다. 이메일을 사용하거나 OmvaLens 관리자에게 Google 연결을 요청하세요.",
 		"xUnavailable": "X 로그인이 아직 활성화되지 않았습니다. 이메일을 사용하거나 OmvaLens 관리자에게 X 연결을 요청하세요.",
-		"providerUnavailable": "이 로그인 방식은 아직 활성화되지 않았습니다. 이메일을 사용하세요.",
+		"providerUnavailable": "OmvaLens에서 이 로그인 방식은 아직 활성화되지 않았습니다. 지금은 이메일을 사용하세요.",
 		"enterEmail": "먼저 이메일 주소를 입력하세요.",
 		"resetSent": "비밀번호 재설정 이메일을 보냈습니다.",
 		"accountHeading": "내 OmvaLens 계정",
@@ -51,7 +51,8 @@
 		"skipBack": "뒤로 건너뛰기",
 		"skipForward": "앞으로 건너뛰기",
 		"muteUnmute": "음소거/해제",
-		"volume": "미리보기 볼륨"
+		"volume": "미리보기 볼륨",
+		"seek": "재생 위치"
 	},
 	"annotations": {
 		"settings": "주석 설정",
@@ -89,11 +90,16 @@
 		"imageUploadError": "JPG, PNG, GIF 또는 WebP 이미지 파일을 업로드해 주세요.",
 		"blurStrength": "블러 강도: {{strength}}",
 		"solidColor": "단색 (검열)",
-		"borderRadius": "테두리 반경"
+		"borderRadius": "테두리 반경",
+		"imageUploadErrorDescription": "지원 형식: JPG, PNG, GIF, WebP",
+		"imageUploadFailed": "이미지 업로드에 실패했습니다",
+		"imageUploadFailedDescription": "파일을 읽는 중 오류가 발생했습니다.",
+		"arrowDirectionOption": "화살표 방향: {{direction}}",
+		"customColor": "사용자 정의 색상"
 	},
 	"fontStyles": {
 		"classic": "클래식",
-		"editor": "에디터",
+		"editor": "편집기",
 		"strong": "강조",
 		"typewriter": "타자기",
 		"deco": "장식",
@@ -105,7 +111,8 @@
 		"mp4Video": "MP4 비디오",
 		"mp4Description": "고화질 비디오 파일",
 		"gifAnimation": "GIF 애니메이션",
-		"gifDescription": "공유용 애니메이션 이미지"
+		"gifDescription": "공유용 애니메이션 이미지",
+		"title": "내보내기 형식"
 	},
 	"gifOptions": {
 		"frameRate": "프레임 속도",

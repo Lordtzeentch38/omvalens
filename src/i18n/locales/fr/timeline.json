@@ -19,7 +19,7 @@
 	"trim": {
 		"cannotPlace": "Impossible de placer le découpage ici",
 		"existsOrNoSpace": "Un découpage existe déjà à cet emplacement ou il n’y a pas assez d’espace disponible.",
-		"label": "Découpage {{index}}",
+		"label": "Découpe {{index}}",
 		"addTrim": "Ajouter un découpage (T)"
 	},
 	"speed": {
@@ -28,7 +28,7 @@
 		"label": "Vitesse"
 	},
 	"annotation": {
-		"label": "Annotation",
+		"label": "ANNOTATION",
 		"image": "Image",
 		"addAnnotation": "Ajouter une annotation (A)"
 	},

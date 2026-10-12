@@ -19,7 +19,7 @@
 	"trim": {
 		"cannotPlace": "여기에는 트림을 배치할 수 없습니다",
 		"existsOrNoSpace": "이 위치에는 이미 트림이 있거나 사용할 수 있는 공간이 부족합니다.",
-		"label": "트림 {{index}}",
+		"label": "잘라내기 {{index}}",
 		"addTrim": "트림 추가 (T)"
 	},
 	"speed": {

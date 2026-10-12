@@ -54,7 +54,9 @@
 			"upToDateTitle": "У вас актуальная версия OmvaLens {{version}}.",
 			"availableTitle": "Доступна новая версия OmvaLens {{version}}.",
 			"availableGenericTitle": "Доступно обновление."
-		}
+		},
+		"preparing": "Preparing recording",
+		"preparingSubtitle": "Opening the editor in a moment"
 	},
 	"sourceSelector": {
 		"loadingSources": "Загрузка источников...",
@@ -92,5 +94,8 @@
 		"updateNow": "Обновить сейчас",
 		"restartToUpdate": "Перезапустить для обновления",
 		"tryAgain": "Повторить"
+	},
+	"common": {
+		"loading": "Refreshing..."
 	}
 }
