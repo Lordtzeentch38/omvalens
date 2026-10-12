@@ -1,5 +1,30 @@
 # Verifiche della versione di sviluppo
 
+## C11 — accelerazione hardware, 12 ottobre 2026
+
+- Suite: 1.503 test riusciti, 7 esclusi; successivamente 4 nuovi test del
+  riepilogo hardware e della dimensione del probe riusciti. Tipi e cataloghi coerenti; lint senza errori,
+  un avviso preesistente in ProjectThumbnail.
+- Interfaccia: quattro scenari lingua e una prova hardware riusciti. Preferenza
+  CPU persistente e avviso di riapertura verificati tramite tastiera.
+- App Windows: avvio/editor, menu italiani e trasferimento portabile riusciti.
+  Anteprima reale ANGLE/D3D11 su RTX 3060 in automatico; Microsoft Basic Render
+  Driver in CPU, senza errori del renderer. CPU seleziona libx264 e Whisper CPU.
+  Rilevamento effettuato dopo le informazioni GPU, con supporto WebGL distinto
+  dalla composizione delle finestre. Al primo avvio Chromium può ancora segnalare
+  software prima del canvas; ripetendo il controllo nell'editor segnala GPU.
+  Trascrizione del campione inglese riuscita anche tramite IPC dell'app, in
+  automatico e CPU. Probe encoder portato a 256×256: 64×64 viene rifiutato da
+  NVENC su questo PC per dimensioni inferiori al minimo, non per GPU assente.
+  Dopo la correzione, il pacchetto seleziona realmente `h264_nvenc` in automatico.
+- Pacchetto: binari inclusi verificati, CUDA e licenze originali incluse.
+- Benchmark: NVENC/libx264 producono 150 fotogrammi 720p/5 s; Whisper CUDA/CPU
+  trascrive il campione JFK inglese con testo uguale. Il log conferma CUDA0.
+  Tempi e limiti in [ACCELERAZIONE_HARDWARE_IT.md](ACCELERAZIONE_HARDWARE_IT.md).
+- Artefatti locali: `.tmp/gpu-validation/benchmark.json`, log/SRT e
+  `.tmp/gpu-validation/packaged/` con report e immagini; profili isolati.
+  Queste prove non completano V16, V10, V11, V13 o V18.
+
 ## Checklist e prima fase italiana — 11 ottobre 2026
 
 - Checklist condivisa con caselle, criteri di completamento e registro:

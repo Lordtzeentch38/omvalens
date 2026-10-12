@@ -1,3 +1,4 @@
+// Modified by OmvaLens, 2026-10-12: defer optional CUDA download to explicit builds.
 import { spawnSync } from "node:child_process";
 
 const npmExecPath = process.env.npm_execpath;
@@ -18,7 +19,7 @@ function runScript(scriptName) {
 	console.log(`[postinstall] Running npm script: ${scriptName}`);
 	const result = spawnSync(npmInvoker.command, [...npmInvoker.argsPrefix, "run", scriptName], {
 		stdio: "inherit",
-		env: process.env,
+		env: { ...process.env, OMVALENS_POSTINSTALL: "1" },
 		shell: npmInvoker.shell,
 	});
 

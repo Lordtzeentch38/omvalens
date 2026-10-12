@@ -12,6 +12,7 @@ Formerly developed under the provisional name ScreenRecorder.
 - **Italian guide:** [LEGGIMI_IT.md](LEGGIMI_IT.md).
 - **Shared development checklist:** [CHECKLIST_SVILUPPO_IT.md](CHECKLIST_SVILUPPO_IT.md), with checked milestones and verification evidence.
 - **Localization progress:** [TRADUZIONI_IT.md](TRADUZIONI_IT.md); Italian UI migration completed, remaining languages and review tracked separately.
+- **Hardware acceleration:** [ACCELERAZIONE_HARDWARE_IT.md](ACCELERAZIONE_HARDWARE_IT.md); automatic/CPU mode, Windows Whisper CUDA and operation-specific limits.
 - **Changes and validation:** [FORK_CHANGES.md](FORK_CHANGES.md).
 - **Hosting and contribution destinations:** [HOSTING.md](HOSTING.md).
 - **License:** [AGPLv3](LICENSE.md), with original credits and third-party notices retained.

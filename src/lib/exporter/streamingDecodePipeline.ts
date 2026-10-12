@@ -1,4 +1,6 @@
 import type { WebDemuxer } from "web-demuxer";
+// Modified by OmvaLens, 2026-10-12: explicit CPU mode, retain AV1 compatibility.
+import { isCpuMode } from "../hardwarePreference";
 import type { SpeedRegion, TrimRegion } from "@/components/video-editor/types";
 import { getEffectiveVideoStreamDurationSeconds } from "@/lib/mediaTiming";
 import {
@@ -119,7 +121,7 @@ async function decodeVideoStreamAttempt(
 	const decoderConfig = await context.demuxer.getDecoderConfig("video");
 	const codec = context.metadata.codec.toLowerCase();
 	const shouldPreferSoftwareDecode =
-		forceSoftwareDecode || codec.includes("av01") || codec.includes("av1");
+		forceSoftwareDecode || isCpuMode() || codec.includes("av01") || codec.includes("av1");
 	const effectiveVideoDuration = getEffectiveVideoStreamDurationSeconds({
 		duration: context.metadata.duration,
 		streamDuration: context.metadata.streamDuration,

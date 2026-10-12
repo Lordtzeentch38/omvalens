@@ -1,4 +1,6 @@
 import { requiresClipTimelineRendering } from "./clipTimeline";
+// Modified by OmvaLens, 2026-10-12: consistent CPU policy and encoder retry.
+import { isCpuMode } from "../hardwarePreference";
 import type {
 	AnnotationRegion,
 	AudioRegion,
@@ -692,7 +694,7 @@ export class VideoExporter {
 			height: this.config.height,
 			bitrate: this.config.bitrate,
 			framerate: this.config.frameRate,
-			hardwareAcceleration: "prefer-hardware",
+			hardwareAcceleration: isCpuMode() ? "prefer-software" : "prefer-hardware",
 			avc: { format: "annexb" },
 		};
 
@@ -1316,14 +1318,22 @@ export class VideoExporter {
 				codec: candidateCodec,
 				hardwareAcceleration: "prefer-hardware",
 			};
-			const hwSupport = await VideoEncoder.isConfigSupported(hwConfig);
+			const hwSupport = isCpuMode()
+				? { supported: false }
+				: await VideoEncoder.isConfigSupported(hwConfig).catch(() => ({
+						supported: false,
+					}));
 			if (hwSupport.supported) {
 				resolvedCodec = candidateCodec;
 				console.log(
 					`[VideoExporter] Using hardware acceleration with codec ${candidateCodec}`,
 				);
-				this.encoder.configure(hwConfig);
-				return;
+				try {
+					this.encoder.configure(hwConfig);
+					return;
+				} catch {
+					/* Try the software encoder when the hardware driver rejects configuration. */
+				}
 			}
 
 			const swConfig: VideoEncoderConfig = {

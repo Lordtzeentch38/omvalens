@@ -5,6 +5,7 @@ import path from "node:path";
 import { promisify } from "node:util";
 import { app } from "electron";
 import { nativeHelperMigrationPromise, setNativeHelperMigrationPromise } from "../state";
+// Modified by OmvaLens, 2026-10-12: separate CUDA runtime, retain CPU runtime.
 
 const execFileAsync = promisify(execFile);
 
@@ -87,6 +88,11 @@ export function getBundledWhisperExecutableCandidates(): string[] {
 			: ["whisper-cli", "whisper-cpp", "whisper", "main"];
 
 	return binaryNames.map((binaryName) => getPrebundledNativeHelperPath(binaryName));
+}
+
+export function getBundledWhisperGpuExecutableCandidates(): string[] {
+	if (process.platform !== "win32" || process.arch !== "x64") return [];
+	return [getPrebundledNativeHelperPath(path.join("whisper-cuda", "whisper-cli.exe"))];
 }
 
 export function getNativeCaptureHelperBinaryPath(): string {

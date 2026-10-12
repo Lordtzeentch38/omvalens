@@ -437,6 +437,19 @@ async function stageRuntimeArtifacts(target, candidateDir, runtimeEntries) {
 }
 
 async function main() {
+	// Modified by OmvaLens, 2026-10-12: distribution builds include the separate
+	// pinned CUDA runtime without replacing the independent CPU runtime.
+	if (
+		process.platform === "win32" &&
+		process.arch === "x64" &&
+		process.env.npm_lifecycle_event !== "postinstall" &&
+		process.env.OMVALENS_POSTINSTALL !== "1" &&
+		process.env.WHISPER_RUNTIME_GPU !== "0"
+	) {
+		execFileSync(process.execPath, [path.join(projectRoot, "scripts/stage-whisper-gpu.mjs")], {
+			stdio: "inherit",
+		});
+	}
 	const targets = getTargetConfigs();
 
 	// Official whisper.cpp releases include a signed, portable Windows x64

@@ -22,6 +22,8 @@ import { RECORDINGS_DIR } from "./appPaths";
 import { createAuthCallbackController } from "./authCallback";
 import { showCursor } from "./cursorHider";
 import { getGpuSwitches } from "./gpuSwitches";
+// Modified by OmvaLens, 2026-10-12: explicit hardware policy and safe defaults.
+import { activeHardwareMode } from "./hardwarePreference";
 import {
 	cleanupAllExportStreams,
 	cleanupNativeVideoExportSessions,
@@ -86,9 +88,11 @@ function ignoreBrokenConsolePipe(stream: NodeJS.WritableStream | undefined) {
 ignoreBrokenConsolePipe(process.stdout);
 ignoreBrokenConsolePipe(process.stderr);
 
-app.commandLine.appendSwitch("ignore-gpu-blocklist");
-app.commandLine.appendSwitch("enable-unsafe-webgpu");
-app.commandLine.appendSwitch("enable-gpu-rasterization");
+if (activeHardwareMode === "cpu") {
+	app.disableHardwareAcceleration();
+} else {
+	app.commandLine.appendSwitch("enable-gpu-rasterization");
+}
 
 app.on("web-contents-created", (_event, contents) => {
 	if (!shouldHardenWebContentsType(contents.getType())) {
@@ -99,6 +103,7 @@ app.on("web-contents-created", (_event, contents) => {
 });
 
 function configureGpuAccelerationSwitches() {
+	if (activeHardwareMode === "cpu") return;
 	const { useAngle, useGl, disableFeatures } = getGpuSwitches(process.platform, process.env);
 	if (useAngle) {
 		app.commandLine.appendSwitch("use-angle", useAngle);

@@ -1,6 +1,8 @@
 // Modified by OmvaLens, 2026-10-11: localized interface text. AGPL-3.0.
 import { useUiText } from "@/contexts/I18nContext";
 import { SettingsSections, SettingsCategory } from "./SettingsSections";
+// Modified by OmvaLens, 2026-10-12: hardware settings shared with the dashboard.
+import { HardwareAccelerationPanel } from "./HardwareAccelerationPanel";
 import { Card, RadioGroup, Radio, Label, Description } from "@heroui/react";
 import { ProgressBar } from "@heroui/react";
 import { ColorControl, ColorPalette } from "@/components/ui/color-picker";
@@ -2261,6 +2263,7 @@ export function SettingsPanel({
 				categories={advanced ? ["general", "motion", "advanced"] : ["general", "motion"]}
 			>
 				<SettingsCategory category="general">
+					<HardwareAccelerationPanel />
 					{onShowOnboarding && (
 						<SettingsRow title={uiText("Onboarding")}>
 							<Button variant="secondary" size="sm" onClick={onShowOnboarding}>

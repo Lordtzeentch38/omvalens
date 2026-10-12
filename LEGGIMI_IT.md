@@ -11,6 +11,9 @@ conservati; [FORK_CHANGES.md](FORK_CHANGES.md) distingue la base dalle nostre ag
 
 ## Migliorie disponibili
 
+Accelerazione GPU, modalità CPU e limiti per operazione:
+[guida hardware](ACCELERAZIONE_HARDWARE_IT.md).
+
 Avanzamento e prossime attività: [checklist condivisa](CHECKLIST_SVILUPPO_IT.md).
 Le caselle vengono spuntate dopo le verifiche. La prima fase italiana dei testi
 è completata; limiti e altre lingue sono in [TRADUZIONI_IT.md](TRADUZIONI_IT.md).

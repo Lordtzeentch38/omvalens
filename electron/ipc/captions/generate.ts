@@ -6,7 +6,13 @@ import path from "node:path";
 import { promisify } from "node:util";
 import { app } from "electron";
 import { getFfmpegBinaryPath } from "../ffmpeg/binary";
-import { getBundledWhisperExecutableCandidates } from "../paths/binaries";
+import {
+	getBundledWhisperExecutableCandidates,
+	getBundledWhisperGpuExecutableCandidates,
+} from "../paths/binaries";
+// Modified by OmvaLens, 2026-10-12: CUDA selection and independent CPU retry.
+import { activeHardwareMode } from "../../hardwarePreference";
+import { isWhisperGpuFailure } from "./gpuPolicy";
 import { resolveRecordingSession } from "../project/session";
 import {
 	getCompanionAudioStartDelayMs,
@@ -67,9 +73,14 @@ export async function isExecutableFile(filePath: string) {
 }
 
 export async function resolveWhisperExecutablePath(preferredPath?: string | null) {
+	const bundledCpu = getBundledWhisperExecutableCandidates();
+	const preferred = preferredPath?.trim();
+	const isDefaultPath =
+		!preferred || bundledCpu.some((file) => path.resolve(file) === path.resolve(preferred));
 	const candidatePaths = [
-		preferredPath?.trim() || null,
-		...getBundledWhisperExecutableCandidates(),
+		!isDefaultPath ? preferred : null,
+		...(activeHardwareMode === "auto" ? getBundledWhisperGpuExecutableCandidates() : []),
+		...bundledCpu,
 		process.env["WHISPER_CPP_PATH"]?.trim() || null,
 		process.platform === "darwin" ? "/opt/homebrew/bin/whisper-cli" : null,
 		process.platform === "darwin" ? "/usr/local/bin/whisper-cli" : null,
@@ -281,11 +292,37 @@ async function generateCaptionsForSource(options: {
 			// Do not carry a hallucinated phrase through later decoding windows.
 			"-mc",
 			"0",
+			...(activeHardwareMode === "cpu" ? ["-ng"] : []),
 		];
+		const runWithCpuFallback = async (args: string[]) => {
+			try {
+				await executeWhisper(whisperExecutablePath, args);
+			} catch (error) {
+				const bundledGpu = getBundledWhisperGpuExecutableCandidates().some(
+					(file) => path.resolve(file) === path.resolve(whisperExecutablePath),
+				);
+				if (
+					activeHardwareMode === "cpu" ||
+					(!bundledGpu && !isWhisperGpuFailure(error)) ||
+					shouldRetryWhisperWithoutJson(error)
+				)
+					throw error;
+				const cpuPath = bundledGpu
+					? await resolveWhisperCpuExecutablePath()
+					: whisperExecutablePath;
+				console.warn("[auto-captions] GPU runtime failed; retrying with CPU", error);
+				// Remove partial GPU output so no stale cues can be read after retry.
+				await Promise.allSettled([
+					fs.rm(srtPath, { force: true }),
+					fs.rm(jsonPath, { force: true }),
+				]);
+				await executeWhisper(cpuPath, [...args, "-ng"]);
+			}
+		};
 
 		let jsonEnabled = true;
 		try {
-			await executeWhisper(whisperExecutablePath, [...whisperBaseArgs, "-ojf"]);
+			await runWithCpuFallback([...whisperBaseArgs, "-ojf"]);
 		} catch (error) {
 			if (!shouldRetryWhisperWithoutJson(error)) {
 				throw error;
@@ -296,7 +333,7 @@ async function generateCaptionsForSource(options: {
 				"[auto-captions] Whisper runtime does not support JSON full output, retrying with SRT only:",
 				error,
 			);
-			await executeWhisper(whisperExecutablePath, whisperBaseArgs);
+			await runWithCpuFallback(whisperBaseArgs);
 		}
 
 		const cues = await readWhisperCaptionOutput(outputBase, jsonEnabled);
@@ -330,6 +367,13 @@ async function generateCaptionsForSource(options: {
 			fs.rm(jsonPath, { force: true }),
 		]);
 	}
+}
+
+async function resolveWhisperCpuExecutablePath() {
+	for (const file of getBundledWhisperExecutableCandidates()) {
+		if (await isExecutableFile(file)) return path.resolve(file);
+	}
+	throw new Error("The bundled CPU Whisper runtime is missing; reinstall OmvaLens.");
 }
 
 export async function generateAutoCaptionsFromVideo(options: {

@@ -258,5 +258,21 @@
 		"title": "Aggiornamenti",
 		"experimental": "Aggiornamenti sperimentali",
 		"saveFailed": "Impossibile cambiare il canale di aggiornamento."
+	},
+	"hardware": {
+		"title": "Accelerazione hardware",
+		"description": "Usa una GPU compatibile quando disponibile, con ripiego software.",
+		"saveError": "Impossibile salvare la preferenza hardware.",
+		"restart": "Chiudi e riapri OmvaLens per applicare questa modifica.",
+		"checking": "Controllo hardware…",
+		"check": "Controlla hardware",
+		"noDevice": "Nessuna GPU rilevata",
+		"graphics": "Anteprima e composizione",
+		"video": "Codifica video",
+		"unavailable": "Non disponibile",
+		"cuda": "Runtime CUDA disponibile",
+		"platform": "Runtime di sistema",
+		"note": "Qui si controlla la disponibilità; l’uso effettivo dipende dal file e dall’operazione. La codifica GIF e alcuni effetti usano la CPU.",
+		"partial": "Alcuni controlli hardware non sono riusciti; il ripiego software rimane disponibile."
 	}
 }

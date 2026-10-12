@@ -1,4 +1,5 @@
 // Modified by the ScreenRecorder fork, 2026-10-10. See FORK_CHANGES.md; AGPL-3.0.
+// Modified by OmvaLens, 2026-10-12: hardware capability API types.
 /// <reference types="vite-plugin-electron/electron-env" />
 
 declare namespace NodeJS {
@@ -944,6 +945,9 @@ interface Window {
 			callback: (chrome: { trafficLightsVisible: boolean }) => void,
 		) => () => void;
 		getPlatform: () => Promise<string>;
+		getHardwareCapabilities: () => Promise<
+			import("../src/types/hardware").HardwareCapabilities
+		>;
 		isWindowFullscreen: () => Promise<boolean>;
 		onWindowFullscreenChanged: (callback: (isFullscreen: boolean) => void) => () => void;
 		getLinuxWindowSystem: () => Promise<"wayland" | "x11" | null>;

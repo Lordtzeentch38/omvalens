@@ -9,6 +9,8 @@ const mocks = vi.hoisted(() => ({
 	companions: vi.fn(),
 	delay: vi.fn(),
 	session: vi.fn(),
+	gpuPaths: [] as string[],
+	mode: "auto",
 }));
 vi.mock("node:child_process", () => ({
 	execFile: (...args: unknown[]) => {
@@ -31,7 +33,15 @@ vi.mock("node:fs/promises", () => ({
 }));
 vi.mock("electron", () => ({ app: { getPath: () => "/tmp" } }));
 vi.mock("../ffmpeg/binary", () => ({ getFfmpegBinaryPath: () => "/ffmpeg" }));
-vi.mock("../paths/binaries", () => ({ getBundledWhisperExecutableCandidates: () => ["/whisper"] }));
+vi.mock("../paths/binaries", () => ({
+	getBundledWhisperExecutableCandidates: () => ["/whisper"],
+	getBundledWhisperGpuExecutableCandidates: () => mocks.gpuPaths,
+}));
+vi.mock("../../hardwarePreference", () => ({
+	get activeHardwareMode() {
+		return mocks.mode;
+	},
+}));
 vi.mock("../project/session", () => ({ resolveRecordingSession: mocks.session }));
 vi.mock("../recording/diagnostics", () => ({
 	getUsableCompanionAudioCandidates: mocks.companions,
@@ -58,6 +68,8 @@ const json = JSON.stringify({
 
 beforeEach(() => {
 	vi.clearAllMocks();
+	mocks.gpuPaths = [];
+	mocks.mode = "auto";
 	mocks.session.mockReset().mockResolvedValue(null);
 	mocks.companions.mockReset().mockResolvedValue([]);
 	mocks.delay.mockReset().mockResolvedValue(null);
@@ -72,6 +84,54 @@ const whisperCalls = () =>
 	mocks.exec.mock.calls.filter(([file]) => path.resolve(file) === path.resolve("/whisper"));
 
 describe("caption generation pipeline", () => {
+	it("upgrades the stored bundled CPU path to CUDA and retries an independent CPU runtime on failure", async () => {
+		mocks.gpuPaths = ["/whisper-cuda"];
+		mocks.exec.mockImplementation(async (file: string) => {
+			if (path.resolve(file) === path.resolve("/whisper-cuda"))
+				throw Error("CUDA error: out of memory");
+			return { stderr: "" };
+		});
+		expect(
+			(await generateAutoCaptionsFromVideo({ ...options, whisperExecutablePath: "/whisper" }))
+				.cues[0].text,
+		).toBe("Hello world.");
+		expect(
+			mocks.exec.mock.calls.some(
+				([file]) => path.resolve(file) === path.resolve("/whisper-cuda"),
+			),
+		).toBe(true);
+		expect(whisperCalls()).toHaveLength(1);
+		expect(whisperCalls()[0][1]).toContain("-ng");
+	});
+	it("uses CPU mode even when a CUDA runtime is bundled", async () => {
+		mocks.gpuPaths = ["/whisper-cuda"];
+		mocks.mode = "cpu";
+		await generateAutoCaptionsFromVideo(options);
+		expect(whisperCalls()).toHaveLength(1);
+		expect(whisperCalls()[0][1]).toContain("-ng");
+		expect(
+			mocks.exec.mock.calls.some(
+				([file]) => path.resolve(file) === path.resolve("/whisper-cuda"),
+			),
+		).toBe(false);
+	});
+	it("does not replace a user-selected executable with the bundled GPU runtime", async () => {
+		mocks.gpuPaths = ["/whisper-cuda"];
+		await generateAutoCaptionsFromVideo({
+			...options,
+			whisperExecutablePath: "/custom-whisper",
+		});
+		expect(
+			mocks.exec.mock.calls.some(
+				([file]) => path.resolve(file) === path.resolve("/custom-whisper"),
+			),
+		).toBe(true);
+		expect(
+			mocks.exec.mock.calls.some(
+				([file]) => path.resolve(file) === path.resolve("/whisper-cuda"),
+			),
+		).toBe(false);
+	});
 	it("transcribes both sidecars independently, preserving the microphone delay", async () => {
 		mocks.companions.mockResolvedValue([
 			{

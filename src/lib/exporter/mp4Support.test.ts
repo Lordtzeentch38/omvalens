@@ -1,6 +1,36 @@
-import { describe, expect, it } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 
-import { getOrderedSupportedMp4EncoderCandidates } from "./mp4Support";
+import {
+	getOrderedSupportedMp4EncoderCandidates,
+	resolveSupportedMp4EncoderPath,
+} from "./mp4Support";
+afterEach(() => vi.unstubAllGlobals());
+it("uses only software candidates in CPU mode, ignoring old hardware hints", () => {
+	vi.stubGlobal("window", { electronAPI: { getAppSetting: () => "cpu" } });
+	const candidates = getOrderedSupportedMp4EncoderCandidates({
+		preferredEncoderPath: { codec: "avc1.640033", hardwareAcceleration: "prefer-hardware" },
+	});
+	expect(candidates.length).toBeGreaterThan(0);
+	expect(
+		candidates.every((candidate) => candidate.hardwareAcceleration === "prefer-software"),
+	).toBe(true);
+});
+it("retries software when querying the hardware driver throws", async () => {
+	const probe = vi.fn(async (config: VideoEncoderConfig) => {
+		if (config.hardwareAcceleration === "prefer-hardware") throw Error("driver unavailable");
+		return { supported: true, config };
+	});
+	vi.stubGlobal("VideoEncoder", { isConfigSupported: probe });
+	expect(
+		await resolveSupportedMp4EncoderPath({
+			width: 640,
+			height: 360,
+			frameRate: 30,
+			bitrate: 4000000,
+		}),
+	).toMatchObject({ hardwareAcceleration: "prefer-software" });
+	expect(probe).toHaveBeenCalledTimes(2);
+});
 
 describe("getOrderedSupportedMp4EncoderCandidates", () => {
 	it("keeps hardware candidates ahead of a preferred software hint", () => {

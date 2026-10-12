@@ -1,6 +1,13 @@
 import { createCountdownController } from "../../countdownController";
 // Modified by OmvaLens, 2026-10-11: keep native menus in the selected locale.
 import { localeEvents } from "../../nativeI18n";
+// Modified by OmvaLens, 2026-10-12: GPU/CPU session policy and capabilities.
+import {
+	activeHardwareMode,
+	HARDWARE_MODE_KEY,
+	normalizeHardwareMode,
+} from "../../hardwarePreference";
+import { getHardwareCapabilities } from "../../hardwareCapabilities";
 import fs from "node:fs/promises";
 import { app, BrowserWindow, ipcMain } from "electron";
 import { hasAppSetting, readAppSettingsStore, writeAppSettingsStore } from "../../appSettingsStore";
@@ -42,6 +49,7 @@ function getBrowserMicrophoneProfileFromEnv() {
 }
 
 export function registerSettingsHandlers() {
+	ipcMain.handle("hardware:get-capabilities", () => getHardwareCapabilities());
 	ipcMain.handle(
 		"get-window-fullscreen",
 		(event) => BrowserWindow.fromWebContents(event.sender)?.isFullScreen() ?? false,
@@ -75,7 +83,12 @@ export function registerSettingsHandlers() {
 			const store = readAppSettingsStore();
 			event.returnValue = {
 				success: true,
-				value: hasAppSetting(store, key) ? store[key] : null,
+				value:
+					key === "omvalens.hardwareMode.active"
+						? activeHardwareMode
+						: hasAppSetting(store, key)
+							? store[key]
+							: null,
 			};
 		} catch (error) {
 			console.error("Failed to read app setting:", error);
@@ -91,7 +104,9 @@ export function registerSettingsHandlers() {
 			}
 
 			const store = readAppSettingsStore();
-			store[key] = value;
+			if (key === "omvalens.hardwareMode.active")
+				throw Error("Active hardware mode is read-only");
+			store[key] = key === HARDWARE_MODE_KEY ? normalizeHardwareMode(value) : value;
 			writeAppSettingsStore(store);
 			if (key === "recordly.locale") localeEvents.emit("changed");
 			event.returnValue = { success: true };

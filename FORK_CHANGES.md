@@ -12,6 +12,21 @@ Original copyright and attribution notices are retained. This fork and its
 integrated modifications are licensed under [AGPLv3](LICENSE.md). Existing
 third-party notices remain in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
+## Changes introduced in this fork — 12 October 2026
+
+- **Hardware policy:** persistent automatic/CPU mode, applied on next startup,
+  capability reporting and safer Chromium defaults without forcing blocked GPUs.
+- **Whisper CUDA on Windows x64:** pinned official runtime archive, file hashes
+  and original licenses; separate CPU runtime retry when the GPU process fails.
+  Custom executables remain selectable. Optional download deferred to builds.
+- **Video fallback robustness:** CPU policy across native/WebCodecs paths,
+  software retry after unsupported hardware probes/configuration, safe handling
+  of missing encoder processes and closed pipes; 256px probe avoids false NVENC
+  rejection caused by frame dimensions below the GPU encoder's minimum.
+- **Verification:** selection/fallback tests, settings UI test and real NVENC/CPU
+  and CUDA/CPU benchmarks. Extended validation stays separate in V16; see
+  [hardware guide](ACCELERAZIONE_HARDWARE_IT.md).
+
 ## Changes introduced in this fork — 11 October 2026
 
 - **Shared progress tracking:** checkable development checklist with completion

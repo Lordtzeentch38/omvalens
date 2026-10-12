@@ -1,4 +1,6 @@
 export const DEFAULT_MP4_CODEC = "avc1.640033";
+// Modified by OmvaLens, 2026-10-12: explicit CPU preference across export paths.
+import { isCpuMode } from "../hardwarePreference";
 export const MP4_CODEC_FALLBACK_LIST = [
 	DEFAULT_MP4_CODEC,
 	"avc1.4d4033",
@@ -44,6 +46,7 @@ function normalizeEvenDimension(value: number): number {
 
 function buildEncoderSupportCacheKey(options: ResolveMp4EncoderPathOptions): string {
 	return [
+		isCpuMode() ? "cpu" : "auto",
 		options.codec ?? DEFAULT_MP4_CODEC,
 		options.width,
 		options.height,
@@ -96,11 +99,11 @@ export function getOrderedSupportedMp4EncoderCandidates(options: {
 	);
 	const candidates: SupportedMp4EncoderPath[] = [];
 
-	if (options.preferredEncoderPath?.hardwareAcceleration === "prefer-hardware") {
+	if (!isCpuMode() && options.preferredEncoderPath?.hardwareAcceleration === "prefer-hardware") {
 		appendEncoderCandidate(candidates, options.preferredEncoderPath);
 	}
 
-	for (const codec of orderedCodecs) {
+	for (const codec of isCpuMode() ? [] : orderedCodecs) {
 		appendEncoderCandidate(candidates, {
 			codec,
 			hardwareAcceleration: "prefer-hardware",
@@ -144,11 +147,15 @@ export async function resolveSupportedMp4EncoderPath(
 		bitrateMode: "variable",
 	};
 
-	for (const hardwareAcceleration of ["prefer-hardware", "prefer-software"] as const) {
-		const support = await VideoEncoder.isConfigSupported({
-			...baseConfig,
-			hardwareAcceleration,
-		});
+	for (const hardwareAcceleration of (isCpuMode()
+		? ["prefer-software"]
+		: ["prefer-hardware", "prefer-software"]) as ("prefer-hardware" | "prefer-software")[]) {
+		let support: VideoEncoderSupport;
+		try {
+			support = await VideoEncoder.isConfigSupported({ ...baseConfig, hardwareAcceleration });
+		} catch {
+			continue; // A driver/probe failure must not prevent the software candidate.
+		}
 
 		if (support.supported) {
 			const result = { codec, hardwareAcceleration } satisfies SupportedMp4EncoderPath;
@@ -169,6 +176,7 @@ export async function probeSupportedMp4Dimensions(
 	const normalizedHeight = normalizeEvenDimension(options.height);
 	const requestedBitrate = options.getBitrate(normalizedWidth, normalizedHeight);
 	const dimensionCacheKey = [
+		isCpuMode() ? "cpu" : "auto",
 		codec,
 		normalizedWidth,
 		normalizedHeight,

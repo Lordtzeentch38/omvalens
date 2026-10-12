@@ -1,5 +1,20 @@
 # Third-party notices
 
+## Whisper GPU runtime added by OmvaLens — 12 October 2026
+
+The independent Windows x64 caption subprocess can use the official whisper.cpp
+v1.8.4 CUDA 12.4 runtime. whisper.cpp and ggml are MIT licensed; SDL2 is under the
+zlib license. NVIDIA CUDA redistributable libraries retain NVIDIA's license and
+copyright, and are not relicensed under AGPLv3. Their licenses are included next
+to the runtime in `electron/native/bin/win32-x64/whisper-cuda/` (unpacked in the
+Windows distribution). The independent CPU runtime remains available.
+
+- Runtime source/release: https://github.com/ggml-org/whisper.cpp/releases/tag/v1.8.4
+- NVIDIA license and redistribution appendix: https://docs.nvidia.com/cuda/archive/12.4.0/eula/index.html
+- Source builds may explicitly omit this optional CUDA package using
+  `WHISPER_RUNTIME_GPU=0` on a clean checkout. Previously staged GPU files are
+  not removed or excluded by this setting; see ACCELERAZIONE_HARDWARE_IT.md.
+
 Modified by the ScreenRecorder fork, 10 October 2026: portable-project library notices added below; original notices retained.
 
 ## Portable-project ZIP libraries added by ScreenRecorder

@@ -44,6 +44,8 @@ import {
 	parseAvailableFfmpegEncoders,
 } from "../nativeVideoExport";
 import { cachedNativeVideoEncoder, setCachedNativeVideoEncoder } from "../state";
+// Modified by OmvaLens, 2026-10-12: respect CPU policy and survive failed probes.
+import { activeHardwareMode } from "../../hardwarePreference";
 
 const execFileAsync = promisify(execFile);
 const getNowMs = () => performance.now();
@@ -1897,6 +1899,7 @@ function getNativeBinPlatformArch() {
 }
 
 async function resolveExperimentalWindowsGpuExporterPath() {
+	if (activeHardwareMode === "cpu") return null;
 	if (process.platform !== "win32") {
 		return null;
 	}
@@ -2022,6 +2025,7 @@ export function getNativeGpuCompositorStallTimeoutMs() {
 export async function getExperimentalNvidiaCudaExportSkipReason(
 	options: NativeStaticLayoutExportOptions,
 ) {
+	if (activeHardwareMode === "cpu") return "cpu-mode";
 	if (process.platform !== "win32") {
 		return "not-windows";
 	}
@@ -3889,6 +3893,8 @@ export async function probeNativeVideoEncoder(
 	encoderName: string,
 	encodingMode: NativeExportEncodingMode,
 ) {
+	// A 64px probe is below NVENC's minimum frame dimensions on some GPUs.
+	const probeSize = 256;
 	const outputPath = path.join(
 		app.getPath("temp"),
 		`recordly-export-probe-${Date.now()}-${Math.random().toString(36).slice(2, 8)}.mp4`,
@@ -3896,8 +3902,8 @@ export async function probeNativeVideoEncoder(
 	const args = buildNativeVideoExportArgs(
 		encoderName,
 		{
-			width: 64,
-			height: 64,
+			width: probeSize,
+			height: probeSize,
 			frameRate: 1,
 			bitrate: 1_500_000,
 			encodingMode,
@@ -3934,8 +3940,16 @@ export async function probeNativeVideoEncoder(
 			}
 			resolve(code === 0);
 		});
+		process.once("error", () => {
+			clearTimeout(timeout);
+			void removeTemporaryExportFile(outputPath);
+			resolve(false);
+		});
+		process.stdin.on("error", () => {
+			/* probe result is handled by close/error/timeout */
+		});
 
-		process.stdin.end(Buffer.alloc(getNativeVideoInputByteSize(64, 64), 0));
+		process.stdin.end(Buffer.alloc(getNativeVideoInputByteSize(probeSize, probeSize), 0));
 	});
 }
 
@@ -3952,7 +3966,12 @@ export async function resolveNativeVideoEncoder(
 
 	const availableEncoders = await getAvailableNativeVideoEncoders(ffmpegPath);
 	const candidates = [
-		...new Set([...getPreferredNativeVideoEncoders(process.platform), "libx264"]),
+		...new Set([
+			...(activeHardwareMode === "cpu"
+				? []
+				: getPreferredNativeVideoEncoders(process.platform)),
+			"libx264",
+		]),
 	];
 
 	for (const encoderName of candidates) {

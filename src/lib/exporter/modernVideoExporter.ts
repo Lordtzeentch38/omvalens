@@ -93,6 +93,8 @@ import type {
 	ExportResult,
 } from "./types";
 import { ENCODED_H264_COLOR_SPACE_FALLBACK, EXPORT_CANVAS_COLOR_SPACE } from "./videoColorSpace";
+// Modified by OmvaLens, 2026-10-12: CPU mode also covers the Annex B path.
+import { isCpuMode } from "../hardwarePreference";
 
 interface VideoExporterConfig extends ExportConfig {
 	videoUrl: string;
@@ -2792,7 +2794,7 @@ export class ModernVideoExporter {
 			height: this.config.height,
 			bitrate: this.config.bitrate,
 			framerate: this.config.frameRate,
-			hardwareAcceleration: "prefer-hardware",
+			hardwareAcceleration: isCpuMode() ? "prefer-software" : "prefer-hardware",
 			avc: { format: "annexb" },
 		};
 

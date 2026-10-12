@@ -1,4 +1,6 @@
 import { WebDemuxer } from "web-demuxer";
+// Modified by OmvaLens, 2026-10-12: explicit CPU decode policy.
+import { isCpuMode } from "../hardwarePreference";
 import { getEffectiveVideoStreamDurationSeconds } from "@/lib/mediaTiming";
 import { createFallbackDemuxerSource, resolveMediaResourceUrl } from "./localMediaSource";
 import { getDecodedFrameTimelineOffsetUs } from "./streamingDecoder";
@@ -106,7 +108,8 @@ export class ForwardFrameSource {
 
 		const decoderConfig = await this.demuxer.getDecoderConfig("video");
 		const codec = this.metadata.codec.toLowerCase();
-		const shouldPreferSoftwareDecode = codec.includes("av01") || codec.includes("av1");
+		const shouldPreferSoftwareDecode =
+			isCpuMode() || codec.includes("av01") || codec.includes("av1");
 
 		this.decoder = new VideoDecoder({
 			output: (frame: VideoFrame) => {

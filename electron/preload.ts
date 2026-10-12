@@ -1,4 +1,5 @@
 // Modified by the ScreenRecorder fork, 2026-10-10. See FORK_CHANGES.md; AGPL-3.0.
+// Modified by OmvaLens, 2026-10-12: expose hardware capability inspection.
 import { contextBridge, ipcRenderer } from "electron";
 import type { RecordingSessionData } from "./ipc/types";
 
@@ -1002,6 +1003,7 @@ contextBridge.exposeInMainWorld("electronAPI", {
 	getPlatform: () => {
 		return ipcRenderer.invoke("get-platform");
 	},
+	getHardwareCapabilities: () => ipcRenderer.invoke("hardware:get-capabilities"),
 	isWindowFullscreen: () => {
 		return ipcRenderer.invoke("get-window-fullscreen");
 	},

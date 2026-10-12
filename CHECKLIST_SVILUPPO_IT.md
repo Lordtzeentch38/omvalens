@@ -1,6 +1,6 @@
 # OmvaLens — checklist di sviluppo e collaudo
 
-Ultimo aggiornamento: 11 ottobre 2026.
+Ultimo aggiornamento: 12 ottobre 2026.
 
 Questa checklist distingue **codice da realizzare**, **controlli da eseguire** e
 **distribuzione**. Le caselle si modificano con `[ ]` / `[x]`. Ogni voce ha un
@@ -38,6 +38,12 @@ facoltative non bloccano la prima versione Windows utilizzabile senza account.
   (`scripts/i18n-audit.mjs`), controllo dei cataloghi, variabili di interpolazione
   e associazioni delle frasi. Controlli V05 e V08.
 
+- [x] **C11 — Accelerazione GPU.** Modalità automatica/CPU coerente per sessione,
+  rilevamento hardware, Whisper CUDA Windows x64 con runtime CPU indipendente e
+  ripieghi della codifica. Completata il 12/10/2026: controlli tecnici, interfaccia
+  e app Windows confezionata riusciti. Non tutte le operazioni usano la GPU;
+  [guida e limiti](ACCELERAZIONE_HARDWARE_IT.md). Collaudo esteso distinto in V16.
+
 ### Da implementare o completare
 
 - [ ] **C07 — Traduzione dei testi residui destinati all'utente.** Dopo la
@@ -55,10 +61,6 @@ facoltative non bloccano la prima versione Windows utilizzabile senza account.
 - [ ] **C10 — Pipeline Forgejo.** Configurare runner e pipeline per controllo tipi,
   cataloghi e test. Il workflow GitHub esistente non completa questa voce.
   Controllo V15.
-- [ ] **C11 — Accelerazione GPU.** Implementare quanto necessario per anteprima,
-  composizione, Whisper, codifica ed esportazione, con rilevamento GPU e ripiego
-  CPU. Controllo V16. **In attesa del comando esplicito: non avviare questa voce
-  né V16 sulla base del solo promemoria.**
 
 ### Coding facoltativo dopo la prima versione
 
@@ -120,8 +122,15 @@ facoltative non bloccano la prima versione Windows utilizzabile senza account.
   download, installazione e gestione degli errori con il nostro feed.
 - [ ] **V15 — Pipeline (C10).** Registrare un'esecuzione riuscita su Forgejo.
 - [ ] **V16 — GPU (C11).** Misurare supporto, qualità e tempi per ogni operazione,
-  confrontare CPU/GPU e verificare i ripieghi. Non è attualmente garantita per
-  tutte le operazioni. **In attesa del comando esplicito.**
+  confrontare CPU/GPU e verificare i ripieghi. **Parziale, 12/10/2026:**
+  - [x] Selezione e ripieghi: test automatici, impostazione persistente e riavvio.
+  - [x] Clip sintetica NVENC/libx264: durata, dimensioni e 150 fotogrammi coerenti.
+  - [x] Whisper CUDA/CPU: campione inglese, log CUDA e testo confrontati.
+  - [x] App confezionata: RTX 3060 in automatico, Microsoft Basic Render Driver
+    in CPU; encoder e runtime CPU selezionati, anteprima visibile.
+  - [ ] Montaggio completo, qualità visiva, audio e annullamento (anche V10).
+  - [ ] Modelli/audio lunghi, consumi e stabilità (anche V11/V13).
+  - [ ] Schede Intel/AMD, driver diversi e macOS/Linux (anche V18).
 - [ ] **V17 — Migliorie facoltative (C12–C14).** Dopo il coding: verificare accesso,
   link/revoca e funzionamento senza account; integrità del ripristino; testo,
   tempi, capitoli ed esportazione. Suddividere in prove specifiche quando avviate.
@@ -139,8 +148,9 @@ prova fallita. Non considerare una funzionalità mancante prima del collaudo.
 - [x] **D01 — Hosting e nome dei repository.** Forgejo primario; repository
   `omvalens`. GitHub secondario, caricamenti solo su richiesta esplicita per ogni
   operazione. Indirizzi e compatibilità in [HOSTING.md](HOSTING.md).
-- [x] **D02 — Installer locale della prima fase italiana.** Installer Windows
-  ricreato e checksum aggiornati; controlli V07 superati, 11/10/2026.
+- [x] **D02 — Installer locale.** Prima fase italiana verificata l'11/10/2026;
+  pacchetto Windows ricreato con C11 il 12/10/2026. Avvio/editor, runtime inclusi
+  e modalità GPU/CPU verificati. Firma editore e release pubblica restano separate.
 - [ ] **D03 — Release pubblica su Forgejo.** Pubblicare installer, checksum,
   sorgenti, istruzioni e problemi noti della versione collaudata. Un push dei
   sorgenti non completa la release. GitHub richiede richiesta esplicita separata.
@@ -156,5 +166,7 @@ prova fallita. Non considerare una funzionalità mancante prima del collaudo.
 | 10/10/2026 | C01–C04, V01–V04, D01 | Completate | Identità, progetti portabili, preflight/backup e cattura sintetica; dettagli in VALIDAZIONE_IT.md. |
 | 11/10/2026 | C05–C06, V05–V07, D02 | Completate | 567 frasi, 1.495 test unitari, 11 prove UI e app Windows riusciti. Residui e altre lingue restano C07–C08 / V08. |
 | 11/10/2026 | Checklist | Riorganizzata | Coding, controlli e distribuzione separati; esiti precedenti conservati. |
+| 12/10/2026 | C11, D02 | Implementazione completata | 1.503 test della suite e 4 nuovi controlli hardware riusciti, 7 esclusi; tipi/cataloghi/lint senza errori, un avviso precedente. Cinque prove UI e app Windows GPU/CPU/trascrizione/trasferimento portabile riuscite. |
+| 12/10/2026 | V16 | Collaudo parziale | Benchmark NVENC/libx264 e Whisper CUDA/CPU; anteprima su RTX 3060 e renderer software. Montaggi completi, qualità, sessioni lunghe e altri hardware restano aperti. |
 
 Ulteriori dettagli sulle traduzioni: [TRADUZIONI_IT.md](TRADUZIONI_IT.md).
