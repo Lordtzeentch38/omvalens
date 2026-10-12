@@ -3,7 +3,8 @@ import { Card, Label, Description, TagGroup, Tag } from "@heroui/react";
 import type { ReactNode } from "react";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
-import { useScopedT } from "@/contexts/I18nContext";
+// Modified by OmvaLens, 2026-10-12: localized GIF size labels. AGPL-3.0.
+import { useScopedT, useUiText } from "@/contexts/I18nContext";
 import type {
 	ExportEncodingMode,
 	ExportFormat,
@@ -127,6 +128,7 @@ export function ExportSettingsMenu({
 	linkMode = false,
 }: ExportSettingsMenuProps) {
 	const tSettings = useScopedT("settings");
+	const uiText = useUiText();
 	const isLegacyModel = exportPipelineModel === "legacy";
 
 	return (
@@ -254,7 +256,7 @@ export function ExportSettingsMenu({
 							onChange={onGifSizePresetChange}
 							options={Object.entries(GIF_SIZE_PRESETS).map(([key, preset]) => ({
 								value: key as GifSizePreset,
-								label: preset.label,
+								label: uiText(preset.label),
 							}))}
 						/>
 						<Description>

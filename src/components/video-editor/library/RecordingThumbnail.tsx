@@ -1,3 +1,4 @@
+// Modified by OmvaLens, 2026-10-12: residual interface translations. AGPL-3.0.
 // Modified by OmvaLens, 2026-10-11: localized interface text. AGPL-3.0.
 import { useUiText } from "@/contexts/I18nContext";
 import { useEffect, useRef, useState } from "react";
@@ -45,7 +46,7 @@ export function RecordingThumbnail({ entry }: { entry: RecordingLibraryEntry }) 
 			{src ? (
 				<img
 					src={src}
-					alt={`Preview of ${entry.name}`}
+					alt={uiText("Preview of {{value1}}", { value1: entry.name })}
 					className="size-full object-cover"
 					draggable={false}
 					onError={() => {

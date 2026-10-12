@@ -1,5 +1,7 @@
 // Modified by OmvaLens, 2026-10-11: catalog-backed UI text. AGPL-3.0.
 import { translateCatalogText } from "@/i18n/catalogText";
+// Modified by OmvaLens, 2026-10-12: application error/message boundary.
+import { translateAppMessage } from "@/i18n/appMessage";
 import { I18nProvider as AriaI18nProvider } from "react-aria";
 import {
 	createContext,
@@ -380,6 +382,13 @@ export function useUiText() {
 		},
 		[locale],
 	);
+}
+
+/** Only for application messages/errors, never project names or editable content. */
+export function useAppMessage() {
+	const context = useContext(I18nContext);
+	const locale = context?.locale ?? DEFAULT_LOCALE;
+	return useCallback((source: string) => translateAppMessage(locale, source), [locale]);
 }
 
 export function useScopedT(namespace: I18nNamespace) {

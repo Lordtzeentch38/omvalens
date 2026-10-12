@@ -1,3 +1,5 @@
+// Modified by OmvaLens, 2026-10-12: known UI error messages. AGPL-3.0.
+import { currentAppMessage } from "@/i18n/appMessage";
 // Modified by OmvaLens, 2026-10-11: localized interface text. AGPL-3.0.
 import { useUiText } from "@/contexts/I18nContext";
 import { useRef, useState } from "react";
@@ -220,7 +222,7 @@ export function FeedbackDialog({
 						</Description>
 						{error && (
 							<Description role="alert" className="text-danger">
-								{error}
+								{currentAppMessage(error)}
 							</Description>
 						)}
 						<Button type="submit" isDisabled={sending} className="w-full">

@@ -1,3 +1,5 @@
+// Modified by OmvaLens, 2026-10-12: known UI error messages. AGPL-3.0.
+import { currentAppMessage } from "@/i18n/appMessage";
 // Modified by OmvaLens, 2026-10-11: localized interface text. AGPL-3.0.
 import { useUiText } from "@/contexts/I18nContext";
 import { RecordingThumbnail } from "./RecordingThumbnail";
@@ -91,7 +93,7 @@ export function RecordingLibraryPanel({
 						<Dropdown.Menu aria-label={uiText("Clip library actions")}>
 							<Dropdown.Item
 								id="folder"
-								textValue="Open recordings folder"
+								textValue={uiText("Open recordings folder")}
 								onAction={() => void window.electronAPI.openRecordingsFolder()}
 							>
 								<FolderOpen weight="fill" className="size-4" />
@@ -99,7 +101,7 @@ export function RecordingLibraryPanel({
 							</Dropdown.Item>
 							<Dropdown.Item
 								id="trash"
-								textValue="Move all to Trash"
+								textValue={uiText("Move all to Trash")}
 								variant="danger"
 								isDisabled={
 									!library.entries.length || library.busy || library.importing
@@ -183,7 +185,7 @@ export function RecordingLibraryPanel({
 				)}
 				{library.error && (
 					<div role="alert" className="p-2 text-xs">
-						<p>{library.error}</p>
+						<p>{currentAppMessage(library.error)}</p>
 						<Button variant="ghost" size="sm" onClick={() => void library.refresh()}>
 							{uiText("Retry")}
 						</Button>

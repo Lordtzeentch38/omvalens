@@ -1,3 +1,5 @@
+// Modified by OmvaLens, 2026-10-12: known UI error messages. AGPL-3.0.
+import { currentAppMessage } from "@/i18n/appMessage";
 // Modified by OmvaLens, 2026-10-11: localized interface text. AGPL-3.0.
 import { useUiText } from "@/contexts/I18nContext";
 // Modified by the OmvaLens fork, 2026-10-10. See FORK_CHANGES.md; AGPL-3.0.
@@ -88,7 +90,7 @@ export function ExportErrorReportButton({
 							</p>
 							{sendError && (
 								<p role="alert" className="text-sm text-destructive">
-									{sendError}
+									{currentAppMessage(sendError)}
 								</p>
 							)}
 							<Button

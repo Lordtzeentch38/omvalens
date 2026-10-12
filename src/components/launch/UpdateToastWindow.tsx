@@ -1,5 +1,7 @@
 // Modified by OmvaLens, 2026-10-11: localized interface text. AGPL-3.0.
+// Modified by OmvaLens, 2026-10-12: translated application update details. AGPL-3.0.
 import { useUiText } from "@/contexts/I18nContext";
+import { currentAppMessage } from "@/i18n/appMessage";
 // Modified by the OmvaLens fork, 2026-10-10. See FORK_CHANGES.md; AGPL-3.0.
 import { Card, Chip, ProgressBar } from "@heroui/react";
 import {
@@ -68,7 +70,7 @@ function getDetail(payload: UpdateToastPayload, t: Translate) {
 		);
 	}
 
-	return payload.detail;
+	return currentAppMessage(payload.detail);
 }
 
 function getPrimaryLabel(payload: UpdateToastPayload, t: Translate) {

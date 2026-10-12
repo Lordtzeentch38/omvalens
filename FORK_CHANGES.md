@@ -14,6 +14,13 @@ third-party notices remain in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
 ## Changes introduced in this fork — 12 October 2026
 
+- **Residual Italian localization (C07):** 243 additional catalog phrases;
+  known dynamic errors localized at UI/native boundaries while keeping paths,
+  filenames, raw error reports and unknown codec/driver diagnostics intact.
+  GIF/cursor presets, accessibility labels and bundled announcement SVG text
+  localized. Static inventory expanded to 514 classified sites with dated,
+  explicit exclusions and a check for newly unreviewed text. Other language
+  completion and broader linguistic review remain separate C08/V08 work.
 - **Hardware policy:** persistent automatic/CPU mode, applied on next startup,
   capability reporting and safer Chromium defaults without forcing blocked GPUs.
 - **Whisper CUDA on Windows x64:** pinned official runtime archive, file hashes

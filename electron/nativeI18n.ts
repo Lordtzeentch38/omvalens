@@ -2,12 +2,13 @@
 import { app } from "electron";
 import { EventEmitter } from "node:events";
 import { readAppSetting } from "./appSettingsStore";
-import { translateCatalogText } from "../src/i18n/catalogText";
+// Modified by OmvaLens, 2026-10-12: known dynamic native messages.
+import { translateAppMessage } from "../src/i18n/appMessage";
 
 export const localeEvents = new EventEmitter();
 
 export function nativeText(source: string, vars?: Record<string, string | number>) {
 	const saved = readAppSetting("recordly.locale");
 	const locale = typeof saved === "string" ? saved : (app.getLocale?.() ?? "en");
-	return translateCatalogText(locale, source, vars);
+	return translateAppMessage(locale, source, vars);
 }

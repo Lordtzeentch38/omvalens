@@ -1,5 +1,7 @@
 // Modified by OmvaLens, 2026-10-11: localized interface text. AGPL-3.0.
 import { useUiText } from "@/contexts/I18nContext";
+// Modified by OmvaLens, 2026-10-12: known authentication error messages.
+import { currentAppMessage } from "@/i18n/appMessage";
 // Modified by the OmvaLens fork, 2026-10-10. See FORK_CHANGES.md; AGPL-3.0.
 import { GithubLogo } from "@phosphor-icons/react";
 import { OnboardingFeature } from "./OnboardingFeature";
@@ -440,9 +442,9 @@ export function RecordlySignInDialog({
 											<Alert.Indicator />
 											<Alert.Content>
 												<Alert.Description>
-													{message ||
+													{(message && currentAppMessage(message)) ||
 														(callbackError
-															? uiText(callbackError)
+															? currentAppMessage(callbackError)
 															: undefined)}
 												</Alert.Description>
 											</Alert.Content>

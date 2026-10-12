@@ -1,0 +1,1143 @@
+{
+	"b88537dd0776": {
+		"file": "src/components/announcements/AnnouncementDialog.tsx",
+		"kind": "notice",
+		"text": "{{value1}} {{value2}}",
+		"reason": "Composizione di valori già tradotti, dati dell’utente o etichetta Zoom compatibile; non tradurre il valore composto.",
+		"reviewedOn": "2026-10-12"
+	},
+	"05a81864fbaa": {
+		"file": "src/components/announcements/AnnouncementDialog.tsx",
+		"kind": "attribute",
+		"text": "{{value1}} {{value2}}",
+		"reason": "Composizione di valori già tradotti, dati dell’utente o etichetta Zoom compatibile; non tradurre il valore composto.",
+		"reviewedOn": "2026-10-12"
+	},
+	"0f00ba656521": {
+		"file": "src/components/announcements/EditorAnnouncementBanner.tsx",
+		"kind": "notice",
+		"text": "{{value1}} {{value2}}",
+		"reason": "Composizione di valori già tradotti, dati dell’utente o etichetta Zoom compatibile; non tradurre il valore composto.",
+		"reviewedOn": "2026-10-12"
+	},
+	"aeea2e4ffa76": {
+		"file": "src/components/announcements/LiveAnnouncementNotifications.tsx",
+		"kind": "notice",
+		"text": "{{value1}} {{value2}}",
+		"reason": "Composizione di valori già tradotti, dati dell’utente o etichetta Zoom compatibile; non tradurre il valore composto.",
+		"reviewedOn": "2026-10-12"
+	},
+	"da66debceb0b": {
+		"file": "src/components/auth/OnboardingFeature.tsx",
+		"kind": "expression",
+		"text": "OmvaLens",
+		"reason": "Nome proprio, unità, estensione compatibile, esempio e-mail o indicatore di sviluppo; da conservare.",
+		"reviewedOn": "2026-10-12"
+	},
+	"51a4d008807c": {
+		"file": "src/components/auth/RecordlySignInDialog.tsx",
+		"kind": "attribute",
+		"text": "OmvaLens",
+		"reason": "Nome proprio, unità, estensione compatibile, esempio e-mail o indicatore di sviluppo; da conservare.",
+		"reviewedOn": "2026-10-12"
+	},
+	"dc328427a629": {
+		"file": "src/components/auth/RecordlySignInDialog.tsx",
+		"kind": "text",
+		"text": "OmvaLens",
+		"reason": "Nome proprio, unità, estensione compatibile, esempio e-mail o indicatore di sviluppo; da conservare.",
+		"reviewedOn": "2026-10-12"
+	},
+	"4a829e5d4aa8": {
+		"file": "src/components/auth/RecordlySignInDialog.tsx",
+		"kind": "property",
+		"text": "Google",
+		"reason": "Nome proprio, unità, estensione compatibile, esempio e-mail o indicatore di sviluppo; da conservare.",
+		"reviewedOn": "2026-10-12"
+	},
+	"dedbbbeeab6a": {
+		"file": "src/components/auth/RecordlySignInDialog.tsx",
+		"kind": "property",
+		"text": "Microsoft",
+		"reason": "Nome proprio, unità, estensione compatibile, esempio e-mail o indicatore di sviluppo; da conservare.",
+		"reviewedOn": "2026-10-12"
+	},
+	"116520dd6803": {
+		"file": "src/components/auth/RecordlySignInDialog.tsx",
+		"kind": "property",
+		"text": "GitHub",
+		"reason": "Nome proprio, unità, estensione compatibile, esempio e-mail o indicatore di sviluppo; da conservare.",
+		"reviewedOn": "2026-10-12"
+	},
+	"e41072b29698": {
+		"file": "src/components/auth/RecordlySignInDialog.tsx",
+		"kind": "attribute",
+		"text": "you@example.com",
+		"reason": "Nome proprio, unità, estensione compatibile, esempio e-mail o indicatore di sviluppo; da conservare.",
+		"reviewedOn": "2026-10-12"
+	},
+	"99b2d816305e": {
+		"file": "src/components/launch/contexts/HudInteractionContext.tsx",
+		"kind": "error",
+		"text": "useHudInteraction must be used within a HudInteractionProvider",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"77ed75fe1497": {
+		"file": "src/components/launch/popovers/CountdownPopover.tsx",
+		"kind": "expression",
+		"text": "{{value1}}s",
+		"reason": "Nome proprio, unità, estensione compatibile, esempio e-mail o indicatore di sviluppo; da conservare.",
+		"reviewedOn": "2026-10-12"
+	},
+	"47118221f04c": {
+		"file": "src/components/launch/popovers/LaunchPopoverCoordinator.tsx",
+		"kind": "error",
+		"text": "useLaunchPopoverCoordinator must be used within LaunchPopoverCoordinatorProvider",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"4186124a045b": {
+		"file": "src/components/video-editor/AnnotationSettingsPanel.tsx",
+		"kind": "text",
+		"text": "px",
+		"reason": "Nome proprio, unità, estensione compatibile, esempio e-mail o indicatore di sviluppo; da conservare.",
+		"reviewedOn": "2026-10-12"
+	},
+	"28db8387abeb": {
+		"file": "src/components/video-editor/cloud/SharedRecordings.tsx",
+		"kind": "text",
+		"text": "MB",
+		"reason": "Nome proprio, unità, estensione compatibile, esempio e-mail o indicatore di sviluppo; da conservare.",
+		"reviewedOn": "2026-10-12"
+	},
+	"35c2cedc2c85": {
+		"file": "src/components/video-editor/dashboard/DashboardSidebar.tsx",
+		"kind": "text",
+		"text": "OmvaLens",
+		"reason": "Nome proprio, unità, estensione compatibile, esempio e-mail o indicatore di sviluppo; da conservare.",
+		"reviewedOn": "2026-10-12"
+	},
+	"1320d4e1a8c9": {
+		"file": "src/components/video-editor/export/useSmokeExportAutomation.ts",
+		"kind": "property",
+		"text": "Smoke export did not become ready within {{value1}}ms.",
+		"reason": "Diagnostica della sola automazione di sviluppo; non è un flusso utente.",
+		"reviewedOn": "2026-10-12"
+	},
+	"76b6cf4cf2be": {
+		"file": "src/components/video-editor/ExportSettingsMenu.tsx",
+		"kind": "text",
+		"text": "px",
+		"reason": "Nome proprio, unità, estensione compatibile, esempio e-mail o indicatore di sviluppo; da conservare.",
+		"reviewedOn": "2026-10-12"
+	},
+	"37f148da0f87": {
+		"file": "src/components/video-editor/HardwareAccelerationPanel.tsx",
+		"kind": "expression",
+		"text": "GPU",
+		"reason": "Nome proprio, unità, estensione compatibile, esempio e-mail o indicatore di sviluppo; da conservare.",
+		"reviewedOn": "2026-10-12"
+	},
+	"6c2bf953111c": {
+		"file": "src/components/video-editor/HardwareAccelerationPanel.tsx",
+		"kind": "expression",
+		"text": "CPU",
+		"reason": "Nome proprio, unità, estensione compatibile, esempio e-mail o indicatore di sviluppo; da conservare.",
+		"reviewedOn": "2026-10-12"
+	},
+	"de25e0f2e8dd": {
+		"file": "src/components/video-editor/HardwareAccelerationPanel.tsx",
+		"kind": "text",
+		"text": "Whisper:",
+		"reason": "Nome proprio, unità, estensione compatibile, esempio e-mail o indicatore di sviluppo; da conservare.",
+		"reviewedOn": "2026-10-12"
+	},
+	"8bd11640e2ce": {
+		"file": "src/components/video-editor/layout/EditorDialogs.tsx",
+		"kind": "text",
+		"text": ".recordly",
+		"reason": "Nome proprio, unità, estensione compatibile, esempio e-mail o indicatore di sviluppo; da conservare.",
+		"reviewedOn": "2026-10-12"
+	},
+	"e656429fe8bf": {
+		"file": "src/components/video-editor/library/RecordingLibraryPanel.tsx",
+		"kind": "expression",
+		"text": "{{value1}} {{value2}}",
+		"reason": "Composizione di valori già tradotti, dati dell’utente o etichetta Zoom compatibile; non tradurre il valore composto.",
+		"reviewedOn": "2026-10-12"
+	},
+	"f685fdbc386d": {
+		"file": "src/components/video-editor/library/RecordingLibraryPanel.tsx",
+		"kind": "text",
+		"text": "MB",
+		"reason": "Nome proprio, unità, estensione compatibile, esempio e-mail o indicatore di sviluppo; da conservare.",
+		"reviewedOn": "2026-10-12"
+	},
+	"fec9e58a3fad": {
+		"file": "src/components/video-editor/project/useInitialEditorSource.ts",
+		"kind": "notice",
+		"text": "Smoke export failed to load project {{value1}}: {{value2}}",
+		"reason": "Diagnostica della sola automazione di sviluppo; non è un flusso utente.",
+		"reviewedOn": "2026-10-12"
+	},
+	"c4d2625197db": {
+		"file": "src/components/video-editor/project/useInitialEditorSource.ts",
+		"kind": "notice",
+		"text": "Smoke export could not apply project {{value1}}",
+		"reason": "Diagnostica della sola automazione di sviluppo; non è un flusso utente.",
+		"reviewedOn": "2026-10-12"
+	},
+	"e04d84db3537": {
+		"file": "src/components/video-editor/project/useInitialEditorSource.ts",
+		"kind": "notice",
+		"text": "Smoke export input path is missing.",
+		"reason": "Diagnostica della sola automazione di sviluppo; non è un flusso utente.",
+		"reviewedOn": "2026-10-12"
+	},
+	"5cbc9888e575": {
+		"file": "src/components/video-editor/project/useProjectLibraryController.ts",
+		"kind": "error",
+		"text": "Thumbnail decode timed out",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"52690e187d64": {
+		"file": "src/components/video-editor/project/useProjectLibraryController.ts",
+		"kind": "error",
+		"text": "Thumbnail source unavailable",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"00cdeb8fdd9c": {
+		"file": "src/components/video-editor/SettingsPanel.tsx",
+		"kind": "attribute",
+		"text": "{{value1}} - {{value2}}",
+		"reason": "Composizione di valori già tradotti, dati dell’utente o etichetta Zoom compatibile; non tradurre il valore composto.",
+		"reviewedOn": "2026-10-12"
+	},
+	"7b878a809a9e": {
+		"file": "src/components/video-editor/SettingsPanel.tsx",
+		"kind": "property",
+		"text": "macOS",
+		"reason": "Nome proprio, unità, estensione compatibile, esempio e-mail o indicatore di sviluppo; da conservare.",
+		"reviewedOn": "2026-10-12"
+	},
+	"341684bbc719": {
+		"file": "src/components/video-editor/SettingsPanel.tsx",
+		"kind": "property",
+		"text": "Tahoe",
+		"reason": "Nome proprio, unità, estensione compatibile, esempio e-mail o indicatore di sviluppo; da conservare.",
+		"reviewedOn": "2026-10-12"
+	},
+	"4bdc5aefdc0c": {
+		"file": "src/components/video-editor/SettingsPanel.tsx",
+		"kind": "property",
+		"text": "Windows 11",
+		"reason": "Nome proprio, unità, estensione compatibile, esempio e-mail o indicatore di sviluppo; da conservare.",
+		"reviewedOn": "2026-10-12"
+	},
+	"d2192f8b6d9d": {
+		"file": "src/components/video-editor/SettingsPanel.tsx",
+		"kind": "error",
+		"text": "Failed to load preview asset: {{value1}}",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"a540f29bd2ce": {
+		"file": "src/components/video-editor/SettingsPanel.tsx",
+		"kind": "notice",
+		"text": "{{value1}} {{value2}}",
+		"reason": "Composizione di valori già tradotti, dati dell’utente o etichetta Zoom compatibile; non tradurre il valore composto.",
+		"reviewedOn": "2026-10-12"
+	},
+	"68c8919da552": {
+		"file": "src/components/video-editor/SettingsPanel.tsx",
+		"kind": "text",
+		"text": "DEV",
+		"reason": "Nome proprio, unità, estensione compatibile, esempio e-mail o indicatore di sviluppo; da conservare.",
+		"reviewedOn": "2026-10-12"
+	},
+	"1a450f0b1dd7": {
+		"file": "src/components/video-editor/ShortcutsConfigDialog.tsx",
+		"kind": "attribute",
+		"text": "{{value1}}: {{value2}}",
+		"reason": "Composizione di valori già tradotti, dati dell’utente o etichetta Zoom compatibile; non tradurre il valore composto.",
+		"reviewedOn": "2026-10-12"
+	},
+	"b66d1ec65274": {
+		"file": "src/components/video-editor/timeline/components/filmstrip/frameCache.ts",
+		"kind": "error",
+		"text": "Frame extraction cancelled or unavailable",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"7f763e5e56f2": {
+		"file": "src/components/video-editor/timeline/components/filmstrip/frameCache.ts",
+		"kind": "error",
+		"text": "Source does not support accurate seeking",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"dc53d52a9f34": {
+		"file": "src/components/video-editor/timeline/Item.tsx",
+		"kind": "attribute",
+		"text": "{{value1}} · {{value2}}",
+		"reason": "Composizione di valori già tradotti, dati dell’utente o etichetta Zoom compatibile; non tradurre il valore composto.",
+		"reviewedOn": "2026-10-12"
+	},
+	"5e5edacfdd5a": {
+		"file": "src/components/video-editor/timeline/model/timelineModel.ts",
+		"kind": "property",
+		"text": "Zoom {{value1}}",
+		"reason": "Composizione di valori già tradotti, dati dell’utente o etichetta Zoom compatibile; non tradurre il valore composto.",
+		"reviewedOn": "2026-10-12"
+	},
+	"49a99ac7cac8": {
+		"file": "src/components/video-editor/TutorialHelp.tsx",
+		"kind": "notice",
+		"text": "{{value1}} {{value2}}",
+		"reason": "Composizione di valori già tradotti, dati dell’utente o etichetta Zoom compatibile; non tradurre il valore composto.",
+		"reviewedOn": "2026-10-12"
+	},
+	"507881cb373b": {
+		"file": "src/components/video-editor/TutorialHelp.tsx",
+		"kind": "attribute",
+		"text": "OmvaLens · Forgejo",
+		"reason": "Nome proprio, unità, estensione compatibile, esempio e-mail o indicatore di sviluppo; da conservare.",
+		"reviewedOn": "2026-10-12"
+	},
+	"e0f30612aa5a": {
+		"file": "src/components/video-editor/videoPlayback/cursorRenderer.ts",
+		"kind": "error",
+		"text": "Failed to load cursor image: {{value1}}",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"5d2bb72c6dd5": {
+		"file": "src/components/video-editor/videoPlayback/cursorRenderer.ts",
+		"kind": "error",
+		"text": "Missing cursor asset for {{value1}}",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"601bae987b32": {
+		"file": "src/components/video-editor/videoPlayback/cursorRenderer.ts",
+		"kind": "error",
+		"text": "Missing cursor style asset for {{value1}}",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"5c87ec591dc8": {
+		"file": "src/components/video-editor/videoPlayback/cursorRenderer.ts",
+		"kind": "error",
+		"text": "Missing {{value1}} cursor asset for {{value2}}",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"e2694ca53f53": {
+		"file": "src/components/video-editor/videoPlayback/cursorRenderer.ts",
+		"kind": "error",
+		"text": "Failed to initialize the fallback arrow cursor asset",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"360750c96cfe": {
+		"file": "src/components/video-editor/videoPlayback/previewVideoSource.ts",
+		"kind": "error",
+		"text": "Preview video element is not attached",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"0c8a0acd1241": {
+		"file": "src/components/video-editor/VideoPlayback.tsx",
+		"kind": "property",
+		"text": "WebGPU runtime is unavailable in this browser.",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"8522086bdce9": {
+		"file": "src/components/video-editor/VideoPlayback.tsx",
+		"kind": "property",
+		"text": "{{value1}} (after {{value2}}ms)",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"2b7391795f3c": {
+		"file": "src/components/video-editor/VideoPlayback.tsx",
+		"kind": "expression",
+		"text": "{{value1}}{{value2}}",
+		"reason": "Composizione di valori già tradotti, dati dell’utente o etichetta Zoom compatibile; non tradurre il valore composto.",
+		"reviewedOn": "2026-10-12"
+	},
+	"04e2dbbf8e93": {
+		"file": "src/contexts/I18nContext.tsx",
+		"kind": "error",
+		"text": "useI18n must be used within <I18nProvider>",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"25cbf174b23a": {
+		"file": "src/contexts/ShortcutsContext.tsx",
+		"kind": "error",
+		"text": "useShortcuts must be used within <ShortcutsProvider>",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"9df7adc2fdf7": {
+		"file": "src/contexts/ThemeContext.tsx",
+		"kind": "error",
+		"text": "useTheme must be used within a ThemeProvider",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"a3c8cd2de8fe": {
+		"file": "src/lib/assetPath.ts",
+		"kind": "error",
+		"text": "Failed to resolve asset base path for {{value1}}",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"a77ef625827f": {
+		"file": "src/lib/exporter/audioMediaProcessor.ts",
+		"kind": "error",
+		"text": "Streaming audio decode error: {{value1}}",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"812d1e9d1bb8": {
+		"file": "src/lib/exporter/audioTranscodeProcessor.ts",
+		"kind": "error",
+		"text": "[AudioProcessor] Encode error: {{value1}}",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"6db2ca0d05af": {
+		"file": "src/lib/exporter/audioTranscodeProcessor.ts",
+		"kind": "error",
+		"text": "[AudioProcessor] Decode error: {{value1}}",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"4e139fe51f23": {
+		"file": "src/lib/exporter/forwardFrameSource.ts",
+		"kind": "error",
+		"text": "Must call initialize() before starting decoder",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"a396c4f77cf8": {
+		"file": "src/lib/exporter/forwardFrameSource.ts",
+		"kind": "error",
+		"text": "VideoDecoder error: {{value1}}",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"cf770b19a28b": {
+		"file": "src/lib/exporter/forwardFrameSource.ts",
+		"kind": "error",
+		"text": "Concurrent getFrameAtTime() calls are not supported",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"6fba97fbf5e5": {
+		"file": "src/lib/exporter/forwardFrameSource.ts",
+		"kind": "error",
+		"text": "Frame source not initialized",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"dc6ea141ef30": {
+		"file": "src/lib/exporter/forwardFrameSource.ts",
+		"kind": "error",
+		"text": "ForwardFrameSource only supports increasing timestamps",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"d7ea6ff6ae80": {
+		"file": "src/lib/exporter/frameRenderer.ts",
+		"kind": "property",
+		"text": "WebGPU runtime is unavailable in this environment.",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"1e6de0545345": {
+		"file": "src/lib/exporter/frameRenderer.ts",
+		"kind": "error",
+		"text": "Renderer initialized with unsupported fallback backend after {{value1}}ms: {{value2}}",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"6361711fdcb8": {
+		"file": "src/lib/exporter/frameRenderer.ts",
+		"kind": "property",
+		"text": "{{value1}} (after {{value2}}ms)",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"62e1b13c1516": {
+		"file": "src/lib/exporter/frameRenderer.ts",
+		"kind": "error",
+		"text": "Failed to get 2D context for composite canvas",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"740e6020c14e": {
+		"file": "src/lib/exporter/frameRenderer.ts",
+		"kind": "error",
+		"text": "Failed to get 2D context for shadow canvas",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"5eb902dfe2f3": {
+		"file": "src/lib/exporter/frameRenderer.ts",
+		"kind": "error",
+		"text": "Failed to get 2D context for background canvas",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"a02a0efc2ec6": {
+		"file": "src/lib/exporter/frameRenderer.ts",
+		"kind": "error",
+		"text": "Renderer not initialized",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"fa4a018dd423": {
+		"file": "src/lib/exporter/modernFrameRenderer.ts",
+		"kind": "property",
+		"text": "WebGPU runtime is unavailable in this environment.",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"fcdbb7c7b312": {
+		"file": "src/lib/exporter/modernFrameRenderer.ts",
+		"kind": "error",
+		"text": "Renderer initialized with unsupported fallback backend after {{value1}}ms: {{value2}}",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"8e72a8067906": {
+		"file": "src/lib/exporter/modernFrameRenderer.ts",
+		"kind": "property",
+		"text": "{{value1}} (after {{value2}}ms)",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"09c4ab135341": {
+		"file": "src/lib/exporter/modernFrameRenderer.ts",
+		"kind": "error",
+		"text": "Failed to create shadow export canvas",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"3625fc2b4f48": {
+		"file": "src/lib/exporter/modernFrameRenderer.ts",
+		"kind": "error",
+		"text": "Failed to get 2D context for background canvas",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"6757e91411ce": {
+		"file": "src/lib/exporter/modernFrameRenderer.ts",
+		"kind": "error",
+		"text": "Failed to create fallback background context",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"71af8b8b72f8": {
+		"file": "src/lib/exporter/modernFrameRenderer.ts",
+		"kind": "error",
+		"text": "Failed to create caption export canvas",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"cdede4594d23": {
+		"file": "src/lib/exporter/modernFrameRenderer.ts",
+		"kind": "error",
+		"text": "Renderer not initialized",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"14b2a3f9a005": {
+		"file": "src/lib/exporter/modernFrameRenderer.ts",
+		"kind": "error",
+		"text": "Renderer layout cache is unavailable",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"cbad83b1cf05": {
+		"file": "src/lib/exporter/modernVideoExporter.ts",
+		"kind": "error",
+		"text": "{{value1}} export session is not active",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"59fc43fd5980": {
+		"file": "src/lib/exporter/modernVideoExporter.ts",
+		"kind": "property",
+		"text": "{{value1}} export session is not active",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"25c89ab8518b": {
+		"file": "src/lib/exporter/modernVideoExporter.ts",
+		"kind": "property",
+		"text": "{{value1}} export did not return a temp path",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"f79affc4145d": {
+		"file": "src/lib/exporter/modernVideoExporter.ts",
+		"kind": "property",
+		"text": "FFmpeg audio fallback is unavailable in this environment.",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"791d5dd9a029": {
+		"file": "src/lib/exporter/modernVideoExporter.ts",
+		"kind": "property",
+		"text": "FFmpeg audio fallback via temp path is unavailable in this environment.",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"e6201ec5f75a": {
+		"file": "src/lib/exporter/muxer.ts",
+		"kind": "error",
+		"text": "openExportStream IPC is unavailable in this environment",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"6ee76c195e45": {
+		"file": "src/lib/exporter/muxer.ts",
+		"kind": "error",
+		"text": "Muxer not initialized",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"4e004124665a": {
+		"file": "src/lib/exporter/muxer.ts",
+		"kind": "error",
+		"text": "Audio not configured for this muxer",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"d37cd8bce64e": {
+		"file": "src/lib/exporter/nativeFrameCapture.ts",
+		"kind": "error",
+		"text": "No canvas readback path is available for native export",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"6656eafc7902": {
+		"file": "src/lib/exporter/nativeFrameCapture.ts",
+		"kind": "error",
+		"text": "Failed to initialize native export frame readback context",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"d586ac1452ea": {
+		"file": "src/lib/exporter/offlineAudioProcessor.ts",
+		"kind": "error",
+		"text": "Audio encode error: {{value1}}",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"91ca7111da2c": {
+		"file": "src/lib/exporter/streamingDecodePipeline.ts",
+		"kind": "error",
+		"text": "Must call loadMetadata() before decodeAll()",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"10b728e79a64": {
+		"file": "src/lib/exporter/streamingDecodePipeline.ts",
+		"kind": "error",
+		"text": "Video decode ended early at {{value1}}s (needed {{value2}}s; rendered {{value3}}/{{value4}} frames).",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"24763a06c086": {
+		"file": "src/lib/exporter/streamingDecoder.ts",
+		"kind": "error",
+		"text": "Must call loadMetadata() before decodeAll()",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"16a55e64e32a": {
+		"file": "src/lib/exporter/streamingDecoder.ts",
+		"kind": "error",
+		"text": "Missing decoded clip frame at output frame {{value1}}",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"6a6c130e79b9": {
+		"file": "src/lib/exporter/streamingDecoder.ts",
+		"kind": "error",
+		"text": "Must call loadMetadata() first",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"ab5fedba2b04": {
+		"file": "src/lib/exporter/streamingDecoderSupport.ts",
+		"kind": "error",
+		"text": "[{{value1}}] VideoDecoder failure: {{value2}} ({{value3}})",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"e38826c4f07f": {
+		"file": "src/lib/exporter/videoExporter.ts",
+		"kind": "error",
+		"text": "Native export session is not active",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"cf9a97a3a65c": {
+		"file": "src/lib/exporter/videoExporter.ts",
+		"kind": "property",
+		"text": "Native export session is not active",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"58072202704d": {
+		"file": "src/lib/exporter/videoExporter.ts",
+		"kind": "property",
+		"text": "FFmpeg audio fallback is unavailable in this environment.",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"c62f4ca93a7d": {
+		"file": "src/lib/exporter/videoExporter.ts",
+		"kind": "property",
+		"text": "FFmpeg audio fallback via temp path is unavailable in this environment.",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"9a05e8bd4f67": {
+		"file": "src/lib/pixiApplicationLifecycle.ts",
+		"kind": "error",
+		"text": "Pixi application lifecycle has already started",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"6ca7d9c365d8": {
+		"file": "src/lib/pixiApplicationLifecycle.ts",
+		"kind": "error",
+		"text": "Initialization timed out after {{value1}}ms for {{value2}} renderer",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"edd3ab5f29e9": {
+		"file": "electron/ipc/cloudShareContract.ts",
+		"kind": "error",
+		"text": "{{value1}} is missing.",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"b4aad8adb136": {
+		"file": "electron/ipc/cloudShareContract.ts",
+		"kind": "error",
+		"text": "{{value1}} cannot contain credentials.",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"8c499ea9d3e3": {
+		"file": "electron/ipc/cloudShareContract.ts",
+		"kind": "error",
+		"text": "{{value1}} must use HTTPS (HTTP is allowed for localhost).",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"4c9802a6eaff": {
+		"file": "electron/ipc/export/exportStream.ts",
+		"kind": "error",
+		"text": "Invalid export stream extension: {{value1}}",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"dd0dee065695": {
+		"file": "electron/ipc/export/exportStream.ts",
+		"kind": "error",
+		"text": "Export stream not found: {{value1}}",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"499ff7bf51bb": {
+		"file": "electron/ipc/export/native-video.ts",
+		"kind": "error",
+		"text": "Unable to parse native video stream stats from FFprobe output",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"f30f612ec531": {
+		"file": "electron/ipc/export/native-video.ts",
+		"kind": "error",
+		"text": "Native video output is invalid: {{value1}}",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"d348e04305b2": {
+		"file": "electron/ipc/export/native-video.ts",
+		"kind": "error",
+		"text": "Timed out while waiting for native export writer backpressure to clear",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"34275761a920": {
+		"file": "electron/ipc/export/native-video.ts",
+		"kind": "error",
+		"text": "Native video export expected {{value1}} bytes per frame but received {{value2}}",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"017ae8cc7e19": {
+		"file": "electron/ipc/export/native-video.ts",
+		"kind": "error",
+		"text": "Native timeline map contains an invalid segment",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"766618b79267": {
+		"file": "electron/ipc/export/native-video.ts",
+		"kind": "error",
+		"text": "Native timeline map output ranges must be contiguous",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"85cc94f616a0": {
+		"file": "electron/ipc/export/native-video.ts",
+		"kind": "error",
+		"text": "Native timeline map segment speed does not match its output duration",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"451b15f59588": {
+		"file": "electron/ipc/export/native-video.ts",
+		"kind": "error",
+		"text": "Native timeline map duration does not match the export duration",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"47e1031ceaa0": {
+		"file": "electron/ipc/export/native-video.ts",
+		"kind": "error",
+		"text": "Windows GPU webcam proxy requires an input path",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"b0b06c87e56a": {
+		"file": "electron/ipc/export/native-video.ts",
+		"kind": "error",
+		"text": "Native source proxy is invalid: {{value1}}",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"843ed1d48a8b": {
+		"file": "electron/ipc/export/native-video.ts",
+		"kind": "error",
+		"text": "Experimental NVIDIA CUDA export script is not available",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"177e1e0eae59": {
+		"file": "electron/ipc/export/native-video.ts",
+		"kind": "error",
+		"text": "Experimental Windows GPU exporter is not built",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"ad7adcaf5689": {
+		"file": "electron/ipc/export/native-video.ts",
+		"kind": "error",
+		"text": "Native static layout export requires even output dimensions",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"a766168994b9": {
+		"file": "electron/ipc/export/native-video.ts",
+		"kind": "error",
+		"text": "Native static layout export requires a positive duration",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"731af41a8ac1": {
+		"file": "electron/ipc/export/native-video.ts",
+		"kind": "error",
+		"text": "Native webcam overlay requires the Windows GPU compositor",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"309d48d3e7ba": {
+		"file": "electron/ipc/export/native-video.ts",
+		"kind": "error",
+		"text": "Native zoom telemetry requires the Windows GPU compositor",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"cf4cd01fbb73": {
+		"file": "electron/ipc/export/native-video.ts",
+		"kind": "error",
+		"text": "Native static layout export produced no chunks",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"71e235c99e19": {
+		"file": "electron/ipc/export/native-video.ts",
+		"kind": "error",
+		"text": "Native timeline-map export requires the Windows GPU compositor",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"d89b4fad39da": {
+		"file": "electron/ipc/export/native-video.ts",
+		"kind": "error",
+		"text": "Experimental NVIDIA CUDA compositor produced an invalid output: {{value1}}",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"213372c55dc4": {
+		"file": "electron/ipc/export/native-video.ts",
+		"kind": "error",
+		"text": "Experimental NVIDIA CUDA compositor produced an empty output file",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"3d7bf2dc860e": {
+		"file": "electron/ipc/export/native-video.ts",
+		"kind": "error",
+		"text": "Experimental Windows GPU compositor produced an invalid output: {{value1}}",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"c53470f0f03b": {
+		"file": "electron/ipc/export/native-video.ts",
+		"kind": "error",
+		"text": "Native timeline-map export requires a GPU compositor backend",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"98ef3bcceeb4": {
+		"file": "electron/ipc/export/native-video.ts",
+		"kind": "error",
+		"text": "Native crop export requires a GPU compositor backend",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"c392bb4bc206": {
+		"file": "electron/ipc/export/native-video.ts",
+		"kind": "error",
+		"text": "Edited-track filtergraph inputs are incomplete for native export",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"a2e9e585a72f": {
+		"file": "electron/ipc/ffmpeg/metadata.ts",
+		"kind": "error",
+		"text": "Unable to parse native video metadata from FFmpeg output",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"09f0d0aed58c": {
+		"file": "electron/ipc/nativeVideoExport.ts",
+		"kind": "error",
+		"text": "Native precomposited static layout requires a static background path",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"826e6df6b38c": {
+		"file": "electron/ipc/paths/binaries.ts",
+		"kind": "error",
+		"text": "{{value1}} source is unavailable: {{value2}}",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"745f33755172": {
+		"file": "electron/ipc/project/manager.ts",
+		"kind": "error",
+		"text": "Project thumbnail must be a PNG data URL.",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"41f63ba114b2": {
+		"file": "electron/ipc/project/portable.ts",
+		"kind": "error",
+		"text": "Invalid {{value1}}",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"79ab1a40d162": {
+		"file": "electron/ipc/recording/ffmpeg.ts",
+		"kind": "error",
+		"text": "Missing window identifier for FFmpeg window capture",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"c7b6b321657a": {
+		"file": "electron/ipc/recording/ffmpeg.ts",
+		"kind": "error",
+		"text": "Unable to resolve Linux window bounds for FFmpeg capture",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"26f66435c36b": {
+		"file": "electron/ipc/recording/mac.ts",
+		"kind": "error",
+		"text": "Native capture helper exited before {{value1}} (code {{value2}})",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"c421ef076873": {
+		"file": "electron/ipc/register/export.ts",
+		"kind": "error",
+		"text": "{{value1}} requires a file path",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"82a3436300b7": {
+		"file": "electron/ipc/register/export.ts",
+		"kind": "error",
+		"text": "{{value1}} is not an approved readable media file",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"bed84e17bddb": {
+		"file": "electron/ipc/register/export.ts",
+		"kind": "error",
+		"text": "{{value1}} is not approved for local reads",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"1c64dfc22643": {
+		"file": "electron/ipc/register/export.ts",
+		"kind": "error",
+		"text": "{{value1}} does not exist",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"6dfdbf148fd5": {
+		"file": "electron/ipc/register/export.ts",
+		"kind": "error",
+		"text": "{{value1}} is not a readable file",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"48b620e80f6a": {
+		"file": "electron/ipc/register/export.ts",
+		"kind": "error",
+		"text": "{{value1}} must be a file path",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"b2982ef140a5": {
+		"file": "electron/ipc/register/export.ts",
+		"kind": "error",
+		"text": "Native metadata probe requires a file path",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"d20160880c0b": {
+		"file": "electron/ipc/register/export.ts",
+		"kind": "error",
+		"text": "Native static layout export requires an input path",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"1946039f3de7": {
+		"file": "electron/ipc/register/export.ts",
+		"kind": "property",
+		"text": "Invalid native export session",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"e54cb94dd808": {
+		"file": "electron/ipc/register/export.ts",
+		"kind": "property",
+		"text": "Native video export batch contained invalid frame sizes",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"f6e453b0ab8a": {
+		"file": "electron/ipc/register/export.ts",
+		"kind": "property",
+		"text": "Native video export expected {{value1}} bytes per frame but received {{value2}}",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"942e71c8bd3b": {
+		"file": "electron/ipc/register/export.ts",
+		"kind": "property",
+		"text": "Video path is not an app-managed export temp",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"fa310978e7a3": {
+		"file": "electron/ipc/register/export.ts",
+		"kind": "property",
+		"text": "Invalid finalize-exported-video payload",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"03dcaa7caf59": {
+		"file": "electron/ipc/register/export.ts",
+		"kind": "property",
+		"text": "Temp path is not an app-managed export temp",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"0b35b5114d0b": {
+		"file": "electron/ipc/register/export.ts",
+		"kind": "property",
+		"text": "Invalid temp path",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"747529c71847": {
+		"file": "electron/ipc/register/settings.ts",
+		"kind": "notice",
+		"text": "Active hardware mode is read-only",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"6664aeb98eba": {
+		"file": "electron/ipc/utils.ts",
+		"kind": "error",
+		"text": "getScreen() called before app is ready. Ensure all screen access happens after app.whenReady().",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"94aa77efe1e7": {
+		"file": "electron/main.ts",
+		"kind": "property",
+		"text": "OmvaLens",
+		"reason": "Nome proprio, unità, estensione compatibile, esempio e-mail o indicatore di sviluppo; da conservare.",
+		"reviewedOn": "2026-10-12"
+	},
+	"e7a60c1e2371": {
+		"file": "electron/mediaServer.ts",
+		"kind": "error",
+		"text": "Media server did not expose a TCP address",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"a1779977ccfe": {
+		"file": "electron/rendererServer.ts",
+		"kind": "error",
+		"text": "Renderer server did not expose a TCP address",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"2b06e2374963": {
+		"file": "electron/windows.ts",
+		"kind": "error",
+		"text": "getScreen() called before app is ready. Ensure all screen access happens after app.whenReady().",
+		"reason": "Diagnostica tecnica di decoder, renderer, cattura o protocollo IPC; dettagli originali conservati per assistenza e copia, come consentito da C07.",
+		"reviewedOn": "2026-10-12"
+	},
+	"a77aaa7f8164": {
+		"file": "electron/windows.ts",
+		"kind": "property",
+		"text": "OmvaLens",
+		"reason": "Nome proprio, unità, estensione compatibile, esempio e-mail o indicatore di sviluppo; da conservare.",
+		"reviewedOn": "2026-10-12"
+	}
+}

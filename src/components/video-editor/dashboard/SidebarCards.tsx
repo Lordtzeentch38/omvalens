@@ -1,5 +1,7 @@
 // Modified by OmvaLens, 2026-10-11: localized interface text. AGPL-3.0.
+// Modified by OmvaLens, 2026-10-12: localized configured sidebar content. AGPL-3.0.
 import { useUiText } from "@/contexts/I18nContext";
+import { announcementImageSource } from "@/i18n/announcementImage";
 import { Card } from "@heroui/react";
 import { Button } from "@/components/ui/button";
 import { toast } from "@/components/ui/toast";
@@ -17,26 +19,22 @@ export function SidebarCards() {
 				<Card key={card.id} className="gap-3 overflow-hidden p-3 shadow-none">
 					{card.image && (
 						<img
-							src={
-								/^(https?:|data:)/.test(card.image)
-									? card.image
-									: `${import.meta.env.BASE_URL}${card.image}`
-							}
-							alt={card.imageAlt ?? ""}
+							src={announcementImageSource(card.image, uiText)}
+							alt={uiText(card.imageAlt ?? "")}
 							className="aspect-video w-full rounded-lg object-cover"
 						/>
 					)}
 					<Card.Header className="gap-1 p-0">
-						<Card.Title className="text-[13px]">{card.heading}</Card.Title>
+						<Card.Title className="text-[13px]">{uiText(card.heading)}</Card.Title>
 						{card.subheading && (
 							<Card.Description className="text-xs">
-								{card.subheading}
+								{uiText(card.subheading)}
 							</Card.Description>
 						)}
 					</Card.Header>
 					{card.paragraph && (
 						<Card.Content className="p-0 text-xs leading-relaxed text-muted">
-							{card.paragraph}
+							{uiText(card.paragraph)}
 						</Card.Content>
 					)}
 					{card.href && (
@@ -56,7 +54,7 @@ export function SidebarCards() {
 										.catch((error) => toast.error(String(error)))
 								}
 							>
-								{card.linkLabel ?? uiText("Learn more")}
+								{uiText(card.linkLabel ?? "Learn more")}
 							</Button>
 						</Card.Footer>
 					)}

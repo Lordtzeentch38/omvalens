@@ -33,10 +33,17 @@ facoltative non bloccano la prima versione Windows utilizzabile senza account.
   accesso, dashboard, crediti, editor, impostazioni, notifiche e finestre native.
   Corretti testi inglesi nei cataloghi italiani esistenti. Cambio lingua persistente,
   sincronizzazione tra finestre e menu nativi; dati dell'utente preservati.
-  Controlli V05–V07. La localizzazione complessiva richiede ancora C07–C08 e V08.
+  Controlli V05–V07. C07 completa i residui italiani; restano C08 e V08.
 - [x] **C06 — Strumenti di controllo delle traduzioni.** Inventario dei candidati
   (`scripts/i18n-audit.mjs`), controllo dei cataloghi, variabili di interpolazione
   e associazioni delle frasi. Controlli V05 e V08.
+- [x] **C07 — Traduzione dei testi residui destinati all'utente.** Completata
+  il 12/10/2026: errori statici/dinamici, percorsi preservati, Whisper,
+  preset GIF/cursori, accessibilità e segnaposto SVG. Inventario classificato:
+  514 punti, 339 catalogati, 175 esclusioni motivate, zero in attesa.
+  Tipi, cataloghi, test e build verificati; evidenze in
+  [TRADUZIONI_IT.md](TRADUZIONI_IT.md). Diagnostica tecnica e nomi propri
+  conservati. Revisione linguistica estesa separata in V08.
 
 - [x] **C11 — Accelerazione GPU.** Modalità automatica/CPU coerente per sessione,
   rilevamento hardware, Whisper CUDA Windows x64 con runtime CPU indipendente e
@@ -46,10 +53,6 @@ facoltative non bloccano la prima versione Windows utilizzabile senza account.
 
 ### Da implementare o completare
 
-- [ ] **C07 — Traduzione dei testi residui destinati all'utente.** Dopo la
-  classificazione V08, migrare i testi effettivamente mancanti: messaggi dinamici,
-  errori, preset e illustrazioni. Diagnostica tecnica e nomi propri possono restare
-  invariati. Criterio: chiudere l'elenco dei testi da correggere prodotto da V08.
 - [ ] **C08 — Nuove frasi nelle altre otto lingue selezionabili.** Completare
   spagnolo, francese, tedesco, olandese, coreano, portoghese brasiliano e cinese
   semplificato/tradizionale. Le traduzioni esistenti sono state riutilizzate;
@@ -98,11 +101,13 @@ facoltative non bloccano la prima versione Windows utilizzabile senza account.
 
 ### Controlli ancora da eseguire
 
-- [ ] **V08 — Copertura e qualità delle traduzioni (C05–C08).** Classificare i
-  candidati residui dell'inventario, assegnando a C07 solo i testi da correggere.
-  Verificare visivamente le dieci lingue selezionabili e rivedere i cataloghi,
-  preferibilmente con madrelingua. Coerenza tecnica non equivale a traduzione
-  completa. Il catalogo russo nei sorgenti non è selezionabile.
+- [ ] **V08 — Copertura e qualità delle traduzioni (C05–C08).** Parziale:
+  - [x] Inventario statico ampliato e classificato; lista C07 chiusa, 12/10/2026.
+  - [x] Controlli tecnici C07: cataloghi, interpolazione, dati dell'utente,
+    messaggi sconosciuti, SVG e percorsi UI italiani, 12/10/2026.
+  - [ ] Revisione visiva delle dieci lingue selezionabili e dei cataloghi,
+    preferibilmente con madrelingua, dopo C08. Coerenza tecnica non equivale
+    a traduzione completa. Il catalogo russo non è selezionabile.
 - [ ] **V09 — Microfono, audio di sistema e webcam reali.** Provare combinazioni,
   sincronizzazione, permessi, cambio/disconnessione e riapertura dei dispositivi.
   Criterio: documentare dispositivi, scenari ed esiti.
@@ -149,8 +154,10 @@ prova fallita. Non considerare una funzionalità mancante prima del collaudo.
   `omvalens`. GitHub secondario, caricamenti solo su richiesta esplicita per ogni
   operazione. Indirizzi e compatibilità in [HOSTING.md](HOSTING.md).
 - [x] **D02 — Installer locale.** Prima fase italiana verificata l'11/10/2026;
-  pacchetto Windows ricreato con C11 il 12/10/2026. Avvio/editor, runtime inclusi
-  e modalità GPU/CPU verificati. Firma editore e release pubblica restano separate.
+  pacchetto Windows ricreato con C11 e poi C07 il 12/10/2026. Con C07 verificati
+  avvio/editor italiano, menu nativi, trasferimento portabile e binari inclusi;
+  checksum aggiornati. Le modalità GPU/CPU erano state verificate con C11.
+  Firma editore e release pubblica restano separate.
 - [ ] **D03 — Release pubblica su Forgejo.** Pubblicare installer, checksum,
   sorgenti, istruzioni e problemi noti della versione collaudata. Un push dei
   sorgenti non completa la release. GitHub richiede richiesta esplicita separata.
@@ -168,5 +175,8 @@ prova fallita. Non considerare una funzionalità mancante prima del collaudo.
 | 11/10/2026 | Checklist | Riorganizzata | Coding, controlli e distribuzione separati; esiti precedenti conservati. |
 | 12/10/2026 | C11, D02 | Implementazione completata | 1.503 test della suite e 4 nuovi controlli hardware riusciti, 7 esclusi; tipi/cataloghi/lint senza errori, un avviso precedente. Cinque prove UI e app Windows GPU/CPU/trascrizione/trasferimento portabile riuscite. |
 | 12/10/2026 | V16 | Collaudo parziale | Benchmark NVENC/libx264 e Whisper CUDA/CPU; anteprima su RTX 3060 e renderer software. Montaggi completi, qualità, sessioni lunghe e altri hardware restano aperti. |
+| 12/10/2026 | C07 | Completata | 243 nuove frasi; 1.516 test riusciti, 7 esclusi; tipi/cataloghi/lint/build verificati, un avviso lint precedente; nove scenari UI distinti riusciti. |
+| 12/10/2026 | V08 | Collaudo parziale | Inventario di 514 punti classificato, nessun residuo in attesa; test tecnici italiani riusciti. C08 e revisione linguistica/visiva delle dieci lingue restano aperti. |
+| 12/10/2026 | D02 | Aggiornata con C07 | Installer Windows locale ricreato (519.801.334 byte), checksum, binari inclusi e avvio/editor/menu nativi/trasferimento portabile riusciti con profilo isolato. D03 resta aperta. |
 
 Ulteriori dettagli sulle traduzioni: [TRADUZIONI_IT.md](TRADUZIONI_IT.md).

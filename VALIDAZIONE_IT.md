@@ -142,6 +142,29 @@ L’installer è privo di certificato di firma dell’editore e non attiva aggio
 automatici di Recordly. Gli installer e i media di prova sono locali e ignorati da
 Git; i repository contengono sorgenti, script e documentazione.
 
+## Traduzioni residue C07 — 12 ottobre 2026
+
+- Suite completa: **1.516 test riusciti, 7 esclusi** (176 file riusciti,
+  uno escluso). Nove nuovi test verificano messaggi dinamici, conservazione dei
+  percorsi/dati, righe multiple, diagnostica sconosciuta e traduzione/escaping SVG.
+- Tipi e cataloghi coerenti; lint senza errori, con l'avviso preesistente in
+  `ProjectThumbnail.tsx`. Inventario statico: **514 punti**, 339 catalogati,
+  175 esclusioni motivate, **zero in attesa**. Ogni esclusione ha data e motivo;
+  nuove frasi non classificate fanno fallire `--check-reviewed`.
+- **Nove scenari UI distinti riusciti**: quattro di lingua/dashboard/guida,
+  due di progetti portabili e tre nuovi C07 (preset GIF italiani, errore portabile
+  con nome file contenente parentesi graffe, errore IPC della libreria originale).
+  I tre nuovi scenari sono stati rieseguiti insieme con esito riuscito. Il primo
+  tentativo GIF ha evidenziato una funzione mancante nel collegamento simulato
+  dei test, aggiunta alla prova; non era un difetto del collegamento Electron.
+- Compilazione renderer/Electron verificata. Le altre otto lingue selezionabili
+  conservano ripieghi inglesi per le nuove frasi: C08/V08 restano aperti.
+- Installer locale `release/OmvaLens-windows-x64.exe` ricreato: 519.801.334 byte.
+  Checksum aggiornati in `release/SHA256SUMS.txt`; binari inclusi verificati.
+  Prova dell'app confezionata riuscita con profilo isolato: avvio, editor
+  italiano, menu nativi e trasferimento portabile. Nessuna release pubblica
+  creata; l'installer mantiene il limite della firma editore indicato sopra.
+
 ## Ripetere i controlli
 
 ```sh

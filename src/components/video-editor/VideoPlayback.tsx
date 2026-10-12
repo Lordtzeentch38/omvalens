@@ -1,4 +1,6 @@
 import { Application, Container, Graphics, Rectangle, Sprite, Texture } from "pixi.js";
+// Modified by OmvaLens, 2026-10-12: caption editor accessible labels. AGPL-3.0.
+import { useUiText } from "@/contexts/I18nContext";
 import { MotionBlurFilter } from "pixi-filters/motion-blur";
 import { ZoomBlurFilter } from "pixi-filters/zoom-blur";
 import type React from "react";
@@ -391,6 +393,7 @@ const VideoPlayback = forwardRef<VideoPlaybackRef, VideoPlaybackProps>(
 		const zoomBlurFilterRef = useRef<ZoomBlurFilter | null>(null);
 		const motionBlurFilterRef = useRef<MotionBlurFilter | null>(null);
 		const cameraContainerRef = useRef<Container | null>(null);
+		const uiText = useUiText();
 		const [pixiReady, setPixiReady] = useState(false);
 		const videoReady = usePreviewVideoReady(videoRef, videoPath);
 
@@ -2511,7 +2514,7 @@ const VideoPlayback = forwardRef<VideoPlaybackRef, VideoPlaybackProps>(
 										}
 										aria-label={
 											onEditAutoCaption && !isCaptionEditing
-												? "Edit current caption"
+												? uiText("Edit current caption")
 												: undefined
 										}
 										onClick={(event) => event.stopPropagation()}
@@ -2610,7 +2613,7 @@ const VideoPlayback = forwardRef<VideoPlaybackRef, VideoPlaybackProps>(
 													1,
 													activeCaptionLayout.visibleLines.length,
 												)}
-												aria-label="Edit current caption"
+												aria-label={uiText("Edit current caption")}
 												style={{
 													display: "block",
 													width: `${

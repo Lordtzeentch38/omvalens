@@ -1,5 +1,7 @@
 // Modified by OmvaLens, 2026-10-11: localize application notifications. AGPL-3.0.
 import { currentUiText } from "@/i18n/catalogText";
+// Modified by OmvaLens, 2026-10-12: known dynamic notifications and IPC errors.
+import { currentAppMessage } from "@/i18n/appMessage";
 import { Toast, toast as heroToast } from "@heroui/react";
 import { isValidElement, type ReactNode } from "react";
 
@@ -23,12 +25,12 @@ function plainText(value: ReactNode): string {
 // Keep existing callers compatible while HeroUI owns the queue and presentation.
 function notify(title: ReactNode, options: Options = {}, variant: Variant = "default") {
 	// Translate only catalogued application messages; unknown diagnostic text stays intact.
-	if (typeof title === "string") title = currentUiText(title);
+	if (typeof title === "string") title = currentAppMessage(title);
 	options = {
 		...options,
 		description:
 			typeof options.description === "string"
-				? currentUiText(options.description)
+				? currentAppMessage(options.description)
 				: options.description,
 		action: options.action
 			? {

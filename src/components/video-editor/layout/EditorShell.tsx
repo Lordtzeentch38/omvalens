@@ -1,3 +1,5 @@
+// Modified by OmvaLens, 2026-10-12: known UI error messages. AGPL-3.0.
+import { currentAppMessage } from "@/i18n/appMessage";
 // Modified by OmvaLens, 2026-10-11: localized interface text. AGPL-3.0.
 import { useUiText } from "@/contexts/I18nContext";
 // Modified by the ScreenRecorder fork, 2026-10-10. See FORK_CHANGES.md; AGPL-3.0.
@@ -230,7 +232,7 @@ export function EditorShell(props: Props) {
 			<div className="flex h-screen items-center justify-center bg-background">
 				<div className="flex flex-col items-center gap-3">
 					<div role="alert" className="max-w-xl break-words text-center text-destructive">
-						{project.error}
+						{currentAppMessage(project.error)}
 					</div>
 					<Button
 						variant="ghost"

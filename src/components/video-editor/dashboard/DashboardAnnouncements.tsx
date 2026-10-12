@@ -1,5 +1,7 @@
 // Modified by OmvaLens, 2026-10-11: localized interface text. AGPL-3.0.
+// Modified by OmvaLens, 2026-10-12: localized bundled banners. AGPL-3.0.
 import { useUiText } from "@/contexts/I18nContext";
+import { announcementImageSource } from "@/i18n/announcementImage";
 import { Button, Card, Link } from "@heroui/react";
 import { useState } from "react";
 import { ArrowLeft, ArrowRight } from "@/components/ui/icons";
@@ -19,12 +21,8 @@ export function DashboardAnnouncements({
 	const banner = banners[active];
 	const image = (
 		<img
-			src={
-				/^(https?:|data:|\/)/.test(banner.src)
-					? banner.src
-					: `${import.meta.env.BASE_URL}${banner.src}`
-			}
-			alt={banner.alt}
+			src={announcementImageSource(banner.src, uiText)}
+			alt={uiText(banner.alt)}
 			className="block aspect-[6/1] w-full object-cover"
 		/>
 	);
@@ -32,7 +30,7 @@ export function DashboardAnnouncements({
 	return (
 		<Card
 			aria-label={uiText("Announcements")}
-			aria-roledescription="carousel"
+			aria-roledescription={uiText("Announcements")}
 			className="relative mx-7 mt-7 shrink-0 overflow-hidden rounded-2xl p-0 shadow-none lg:mx-10"
 		>
 			<div aria-live="polite" aria-atomic="true">

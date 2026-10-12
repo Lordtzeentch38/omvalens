@@ -1,3 +1,4 @@
+// Modified by OmvaLens, 2026-10-12: residual interface translations. AGPL-3.0.
 // Modified by OmvaLens, 2026-10-11: localized interface text. AGPL-3.0.
 import { useUiText } from "@/contexts/I18nContext";
 import { SettingsSections, SettingsCategory } from "./SettingsSections";
@@ -1160,7 +1161,10 @@ export function SettingsPanel({
 
 	const cursorPreviewUrls = builtInCursorPreviewUrls;
 	const showDevMotionControls = import.meta.env.DEV;
-	const cursorStyleOptions = BUILTIN_CURSOR_STYLE_OPTIONS;
+	const cursorStyleOptions = BUILTIN_CURSOR_STYLE_OPTIONS.map((option) => ({
+		...option,
+		label: uiText(option.label),
+	}));
 
 	useEffect(() => {
 		let cancelled = false;

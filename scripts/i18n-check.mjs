@@ -1,6 +1,8 @@
 // Modified by OmvaLens, 2026-10-11: validate interpolation and UI catalog references.
 import fs from "node:fs";
 import path from "node:path";
+// Modified by OmvaLens, 2026-10-12: validate reviewed inventory and dynamic templates.
+import { createHash } from "node:crypto";
 
 const root = process.cwd();
 const localesDir = path.join(root, "src", "i18n", "locales");
@@ -122,6 +124,40 @@ for (const [source, key] of Object.entries(uiKeys)) {
 		console.error(
 			`i18n-check: UI source phrase has no matching English catalog entry: ${source}`,
 		);
+		hasErrors = true;
+	}
+}
+
+const templates = loadJson(path.join(root, "src/i18n/messageTemplates.json"));
+for (const name of ["placeholder-1.svg", "placeholder-2.svg"]) {
+	if (
+		fs.readFileSync(path.join(root, "src/i18n/assets", name), "utf8") !==
+		fs.readFileSync(path.join(root, "public/announcements", name), "utf8")
+	) {
+		console.error(
+			`i18n-check: bundled placeholder differs from its compatibility asset: ${name}`,
+		);
+		hasErrors = true;
+	}
+}
+for (const source of templates) {
+	if (!uiKeys[source] || !variables(source)) {
+		console.error(`i18n-check: invalid dynamic message template: ${source}`);
+		hasErrors = true;
+	}
+}
+const reviews = loadJson(path.join(root, "src/i18n/auditReview.json"));
+for (const [id, record] of Object.entries(reviews)) {
+	const expected = createHash("sha256")
+		.update(`${record.file}\n${record.kind}\n${record.text}`)
+		.digest("hex")
+		.slice(0, 12);
+	if (
+		id !== expected ||
+		!record.reason?.trim() ||
+		!/^\d{4}-\d{2}-\d{2}$/.test(record.reviewedOn ?? "")
+	) {
+		console.error(`i18n-check: invalid inventory review: ${id}`);
 		hasErrors = true;
 	}
 }

@@ -1,3 +1,5 @@
+// Modified by OmvaLens, 2026-10-12: known UI error messages. AGPL-3.0.
+import { currentAppMessage } from "@/i18n/appMessage";
 // Modified by OmvaLens, 2026-10-11: localized interface text. AGPL-3.0.
 import { useUiText } from "@/contexts/I18nContext";
 import { ExportErrorReportButton } from "@/components/feedback/ExportErrorReportButton";
@@ -286,7 +288,7 @@ export function EditorExportMenu(props: Props) {
 												</p>
 												{isLightningExportInProgress && exportMessage ? (
 													<p className="mt-1 text-[11px] leading-relaxed text-muted-foreground/70">
-														{exportMessage}
+														{currentAppMessage(exportMessage)}
 													</p>
 												) : null}
 												{isLegacyExportInProgress ? (
@@ -368,7 +370,7 @@ export function EditorExportMenu(props: Props) {
 											</p>
 										) : null}
 										<p className="mt-1 select-text whitespace-pre-wrap break-words text-xs leading-relaxed text-muted-foreground">
-											{exportError}
+											{currentAppMessage(exportError)}
 										</p>
 										<div className="mt-4 flex gap-2">
 											<Button

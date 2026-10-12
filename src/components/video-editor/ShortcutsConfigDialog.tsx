@@ -1,3 +1,4 @@
+// Modified by OmvaLens, 2026-10-12: residual interface translations. AGPL-3.0.
 // Modified by OmvaLens, 2026-10-11: interpolated UI translations. AGPL-3.0.
 import { useUiText } from "@/contexts/I18nContext";
 import { Kbd, Description, Modal } from "@heroui/react";
@@ -76,7 +77,9 @@ export function ShortcutsConfigDialog() {
 			setCaptureFor(null);
 
 			if (found?.type === "fixed") {
-				toast.error(t("shortcutsConfig.reserved", undefined, { label: found.label }));
+				toast.error(
+					t("shortcutsConfig.reserved", undefined, { label: uiText(found.label) }),
+				);
 				return;
 			}
 
@@ -90,7 +93,7 @@ export function ShortcutsConfigDialog() {
 
 		window.addEventListener("keydown", handleCapture, { capture: true });
 		return () => window.removeEventListener("keydown", handleCapture, { capture: true });
-	}, [captureFor, draft, t]);
+	}, [captureFor, draft, t, uiText]);
 
 	const handleSwap = useCallback(() => {
 		if (!conflict || conflict.conflictWith.type !== "configurable") return;

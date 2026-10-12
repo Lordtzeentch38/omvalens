@@ -1,3 +1,5 @@
+// Modified by OmvaLens, 2026-10-12: known UI error messages. AGPL-3.0.
+import { currentAppMessage } from "@/i18n/appMessage";
 // Added by OmvaLens, 2026-10-12. AGPL-3.0.
 import { useState } from "react";
 import { useScopedT } from "@/contexts/I18nContext";
@@ -105,7 +107,7 @@ export function HardwareAccelerationPanel() {
 			)}
 			{error && (
 				<p role="alert" className="text-xs">
-					{error}
+					{currentAppMessage(error)}
 				</p>
 			)}
 		</section>

@@ -1,3 +1,5 @@
+// Modified by OmvaLens, 2026-10-12: known UI error messages. AGPL-3.0.
+import { currentAppMessage } from "@/i18n/appMessage";
 // Modified by OmvaLens, 2026-10-11: localized interface text. AGPL-3.0.
 import { useUiText } from "@/contexts/I18nContext";
 import { LibrarySkeleton } from "./LibrarySkeleton";
@@ -84,7 +86,7 @@ export function DashboardGrid({
 			<main className="custom-scrollbar min-h-0 flex-1 overflow-y-auto px-7 pb-10 lg:px-10">
 				{error && (
 					<p role="alert" className="mb-4 text-sm text-danger">
-						{error}
+						{currentAppMessage(error)}
 					</p>
 				)}
 				{section === "settings" ? (
@@ -157,7 +159,7 @@ export function DashboardGrid({
 							{isRaw
 								? rawLoading
 									? uiText("Loading recordings…")
-									: rawError ||
+									: (rawError && currentAppMessage(rawError)) ||
 										(hasActiveFilters
 											? uiText("No matching raw files")
 											: uiText("No raw recordings yet"))

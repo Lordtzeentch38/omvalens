@@ -1,5 +1,7 @@
 // Modified by OmvaLens, 2026-10-11: localized interface text. AGPL-3.0.
 import { useUiText } from "@/contexts/I18nContext";
+// Modified by OmvaLens, 2026-10-12: known sharing error messages.
+import { currentAppMessage } from "@/i18n/appMessage";
 import {
 	checkShareCapacity,
 	RECORDING_LIMIT_MESSAGE,
@@ -295,7 +297,7 @@ export function CloudShareButton({
 					) : null}
 					{error || capacityAvailable === false ? (
 						<p className="text-sm text-destructive">
-							{error || RECORDING_LIMIT_MESSAGE}
+							{currentAppMessage(error || RECORDING_LIMIT_MESSAGE)}
 						</p>
 					) : null}
 					<div className="flex justify-end gap-2">

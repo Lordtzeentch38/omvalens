@@ -1,3 +1,4 @@
+// Modified by OmvaLens, 2026-10-12: localized GIF presets. AGPL-3.0.
 import {
 	Select,
 	SelectContent,
@@ -6,7 +7,7 @@ import {
 	SelectValue,
 } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
-import { useScopedT } from "@/contexts/I18nContext";
+import { useScopedT, useUiText } from "@/contexts/I18nContext";
 import {
 	GIF_FRAME_RATES,
 	GIF_SIZE_PRESETS,
@@ -36,9 +37,10 @@ export function GifOptionsPanel({
 	disabled = false,
 }: GifOptionsPanelProps) {
 	const t = useScopedT("editor");
+	const uiText = useUiText();
 	const sizePresetOptions = Object.entries(GIF_SIZE_PRESETS).map(([key, value]) => ({
 		value: key as GifSizePreset,
-		label: value.label,
+		label: uiText(value.label),
 	}));
 
 	return (
@@ -63,7 +65,7 @@ export function GifOptionsPanel({
 								value={String(rate.value)}
 								className="text-foreground focus:bg-foreground/10 focus:text-foreground"
 							>
-								{rate.label}
+								{uiText(rate.label)}
 							</SelectItem>
 						))}
 					</SelectContent>

@@ -1,3 +1,5 @@
+// Modified by OmvaLens, 2026-10-12: known UI error messages. AGPL-3.0.
+import { currentAppMessage } from "@/i18n/appMessage";
 // Modified by OmvaLens, 2026-10-11: localized interface text. AGPL-3.0.
 import { useUiText } from "@/contexts/I18nContext";
 import { parseSharedRecordingDate } from "./sharedRecordingDate";
@@ -154,7 +156,7 @@ export function SharedRecordings({
 				<div className="px-7 lg:px-10">
 					{error && (
 						<p role="alert" className="mb-4 text-sm text-danger">
-							{error}
+							{currentAppMessage(error)}
 						</p>
 					)}
 					{loading ? (
@@ -313,7 +315,7 @@ export function SharedRecordings({
 					{error && (
 						<Alert status="danger">
 							<Alert.Content>
-								<Alert.Description>{error}</Alert.Description>
+								<Alert.Description>{currentAppMessage(error)}</Alert.Description>
 							</Alert.Content>
 						</Alert>
 					)}
