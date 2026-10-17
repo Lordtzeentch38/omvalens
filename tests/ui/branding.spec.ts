@@ -23,7 +23,9 @@ test("OmvaLens identity is displayed while upstream attribution remains in credi
 	await expect(credits).toContainText("Based on Recordly by webadderallorg and contributors");
 	await expect(credits).toContainText("GNU AGPLv3");
 	await expect(credits).toContainText("portable projects");
-	await expect.poll(() => credits.evaluate((element) => getComputedStyle(element).opacity)).toBe("1");
+	await expect
+		.poll(() => credits.evaluate((element) => getComputedStyle(element).opacity))
+		.toBe("1");
 	await credits.screenshot({ path: "test-results/omvalens-credits.png", animations: "disabled" });
 	await credits.getByRole("button", { name: "Close", exact: true }).click();
 	await expect(credits).not.toBeVisible();

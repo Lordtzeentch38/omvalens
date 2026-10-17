@@ -12,6 +12,15 @@ Original copyright and attribution notices are retained. This fork and its
 integrated modifications are licensed under [AGPLv3](LICENSE.md). Existing
 third-party notices remain in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
+## Changes introduced in this fork — 17 October 2026
+
+- **Formatting maintenance (C15):** applied the existing Biome formatter to the
+  42 files reported by the advisory check: four Electron files, 26 sharing-service
+  files, ten application source files and two UI tests. No functional changes
+  or changes to quality-check configuration. Formatting check passes for all
+  844 checked files; typecheck, lint and 1,538 tests pass (seven skipped,
+  one pre-existing lint warning). Dated evidence is recorded in the shared checklist.
+
 ## Changes introduced in this fork — 12 October 2026
 
 - **Eight-language catalog completion (C08):** 6,926 values updated across

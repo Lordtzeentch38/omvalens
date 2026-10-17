@@ -1,6 +1,6 @@
 # OmvaLens — checklist di sviluppo e collaudo
 
-Ultimo aggiornamento: 12 ottobre 2026.
+Ultimo aggiornamento: 17 ottobre 2026.
 
 Questa checklist distingue **codice da realizzare**, **controlli da eseguire** e
 **distribuzione**. Le caselle si modificano con `[ ]` / `[x]`. Ogni voce ha un
@@ -58,6 +58,10 @@ facoltative non bloccano la prima versione Windows utilizzabile senza account.
   e app Windows confezionata riusciti. Non tutte le operazioni usano la GPU;
   [guida e limiti](ACCELERAZIONE_HARDWARE_IT.md). Collaudo esteso distinto in V16.
 
+- [x] **C15 — Correzione delle 42 difformità di formattazione.** Completata
+  il 17/10/2026 applicando il formatter esistente ai 42 file segnalati.
+  Nessuna modifica funzionale o alla configurazione dei controlli. Controllo V20.
+
 ### Da implementare o completare
 
 - [ ] **C09 — Aggiornamenti dell'app.** Configurare un feed del nostro progetto e
@@ -100,6 +104,11 @@ facoltative non bloccano la prima versione Windows utilizzabile senza account.
 - [x] **V07 — App Windows confezionata dopo C05.** Avvio ed editor italiano, menu
   nativi e trasferimento portabile; nessun errore del renderer. Binari inclusi
   verificati. Esito: riuscito, 11/10/2026; prove in `.tmp/packaged-brand-smoke/`.
+
+- [x] **V20 — Formattazione e regressioni (C15).** Il 17/10/2026:
+  `format:check` riuscito su 844 file, zero difformità; tipi e lint superati
+  (un avviso lint preesistente); 1.538 test riusciti, 7 esclusi.
+  Confronto dei 42 file prima/dopo con formattazione canonica: contenuti equivalenti.
 
 ### Controlli ancora da eseguire
 
@@ -192,5 +201,7 @@ prova fallita. Non considerare una funzionalità mancante prima del collaudo.
 | 12/10/2026 | C08 | Completata | Otto cataloghi completati: 6.926 valori aggiornati, 1.463 chiavi per lingua. Nessuna frase inglese senza motivazione, variabili/nomi/URL preservati; 1.538 test riusciti e 7 esclusi, tipi/cataloghi/lint/build verificati. Un avviso lint preesistente. |
 | 12/10/2026 | V08 | Collaudo parziale dopo C08 | Dieci scenari UI riusciti: dashboard, crediti, etichette MP4/GIF, errori con percorso e persistenza. Controllo visivo a campione nelle dieci lingue; revisione linguistica completa e prove native estese restano aperte. |
 | 12/10/2026 | D02 | Aggiornata con C08 | Installer locale ricreato (519.941.993 byte), checksum/binari verificati; avvio, editor italiano, menu nativi e trasferimento portabile riusciti con profilo isolato. Firma e release pubblica restano separate. |
+
+| 17/10/2026 | C15, V20 | Completate | Corrette soltanto le 42 difformità di formattazione: 4 file Electron, 26 del servizio di condivisione, 10 in src e 2 test UI. Controllo su 844 file senza difformità; tipi/lint e 1.538 test riusciti, 7 esclusi. Un avviso lint preesistente; nessuna modifica funzionale. |
 
 Ulteriori dettagli sulle traduzioni: [TRADUZIONI_IT.md](TRADUZIONI_IT.md).
